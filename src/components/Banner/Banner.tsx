@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
+import Image from "next/image";
 import styles from "./Banner.module.css";
 
 interface BannerProps {
@@ -57,13 +58,10 @@ export default function Banner({
       className={styles.banner}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 1, ease: "easeOut" }}
+      transition={{ duration: 1, ease: "easeOut" as const }}
       style={{ position: "relative", overflow: "hidden" }}
     >
-      <motion.img
-        src={imageSrc}
-        alt={imageAlt}
-        className={styles.bannerImage}
+      <motion.div
         initial={{ scale: 1.1, y: -50, opacity: 0 }}
         animate={{ scale: 1, y: 0, opacity: 1 }}
         transition={{
@@ -74,10 +72,20 @@ export default function Banner({
         style={{
           width: "100%",
           height: "100vh",
-          objectFit: "cover",
-          display: "block",
+          position: "relative",
         }}
-      />
+      >
+        <Image
+          src={imageSrc}
+          alt={imageAlt}
+          fill
+          priority
+          className={styles.bannerImage}
+          style={{
+            objectFit: "cover",
+          }}
+        />
+      </motion.div>
 
       {/* Animated overlay gradient */}
       <motion.div

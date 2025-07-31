@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import styles from "./TeamMembers.module.css";
 
 export default function TeamMembers() {
@@ -318,14 +319,14 @@ export default function TeamMembers() {
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
+                          position: "relative",
                         }}
                       >
-                        <img
+                        <Image
                           src={partner.logo}
                           alt={partner.name}
+                          fill
                           style={{
-                            maxWidth: "100%",
-                            maxHeight: "100%",
                             objectFit: "contain",
                           }}
                         />
@@ -401,17 +402,13 @@ export default function TeamMembers() {
                             position: "relative",
                           }}
                         >
-                          <img
+                          <Image
                             src={member.image}
                             alt={member.name}
+                            fill
                             style={{
-                              width: "100%",
-                              height: "100%",
                               objectFit: "cover",
                               objectPosition: "center top",
-                              position: "absolute",
-                              top: "0",
-                              left: "0",
                             }}
                           />
                         </div>

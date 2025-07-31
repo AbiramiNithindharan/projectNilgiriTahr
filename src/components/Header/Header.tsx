@@ -2,8 +2,9 @@
 
 import { useEffect, useState, useRef, useCallback } from "react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
-import Link from "next/link"; // Add Next.js Link import
-import { useRouter } from "next/navigation"; // Add useRouter for programmatic navigation
+import Link from "next/link";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 import styles from "./Header.module.css";
 
 interface HeaderProps {
@@ -191,17 +192,17 @@ export default function Header({
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              // width: "clamp(100px, 18vw, 90px)", // Increased minimum size for small screens
-              // height: "clamp(100px, 18vw, 90px)",
-              flexShrink: 0, // Prevent shrinking
+              flexShrink: 0,
+              width: "clamp(100px, 18vw, 90px)",
+              height: "clamp(100px, 18vw, 90px)",
+              position: "relative",
             }}
           >
-            <img
+            <Image
               src={leftLogoSrc}
               alt={leftLogoAlt}
+              fill
               style={{
-                width: "clamp(100px, 18vw, 90px)", // Increased minimum size for small screens
-                height: "clamp(100px, 18vw, 90px)",
                 objectFit: "contain",
               }}
             />
@@ -287,15 +288,22 @@ export default function Header({
             }}
           >
             {/* Right Logo */}
-            <img
-              src={rightLogoSrc}
-              alt={rightLogoAlt}
+            <div
               style={{
-                width: "clamp(100px, 18vw, 90px)", // Increased minimum size for small screens
+                width: "clamp(100px, 18vw, 90px)",
                 height: "clamp(100px, 18vw, 90px)",
-                objectFit: "contain",
+                position: "relative",
               }}
-            />
+            >
+              <Image
+                src={rightLogoSrc}
+                alt={rightLogoAlt}
+                fill
+                style={{
+                  objectFit: "contain",
+                }}
+              />
+            </div>
 
             {/* Menu Button - Better responsive design */}
             <button
