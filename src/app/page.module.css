@@ -165,3 +165,8 @@ a.secondary {
     filter: invert();
   }
 }
+
+.container {
+  min-height: 100vh;
+  width: 100%;
+}
