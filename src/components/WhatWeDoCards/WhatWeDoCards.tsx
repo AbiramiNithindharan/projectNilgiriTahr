@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import styles from "./WhatWeDoCards.module.css";
+import { easeOut } from "framer-motion";
 
 export default function WhatWeDoCards() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -10,24 +11,32 @@ export default function WhatWeDoCards() {
   const cards = [
     {
       title: "Conservation Research",
-      description: "Project Nilgiri Tahr conducts comprehensive scientific research to understand the behavior, ecology, and habitat requirements of this endangered species, providing crucial data for effective conservation strategies.",
-      sectionId: "conservation-research"
+      description:
+        "Project Nilgiri Tahr conducts comprehensive scientific research to understand the behavior, ecology, and habitat requirements of this endangered species, providing crucial data for effective conservation strategies.",
+      sectionId: "conservation-research",
+      image: "/images/conservation-research.jpg",
     },
     {
       title: "Habitat Restoration",
-      description: "Through Project Nilgiri Tahr initiatives, we restore degraded grasslands and forest corridors, removing invasive species and replanting native vegetation to create sustainable habitats for the Nilgiri Tahr population.",
-      sectionId: "habitat-restoration"
+      description:
+        "Through Project Nilgiri Tahr initiatives, we restore degraded grasslands and forest corridors, removing invasive species and replanting native vegetation to create sustainable habitats for the Nilgiri Tahr population.",
+      sectionId: "habitat-restoration",
+      image: "/images/habitat-restoration.jpg",
     },
     {
       title: "Community Engagement",
-      description: "Project Nilgiri Tahr works closely with local tribal communities and stakeholders, fostering conservation awareness and developing sustainable livelihood programs that benefit both people and wildlife.",
-      sectionId: "community-engagement"
+      description:
+        "Project Nilgiri Tahr works closely with local tribal communities and stakeholders, fostering conservation awareness and developing sustainable livelihood programs that benefit both people and wildlife.",
+      sectionId: "community-engagement",
+      image: "/images/community-engagement.jpg",
     },
     {
       title: "Monitoring & Protection",
-      description: "Our Project Nilgiri Tahr team implements advanced monitoring techniques including radio collaring and camera trapping to track population dynamics and ensure the safety of these magnificent mountain goats.",
-      sectionId: "monitoring-protection"
-    }
+      description:
+        "Our Project Nilgiri Tahr team implements advanced monitoring techniques including radio collaring and camera trapping to track population dynamics and ensure the safety of these magnificent mountain goats.",
+      sectionId: "monitoring-protection",
+      image: "/images/monitoring-protection.jpg",
+    },
   ];
 
   const containerVariants = {
@@ -40,7 +49,6 @@ export default function WhatWeDoCards() {
       },
     },
   };
-
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -48,7 +56,7 @@ export default function WhatWeDoCards() {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: easeOut,
       },
     },
   };
@@ -90,7 +98,8 @@ export default function WhatWeDoCards() {
                 background: "#ffffff",
                 borderRadius: "12px",
                 overflow: "hidden",
-                boxShadow: "0 4px 6px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.06)",
+                boxShadow:
+                  "0 4px 6px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.06)",
                 border: "1px solid #e5e7eb",
                 transition: "all 0.3s ease",
                 cursor: "pointer",
@@ -114,7 +123,8 @@ export default function WhatWeDoCards() {
                     height: "100%",
                     objectFit: "cover",
                     transition: "transform 0.3s ease",
-                    transform: hoveredCard === index ? "scale(1.05)" : "scale(1)",
+                    transform:
+                      hoveredCard === index ? "scale(1.05)" : "scale(1)",
                   }}
                 />
                 <div
@@ -124,7 +134,8 @@ export default function WhatWeDoCards() {
                     left: 0,
                     right: 0,
                     bottom: 0,
-                    background: "linear-gradient(to bottom, transparent, rgba(0,0,0,0.1))",
+                    background:
+                      "linear-gradient(to bottom, transparent, rgba(0,0,0,0.1))",
                   }}
                 />
               </div>
@@ -208,17 +219,8 @@ export default function WhatWeDoCards() {
                       margin: "0 0 1rem 0",
                     }}
                   >
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hover to learn more.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
-    </section>
-  );
-}
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Hover to learn more.
                   </p>
                 </div>
               </div>

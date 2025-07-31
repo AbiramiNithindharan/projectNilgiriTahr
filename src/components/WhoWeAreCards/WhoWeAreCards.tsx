@@ -52,8 +52,8 @@ export default function WhoWeAreCards() {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
-      },
+        ease: "easeOut", // use a valid string easing from Framer Motion
+      } as const,
     },
   };
 
