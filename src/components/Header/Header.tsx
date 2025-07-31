@@ -150,8 +150,8 @@ export default function Header({
           opacity: isVisible ? (headerVisible ? 1 : 0) : 0,
         }}
         transition={{
-          y: { duration: 0.3, ease: [0.4, 0, 0.2, 1] },
-          opacity: { duration: 0.3, ease: [0.4, 0, 0.2, 1] },
+          y: { duration: 0.3, ease: [0.4, 0, 0.2, 1] as const },
+          opacity: { duration: 0.3, ease: [0.4, 0, 0.2, 1] as const },
         }}
         style={{
           position: "fixed",
@@ -430,7 +430,7 @@ export default function Header({
           transition={{
             type: "tween",
             duration: 0.5,
-            ease: [0.25, 0.1, 0.25, 1],
+            ease: [0.25, 0.1, 0.25, 1] as const,
           }}
           style={{
             position: "fixed",

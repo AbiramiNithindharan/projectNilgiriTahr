@@ -68,7 +68,7 @@ export default function Banner({
         animate={{ scale: 1, y: 0, opacity: 1 }}
         transition={{
           duration: 1.5,
-          ease: [0.25, 0.1, 0.25, 1],
+          ease: [0.25, 0.1, 0.25, 1] as const,
           delay: 0.3,
         }}
         style={{
@@ -117,7 +117,7 @@ export default function Banner({
           }}
           transition={{
             duration: 0.8,
-            ease: [0.25, 0.1, 0.25, 1],
+            ease: [0.25, 0.1, 0.25, 1] as const,
             delay: 0.8,
           }}
         >

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { easeOut } from "framer-motion";
 import styles from "./MissionVisionVictories.module.css";
 
 export default function MissionVisionVictories() {
@@ -14,7 +15,6 @@ export default function MissionVisionVictories() {
       },
     },
   };
-
   const sectionVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
@@ -22,7 +22,7 @@ export default function MissionVisionVictories() {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut",
+        ease: "easeOut" as const,
       },
     },
   };
@@ -49,19 +49,22 @@ export default function MissionVisionVictories() {
       id: "survey-2024",
       title: "Survey 2024",
       icon: "📊",
-      content: "Comprehensive population survey conducted across all Nilgiri Tahr habitats, documenting current distribution patterns and population dynamics to inform conservation strategies.",
+      content:
+        "Comprehensive population survey conducted across all Nilgiri Tahr habitats, documenting current distribution patterns and population dynamics to inform conservation strategies.",
     },
     {
       id: "radio-collaring",
       title: "Radio Collaring",
       icon: "📡",
-      content: "Advanced radio collaring program to track individual animals, understand movement patterns, and monitor behavior for effective habitat management and protection.",
+      content:
+        "Advanced radio collaring program to track individual animals, understand movement patterns, and monitor behavior for effective habitat management and protection.",
     },
     {
       id: "survey-2025",
       title: "Survey 2025",
       icon: "🔬",
-      content: "Planned extensive field survey using cutting-edge technology and community participation to assess conservation progress and plan future protection measures.",
+      content:
+        "Planned extensive field survey using cutting-edge technology and community participation to assess conservation progress and plan future protection measures.",
     },
   ];
 
@@ -70,37 +73,43 @@ export default function MissionVisionVictories() {
       id: "habitat-restoration",
       title: "Survey",
       icon: "📋",
-      content: "Coordinated, synchronized surveys would help in delineating the actual distributional areas, current population, evaluating conservation challenges and getting an effective population enumeration.",
+      content:
+        "Coordinated, synchronized surveys would help in delineating the actual distributional areas, current population, evaluating conservation challenges and getting an effective population enumeration.",
     },
     {
       id: "community-engagement",
       title: "Radio Collaring",
       icon: "📡",
-      content: "Radio collaring helps to understand the animal movement pattern, habitat use, home range and behaviour of the collared individuals across the divisions.",
+      content:
+        "Radio collaring helps to understand the animal movement pattern, habitat use, home range and behaviour of the collared individuals across the divisions.",
     },
     {
       id: "research-monitoring",
       title: "Reintroduction",
       icon: "🦌",
-      content: "Reintroduced populations would be extensively monitored to understand the adaptation and challenges in the process.",
+      content:
+        "Reintroduced populations would be extensively monitored to understand the adaptation and challenges in the process.",
     },
     {
       id: "policy-advocacy",
       title: "Grassland Restoration",
       icon: "🌱",
-      content: "Grassland restoration work involving removal of invasive species and planting of native Grass species in Nilgiri Tahr habitats which lead to substantial improvements in the hydrology of the region.",
+      content:
+        "Grassland restoration work involving removal of invasive species and planting of native Grass species in Nilgiri Tahr habitats which lead to substantial improvements in the hydrology of the region.",
     },
-     {
+    {
       id: "policy-advocacy1",
       title: "Eco Tourism",
       icon: "🏔️",
-      content: "These eco-tourism centres will enable the students and public to understand the conservation significance and ecological importance of the endemic mammal, Nilgiri tahr.",
+      content:
+        "These eco-tourism centres will enable the students and public to understand the conservation significance and ecological importance of the endemic mammal, Nilgiri tahr.",
     },
-     {
+    {
       id: "policy-advocacy2",
       title: "Communication & Outreach",
       icon: "📢",
-      content: "Outreach programmes shall be organized to exhibit the conservation value of this species at educational institutions, media and among citizens hence leading to the successful community based conservation of Nilgiri Tahr.",
+      content:
+        "Outreach programmes shall be organized to exhibit the conservation value of this species at educational institutions, media and among citizens hence leading to the successful community based conservation of Nilgiri Tahr.",
     },
   ];
 
@@ -394,7 +403,10 @@ export default function MissionVisionVictories() {
               fontWeight: "400",
             }}
           >
-            Through comprehensive conservation programs, we address multiple aspects of Nilgiri Tahr protection, from habitat restoration to community involvement, ensuring a holistic approach to wildlife conservation.
+            Through comprehensive conservation programs, we address multiple
+            aspects of Nilgiri Tahr protection, from habitat restoration to
+            community involvement, ensuring a holistic approach to wildlife
+            conservation.
           </p>
         </motion.div>
 

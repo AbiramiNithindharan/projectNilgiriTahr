@@ -39,7 +39,7 @@ export default function WhatWeDoBanner({
         className={styles.banner}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, ease: "easeOut" }}
+        transition={{ duration: 1, ease: "easeOut" as const }}
         style={{ 
           position: "relative", 
           overflow: "hidden",
@@ -55,7 +55,7 @@ export default function WhatWeDoBanner({
           animate={{ scale: 1, y: 0, opacity: 1 }}
           transition={{
             duration: 1.5,
-            ease: [0.25, 0.1, 0.25, 1],
+            ease: [0.25, 0.1, 0.25, 1] as const,
             delay: 0.3,
           }}
           style={{
