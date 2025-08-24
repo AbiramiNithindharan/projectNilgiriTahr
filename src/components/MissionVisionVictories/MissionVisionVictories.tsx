@@ -15,6 +15,7 @@ export default function MissionVisionVictories() {
       },
     },
   };
+
   const sectionVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
@@ -40,7 +41,7 @@ export default function MissionVisionVictories() {
       title: "Our Mission",
       icon: "🌿",
       content:
-        "Oru mission is to champion the conservation and protection of Nilgiri tahr, an iconic species endemic to the Western Ghats of Tamil Nadu.",
+        "Our mission is to champion the conservation and protection of Nilgiri tahr, an iconic species endemic to the Western Ghats of Tamil Nadu.",
     },
   ];
 
@@ -68,51 +69,6 @@ export default function MissionVisionVictories() {
     },
   ];
 
-  const ourWork = [
-    {
-      id: "habitat-restoration",
-      title: "Survey",
-      icon: "📋",
-      content:
-        "Coordinated, synchronized surveys would help in delineating the actual distributional areas, current population, evaluating conservation challenges and getting an effective population enumeration.",
-    },
-    {
-      id: "community-engagement",
-      title: "Radio Collaring",
-      icon: "📡",
-      content:
-        "Radio collaring helps to understand the animal movement pattern, habitat use, home range and behaviour of the collared individuals across the divisions.",
-    },
-    {
-      id: "research-monitoring",
-      title: "Reintroduction",
-      icon: "🦌",
-      content:
-        "Reintroduced populations would be extensively monitored to understand the adaptation and challenges in the process.",
-    },
-    {
-      id: "policy-advocacy",
-      title: "Grassland Restoration",
-      icon: "🌱",
-      content:
-        "Grassland restoration work involving removal of invasive species and planting of native Grass species in Nilgiri Tahr habitats which lead to substantial improvements in the hydrology of the region.",
-    },
-    {
-      id: "policy-advocacy1",
-      title: "Eco Tourism",
-      icon: "🏔️",
-      content:
-        "These eco-tourism centres will enable the students and public to understand the conservation significance and ecological importance of the endemic mammal, Nilgiri tahr.",
-    },
-    {
-      id: "policy-advocacy2",
-      title: "Communication & Outreach",
-      icon: "📢",
-      content:
-        "Outreach programmes shall be organized to exhibit the conservation value of this species at educational institutions, media and among citizens hence leading to the successful community based conservation of Nilgiri Tahr.",
-    },
-  ];
-
   return (
     <motion.section
       variants={containerVariants}
@@ -120,13 +76,14 @@ export default function MissionVisionVictories() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
       style={{
-        padding: "clamp(4rem, 8vw, 8rem) clamp(1rem, 4vw, 3rem)",
+        padding: "120px 2rem 80px",
         background: "#ffffff",
+        minHeight: "100vh",
       }}
     >
       <div
         style={{
-          maxWidth: "1200px",
+          maxWidth: "1600px",
           margin: "0 auto",
           width: "100%",
         }}
@@ -136,34 +93,39 @@ export default function MissionVisionVictories() {
           variants={sectionVariants}
           style={{
             textAlign: "center",
-            marginBottom: "clamp(3rem, 6vw, 5rem)",
+            marginBottom: "5rem",
           }}
         >
-          <h2
-            style={{
-              fontSize: "clamp(2rem, 5vw, 3rem)",
-              fontWeight: "700",
-              color: "#1b4332",
-              marginBottom: "1rem",
-              fontFamily: "Poppins, sans-serif",
-            }}
-          >
-            What Drives Us
-          </h2>
           <div
             style={{
-              width: "60px",
-              height: "3px",
-              background: "#52b788",
-              margin: "0 auto 2rem auto",
-              borderRadius: "2px",
+              fontSize: "1rem",
+              fontWeight: "600",
+              color: "#52b788",
+              marginBottom: "1rem",
+              fontFamily: "Inter, sans-serif",
+              letterSpacing: "0.1em",
             }}
-          ></div>
+          >
+            06
+          </div>
+          <h2
+            style={{
+              fontSize: "clamp(2.5rem, 5vw, 4rem)",
+              fontWeight: "900",
+              lineHeight: "1.1",
+              margin: "0 0 2rem 0",
+              color: "#000000",
+              fontFamily: "Inter, sans-serif",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            What Drives Us — our mission, vision, and victories in conservation.
+          </h2>
           <p
             style={{
-              fontSize: "clamp(1rem, 2.5vw, 1.2rem)",
-              color: "#6b7280",
-              fontFamily: "Poppins, sans-serif",
+              fontSize: "1.1rem",
+              color: "#666666",
+              fontFamily: "Inter, sans-serif",
               maxWidth: "600px",
               margin: "0 auto",
               lineHeight: "1.6",
@@ -171,16 +133,17 @@ export default function MissionVisionVictories() {
             }}
           >
             Our commitment to conservation is built on clear vision, dedicated
-            mission, and proven achievements.
+            mission, and proven achievements in protecting the Nilgiri Tahr.
           </p>
         </motion.div>
 
+        {/* Vision & Mission Cards */}
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-            gap: "clamp(2rem, 4vw, 3rem)",
-            marginBottom: "clamp(5rem, 8vw, 7rem)",
+            gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))",
+            gap: "2rem",
+            marginBottom: "6rem",
           }}
         >
           {sections.map((section, index) => (
@@ -188,33 +151,28 @@ export default function MissionVisionVictories() {
               key={section.id}
               variants={sectionVariants}
               whileHover={{
-                y: -5,
+                y: -8,
+                scale: 1.02,
                 transition: { duration: 0.2 },
               }}
               style={{
-                background: "#ffffff",
-                borderRadius: "12px",
-                padding: "clamp(2rem, 4vw, 2.5rem)",
+                background: "rgba(255, 255, 255, 0.95)",
+                backdropFilter: "blur(15px)",
+                borderRadius: "20px",
+                padding: "3rem 2rem",
                 textAlign: "center",
-                transition: "all 0.3s ease",
-                border: "1px solid #e5e7eb",
-                boxShadow: "0 4px 6px rgba(0, 0, 0, 0.05)",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow =
-                  "0 10px 25px rgba(0, 0, 0, 0.1)";
-                e.currentTarget.style.borderColor = "#52b788";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.boxShadow =
-                  "0 4px 6px rgba(0, 0, 0, 0.05)";
-                e.currentTarget.style.borderColor = "#e5e7eb";
+                boxShadow: "0 8px 32px rgba(27, 67, 50, 0.08)",
+                border: "1px solid rgba(255, 255, 255, 0.3)",
+                transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                cursor: "pointer",
               }}
             >
               <div
                 style={{
-                  fontSize: "clamp(2.5rem, 5vw, 3rem)",
+                  fontSize: "4rem",
                   marginBottom: "1.5rem",
+                  filter:
+                    "drop-shadow(0 4px 8px rgba(27, 67, 50, 0.2))",
                 }}
               >
                 {section.icon}
@@ -222,8 +180,8 @@ export default function MissionVisionVictories() {
 
               <h3
                 style={{
-                  fontSize: "clamp(1.3rem, 3vw, 1.6rem)",
-                  fontWeight: "600",
+                  fontSize: "clamp(1.5rem, 3vw, 2rem)",
+                  fontWeight: "700",
                   color: "#1b4332",
                   marginBottom: "1.5rem",
                   fontFamily: "Poppins, sans-serif",
@@ -234,12 +192,13 @@ export default function MissionVisionVictories() {
 
               <p
                 style={{
-                  fontSize: "clamp(0.9rem, 2vw, 1rem)",
+                  fontSize: "clamp(1rem, 2vw, 1.1rem)",
                   lineHeight: "1.7",
-                  color: "#6b7280",
+                  color: "#2d5016",
                   fontFamily: "Poppins, sans-serif",
                   fontWeight: "400",
                   margin: "0",
+                  opacity: 0.9,
                 }}
               >
                 {section.content}
@@ -253,49 +212,57 @@ export default function MissionVisionVictories() {
           variants={sectionVariants}
           style={{
             textAlign: "center",
-            marginBottom: "clamp(3rem, 6vw, 4rem)",
+            marginBottom: "4rem",
           }}
         >
           <h2
             style={{
-              fontSize: "clamp(2rem, 5vw, 3rem)",
-              fontWeight: "700",
-              color: "#1b4332",
-              marginBottom: "1rem",
+              fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
+              fontWeight: "800",
+              margin: "0 0 1rem 0",
+              background:
+                "linear-gradient(135deg, #081c15, #1b4332, #2d5016, #52b788)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
               fontFamily: "Poppins, sans-serif",
+              lineHeight: "1.2",
             }}
           >
             Our Victories
           </h2>
           <div
             style={{
-              width: "60px",
-              height: "3px",
-              background: "#52b788",
-              margin: "0 auto 2rem auto",
+              width: "80px",
+              height: "4px",
+              background: "linear-gradient(90deg, #52b788, #a8dab5)",
+              margin: "0 auto 2rem",
               borderRadius: "2px",
             }}
-          ></div>
+          />
           <p
             style={{
-              fontSize: "clamp(1rem, 2.5vw, 1.2rem)",
-              color: "#6b7280",
-              fontFamily: "Poppins, sans-serif",
-              maxWidth: "600px",
+              fontSize: "clamp(1.1rem, 2.5vw, 1.3rem)",
+              color: "#2d5016",
+              maxWidth: "800px",
               margin: "0 auto",
               lineHeight: "1.6",
+              fontFamily: "Poppins, sans-serif",
               fontWeight: "400",
             }}
           >
-            Key milestones and ongoing initiatives in our conservation efforts.
+            Key milestones and ongoing initiatives showcasing our conservation
+            progress
+            <br /> and commitment to protecting the Nilgiri Tahr.
           </p>
         </motion.div>
 
+        {/* Victories Cards */}
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-            gap: "clamp(2rem, 4vw, 3rem)",
+            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+            gap: "2rem",
           }}
         >
           {victories.map((victory, index) => (
@@ -303,33 +270,46 @@ export default function MissionVisionVictories() {
               key={victory.id}
               variants={sectionVariants}
               whileHover={{
-                y: -5,
+                y: -8,
+                scale: 1.02,
                 transition: { duration: 0.2 },
               }}
               style={{
-                background: "#ffffff",
-                borderRadius: "12px",
-                padding: "clamp(2rem, 4vw, 2.5rem)",
+                background: "rgba(255, 255, 255, 0.95)",
+                backdropFilter: "blur(15px)",
+                borderRadius: "16px",
+                padding: "2.5rem 2rem",
                 textAlign: "center",
-                transition: "all 0.3s ease",
-                border: "1px solid #e5e7eb",
-                boxShadow: "0 4px 6px rgba(0, 0, 0, 0.05)",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow =
-                  "0 10px 25px rgba(0, 0, 0, 0.1)";
-                e.currentTarget.style.borderColor = "#52b788";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.boxShadow =
-                  "0 4px 6px rgba(0, 0, 0, 0.05)";
-                e.currentTarget.style.borderColor = "#e5e7eb";
+                boxShadow: "0 8px 32px rgba(27, 67, 50, 0.08)",
+                border: "1px solid rgba(255, 255, 255, 0.3)",
+                transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                cursor: "pointer",
+                position: "relative",
+                overflow: "hidden",
               }}
             >
+              {/* Subtle background pattern */}
               <div
                 style={{
-                  fontSize: "clamp(2.5rem, 5vw, 3rem)",
+                  position: "absolute",
+                  top: 0,
+                  right: 0,
+                  width: "100px",
+                  height: "100px",
+                  background:
+                    "linear-gradient(45deg, rgba(82, 183, 136, 0.05), transparent)",
+                  borderRadius: "0 16px 0 100px",
+                }}
+              />
+
+              <div
+                style={{
+                  fontSize: "3.5rem",
                   marginBottom: "1.5rem",
+                  filter:
+                    "drop-shadow(0 4px 8px rgba(27, 67, 50, 0.2))",
+                  position: "relative",
+                  zIndex: 2,
                 }}
               >
                 {victory.icon}
@@ -337,11 +317,13 @@ export default function MissionVisionVictories() {
 
               <h3
                 style={{
-                  fontSize: "clamp(1.3rem, 3vw, 1.6rem)",
-                  fontWeight: "600",
+                  fontSize: "clamp(1.3rem, 2.5vw, 1.6rem)",
+                  fontWeight: "700",
                   color: "#1b4332",
                   marginBottom: "1.5rem",
                   fontFamily: "Poppins, sans-serif",
+                  position: "relative",
+                  zIndex: 2,
                 }}
               >
                 {victory.title}
@@ -349,134 +331,18 @@ export default function MissionVisionVictories() {
 
               <p
                 style={{
-                  fontSize: "clamp(0.9rem, 2vw, 1rem)",
-                  lineHeight: "1.7",
-                  color: "#6b7280",
+                  fontSize: "clamp(0.95rem, 2vw, 1.05rem)",
+                  lineHeight: "1.6",
+                  color: "#2d5016",
                   fontFamily: "Poppins, sans-serif",
                   fontWeight: "400",
                   margin: "0",
+                  opacity: 0.9,
+                  position: "relative",
+                  zIndex: 2,
                 }}
               >
                 {victory.content}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Our Work Section */}
-        <motion.div
-          variants={sectionVariants}
-          style={{
-            textAlign: "center",
-            marginTop: "clamp(5rem, 8vw, 7rem)",
-            marginBottom: "clamp(3rem, 6vw, 4rem)",
-          }}
-        >
-          <h2
-            style={{
-              fontSize: "clamp(2rem, 5vw, 3rem)",
-              fontWeight: "700",
-              color: "#1b4332",
-              marginBottom: "1rem",
-              fontFamily: "Poppins, sans-serif",
-            }}
-          >
-            Our Work
-          </h2>
-          <div
-            style={{
-              width: "60px",
-              height: "3px",
-              background: "#52b788",
-              margin: "0 auto 2rem auto",
-              borderRadius: "2px",
-            }}
-          ></div>
-          <p
-            style={{
-              fontSize: "clamp(1rem, 2.5vw, 1.2rem)",
-              color: "#6b7280",
-              fontFamily: "Poppins, sans-serif",
-              maxWidth: "700px",
-              margin: "0 auto",
-              lineHeight: "1.6",
-              fontWeight: "400",
-            }}
-          >
-            Through comprehensive conservation programs, we address multiple
-            aspects of Nilgiri Tahr protection, from habitat restoration to
-            community involvement, ensuring a holistic approach to wildlife
-            conservation.
-          </p>
-        </motion.div>
-
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "clamp(1.5rem, 3vw, 2.5rem)",
-          }}
-        >
-          {ourWork.map((work, index) => (
-            <motion.div
-              key={work.id}
-              variants={sectionVariants}
-              whileHover={{
-                y: -5,
-                transition: { duration: 0.2 },
-              }}
-              style={{
-                background: "#ffffff",
-                borderRadius: "12px",
-                padding: "clamp(1.5rem, 3vw, 2rem)",
-                textAlign: "center",
-                transition: "all 0.3s ease",
-                border: "1px solid #e5e7eb",
-                boxShadow: "0 4px 6px rgba(0, 0, 0, 0.05)",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow =
-                  "0 10px 25px rgba(0, 0, 0, 0.1)";
-                e.currentTarget.style.borderColor = "#52b788";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.boxShadow =
-                  "0 4px 6px rgba(0, 0, 0, 0.05)";
-                e.currentTarget.style.borderColor = "#e5e7eb";
-              }}
-            >
-              <div
-                style={{
-                  fontSize: "clamp(2rem, 4vw, 2.5rem)",
-                  marginBottom: "1rem",
-                }}
-              >
-                {work.icon}
-              </div>
-
-              <h3
-                style={{
-                  fontSize: "clamp(1.1rem, 2.5vw, 1.4rem)",
-                  fontWeight: "600",
-                  color: "#1b4332",
-                  marginBottom: "1rem",
-                  fontFamily: "Poppins, sans-serif",
-                }}
-              >
-                {work.title}
-              </h3>
-
-              <p
-                style={{
-                  fontSize: "clamp(0.85rem, 1.8vw, 0.95rem)",
-                  lineHeight: "1.6",
-                  color: "#6b7280",
-                  fontFamily: "Poppins, sans-serif",
-                  fontWeight: "400",
-                  margin: "0",
-                }}
-              >
-                {work.content}
               </p>
             </motion.div>
           ))}
@@ -485,3 +351,4 @@ export default function MissionVisionVictories() {
     </motion.section>
   );
 }
+

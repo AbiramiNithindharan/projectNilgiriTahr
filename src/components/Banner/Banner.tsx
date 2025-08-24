@@ -9,7 +9,7 @@ interface BannerProps {
   title?: string;
   subtitle?: string;
   height?: string;
-  onAnimationComplete?: () => void; // Callback to trigger header animation
+  onAnimationComplete?: () => void;
 }
 
 export default function Banner({
@@ -17,7 +17,7 @@ export default function Banner({
   imageAlt = "Banner",
   title = "Your Journey Starts Here",
   subtitle = "Explore our services and find what you need",
-  height = "100vh", // full viewport
+  height = "100vh",
   onAnimationComplete,
 }: BannerProps) {
   const [isClient, setIsClient] = useState(false);
@@ -28,25 +28,21 @@ export default function Banner({
     setIsClient(true);
   }, []);
 
-  const projectName = "The Nilgiri Tahr";
-
-  // Simplified animation duration
-  const textAnimationDuration = 1.2; // Total duration for pop-in effect
+  // Text animation duration
+  const textAnimationDuration = 2.5;
 
   useEffect(() => {
     if (isClient) {
-      // After text animation completes, trigger header and banner resize
       const timer = setTimeout(() => {
         setAnimationComplete(true);
-        onAnimationComplete?.(); // Notify parent component to show header
+        onAnimationComplete?.();
 
-        // Start banner resize slightly after header starts appearing
-        setTimeout(() => {
-          bannerControls.start({
-            height: "calc(100vh - 100px)",
-            transition: { duration: 0.8, ease: "easeInOut" },
-          });
-        }, 100); // Small delay to sync with header animation
+        // setTimeout(() => {
+        //   bannerControls.start({
+        //     height: "calc(100vh - 100px)",
+        //     transition: { duration: 0.8, ease: "easeInOut" },
+        //   });
+        // }, 100);
       }, textAnimationDuration * 1000);
 
       return () => clearTimeout(timer);
@@ -56,23 +52,31 @@ export default function Banner({
   return (
     <motion.div
       className={styles.banner}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1, ease: "easeOut" as const }}
-      style={{ position: "relative", overflow: "hidden" }}
+      animate={bannerControls}
+      initial={{ opacity: 1 }}
+      style={{ 
+        position: "relative", 
+        overflow: "hidden",
+        height: "100vh",
+        background: "#ffffff"
+      }}
     >
+      {/* Background Image */}
       <motion.div
-        initial={{ scale: 1.1, y: -50, opacity: 0 }}
-        animate={{ scale: 1, y: 0, opacity: 1 }}
+        initial={{ scale: 1.05, opacity: 0 }}
+        animate={{ scale: 1, opacity:1}}
         transition={{
-          duration: 1.5,
+          duration: 2,
           ease: [0.25, 0.1, 0.25, 1] as const,
-          delay: 0.3,
+          delay: 0.2,
         }}
         style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
           width: "100%",
-          height: "100vh",
-          position: "relative",
+          height: "100%",
+          zIndex: 1,
         }}
       >
         <Image
@@ -80,105 +84,236 @@ export default function Banner({
           alt={imageAlt}
           fill
           priority
-          className={styles.bannerImage}
           style={{
             objectFit: "cover",
+            // filter: "brightness(1) contrast(1.05) saturate(0.9)",
           }}
         />
       </motion.div>
 
-      {/* Animated overlay gradient */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.3 }}
-        transition={{ duration: 1.2, delay: 0.5 }}
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background:
-            "linear-gradient(45deg, rgba(27, 67, 50, 0.4), rgba(82, 183, 136, 0.2))",
-          zIndex: 5,
-        }}
-      />
-
-      {/* Center overlay that always stays centered */}
+      {/* Main Content Container */}
       <div
         style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          textAlign: "center",
+          position: "relative",
           zIndex: 10,
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          maxWidth: "1400px",
+          margin: "0 auto",
+          padding: "120px clamp(2rem, 5vw, 4rem) 0", // Account for header space
         }}
       >
-        <motion.div
-          className={styles.projectInfo}
-          initial={{ y: 50, opacity: 0 }}
-          animate={{
-            y: 0,
-            opacity: 1,
-            ...(animationComplete ? { marginTop: "150px" } : {}),
-          }}
-          transition={{
-            duration: 0.8,
-            ease: [0.25, 0.1, 0.25, 1] as const,
-            delay: 0.8,
+        {/* Large Typography - Adjusted for screen fit */}
+        <div
+          style={{
+            textAlign: "left",
+            color: "#ffffff", // Changed to white for better contrast without overlay
+            maxWidth: "100%",
+            width: "100%",
+            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)", // Added text shadow for readability
           }}
         >
-          <motion.h3
-            className={styles.projectTitle}
-            initial={{ y: 20, opacity: 0 }}
+          <motion.div
+            initial={{ y: 80, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.0 }}
-            style={{
-              textAlign: "center",
-              fontFamily: "Poppins, sans-serif",
-              fontWeight: "600",
-            }}
+            transition={{ duration: 0.8, delay: 0.3 }}
           >
-            Project
-          </motion.h3>
+            <h1
+              style={{
+                fontSize: "clamp(2.5rem, 10vw, 7rem)",
+                fontWeight: "900",
+                lineHeight: "0.9",
+                margin: "0",
+                fontFamily: "Inter, sans-serif",
+                letterSpacing: "-0.04em",
+                textTransform: "lowercase",
+              }}
+            >
+              We're the
+            </h1>
+          </motion.div>
 
-          <motion.h2
-            className={styles.projectName}
-            initial={{ y: 20, opacity: 0 }}
+          <motion.div
+            initial={{ y: 80, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.1 }}
-            style={{
-              display: "block",
-              fontFamily: "Poppins, sans-serif",
-              fontWeight: "700",
-            }}
+            transition={{ duration: 0.8, delay: 0.5 }}
           >
-            {projectName}
-          </motion.h2>
+            <h1
+              style={{
+                fontSize: "clamp(2.5rem, 10vw, 7rem)",
+                fontWeight: "900",
+                lineHeight: "0.9",
+                margin: "-0.05em 0 0 0",
+                fontFamily: "Inter, sans-serif",
+                letterSpacing: "-0.04em",
+                textTransform: "lowercase",
+              }}
+            >
+              Agency
+            </h1>
+          </motion.div>
 
-          {/* Button appears after header animation */}
-          <motion.button
-            className={styles.bannerKnowMoreButton}
-            initial={{ y: 30, opacity: 0 }}
+          <motion.div
+            initial={{ y: 80, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{
-              duration: 0.5,
-              delay: animationComplete ? textAnimationDuration + 0.8 : 1.2,
-              type: "spring",
-              stiffness: 150,
-            }}
-            style={{
-              display: "block",
-              margin: "0 auto",
-              fontFamily: "Poppins, sans-serif",
-              fontWeight: "600",
-            }}
+            transition={{ duration: 0.8, delay: 0.7 }}
           >
-            Know More
-          </motion.button>
-        </motion.div>
+            <h1
+              style={{
+                fontSize: "clamp(2.5rem, 10vw, 7rem)",
+                fontWeight: "900",
+                lineHeight: "0.9",
+                margin: "-0.05em 0 0 0",
+                fontFamily: "Inter, sans-serif",
+                letterSpacing: "-0.04em",
+                textTransform: "lowercase",
+              }}
+            >
+              for{" "}
+              <span style={{ marginLeft: "clamp(1.5rem, 5vw, 4rem)" }}>
+                the
+              </span>
+            </h1>
+          </motion.div>
+
+          <motion.div
+            initial={{ y: 80, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
+          >
+            <h1
+              style={{
+                fontSize: "clamp(2.5rem, 10vw, 7rem)",
+                fontWeight: "900",
+                lineHeight: "0.9",
+                margin: "-0.05em 0 0 0",
+                fontFamily: "Inter, sans-serif",
+                letterSpacing: "-0.04em",
+                textTransform: "lowercase",
+              }}
+            >
+              Nilgiri Tahr
+            </h1>
+          </motion.div>
+        </div>
       </div>
+
+      {/* Bottom Left Scroll Indicator */}
+      <motion.div
+        initial={{ y: 30, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 1.3 }}
+        style={{
+          position: "absolute",
+          bottom: "5%",
+          left: "5%",
+          display: "flex",
+          alignItems: "center",
+          gap: "1rem",
+          fontSize: "0.9rem",
+          fontWeight: "600",
+          fontFamily: "Inter, sans-serif",
+          textTransform: "uppercase",
+          letterSpacing: "0.12em",
+          color: "#ffffff",
+          textShadow: "1px 1px 2px rgba(0, 0, 0, 0.5)",
+        }}
+      >
+        <span>SCROLL</span>
+        <motion.div
+          animate={{ 
+            scaleX: [1, 1.8, 1],
+            opacity: [0.4, 1, 0.4]
+          }}
+          transition={{ 
+            duration: 2.5, 
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          style={{
+            width: "50px",
+            height: "2px",
+            background: "#ffffff",
+            transformOrigin: "left",
+          }}
+        />
+      </motion.div>
+
+      {/* Right Side Vertical Scroll Indicator */}
+      <motion.div
+        initial={{ x: 30, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 1.5 }}
+        style={{
+          position: "absolute",
+          right: "3%",
+          top: "50%",
+          transform: "translateY(-50%)",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "1rem",
+          color: "#ffffff",
+          textShadow: "1px 1px 2px rgba(0, 0, 0, 0.5)",
+        }}
+      >
+        {/* Scroll Text */}
+        <div
+          style={{
+            fontSize: "0.8rem",
+            fontWeight: "600",
+            fontFamily: "Inter, sans-serif",
+            textTransform: "uppercase",
+            letterSpacing: "0.15em",
+            writingMode: "vertical-rl",
+            textOrientation: "mixed",
+            transform: "rotate(180deg)",
+            marginBottom: "1rem",
+          }}
+        >
+          SCROLL
+        </div>
+
+        {/* Vertical Line */}
+        <motion.div
+          animate={{ 
+            scaleY: [1, 1.5, 1],
+            opacity: [0.4, 1, 0.4]
+          }}
+          transition={{ 
+            duration: 2.8, 
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          style={{
+            width: "2px",
+            height: "80px",
+            background: "linear-gradient(to bottom, transparent, #ffffff, transparent)",
+            transformOrigin: "center",
+          }}
+        />
+
+        {/* Arrow Down */}
+        <motion.div
+          animate={{ 
+            y: [0, 8, 0],
+          }}
+          transition={{ 
+            duration: 2, 
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          style={{
+            marginTop: "0.5rem",
+            fontSize: "1.2rem",
+            fontWeight: "300",
+          }}
+        >
+          ↓
+        </motion.div>
+      </motion.div>
     </motion.div>
   );
 }

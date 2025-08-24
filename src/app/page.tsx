@@ -3,7 +3,13 @@
 import { useState } from 'react';
 import Header from '../components/Header/Header';
 import Banner from '../components/Banner/Banner';
-import Section1 from '../components/Section1/Section1';
+import WhoWeAre from '../components/WhoWeAre/WhoWeAre';
+import WhatWeDo from '../components/WhatWeDo/WhatWeDo';
+import MissionVisionVictories from '../components/MissionVisionVictories/MissionVisionVictories';
+import WhereWeWork from '../components/WhereWeWork/WhereWeWork';
+import NewsRoom from '../components/NewsRoom/NewsRoom';
+import PhotoGallery from '../components/PhotoGallery/PhotoGallery';
+import FilmSection from '../components/FilmSection/FilmSection';
 import styles from './page.module.css';
 
 export default function Home() {
@@ -34,7 +40,13 @@ export default function Home() {
         imageSrc="/banners/DJI_0036.jpg"
         onAnimationComplete={handleBannerAnimationComplete}
       />
-      <Section1 />
+      <WhoWeAre />
+      <WhatWeDo />
+      <MissionVisionVictories />
+      <WhereWeWork />
+      <NewsRoom />
+      <PhotoGallery />
+      <FilmSection />
     </div>
   );
 }

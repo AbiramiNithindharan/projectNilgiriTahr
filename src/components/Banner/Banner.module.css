@@ -1,169 +1,47 @@
 .banner {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  min-height: 100vh;
   overflow: hidden;
+  background: #0a0a0a;
 }
 
 .bannerImage {
+  object-fit: cover;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
 }
 
-.bannerOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.3);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white;
-  padding: 2rem;
-}
-
-.bannerOverlay h2 {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.bannerOverlay p {
-  font-size: 1.2rem;
-  font-weight: 300;
-  max-width: 600px;
-  line-height: 1.6;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.bottomLeftOverlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.projectInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  align-items: center;
-  text-align: center;
-}
-
-.projectTitle {
-  color: white;
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  opacity: 0.9;
-}
-
-.projectName {
-  color: white;
-  font-size: 3.5rem;
-  font-weight: 800;
-  margin: 0;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  line-height: 1.1;
-  letter-spacing: 1px;
-  font-family: 'Georgia', serif;
-  display: flex;
-  gap: 0.1em;
-  justify-content: center;
-  align-items: center;
-}
-
-.bannerKnowMoreButton {
-  background: transparent;
-  color: white;
-  border: 2px solid white;
-  padding: 1rem 2.5rem;
-  border-radius: 0;
-  cursor: pointer;
-  font-size: 1.1rem;
-  font-weight: 700;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  font-family: 'Arial', sans-serif;
-  margin-top: 0.5rem;
-}
-
-.bannerKnowMoreButton:hover {
-  background: white;
-  color: #2d5016;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-/* Responsive design */
+/* Mobile responsive adjustments */
 @media (max-width: 768px) {
-  .bannerOverlay h2 {
-    font-size: 2rem;
-  }
-
-  .bannerOverlay p {
-    font-size: 1rem;
-  }
-
-  .bottomLeftOverlay {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .projectName {
-    font-size: 2.8rem;
-  }
-
-  .projectTitle {
-    font-size: 1.1rem;
-  }
-
-  .bannerKnowMoreButton {
-    padding: 0.9rem 2.2rem;
-    font-size: 1rem;
+  .banner {
+    padding: 0 1rem;
   }
 }
 
 @media (max-width: 480px) {
-  .bottomLeftOverlay {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  .banner {
+    padding: 0 0.5rem;
   }
+}
 
-  .projectName {
-    font-size: 2.2rem;
+/* Custom animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
   }
+  50% {
+    transform: translateY(-10px);
+  }
+}
 
-  .projectTitle {
-    font-size: 1rem;
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.1;
   }
-
-  .bannerKnowMoreButton {
-    padding: 0.8rem 2rem;
-    font-size: 0.9rem;
+  50% {
+    opacity: 0.2;
   }
-
-  .projectInfo {
-    gap: 0.3rem;
-  }
-} 
+}
