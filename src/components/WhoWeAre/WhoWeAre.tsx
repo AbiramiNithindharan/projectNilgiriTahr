@@ -14,6 +14,8 @@ interface TeamMember {
   name: string;
   image: string;
   about: string;
+  isPartner?: boolean;
+  website?: string;
 }
 
 interface Partner {
