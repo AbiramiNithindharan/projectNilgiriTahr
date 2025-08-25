@@ -132,12 +132,13 @@ export default function WhoWeAre() {
     <section 
       id="who-we-are"
       style={{
-        padding: "120px 2rem 80px",
+        padding: "40px 0 0", // Further reduced top padding for wave integration
         background: "#ffffff",
         minHeight: "100vh",
         position: "relative",
       }}
     >
+      {/* Main Split Screen Section */}
       <div
         style={{
           maxWidth: "1600px",
@@ -147,9 +148,11 @@ export default function WhoWeAre() {
           gridTemplateColumns: "1fr 1fr",
           gap: "clamp(3rem, 8vw, 8rem)",
           alignItems: "center",
+          padding: "20px 2rem 80px", // Reduced padding for better integration
+          minHeight: "70vh", // Adjusted height
         }}
       >
-        {/* Left Side - Image */}
+        {/* Left Side - Image with wave cut effect */}
         <motion.div
           initial={{ x: -50, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
@@ -157,9 +160,9 @@ export default function WhoWeAre() {
           viewport={{ once: true }}
           style={{
             position: "relative",
-            height: "600px",
-            borderRadius: "0px",
+            height: "500px",
             overflow: "hidden",
+            clipPath: "polygon(0 0, 100% 0, 85% 100%, 0% 100%)", // Wave cut on right side
           }}
         >
           <Image
@@ -168,6 +171,17 @@ export default function WhoWeAre() {
             fill
             style={{
               objectFit: "cover",
+            }}
+          />
+          {/* Subtle overlay for text readability */}
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              background: "linear-gradient(45deg, rgba(0,0,0,0.1), transparent)",
             }}
           />
         </motion.div>
@@ -244,277 +258,283 @@ export default function WhoWeAre() {
 
       {/* Team Members Section */}
       <motion.div
-        initial={{ y: 50, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.5 }}
-        viewport={{ once: true }}
         style={{
-          marginTop: "8rem",
+          background: "linear-gradient(180deg, #ffffff 0%, #f8fffe 100%)",
+          padding: "80px 2rem",
         }}
       >
-        {/* Section Header */}
-        <div
-          style={{
-            textAlign: "center",
-            marginBottom: "4rem",
-          }}
-        >
-          <div
-            style={{
-              fontSize: "1rem",
-              fontWeight: "600",
-              color: "#52b788",
-              marginBottom: "1rem",
-              fontFamily: "Inter, sans-serif",
-              letterSpacing: "0.1em",
-            }}
-          >
-            03
-          </div>
-          <h3
-            style={{
-              fontSize: "clamp(2rem, 4vw, 3rem)",
-              fontWeight: "900",
-              margin: "0 0 2rem 0",
-              color: "#000000",
-              fontFamily: "Inter, sans-serif",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            Our Team
-          </h3>
-          <p
-            style={{
-              fontSize: "1.1rem",
-              color: "#666666",
-              maxWidth: "600px",
-              margin: "0 auto",
-              lineHeight: "1.6",
-              fontFamily: "Inter, sans-serif",
-            }}
-          >
-            Meet the dedicated professionals working tirelessly to protect and preserve the Nilgiri Tahr through scientific research and conservation efforts.
-          </p>
-        </div>
-
-        {/* Team Members Slider */}
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
           viewport={{ once: true }}
-          className={styles.swiperContainer}
+          style={{
+            marginTop: "8rem",
+          }}
         >
-          <Swiper
-            modules={[Navigation, Autoplay]}
-            spaceBetween={24}
-            slidesPerView={1}
-            navigation={{
-              nextEl: '.swiper-button-next-team',
-              prevEl: '.swiper-button-prev-team',
-            }}
-            pagination={{
-              clickable: true,
-              el: '.swiper-pagination-team',
-              bulletClass: 'swiper-pagination-bullet-custom',
-              bulletActiveClass: 'swiper-pagination-bullet-active-custom',
-            }}
-            autoplay={{
-              delay: 5000,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: true,
-            }}
-            loop={allCards.length > 3}
-            breakpoints={{
-              640: {
-                slidesPerView: 1,
-                spaceBetween: 20,
-              },
-              768: {
-                slidesPerView: 2,
-                spaceBetween: 24,
-              },
-              1024: {
-                slidesPerView: 3,
-                spaceBetween: 32,
-              },
-              1280: {
-                slidesPerView: 4,
-                spaceBetween: 32,
-              },
-            }}
+          {/* Section Header */}
+          <div
             style={{
-              padding: "2rem",
-              background: "rgba(255, 255, 255, 0.1)",
-              backdropFilter: "blur(10px)",
-              borderRadius: "20px",
-              border: "1px solid rgba(255, 255, 255, 0.2)",
-              position: "relative",
+              textAlign: "center",
+              marginBottom: "4rem",
             }}
           >
-            {allCards.map((member, index) => (
-              <SwiperSlide key={index}>
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.4, delay: (index % 4) * 0.1 }}
-                  viewport={{ once: true }}
-                  style={{
-                    background: "rgba(255, 255, 255, 0.95)",
-                    backdropFilter: "blur(15px)",
-                    borderRadius: "16px",
-                    padding: "2rem 1.5rem",
-                    boxShadow: "0 8px 32px rgba(27, 67, 50, 0.08)",
-                    border: "1px solid rgba(255, 255, 255, 0.3)",
-                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                    cursor: member.isPartner ? "pointer" : "default",
-                    height: "480px", // Fixed height for all cards
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                  }}
-                  whileHover={{
-                    y: -8,
-                    scale: 1.02,
-                    boxShadow: "0 16px 48px rgba(27, 67, 50, 0.12)",
-                    transition: { duration: 0.2 }
-                  }}
-                  onClick={() => {
-                    if (member.isPartner && member.website) {
-                      window.open(member.website, "_blank");
-                    }
-                  }}
-                >
-                  {/* Member/Partner Image */}
-                  <div
-                    style={{
-                      width: "120px",
-                      height: "120px",
-                      borderRadius: member.isPartner ? "12px" : "50%",
-                      overflow: "hidden",
-                      margin: "0 auto 1.5rem",
-                      background: "linear-gradient(135deg, #52b788, #a8dab5)",
-                      padding: member.isPartner ? "8px" : "4px",
-                      position: "relative",
-                      flexShrink: 0,
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        borderRadius: member.isPartner ? "8px" : "50%",
-                        background: "#ffffff",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        position: "relative",
-                        overflow: "hidden",
-                      }}
-                    >
-                      <Image
-                        src={member.image}
-                        alt={member.name}
-                        fill
-                        style={{
-                          objectFit: member.isPartner ? "contain" : "cover",
-                          objectPosition: member.isPartner ? "center" : "center top",
-                        }}
-                      />
-                    </div>
-                  </div>
+            <div
+              style={{
+                fontSize: "1rem",
+                fontWeight: "600",
+                color: "#52b788",
+                marginBottom: "1rem",
+                fontFamily: "Inter, sans-serif",
+                letterSpacing: "0.1em",
+              }}
+            >
+              03
+            </div>
+            <h3
+              style={{
+                fontSize: "clamp(2rem, 4vw, 3rem)",
+                fontWeight: "900",
+                margin: "0 0 2rem 0",
+                color: "#000000",
+                fontFamily: "Inter, sans-serif",
+                letterSpacing: "-0.02em",
+              }}
+            >
+              Our Team
+            </h3>
+            <p
+              style={{
+                fontSize: "1.1rem",
+                color: "#666666",
+                maxWidth: "600px",
+                margin: "0 auto",
+                lineHeight: "1.6",
+                fontFamily: "Inter, sans-serif",
+              }}
+            >
+              Meet the dedicated professionals working tirelessly to protect and preserve the Nilgiri Tahr through scientific research and conservation efforts.
+            </p>
+          </div>
 
-                  {/* Member/Partner Info */}
-                  <div 
-                    style={{ 
-                      textAlign: "center", 
-                      flex: 1,
+          {/* Team Members Slider */}
+          <motion.div
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+            className={styles.swiperContainer}
+          >
+            <Swiper
+              modules={[Navigation, Autoplay]}
+              spaceBetween={24}
+              slidesPerView={1}
+              navigation={{
+                nextEl: '.swiper-button-next-team',
+                prevEl: '.swiper-button-prev-team',
+              }}
+              pagination={{
+                clickable: true,
+                el: '.swiper-pagination-team',
+                bulletClass: 'swiper-pagination-bullet-custom',
+                bulletActiveClass: 'swiper-pagination-bullet-active-custom',
+              }}
+              autoplay={{
+                delay: 5000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+              }}
+              loop={allCards.length > 3}
+              breakpoints={{
+                640: {
+                  slidesPerView: 1,
+                  spaceBetween: 20,
+                },
+                768: {
+                  slidesPerView: 2,
+                  spaceBetween: 24,
+                },
+                1024: {
+                  slidesPerView: 3,
+                  spaceBetween: 32,
+                },
+                1280: {
+                  slidesPerView: 4,
+                  spaceBetween: 32,
+                },
+              }}
+              style={{
+                padding: "2rem",
+                background: "rgba(255, 255, 255, 0.1)",
+                backdropFilter: "blur(10px)",
+                borderRadius: "20px",
+                border: "1px solid rgba(255, 255, 255, 0.2)",
+                position: "relative",
+              }}
+            >
+              {allCards.map((member, index) => (
+                <SwiperSlide key={index}>
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.4, delay: (index % 4) * 0.1 }}
+                    viewport={{ once: true }}
+                    style={{
+                      background: "rgba(255, 255, 255, 0.95)",
+                      backdropFilter: "blur(15px)",
+                      borderRadius: "16px",
+                      padding: "2rem 1.5rem",
+                      boxShadow: "0 8px 32px rgba(27, 67, 50, 0.08)",
+                      border: "1px solid rgba(255, 255, 255, 0.3)",
+                      transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                      cursor: member.isPartner ? "pointer" : "default",
+                      height: "480px", // Fixed height for all cards
                       display: "flex",
                       flexDirection: "column",
-                      justifyContent: "space-between"
+                      justifyContent: "space-between",
+                    }}
+                    whileHover={{
+                      y: -8,
+                      scale: 1.02,
+                      boxShadow: "0 16px 48px rgba(27, 67, 50, 0.12)",
+                      transition: { duration: 0.2 }
+                    }}
+                    onClick={() => {
+                      if (member.isPartner && member.website) {
+                        window.open(member.website, "_blank");
+                      }
                     }}
                   >
-                    {/* Name and Section */}
-                    <div>
-                      <h3
-                        style={{
-                          fontSize: "1.2rem",
-                          fontWeight: "700",
-                          margin: "0 0 0.5rem 0",
-                          color: "#1b4332",
-                          fontFamily: "Poppins, sans-serif",
-                          lineHeight: "1.3",
-                          minHeight: "2.4rem",
-                          display: "-webkit-box",
-                          WebkitLineClamp: 2,
-                          WebkitBoxOrient: "vertical",
-                          overflow: "hidden",
-                        }}
-                      >
-                        {member.name}
-                      </h3>
-                      <p
-                        style={{
-                          fontSize: "0.9rem",
-                          fontWeight: "600",
-                          margin: "0 0 1rem 0",
-                          color: "#52b788",
-                          fontFamily: "Poppins, sans-serif",
-                          lineHeight: "1.3",
-                          minHeight: "1.8rem",
-                        }}
-                      >
-                        {member.section}
-                      </p>
-                    </div>
-
-                    {/* About/Description */}
-                    <div style={{ flex: 1, display: "flex", alignItems: "center" }}>
-                      <p
-                        style={{
-                          fontSize: "0.85rem",
-                          color: "#2d5016",
-                          lineHeight: "1.4",
-                          margin: "0",
-                          fontFamily: "Poppins, sans-serif",
-                          opacity: 0.9,
-                          display: "-webkit-box",
-                          WebkitLineClamp: 6, // Limit to 6 lines
-                          WebkitBoxOrient: "vertical",
-                          overflow: "hidden",
-                          textAlign: "left",
-                        }}
-                      >
-                        {member.about}
-                      </p>
-                    </div>
-
-                    {/* Partner Link Indicator */}
-                    {member.isPartner && (
+                    {/* Member/Partner Image */}
+                    <div
+                      style={{
+                        width: "120px",
+                        height: "120px",
+                        borderRadius: member.isPartner ? "12px" : "50%",
+                        overflow: "hidden",
+                        margin: "0 auto 1.5rem",
+                        background: "linear-gradient(135deg, #52b788, #a8dab5)",
+                        padding: member.isPartner ? "8px" : "4px",
+                        position: "relative",
+                        flexShrink: 0,
+                      }}
+                    >
                       <div
                         style={{
-                          marginTop: "1rem",
-                          padding: "0.5rem",
-                          background: "rgba(82, 183, 136, 0.1)",
-                          borderRadius: "8px",
-                          border: "1px solid rgba(82, 183, 136, 0.2)",
+                          width: "100%",
+                          height: "100%",
+                          borderRadius: member.isPartner ? "8px" : "50%",
+                          background: "#ffffff",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          position: "relative",
+                          overflow: "hidden",
                         }}
                       >
-                        <span
+                        <Image
+                          src={member.image}
+                          alt={member.name}
+                          fill
                           style={{
-                            fontSize: "0.8rem",
+                            objectFit: member.isPartner ? "contain" : "cover",
+                            objectPosition: member.isPartner ? "center" : "center top",
+                          }}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Member/Partner Info */}
+                    <div 
+                      style={{ 
+                        textAlign: "center", 
+                        flex: 1,
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "space-between"
+                      }}
+                    >
+                      {/* Name and Section */}
+                      <div>
+                        <h3
+                          style={{
+                            fontSize: "1.2rem",
+                            fontWeight: "700",
+                            margin: "0 0 0.5rem 0",
                             color: "#1b4332",
-                            fontWeight: "500",
                             fontFamily: "Poppins, sans-serif",
+                            lineHeight: "1.3",
+                            minHeight: "2.4rem",
+                            display: "-webkit-box",
+                            WebkitLineClamp: 2,
+                            WebkitBoxOrient: "vertical",
+                            overflow: "hidden",
                           }}
                         >
-                          Click to visit website
-                        </span>
+                          {member.name}
+                        </h3>
+                        <p
+                          style={{
+                            fontSize: "0.9rem",
+                            fontWeight: "600",
+                            margin: "0 0 1rem 0",
+                            color: "#52b788",
+                            fontFamily: "Poppins, sans-serif",
+                            lineHeight: "1.3",
+                            minHeight: "1.8rem",
+                          }}
+                        >
+                          {member.section}
+                        </p>
                       </div>
-                    )}
-                  </div>
-                </motion.div>
-              </SwiperSlide>
+
+                      {/* About/Description */}
+                      <div style={{ flex: 1, display: "flex", alignItems: "center" }}>
+                        <p
+                          style={{
+                            fontSize: "0.85rem",
+                            color: "#2d5016",
+                            lineHeight: "1.4",
+                            margin: "0",
+                            fontFamily: "Poppins, sans-serif",
+                            opacity: 0.9,
+                            display: "-webkit-box",
+                            WebkitLineClamp: 6, // Limit to 6 lines
+                            WebkitBoxOrient: "vertical",
+                            overflow: "hidden",
+                            textAlign: "left",
+                          }}
+                        >
+                          {member.about}
+                        </p>
+                      </div>
+
+                      {/* Partner Link Indicator */}
+                      {member.isPartner && (
+                        <div
+                          style={{
+                            marginTop: "1rem",
+                            padding: "0.5rem",
+                            background: "rgba(82, 183, 136, 0.1)",
+                            borderRadius: "8px",
+                            border: "1px solid rgba(82, 183, 136, 0.2)",
+                          }}
+                        >
+                          <span
+                            style={{
+                              fontSize: "0.8rem",
+                              color: "#1b4332",
+                              fontWeight: "500",
+                              fontFamily: "Poppins, sans-serif",
+                            }}
+                          >
+                            Click to visit website
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  </motion.div>
+                </SwiperSlide>
             ))}
           </Swiper>
 
@@ -608,6 +628,7 @@ export default function WhoWeAre() {
             }}
           />
         </motion.div>
+      </motion.div>
       </motion.div>
     </section>
   );

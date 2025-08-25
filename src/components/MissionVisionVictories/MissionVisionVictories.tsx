@@ -119,7 +119,7 @@ export default function MissionVisionVictories() {
               letterSpacing: "-0.02em",
             }}
           >
-            What Drives Us — our mission, vision, and victories in conservation.
+            What Drives Us
           </h2>
           <p
             style={{

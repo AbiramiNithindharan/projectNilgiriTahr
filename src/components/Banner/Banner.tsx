@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, EffectFade } from 'swiper/modules';
 import Image from "next/image";
+import 'swiper/css';
+import 'swiper/css/effect-fade';
+import 'swiper/css/autoplay';
 import styles from "./Banner.module.css";
 
 interface BannerProps {
@@ -22,7 +27,20 @@ export default function Banner({
 }: BannerProps) {
   const [isClient, setIsClient] = useState(false);
   const [animationComplete, setAnimationComplete] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
   const bannerControls = useAnimation();
+
+  // Banner images array
+  const bannerImages = [
+    {
+      src: "/banners/DJI_0036.jpg",
+      alt: "Nilgiri Tahr conservation work"
+    },
+    {
+      src: "/banners/Banner_2.jpg",
+      alt: "Western Ghats landscape"
+    }
+  ];
 
   useEffect(() => {
     setIsClient(true);
@@ -36,13 +54,6 @@ export default function Banner({
       const timer = setTimeout(() => {
         setAnimationComplete(true);
         onAnimationComplete?.();
-
-        // setTimeout(() => {
-        //   bannerControls.start({
-        //     height: "calc(100vh - 100px)",
-        //     transition: { duration: 0.8, ease: "easeInOut" },
-        //   });
-        // }, 100);
       }, textAnimationDuration * 1000);
 
       return () => clearTimeout(timer);
@@ -58,18 +69,11 @@ export default function Banner({
         position: "relative", 
         overflow: "hidden",
         height: "100vh",
-        background: "#ffffff"
+        background: "#000000"
       }}
     >
-      {/* Background Image */}
-      <motion.div
-        initial={{ scale: 1.05, opacity: 0 }}
-        animate={{ scale: 1, opacity:1}}
-        transition={{
-          duration: 2,
-          ease: [0.25, 0.1, 0.25, 1] as const,
-          delay: 0.2,
-        }}
+      {/* Swiper Background Carousel */}
+      <div
         style={{
           position: "absolute",
           top: 0,
@@ -79,17 +83,46 @@ export default function Banner({
           zIndex: 1,
         }}
       >
-        <Image
-          src={imageSrc}
-          alt={imageAlt}
-          fill
-          priority
-          style={{
-            objectFit: "cover",
-            // filter: "brightness(1) contrast(1.05) saturate(0.9)",
+        <Swiper
+          modules={[Autoplay, EffectFade]}
+          effect="slide"
+          speed={1200}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: false,
           }}
-        />
-      </motion.div>
+          loop={true}
+          allowTouchMove={false}
+          onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+          style={{
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          {bannerImages.map((image, index) => (
+            <SwiperSlide key={index}>
+              <div
+                style={{
+                  position: "relative",
+                  width: "100%",
+                  height: "100%",
+                }}
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  priority={index === 0}
+                  style={{
+                    objectFit: "cover",
+                  }}
+                />
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
 
       {/* Main Content Container */}
       <div
@@ -102,17 +135,21 @@ export default function Banner({
           justifyContent: "center",
           maxWidth: "1400px",
           margin: "0 auto",
-          padding: "120px clamp(2rem, 5vw, 4rem) 0", // Account for header space
+          padding: "120px clamp(2rem, 5vw, 4rem) 0",
         }}
       >
-        {/* Large Typography - Adjusted for screen fit */}
+        {/* Large Typography - Centered */}
         <div
           style={{
-            textAlign: "left",
-            color: "#ffffff", // Changed to white for better contrast without overlay
+            textAlign: "center",
+            color: "#ffffff",
             maxWidth: "100%",
             width: "100%",
-            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)", // Added text shadow for readability
+            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
           <motion.div
@@ -199,6 +236,37 @@ export default function Banner({
           </motion.div>
         </div>
       </div>
+
+      {/* Progress Indicators */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: animationComplete ? 1 : 0 }}
+        transition={{ duration: 0.6, delay: 2 }}
+        style={{
+          position: "absolute",
+          bottom: "20%",
+          right: "5%",
+          display: "flex",
+          flexDirection: "column",
+          gap: "0.5rem",
+          zIndex: 10,
+        }}
+      >
+        {bannerImages.map((_, index) => (
+          <div
+            key={index}
+            style={{
+              width: "3px",
+              height: activeIndex === index ? "40px" : "20px",
+              background: activeIndex === index 
+                ? "rgba(255, 255, 255, 0.9)" 
+                : "rgba(255, 255, 255, 0.3)",
+              transition: "all 0.8s ease",
+              borderRadius: "2px",
+            }}
+          />
+        ))}
+      </motion.div>
 
       {/* Bottom Left Scroll Indicator */}
       <motion.div

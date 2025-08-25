@@ -52,7 +52,7 @@ export default function Header({
     if (Math.abs(scrollDiff) < 3) return;
 
     lastScrollY.current = currentScrollY;
-    setIsScrolled(currentScrollY > window.innerHeight * 0.9);
+    setIsScrolled(currentScrollY > 1);
   }, []);
 
   // Throttled scroll listener
@@ -91,10 +91,10 @@ export default function Header({
 
   const handleNavigation = (href: string) => {
     handleMenuClose();
-    if (href.startsWith('#')) {
+    if (href.startsWith("#")) {
       const element = document.querySelector(href);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        element.scrollIntoView({ behavior: "smooth" });
       }
     } else {
       router.push(href);
@@ -130,10 +130,10 @@ export default function Header({
           left: 0,
           right: 0,
           zIndex: 1000,
-          background: "rgba(255, 255, 255, 0.95)",
-          backdropFilter: "blur(20px)",
-          borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
-          boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+          background: isScrolled ? "transparent" : "rgba(255, 255, 255, 0.95)",
+          backdropFilter: isScrolled ? "none" : "blur(20px)",
+          borderBottom: isScrolled ? "none" : "1px solid rgba(0, 0, 0, 0.1)",
+          boxShadow: isScrolled ? "none" : "0 8px 32px rgba(0, 0, 0, 0.1)",
           padding: isScrolled ? "0.5rem 2rem" : "1rem 2rem",
           minHeight: isScrolled ? "70px" : "100px",
           willChange: "transform, opacity",
@@ -148,7 +148,9 @@ export default function Header({
             maxWidth: "1400px",
             margin: "0 auto",
             width: "100%",
-            minHeight: isScrolled ? "clamp(40px, 8vw, 50px)" : "clamp(60px, 10vw, 80px)",
+            minHeight: isScrolled
+              ? "clamp(40px, 8vw, 50px)"
+              : "clamp(60px, 10vw, 80px)",
             padding: "0 clamp(0.5rem, 2vw, 2rem)",
             gap: isScrolled ? "clamp(0.8rem, 1.5vw, 1rem)" : "0",
             transition: "all 0.3s ease",
@@ -165,7 +167,10 @@ export default function Header({
 
           {/* Project Title - Only when scrolled */}
           {isScrolled && (
-            <ProjectTitle title="Project Nilgiri Tahr / நீலகிரி வரையாடு திட்டம்" />
+            <ProjectTitle
+              isScrolled={isScrolled}
+              title="Project Nilgiri Tahr / நீலகிரி வரையாடு திட்டம்"
+            />
           )}
 
           {/* Center Text - Only when not scrolled */}

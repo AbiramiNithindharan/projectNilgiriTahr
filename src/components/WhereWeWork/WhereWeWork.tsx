@@ -219,7 +219,7 @@ export default function WhereWeWork() {
             marginBottom: "6rem",
           }}
         >
-          <h3
+          {/* <h3
             style={{
               fontSize: "clamp(1.8rem, 4vw, 2.5rem)",
               fontWeight: "700",
@@ -230,7 +230,7 @@ export default function WhereWeWork() {
             }}
           >
             Visuals of Work Areas
-          </h3>
+          </h3> */}
 
           <div
             style={{

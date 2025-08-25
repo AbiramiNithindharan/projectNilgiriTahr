@@ -46,7 +46,6 @@ export default function Home() {
       <WhereWeWork />
       <NewsRoom />
       <PhotoGallery />
-      <FilmSection />
     </div>
   );
 }
