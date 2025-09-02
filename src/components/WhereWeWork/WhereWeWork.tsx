@@ -2,11 +2,11 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import styles from "./WhereWeWork.module.css";
 import Image from "next/image";
 
@@ -17,83 +17,97 @@ export default function WhereWeWork() {
     {
       id: "shola-grassland",
       title: "Shola Grassland",
-      description: "High-altitude grassland ecosystems interspersed with stunted tropical montane forests, providing crucial habitat for Nilgiri Tahr.",
+      description:
+        "High-altitude grassland ecosystems interspersed with stunted tropical montane forests, providing crucial habitat for Nilgiri Tahr.",
       icon: "🌾",
-      details: "Critical grazing areas for Nilgiri Tahr herds in the upper elevations of the Western Ghats."
+      details:
+        "Critical grazing areas for Nilgiri Tahr herds in the upper elevations of the Western Ghats.",
     },
     {
       id: "montane-forest",
       title: "Montane Forest",
-      description: "Tropical montane cloud forests that provide shelter and browse for Nilgiri Tahr during adverse weather conditions.",
+      description:
+        "Tropical montane cloud forests that provide shelter and browse for Nilgiri Tahr during adverse weather conditions.",
       icon: "🌲",
-      details: "Dense forest areas offering protection and diverse vegetation for wildlife."
+      details:
+        "Dense forest areas offering protection and diverse vegetation for wildlife.",
     },
     {
       id: "evergreen-forest",
       title: "Evergreen Forest",
-      description: "Dense evergreen forests in the lower elevations that form part of the Nilgiri Tahr's extended habitat range.",
+      description:
+        "Dense evergreen forests in the lower elevations that form part of the Nilgiri Tahr's extended habitat range.",
       icon: "🌿",
-      details: "Rich biodiversity zones supporting the broader ecosystem of the Western Ghats."
-    }
+      details:
+        "Rich biodiversity zones supporting the broader ecosystem of the Western Ghats.",
+    },
   ];
 
   const administrativeAreas = [
     {
       id: "districts",
       title: "Districts",
-      description: "Administrative districts across Tamil Nadu and Kerala where Nilgiri Tahr populations are found and protected.",
+      description:
+        "Administrative districts across Tamil Nadu and Kerala where Nilgiri Tahr populations are found and protected.",
       icon: "🏛️",
-      type: "administrative"
+      type: "administrative",
     },
     {
       id: "circles",
       title: "Circles",
-      description: "Forest department circles responsible for Nilgiri Tahr conservation and habitat management.",
+      description:
+        "Forest department circles responsible for Nilgiri Tahr conservation and habitat management.",
       icon: "⭕",
-      type: "administrative"
+      type: "administrative",
     },
     {
       id: "divisions",
       title: "Divisions",
-      description: "Forest divisions implementing on-ground conservation activities for Nilgiri Tahr protection.",
+      description:
+        "Forest divisions implementing on-ground conservation activities for Nilgiri Tahr protection.",
       icon: "🗂️",
-      type: "administrative"
+      type: "administrative",
     },
     {
       id: "biosphere-reserves",
       title: "Biosphere Reserves",
-      description: "UNESCO Biosphere Reserves protecting critical Nilgiri Tahr habitats and promoting sustainable development.",
+      description:
+        "UNESCO Biosphere Reserves protecting critical Nilgiri Tahr habitats and promoting sustainable development.",
       icon: "🌍",
-      type: "protected"
+      type: "protected",
     },
     {
       id: "tiger-reserves",
       title: "Tiger Reserves",
-      description: "Tiger reserves that also protect Nilgiri Tahr populations as part of their comprehensive wildlife conservation efforts.",
+      description:
+        "Tiger reserves that also protect Nilgiri Tahr populations as part of their comprehensive wildlife conservation efforts.",
       icon: "🐅",
-      type: "protected"
+      type: "protected",
     },
     {
       id: "elephant-reserves",
       title: "Elephant Reserves",
-      description: "Elephant reserves where Nilgiri Tahr share habitat space, creating integrated conservation landscapes.",
+      description:
+        "Elephant reserves where Nilgiri Tahr share habitat space, creating integrated conservation landscapes.",
       icon: "🐘",
-      type: "protected"
+      type: "protected",
     },
     {
       id: "national-parks",
       title: "National Parks",
-      description: "National parks providing the highest level of protection for Nilgiri Tahr and their natural habitats.",
+      description:
+        "National parks providing the highest level of protection for Nilgiri Tahr and their natural habitats.",
       icon: "🏞️",
-      type: "protected"
+      type: "protected",
     },
     {
       id: "wildlife-sanctuaries",
       title: "Wildlife Sanctuaries",
-      description: "Wildlife sanctuaries dedicated to protecting Nilgiri Tahr and other endemic species of the Western Ghats.",
+      description:
+        "Wildlife sanctuaries dedicated to protecting Nilgiri Tahr and other endemic species of the Western Ghats.",
       icon: "🦌",
-      type: "protected"
-    }
+      type: "protected",
+    },
   ];
 
   const containerVariants = {
@@ -195,7 +209,8 @@ export default function WhereWeWork() {
               letterSpacing: "-0.02em",
             }}
           >
-            Where We Work — across diverse ecosystems and protected regions in the Western Ghats.
+            Where We Work — across diverse ecosystems and protected regions in
+            the Western Ghats.
           </h2>
           <p
             style={{
@@ -208,7 +223,8 @@ export default function WhereWeWork() {
               fontWeight: "400",
             }}
           >
-            Our conservation efforts span multiple ecosystems and administrative regions where Nilgiri Tahr populations thrive.
+            Our conservation efforts span multiple ecosystems and administrative
+            regions where Nilgiri Tahr populations thrive.
           </p>
         </motion.div>
 
@@ -324,14 +340,14 @@ export default function WhereWeWork() {
               spaceBetween={24}
               slidesPerView={1}
               navigation={{
-                nextEl: '.swiper-button-next-areas',
-                prevEl: '.swiper-button-prev-areas',
+                nextEl: ".swiper-button-next-areas",
+                prevEl: ".swiper-button-prev-areas",
               }}
               pagination={{
                 clickable: true,
-                el: '.swiper-pagination-areas',
-                bulletClass: 'swiper-pagination-bullet-custom',
-                bulletActiveClass: 'swiper-pagination-bullet-active-custom',
+                el: ".swiper-pagination-areas",
+                bulletClass: "swiper-pagination-bullet-custom",
+                bulletActiveClass: "swiper-pagination-bullet-active-custom",
               }}
               autoplay={{
                 delay: 4000,
@@ -375,17 +391,19 @@ export default function WhereWeWork() {
                     viewport={{ once: true }}
                     whileHover={{ y: -8, scale: 1.02 }}
                     style={{
-                      background: area.type === "protected" 
-                        ? "linear-gradient(135deg, rgba(82, 183, 136, 0.95), rgba(64, 145, 108, 0.9))"
-                        : "rgba(255, 255, 255, 0.95)",
+                      background:
+                        area.type === "protected"
+                          ? "linear-gradient(135deg, rgba(82, 183, 136, 0.95), rgba(64, 145, 108, 0.9))"
+                          : "rgba(255, 255, 255, 0.95)",
                       color: area.type === "protected" ? "#ffffff" : "#1b4332",
                       borderRadius: "16px",
                       padding: "2rem 1.5rem",
                       textAlign: "center",
                       boxShadow: "0 8px 32px rgba(27, 67, 50, 0.08)",
-                      border: area.type === "protected" 
-                        ? "1px solid rgba(255, 255, 255, 0.2)"
-                        : "1px solid rgba(27, 67, 50, 0.1)",
+                      border:
+                        area.type === "protected"
+                          ? "1px solid rgba(255, 255, 255, 0.2)"
+                          : "1px solid rgba(27, 67, 50, 0.1)",
                       transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                       cursor: "pointer",
                       height: "320px",
@@ -398,9 +416,10 @@ export default function WhereWeWork() {
                       style={{
                         fontSize: "3rem",
                         marginBottom: "1rem",
-                        filter: area.type === "protected" 
-                          ? "drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2))"
-                          : "none",
+                        filter:
+                          area.type === "protected"
+                            ? "drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2))"
+                            : "none",
                       }}
                     >
                       {area.icon}
@@ -467,12 +486,15 @@ export default function WhereWeWork() {
                   onMouseEnter={(e) => {
                     e.currentTarget.style.background = "#52b788";
                     e.currentTarget.style.color = "#ffffff";
-                    e.currentTarget.style.transform = "translateY(-50%) scale(1.1)";
+                    e.currentTarget.style.transform =
+                      "translateY(-50%) scale(1.1)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "rgba(255, 255, 255, 0.95)";
+                    e.currentTarget.style.background =
+                      "rgba(255, 255, 255, 0.95)";
                     e.currentTarget.style.color = "#1b4332";
-                    e.currentTarget.style.transform = "translateY(-50%) scale(1)";
+                    e.currentTarget.style.transform =
+                      "translateY(-50%) scale(1)";
                   }}
                 >
                   ‹
@@ -503,12 +525,15 @@ export default function WhereWeWork() {
                   onMouseEnter={(e) => {
                     e.currentTarget.style.background = "#52b788";
                     e.currentTarget.style.color = "#ffffff";
-                    e.currentTarget.style.transform = "translateY(-50%) scale(1.1)";
+                    e.currentTarget.style.transform =
+                      "translateY(-50%) scale(1.1)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "rgba(255, 255, 255, 0.95)";
+                    e.currentTarget.style.background =
+                      "rgba(255, 255, 255, 0.95)";
                     e.currentTarget.style.color = "#1b4332";
-                    e.currentTarget.style.transform = "translateY(-50%) scale(1)";
+                    e.currentTarget.style.transform =
+                      "translateY(-50%) scale(1)";
                   }}
                 >
                   ›
@@ -517,7 +542,7 @@ export default function WhereWeWork() {
             )}
 
             {/* Custom Pagination */}
-            <div 
+            <div
               className="swiper-pagination-areas"
               style={{
                 display: "flex",

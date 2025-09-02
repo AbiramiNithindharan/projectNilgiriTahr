@@ -44,7 +44,7 @@ export default function MenuButton({ onClick, variant }: MenuButtonProps) {
         style={{
           width: isCompact ? "20px" : "clamp(20px, 4vw, 28px)",
           height: isCompact ? "2px" : "3px",
-          background: "#1b4332",
+          background: "#f8fcfaff",
           borderRadius: isCompact ? "1px" : "2px",
           transition: "all 0.3s ease",
         }}
@@ -53,7 +53,7 @@ export default function MenuButton({ onClick, variant }: MenuButtonProps) {
         style={{
           width: isCompact ? "20px" : "clamp(20px, 4vw, 28px)",
           height: isCompact ? "2px" : "3px",
-          background: "#1b4332",
+          background: "#f8fcfaff",
           borderRadius: isCompact ? "1px" : "2px",
           transition: "all 0.3s ease",
         }}
@@ -62,7 +62,7 @@ export default function MenuButton({ onClick, variant }: MenuButtonProps) {
         style={{
           width: isCompact ? "20px" : "clamp(20px, 4vw, 28px)",
           height: isCompact ? "2px" : "3px",
-          background: "#1b4332",
+          background: "#f8fcfaff",
           borderRadius: isCompact ? "1px" : "2px",
           transition: "all 0.3s ease",
         }}

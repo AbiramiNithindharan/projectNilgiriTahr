@@ -26,7 +26,7 @@ export default function CenterText({ isVisible }: CenterTextProps) {
           margin: "0",
           opacity: "0.9",
           textTransform: "uppercase",
-          color: "#1b4332",
+          color: "#ebfaf4ff",
           fontFamily: "Poppins, sans-serif",
           lineHeight: "1.1",
         }}
@@ -40,7 +40,7 @@ export default function CenterText({ isVisible }: CenterTextProps) {
           opacity: "0.85",
           fontWeight: "500",
           letterSpacing: "clamp(0.1px, 0.03vw, 0.3px)",
-          color: "#2d5016",
+          color: "#eef2ebff",
           fontFamily: "Poppins, sans-serif",
           lineHeight: "1.1",
         }}
@@ -52,7 +52,8 @@ export default function CenterText({ isVisible }: CenterTextProps) {
           fontSize: "clamp(11px, 2.5vw, 24px)",
           fontWeight: "800",
           margin: "0",
-          background: "linear-gradient(135deg, #081c15, #1b4332, #2d5016, #52b788)",
+          background:
+            "linear-gradient(135deg, #eff7f4ff, #f2f7f5ff, #f8f9f8ff, #f2f6f4ff)",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
           backgroundClip: "text",

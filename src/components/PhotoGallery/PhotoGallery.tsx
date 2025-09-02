@@ -16,7 +16,7 @@ export default function PhotoGallery() {
     { id: "landscape", label: "Landscape", count: 289 },
     { id: "associate-flora", label: "Associate Flora", count: 198 },
     { id: "fauna", label: "Fauna", count: 172 },
-    { id: "exhibition", label: "Exhibition", count: 98 }
+    { id: "exhibition", label: "Exhibition", count: 98 },
   ];
 
   const galleryImages = [
@@ -26,39 +26,40 @@ export default function PhotoGallery() {
       alt: "Nilgiri Tahr in natural habitat",
       category: "nilgiri-tahr",
       title: "Nilgiri Tahr Adult",
-      description: "Adult Nilgiri Tahr grazing in the high-altitude grasslands of the Western Ghats"
+      description:
+        "Adult Nilgiri Tahr grazing in the high-altitude grasslands of the Western Ghats",
     },
     {
-      id: "img-2", 
+      id: "img-2",
       src: "/banners/DJI_0036.jpg",
       alt: "Western Ghats landscape",
       category: "landscape",
       title: "Western Ghats Vista",
-      description: "Panoramic view of the Western Ghats mountain range"
+      description: "Panoramic view of the Western Ghats mountain range",
     },
     {
       id: "img-3",
-      src: "/banners/DJI_0036.jpg", 
+      src: "/banners/DJI_0036.jpg",
       alt: "Aerial view of Tahr habitat",
       category: "aerial",
       title: "Habitat Overview",
-      description: "Aerial perspective of Nilgiri Tahr conservation areas"
+      description: "Aerial perspective of Nilgiri Tahr conservation areas",
     },
     {
       id: "img-4",
       src: "/banners/DJI_0036.jpg",
-      alt: "Associate flora of Western Ghats", 
+      alt: "Associate flora of Western Ghats",
       category: "associate-flora",
       title: "Endemic Flora",
-      description: "Unique plant species in Nilgiri Tahr habitat ecosystem"
+      description: "Unique plant species in Nilgiri Tahr habitat ecosystem",
     },
     {
       id: "img-5",
       src: "/banners/DJI_0036.jpg",
       alt: "Fauna species",
       category: "fauna",
-      title: "Wildlife Diversity", 
-      description: "Other fauna species sharing the Nilgiri Tahr habitat"
+      title: "Wildlife Diversity",
+      description: "Other fauna species sharing the Nilgiri Tahr habitat",
     },
     {
       id: "img-6",
@@ -66,13 +67,57 @@ export default function PhotoGallery() {
       alt: "Exhibition display",
       category: "exhibition",
       title: "Conservation Exhibition",
-      description: "Educational exhibition showcasing Nilgiri Tahr conservation efforts"
-    }
+      description:
+        "Educational exhibition showcasing Nilgiri Tahr conservation efforts",
+    },
+    {
+      id: "img-7",
+      src: "/banners/DJI_0036.jpg",
+      alt: "Community",
+      category: "exhibition",
+      title: "Community",
+      description:
+        "Powerful community showcasing Nilgiri Tahr conservation efforts",
+    },
+    {
+      id: "img-8",
+      src: "/banners/DJI_0036.jpg",
+      alt: "Exhibition display",
+      category: "exhibition",
+      title: "Outreach",
+      description: "Outreach showcasing Nilgiri Tahr conservation efforts",
+    },
+    {
+      id: "img-9",
+      src: "/banners/DJI_0036.jpg",
+      alt: "technologies",
+      category: "fauna",
+      title: "Technologies",
+      description: "Growing Tech showcasing Nilgiri Tahr conservation efforts",
+    },
+    {
+      id: "img-10",
+      src: "/banners/DJI_0036.jpg",
+      alt: "pioneer",
+      category: "aerial",
+      title: "Pioneers",
+      description: "pioneer supporting Nilgiri Tahr conservation to grow",
+    },
+    {
+      id: "img-11",
+      src: "/banners/DJI_0036.jpg",
+      alt: "tamil-literature",
+      category: "aerial",
+      title: "Tamil Literature",
+      description:
+        "Tamil Literature that grows with conservation of Nilgiri tahr",
+    },
   ];
 
-  const filteredImages = selectedCategory === "all" 
-    ? galleryImages 
-    : galleryImages.filter(img => img.category === selectedCategory);
+  const filteredImages =
+    selectedCategory === "all"
+      ? galleryImages
+      : galleryImages.filter((img) => img.category === selectedCategory);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -177,7 +222,8 @@ export default function PhotoGallery() {
                 letterSpacing: "-0.02em",
               }}
             >
-              Tahr Image Bank — a comprehensive library of free-to-use resources created for conservation education.
+              Tahr Image Bank — a comprehensive library of free-to-use resources
+              created for conservation education.
             </h2>
 
             {/* Description */}
@@ -191,7 +237,9 @@ export default function PhotoGallery() {
                 fontWeight: "400",
               }}
             >
-              Explore our extensive collection of high-quality images documenting Nilgiri Tahr, their habitat, and conservation efforts across the Western Ghats.
+              Explore our extensive collection of high-quality images
+              documenting Nilgiri Tahr, their habitat, and conservation efforts
+              across the Western Ghats.
             </p>
 
             {/* View All Button */}
@@ -308,15 +356,18 @@ export default function PhotoGallery() {
                 whileHover={{ scale: 1.02 }}
                 onClick={() => setSelectedCategory(category.id)}
                 style={{
-                  background: selectedCategory === category.id 
-                    ? "linear-gradient(135deg, #52b788, #40916c)"
-                    : "rgba(255, 255, 255, 0.05)",
-                  border: selectedCategory === category.id
-                    ? "1px solid #52b788"
-                    : "1px solid rgba(255, 255, 255, 0.1)",
-                  color: selectedCategory === category.id ? "#ffffff" : "#e0e6ed",
+                  background:
+                    selectedCategory === category.id
+                      ? "linear-gradient(135deg, #52b788, #40916c)"
+                      : "rgba(255, 255, 255, 0.05)",
+                  border:
+                    selectedCategory === category.id
+                      ? "1px solid #52b788"
+                      : "1px solid rgba(255, 255, 255, 0.1)",
+                  color:
+                    selectedCategory === category.id ? "#ffffff" : "#e0e6ed",
                   padding: "1rem",
-                  borderRadius: "12px",
+                  borderRadius: "50px",
                   cursor: "pointer",
                   transition: "all 0.3s ease",
                   textAlign: "center",
@@ -342,7 +393,8 @@ export default function PhotoGallery() {
                   style={{
                     fontSize: "1.5rem",
                     fontWeight: "900",
-                    color: selectedCategory === category.id ? "#ffffff" : "#52b788",
+                    color:
+                      selectedCategory === category.id ? "#ffffff" : "#52b788",
                     marginBottom: "0.25rem",
                   }}
                 >
@@ -386,10 +438,9 @@ export default function PhotoGallery() {
                 onMouseLeave={() => setHoveredImage(null)}
                 style={{
                   background: "rgba(255, 255, 255, 0.05)",
-                  borderRadius: "16px",
+                  borderRadius: "20px",
                   overflow: "hidden",
                   boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3)",
-                  border: "1px solid rgba(255, 255, 255, 0.1)",
                   transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                   cursor: "pointer",
                 }}
@@ -398,8 +449,11 @@ export default function PhotoGallery() {
                 <div
                   style={{
                     height: "250px",
+                    width: "250px",
                     position: "relative",
                     overflow: "hidden",
+                    top: 2,
+                    marginLeft: "40px",
                   }}
                 >
                   <Image
@@ -407,12 +461,13 @@ export default function PhotoGallery() {
                     alt={image.alt}
                     fill
                     style={{
-                      objectFit: "cover",
                       transition: "transform 0.3s ease",
-                      transform: hoveredImage === image.id ? "scale(1.1)" : "scale(1)",
+                      borderRadius: "200px",
+                      transform:
+                        hoveredImage === image.id ? "scale(1.1)" : "scale(1)",
                     }}
                   />
-                  
+
                   {/* Overlay on hover */}
                   <div
                     style={{
@@ -421,7 +476,8 @@ export default function PhotoGallery() {
                       left: 0,
                       right: 0,
                       bottom: 0,
-                      background: "linear-gradient(45deg, rgba(0,0,0,0.7), rgba(82,183,136,0.3))",
+                      background:
+                        "linear-gradient(45deg, rgba(0,0,0,0.7), rgba(82,183,136,0.3))",
                       opacity: hoveredImage === image.id ? 1 : 0,
                       transition: "opacity 0.3s ease",
                       display: "flex",
@@ -452,7 +508,7 @@ export default function PhotoGallery() {
                     style={{
                       position: "absolute",
                       top: "1rem",
-                      left: "1rem",
+                      left: "5rem",
                       background: "#52b788",
                       color: "#ffffff",
                       padding: "0.5rem 1rem",
@@ -471,6 +527,10 @@ export default function PhotoGallery() {
                 <div
                   style={{
                     padding: "1.5rem",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
                   }}
                 >
                   <h4
@@ -492,6 +552,7 @@ export default function PhotoGallery() {
                       margin: "0 0 1rem 0",
                       fontFamily: "Inter, sans-serif",
                       opacity: 0.8,
+                      textAlign: "center",
                     }}
                   >
                     {image.description}
@@ -502,7 +563,7 @@ export default function PhotoGallery() {
                       background: "transparent",
                       border: "1px solid rgba(255, 255, 255, 0.3)",
                       color: "#ffffff",
-                      padding: "0.8rem 1.5rem",
+                      padding: "0.8rem 0.8rem",
                       fontSize: "0.9rem",
                       fontWeight: "600",
                       fontFamily: "Inter, sans-serif",
@@ -511,15 +572,17 @@ export default function PhotoGallery() {
                       cursor: "pointer",
                       transition: "all 0.3s ease",
                       borderRadius: "8px",
-                      width: "100%",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = "rgba(255, 255, 255, 0.1)";
-                      e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.5)";
+                      e.currentTarget.style.background =
+                        "rgba(255, 255, 255, 0.1)";
+                      e.currentTarget.style.borderColor =
+                        "rgba(255, 255, 255, 0.5)";
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.background = "transparent";
-                      e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.3)";
+                      e.currentTarget.style.borderColor =
+                        "rgba(255, 255, 255, 0.3)";
                     }}
                   >
                     VIEW FULL SIZE

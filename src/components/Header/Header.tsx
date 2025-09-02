@@ -19,6 +19,8 @@ interface HeaderProps {
   leftLogoAlt?: string;
   rightLogoSrc?: string;
   rightLogoAlt?: string;
+  rightDonateLogoSrc?: string;
+  rightDonateLogoAlt?: string;
   onMenuClick?: () => void;
   onContactClick?: () => void;
   isVisible?: boolean;
@@ -31,6 +33,8 @@ export default function Header({
   leftLogoAlt = "Left Logo",
   rightLogoSrc = "/logo/header-right-logo.png",
   rightLogoAlt = "Right Logo",
+  rightDonateLogoSrc = "/logo/donation.png",
+  rightDonateLogoAlt = "donate Logo",
   onMenuClick,
   onContactClick,
   isVisible = false,
@@ -130,10 +134,10 @@ export default function Header({
           left: 0,
           right: 0,
           zIndex: 1000,
-          background: isScrolled ? "transparent" : "rgba(255, 255, 255, 0.95)",
-          backdropFilter: isScrolled ? "none" : "blur(20px)",
-          borderBottom: isScrolled ? "none" : "1px solid rgba(0, 0, 0, 0.1)",
-          boxShadow: isScrolled ? "none" : "0 8px 32px rgba(0, 0, 0, 0.1)",
+          background: isScrolled ? "#0a0b0a5b" : "#0a0b0a41",
+          backdropFilter: isScrolled ? "none" : "none",
+          borderBottom: isScrolled ? "none" : "none",
+          boxShadow: isScrolled ? "none" : "none",
           padding: isScrolled ? "0.5rem 2rem" : "1rem 2rem",
           minHeight: isScrolled ? "70px" : "100px",
           willChange: "transform, opacity",
@@ -199,12 +203,28 @@ export default function Header({
                 isVisible={true}
               />
               <MenuButton onClick={handleMenuToggle} variant="default" />
+              <Logo
+                src={rightDonateLogoSrc}
+                alt={rightDonateLogoAlt}
+                size="small"
+                delay={0}
+                isVisible={true}
+              />
             </motion.div>
           )}
 
           {/* Compact Menu Button - Only when scrolled */}
           {isScrolled && (
-            <MenuButton onClick={handleMenuToggle} variant="compact" />
+            <>
+              <MenuButton onClick={handleMenuToggle} variant="compact" />
+              <Logo
+                src={rightDonateLogoSrc}
+                alt={rightDonateLogoAlt}
+                size="small"
+                delay={0.1}
+                isVisible={true}
+              />
+            </>
           )}
         </div>
       </motion.header>

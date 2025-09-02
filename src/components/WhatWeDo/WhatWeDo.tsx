@@ -130,7 +130,7 @@ export default function WhatWeDo() {
               letterSpacing: "0.1em",
             }}
           >
-            04
+            05
           </div>
 
           {/* Main Heading */}
@@ -257,7 +257,7 @@ export default function WhatWeDo() {
               letterSpacing: "0.1em",
             }}
           >
-            05
+            06
           </div>
           <h3
             style={{

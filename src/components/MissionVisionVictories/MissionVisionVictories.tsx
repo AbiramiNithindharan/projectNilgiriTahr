@@ -106,7 +106,7 @@ export default function MissionVisionVictories() {
               letterSpacing: "0.1em",
             }}
           >
-            06
+            02
           </div>
           <h2
             style={{
@@ -171,8 +171,7 @@ export default function MissionVisionVictories() {
                 style={{
                   fontSize: "4rem",
                   marginBottom: "1.5rem",
-                  filter:
-                    "drop-shadow(0 4px 8px rgba(27, 67, 50, 0.2))",
+                  filter: "drop-shadow(0 4px 8px rgba(27, 67, 50, 0.2))",
                 }}
               >
                 {section.icon}
@@ -229,7 +228,7 @@ export default function MissionVisionVictories() {
               lineHeight: "1.2",
             }}
           >
-            Our Victories
+            Our Success Stories
           </h2>
           <div
             style={{
@@ -306,8 +305,7 @@ export default function MissionVisionVictories() {
                 style={{
                   fontSize: "3.5rem",
                   marginBottom: "1.5rem",
-                  filter:
-                    "drop-shadow(0 4px 8px rgba(27, 67, 50, 0.2))",
+                  filter: "drop-shadow(0 4px 8px rgba(27, 67, 50, 0.2))",
                   position: "relative",
                   zIndex: 2,
                 }}
@@ -351,4 +349,3 @@ export default function MissionVisionVictories() {
     </motion.section>
   );
 }
-

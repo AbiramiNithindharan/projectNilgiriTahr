@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import Image from "next/image";
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import styles from "./WhoWeAre.module.css";
 
 interface TeamMember {
@@ -42,14 +42,16 @@ export default function WhoWeAre() {
         {
           name: "Thiru.M.G.Ganesan",
           image: "/members/thiru-mg-ganesan.png",
-          about: "Project Director a native of Ramanathapuram district has completed B.Sc.Agri at PAJANCOA &RI, Karaikal and M.Sc.Agri at GP Pant University at Uttarakhand. Worked as an agricultural officer and got selected as ACF in 2014. Trained at CASFOS dehradun from 2014 to 2016. Worked as ACF squad and vigilance, Eco development officer in KMTR, DD at ATR Pollachi, DD at AIWC. Now working as State Project Director, Project Nilgiri Tahr at Coimbatore. Majorly worked for tribal welfare, local community development, wildlife and wildlife forensics."
+          about:
+            "Project Director a native of Ramanathapuram district has completed B.Sc.Agri at PAJANCOA &RI, Karaikal and M.Sc.Agri at GP Pant University at Uttarakhand. Worked as an agricultural officer and got selected as ACF in 2014. Trained at CASFOS dehradun from 2014 to 2016. Worked as ACF squad and vigilance, Eco development officer in KMTR, DD at ATR Pollachi, DD at AIWC. Now working as State Project Director, Project Nilgiri Tahr at Coimbatore. Majorly worked for tribal welfare, local community development, wildlife and wildlife forensics.",
         },
         {
           name: "Thiru.K.Ganesh Ram",
           image: "/members/thiru-k-ganesh-ram.png",
-          about: "Assistant Director of Project Nilgiri Tahr, Has Contributed much for Declaration of Nanjarayan tank Bird Sanctuary in Tiruppur Forest Division. Dedicated service for Forest and Wildlife protection and Conservation by untired field inspection in all Ranges of Tiruppur Forest Division and under the leadership and guidance, major Elephant tusk and Sandal wood offence were detected, accused was arrested and remanded in Udumalpet Range. Regular inspection in all Antipoaching campsheds , wildlife census and All Scheme works and guiding Range officers and field staffs in all aspects for best outcome of all works. Excellently formed the Medicinal Tree garden in Palani Range in Kodaikanal wildlife sanctuary under 110 announcement scheme and now it look like a natural Evergreen Forest in Palani Town."
-        }
-      ]
+          about:
+            "Assistant Director of Project Nilgiri Tahr, Has Contributed much for Declaration of Nanjarayan tank Bird Sanctuary in Tiruppur Forest Division. Dedicated service for Forest and Wildlife protection and Conservation by untired field inspection in all Ranges of Tiruppur Forest Division and under the leadership and guidance, major Elephant tusk and Sandal wood offence were detected, accused was arrested and remanded in Udumalpet Range. Regular inspection in all Antipoaching campsheds , wildlife census and All Scheme works and guiding Range officers and field staffs in all aspects for best outcome of all works. Excellently formed the Medicinal Tree garden in Palani Range in Kodaikanal wildlife sanctuary under 110 announcement scheme and now it look like a natural Evergreen Forest in Palani Town.",
+        },
+      ],
     },
     {
       id: "research-team",
@@ -58,14 +60,16 @@ export default function WhoWeAre() {
         {
           name: "Dr.M.Ashok Kumar",
           image: "/members/dr-m-ashok-kumar.png",
-          about: "Senior Scientist and Research Coordinator is an ecologist with over 20 years of experience in ecology, wildlife conservation, wildlife management, and academia, he earned his doctoral degree in wildlife biology from AVC College in 2012. He has worked with conservation NGOs, including WWF-India and BNHS, as well as academic institutions such as Kerala Veterinary and Animal Sciences University, JNCASR-Deemed University, and AVC College. His expertise includes conducting wildlife surveys, radio-collaring large mammals, data analysis, and reporting. He has published more than 15 research articles, three book chapters, popular articles, and scientific reports."
+          about:
+            "Senior Scientist and Research Coordinator is an ecologist with over 20 years of experience in ecology, wildlife conservation, wildlife management, and academia, he earned his doctoral degree in wildlife biology from AVC College in 2012. He has worked with conservation NGOs, including WWF-India and BNHS, as well as academic institutions such as Kerala Veterinary and Animal Sciences University, JNCASR-Deemed University, and AVC College. His expertise includes conducting wildlife surveys, radio-collaring large mammals, data analysis, and reporting. He has published more than 15 research articles, three book chapters, popular articles, and scientific reports.",
         },
         {
           name: "Dr.B.Subbaiyan",
           image: "/members/dr-b-subbaiyan.png",
-          about: "Senior Research Fellow of Project Nilgiri Tahr, is a plant taxonomist and conservationist. He graduated in Botany from Government Arts College, Coimbatore. He worked as a biologist at Anamalai Tiger Reserve from 2018-2020. He has co-authored two books and published 8 research articles in reputed scientific journals."
-        }
-      ]
+          about:
+            "Senior Research Fellow of Project Nilgiri Tahr, is a plant taxonomist and conservationist. He graduated in Botany from Government Arts College, Coimbatore. He worked as a biologist at Anamalai Tiger Reserve from 2018-2020. He has co-authored two books and published 8 research articles in reputed scientific journals.",
+        },
+      ],
     },
     {
       id: "scientific-committee",
@@ -74,19 +78,22 @@ export default function WhoWeAre() {
         {
           name: "K.Manigandan",
           image: "/members/k-manigandan.png",
-          about: "Mr. K. Manigandan, Senior Research Fellow of Project Nilgiri Tahr, is a Wildlife Biologist. He received his Bachelor of Science in Zoology, Government Arts College, Coimbatore and Master of Science in Wildlife Biology from Government Arts College, The Nilgiris. He has studied Human Elephant Conflicts in Hosur Forest Division, Cauvery North Wildlife Sanctuary during his Master's. He worked as a Field Officer in A Rocha India (NGO), Bannerghatta National Park, Bangalore for Research and Monitoring of the Elephant Corridors. He is keen on Nature & Wildlife Conservation through Scientific Research and Conservation Education."
+          about:
+            "Mr. K. Manigandan, Senior Research Fellow of Project Nilgiri Tahr, is a Wildlife Biologist. He received his Bachelor of Science in Zoology, Government Arts College, Coimbatore and Master of Science in Wildlife Biology from Government Arts College, The Nilgiris. He has studied Human Elephant Conflicts in Hosur Forest Division, Cauvery North Wildlife Sanctuary during his Master's. He worked as a Field Officer in A Rocha India (NGO), Bannerghatta National Park, Bangalore for Research and Monitoring of the Elephant Corridors. He is keen on Nature & Wildlife Conservation through Scientific Research and Conservation Education.",
         },
         {
           name: "T.Nesan",
           image: "/members/t-nesan.png",
-          about: "Nesan T. serves as a Senior Research Fellow in the prestigious Nilgiri Thar project. He holds undergraduate and postgraduate degrees in Wildlife Biology from Ooty Arts and Science College. His academic pursuits highlighted in a dissertation entitled Status and Distribution of Tigers & Sympatric Carnivores in the Megamalai Division of Srivilliputhur Megamalai Tiger Reserve. With an intense passion for wildlife, Nesan has developed extensive experience with the wildlife, driven by his self-initiated interest in this remarkable species."
+          about:
+            "Nesan T. serves as a Senior Research Fellow in the prestigious Nilgiri Thar project. He holds undergraduate and postgraduate degrees in Wildlife Biology from Ooty Arts and Science College. His academic pursuits highlighted in a dissertation entitled Status and Distribution of Tigers & Sympatric Carnivores in the Megamalai Division of Srivilliputhur Megamalai Tiger Reserve. With an intense passion for wildlife, Nesan has developed extensive experience with the wildlife, driven by his self-initiated interest in this remarkable species.",
         },
         {
           name: "K.Ragavendran",
           image: "/members/k-ragavendran.png",
-          about: "K. Ragavendran has completed a Bachelor's and a Master of Science in Zoology from St. Xavier's College, Palayamkottai. He joined as a Project Associate at Xavier Research Foundation. The core concept of the project is to promote organic farming and environmental protection in every village in Tirunelveli district. He has published seven research articles in highly reputed journals and one book. He has research experience with two funding agencies: the Jesuitenweltweit Funding Agency and the Indian Council of Medical Research (ICMR). Recently, he completed a project as a Project Associate at AIWC, with a project entitled 'Fireflies: Ecology, Species Diversity, Distribution, and Habitats in Anamalai Tiger Reserve.' Currently, he has joined as a Senior Research Fellow in Project Nilgiri Tahr."
-        }
-      ]
+          about:
+            "K. Ragavendran has completed a Bachelor's and a Master of Science in Zoology from St. Xavier's College, Palayamkottai. He joined as a Project Associate at Xavier Research Foundation. The core concept of the project is to promote organic farming and environmental protection in every village in Tirunelveli district. He has published seven research articles in highly reputed journals and one book. He has research experience with two funding agencies: the Jesuitenweltweit Funding Agency and the Indian Council of Medical Research (ICMR). Recently, he completed a project as a Project Associate at AIWC, with a project entitled 'Fireflies: Ecology, Species Diversity, Distribution, and Habitats in Anamalai Tiger Reserve.' Currently, he has joined as a Senior Research Fellow in Project Nilgiri Tahr.",
+        },
+      ],
     },
     {
       id: "our-partners",
@@ -96,40 +103,43 @@ export default function WhoWeAre() {
         {
           name: "GOVERNMENT OF TAMIL NADU FOREST DEPARTMENT",
           logo: "/logo/header-right-logo.png",
-          website: "https://www.forests.tn.gov.in/"
+          website: "https://www.forests.tn.gov.in/",
         },
         {
           name: "Advanced Institute for Wildlife Conservation",
           logo: "/logo/aiwc-logo.png",
-          website: "https://www.aiwc.res.in/"
-        }
-      ]
-    }
+          website: "https://www.aiwc.res.in/",
+        },
+      ],
+    },
   ];
 
   // Flatten all members from all sections
   const allMembers = teamSections.reduce((acc, section) => {
-    const sectionMembers = section.members.map(member => ({
+    const sectionMembers = section.members.map((member) => ({
       ...member,
-      section: section.title
+      section: section.title,
     }));
     return [...acc, ...sectionMembers];
   }, [] as (TeamMember & { section: string })[]);
 
   // Add partners as special cards
-  const partnerCards = teamSections.find(s => s.id === "our-partners")?.partners?.map(partner => ({
-    name: partner.name,
-    image: partner.logo,
-    about: `Partnership organization supporting Nilgiri Tahr conservation efforts. Visit: ${partner.website}`,
-    section: "Our Partners",
-    isPartner: true,
-    website: partner.website
-  })) || [];
+  const partnerCards =
+    teamSections
+      .find((s) => s.id === "our-partners")
+      ?.partners?.map((partner) => ({
+        name: partner.name,
+        image: partner.logo,
+        about: `Partnership organization supporting Nilgiri Tahr conservation efforts. Visit: ${partner.website}`,
+        section: "Our Partners",
+        isPartner: true,
+        website: partner.website,
+      })) || [];
 
   const allCards = [...allMembers, ...partnerCards];
 
   return (
-    <section 
+    <section
       id="who-we-are"
       style={{
         padding: "40px 0 0", // Further reduced top padding for wave integration
@@ -181,7 +191,8 @@ export default function WhoWeAre() {
               left: 0,
               width: "100%",
               height: "100%",
-              background: "linear-gradient(45deg, rgba(0,0,0,0.1), transparent)",
+              background:
+                "linear-gradient(45deg, rgba(0,0,0,0.1), transparent)",
             }}
           />
         </motion.div>
@@ -207,7 +218,7 @@ export default function WhoWeAre() {
               letterSpacing: "0.1em",
             }}
           >
-            02
+            03
           </div>
 
           {/* Main Heading */}
@@ -222,7 +233,9 @@ export default function WhoWeAre() {
               letterSpacing: "-0.02em",
             }}
           >
-            Who We Are — dedicated scientists, conservationists, and communities united in protecting the Nilgiri Tahr through research and education.
+            Who We Are — dedicated scientists, conservationists, and communities
+            united in protecting the Nilgiri Tahr through research and
+            education.
           </h2>
 
           {/* Learn More Button */}
@@ -289,7 +302,7 @@ export default function WhoWeAre() {
                 letterSpacing: "0.1em",
               }}
             >
-              03
+              04
             </div>
             <h3
               style={{
@@ -313,7 +326,9 @@ export default function WhoWeAre() {
                 fontFamily: "Inter, sans-serif",
               }}
             >
-              Meet the dedicated professionals working tirelessly to protect and preserve the Nilgiri Tahr through scientific research and conservation efforts.
+              Meet the dedicated professionals working tirelessly to protect and
+              preserve the Nilgiri Tahr through scientific research and
+              conservation efforts.
             </p>
           </div>
 
@@ -330,14 +345,14 @@ export default function WhoWeAre() {
               spaceBetween={24}
               slidesPerView={1}
               navigation={{
-                nextEl: '.swiper-button-next-team',
-                prevEl: '.swiper-button-prev-team',
+                nextEl: ".swiper-button-next-team",
+                prevEl: ".swiper-button-prev-team",
               }}
               pagination={{
                 clickable: true,
-                el: '.swiper-pagination-team',
-                bulletClass: 'swiper-pagination-bullet-custom',
-                bulletActiveClass: 'swiper-pagination-bullet-active-custom',
+                el: ".swiper-pagination-team",
+                bulletClass: "swiper-pagination-bullet-custom",
+                bulletActiveClass: "swiper-pagination-bullet-active-custom",
               }}
               autoplay={{
                 delay: 5000,
@@ -397,7 +412,7 @@ export default function WhoWeAre() {
                       y: -8,
                       scale: 1.02,
                       boxShadow: "0 16px 48px rgba(27, 67, 50, 0.12)",
-                      transition: { duration: 0.2 }
+                      transition: { duration: 0.2 },
                     }}
                     onClick={() => {
                       if (member.isPartner && member.website) {
@@ -438,20 +453,22 @@ export default function WhoWeAre() {
                           fill
                           style={{
                             objectFit: member.isPartner ? "contain" : "cover",
-                            objectPosition: member.isPartner ? "center" : "center top",
+                            objectPosition: member.isPartner
+                              ? "center"
+                              : "center top",
                           }}
                         />
                       </div>
                     </div>
 
                     {/* Member/Partner Info */}
-                    <div 
-                      style={{ 
-                        textAlign: "center", 
+                    <div
+                      style={{
+                        textAlign: "center",
                         flex: 1,
                         display: "flex",
                         flexDirection: "column",
-                        justifyContent: "space-between"
+                        justifyContent: "space-between",
                       }}
                     >
                       {/* Name and Section */}
@@ -489,7 +506,13 @@ export default function WhoWeAre() {
                       </div>
 
                       {/* About/Description */}
-                      <div style={{ flex: 1, display: "flex", alignItems: "center" }}>
+                      <div
+                        style={{
+                          flex: 1,
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
                         <p
                           style={{
                             fontSize: "0.85rem",
@@ -535,100 +558,106 @@ export default function WhoWeAre() {
                     </div>
                   </motion.div>
                 </SwiperSlide>
-            ))}
-          </Swiper>
+              ))}
+            </Swiper>
 
-          {/* Custom Navigation Buttons */}
-          {allCards.length > 4 && (
-            <>
-              <button
-                className="swiper-button-prev-team"
-                style={{
-                  position: "absolute",
-                  left: "-1.5rem",
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  background: "rgba(255, 255, 255, 0.95)",
-                  backdropFilter: "blur(10px)",
-                  border: "1px solid rgba(82, 183, 136, 0.2)",
-                  borderRadius: "50%",
-                  width: "50px",
-                  height: "50px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  cursor: "pointer",
-                  fontSize: "1.5rem",
-                  color: "#1b4332",
-                  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                  zIndex: 10,
-                  boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "#52b788";
-                  e.currentTarget.style.color = "#ffffff";
-                  e.currentTarget.style.transform = "translateY(-50%) scale(1.1)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "rgba(255, 255, 255, 0.95)";
-                  e.currentTarget.style.color = "#1b4332";
-                  e.currentTarget.style.transform = "translateY(-50%) scale(1)";
-                }}
-              >
-                ‹
-              </button>
-              <button
-                className="swiper-button-next-team"
-                style={{
-                  position: "absolute",
-                  right: "-1.5rem",
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  background: "rgba(255, 255, 255, 0.95)",
-                  backdropFilter: "blur(10px)",
-                  border: "1px solid rgba(82, 183, 136, 0.2)",
-                  borderRadius: "50%",
-                  width: "50px",
-                  height: "50px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  cursor: "pointer",
-                  fontSize: "1.5rem",
-                  color: "#1b4332",
-                  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                  zIndex: 10,
-                  boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "#52b788";
-                  e.currentTarget.style.color = "#ffffff";
-                  e.currentTarget.style.transform = "translateY(-50%) scale(1.1)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "rgba(255, 255, 255, 0.95)";
-                  e.currentTarget.style.color = "#1b4332";
-                  e.currentTarget.style.transform = "translateY(-50%) scale(1)";
-                }}
-              >
-                ›
-              </button>
-            </>
-          )}
+            {/* Custom Navigation Buttons */}
+            {allCards.length > 4 && (
+              <>
+                <button
+                  className="swiper-button-prev-team"
+                  style={{
+                    position: "absolute",
+                    left: "-1.5rem",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    background: "rgba(255, 255, 255, 0.95)",
+                    backdropFilter: "blur(10px)",
+                    border: "1px solid rgba(82, 183, 136, 0.2)",
+                    borderRadius: "50%",
+                    width: "50px",
+                    height: "50px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    cursor: "pointer",
+                    fontSize: "1.5rem",
+                    color: "#1b4332",
+                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                    zIndex: 10,
+                    boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "#52b788";
+                    e.currentTarget.style.color = "#ffffff";
+                    e.currentTarget.style.transform =
+                      "translateY(-50%) scale(1.1)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background =
+                      "rgba(255, 255, 255, 0.95)";
+                    e.currentTarget.style.color = "#1b4332";
+                    e.currentTarget.style.transform =
+                      "translateY(-50%) scale(1)";
+                  }}
+                >
+                  ‹
+                </button>
+                <button
+                  className="swiper-button-next-team"
+                  style={{
+                    position: "absolute",
+                    right: "-1.5rem",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    background: "rgba(255, 255, 255, 0.95)",
+                    backdropFilter: "blur(10px)",
+                    border: "1px solid rgba(82, 183, 136, 0.2)",
+                    borderRadius: "50%",
+                    width: "50px",
+                    height: "50px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    cursor: "pointer",
+                    fontSize: "1.5rem",
+                    color: "#1b4332",
+                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                    zIndex: 10,
+                    boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "#52b788";
+                    e.currentTarget.style.color = "#ffffff";
+                    e.currentTarget.style.transform =
+                      "translateY(-50%) scale(1.1)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background =
+                      "rgba(255, 255, 255, 0.95)";
+                    e.currentTarget.style.color = "#1b4332";
+                    e.currentTarget.style.transform =
+                      "translateY(-50%) scale(1)";
+                  }}
+                >
+                  ›
+                </button>
+              </>
+            )}
 
-          {/* Custom Pagination */}
-          <div 
-            className="swiper-pagination-team"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: "0.8rem",
-              marginTop: "2rem",
-            }}
-          />
+            {/* Custom Pagination */}
+            <div
+              className="swiper-pagination-team"
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: "0.8rem",
+                marginTop: "2rem",
+              }}
+            />
+          </motion.div>
         </motion.div>
-      </motion.div>
       </motion.div>
     </section>
   );

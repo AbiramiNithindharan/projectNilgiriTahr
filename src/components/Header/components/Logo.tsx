@@ -9,16 +9,15 @@ interface LogoProps {
   isVisible?: boolean;
 }
 
-export default function Logo({ 
-  src, 
-  alt, 
-  size, 
-  delay = 0, 
-  isVisible = true 
+export default function Logo({
+  src,
+  alt,
+  size,
+  delay = 0,
+  isVisible = true,
 }: LogoProps) {
-  const dimensions = size === "small" 
-    ? "clamp(40px, 6vw, 50px)"
-    : "clamp(100px, 18vw, 90px)";
+  const dimensions =
+    size === "small" ? "clamp(40px, 6vw, 50px)" : "clamp(100px, 18vw, 90px)";
 
   return (
     <motion.div
@@ -34,6 +33,15 @@ export default function Logo({
         height: dimensions,
         position: "relative",
         transition: "all 0.3s ease",
+        cursor: "pointer",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = "scale(1.1)";
+        e.currentTarget.style.background = "rgba(27, 67, 50, 0.1)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = "scale(1)";
+        e.currentTarget.style.background = "transparent";
       }}
     >
       <Image
