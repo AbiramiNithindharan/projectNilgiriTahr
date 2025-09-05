@@ -12,6 +12,110 @@
   height: 100%;
 }
 
+/* --- News Ticker --- */
+.newsTicker {
+  position: absolute;
+  bottom: 1.5rem;
+
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 4rem);
+  max-width: 1200px;
+  height: 48px;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.65));
+  color: #fff;
+  font-family: Inter, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+  z-index: 20;
+  overflow: hidden;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Modern pill-style heading */
+.newsHeading {
+  background: linear-gradient(135deg, #ffb703, #ffdd57);
+  color: #111;
+  padding: 0.35rem 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  border-radius: 999px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25),
+    inset 0 1px 2px rgba(255, 255, 255, 0.4);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* optional: small glowing dot to make it feel "live" */
+.newsHeading::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff3b3b;
+  box-shadow: 0 0 6px #ff3b3b;
+  display: inline-block;
+}
+
+/* Track container with fade edges */
+.tickerWrapper {
+  --ticker-speed: 20s;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.tickerTrack {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  white-space: nowrap;
+  width: max-content;
+  will-change: transform;
+  animation: tickerScroll var(--ticker-speed) linear infinite;
+}
+
+/* Pause when hovered */
+.tickerWrapper:hover .tickerTrack {
+  animation-play-state: paused;
+}
+
+.newsItem {
+  flex: 0 0 auto;
+  opacity: 0.95;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.newsItem:hover {
+  opacity: 1;
+  color: #ffdd57;
+}
+
+/* Seamless looping */
+@keyframes tickerScroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+
 /* Mobile responsive adjustments */
 @media (max-width: 768px) {
   .banner {
@@ -27,20 +131,24 @@
 
 /* Custom animations */
 @keyframes float {
+
   0%,
   100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-10px);
   }
 }
 
 @keyframes pulse {
+
   0%,
   100% {
     opacity: 0.1;
   }
+
   50% {
     opacity: 0.2;
   }

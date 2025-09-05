@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, EffectFade } from 'swiper/modules';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, EffectFade } from "swiper/modules";
 import Image from "next/image";
-import 'swiper/css';
-import 'swiper/css/effect-fade';
-import 'swiper/css/autoplay';
+import "swiper/css";
+import "swiper/css/effect-fade";
+import "swiper/css/autoplay";
 import styles from "./Banner.module.css";
 
 interface BannerProps {
@@ -33,14 +33,23 @@ export default function Banner({
   // Banner images array
   const bannerImages = [
     {
-      src: "/banners/DJI_0036.jpg",
-      alt: "Nilgiri Tahr conservation work"
+      src: "/banners/DJI_0036.png",
+      alt: "Nilgiri Tahr conservation work",
     },
     {
       src: "/banners/Banner_2.jpg",
-      alt: "Western Ghats landscape"
-    }
+      alt: "Western Ghats landscape",
+    },
   ];
+  // Recent News
+  const recentNews = [
+    "Nilgiri Tahr spotted in new habitats across the Western Ghats.",
+    "Conservation project expands with community participation.",
+    "Government announces new measures for wildlife protection.",
+  ];
+
+  // Duplicate once for a seamless loop
+  const loopedNews = [...recentNews, ...recentNews];
 
   useEffect(() => {
     setIsClient(true);
@@ -65,11 +74,11 @@ export default function Banner({
       className={styles.banner}
       animate={bannerControls}
       initial={{ opacity: 1 }}
-      style={{ 
-        position: "relative", 
+      style={{
+        position: "relative",
         overflow: "hidden",
         height: "100vh",
-        background: "#000000"
+        background: "#000000",
       }}
     >
       {/* Swiper Background Carousel */}
@@ -147,20 +156,19 @@ export default function Banner({
             width: "100%",
             textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
             display: "flex",
-            flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
           }}
         >
-          <motion.div
-            initial={{ y: 80, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
+          {/* <motion.div
+            initial={{ y: -120, opacity: 0 }}
+            animate={{ y: 120, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <h1
               style={{
-                fontSize: "clamp(2.5rem, 10vw, 7rem)",
-                fontWeight: "900",
+                fontSize: "clamp(2rem, 10vw, 5rem)",
+                fontWeight: "500",
                 lineHeight: "0.9",
                 margin: "0",
                 fontFamily: "Inter, sans-serif",
@@ -168,19 +176,19 @@ export default function Banner({
                 textTransform: "lowercase",
               }}
             >
-              We're the
+              We're the Agency for the nilgiri tahr
             </h1>
           </motion.div>
-
-          <motion.div
-            initial={{ y: 80, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
+ */}
+          {/* <motion.div
+            initial={{ y: -80, opacity: 0 }}
+            animate={{ y: 120, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
             <h1
               style={{
-                fontSize: "clamp(2.5rem, 10vw, 7rem)",
-                fontWeight: "900",
+                fontSize: "clamp(2rem, 10vw, 5rem)",
+                fontWeight: "500",
                 lineHeight: "0.9",
                 margin: "-0.05em 0 0 0",
                 fontFamily: "Inter, sans-serif",
@@ -193,14 +201,14 @@ export default function Banner({
           </motion.div>
 
           <motion.div
-            initial={{ y: 80, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
+            initial={{ y: -120, opacity: 0 }}
+            animate={{ y: 120, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.7 }}
           >
             <h1
               style={{
-                fontSize: "clamp(2.5rem, 10vw, 7rem)",
-                fontWeight: "900",
+                fontSize: "clamp(2rem, 10vw, 5rem)",
+                fontWeight: "500",
                 lineHeight: "0.9",
                 margin: "-0.05em 0 0 0",
                 fontFamily: "Inter, sans-serif",
@@ -208,22 +216,19 @@ export default function Banner({
                 textTransform: "lowercase",
               }}
             >
-              for{" "}
-              <span style={{ marginLeft: "clamp(1.5rem, 5vw, 4rem)" }}>
-                the
-              </span>
+              for the
             </h1>
           </motion.div>
 
           <motion.div
-            initial={{ y: 80, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
+            initial={{ y: -80, opacity: 0 }}
+            animate={{ y: 120, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.9 }}
           >
             <h1
               style={{
-                fontSize: "clamp(2.5rem, 10vw, 7rem)",
-                fontWeight: "900",
+                fontSize: "clamp(2rem, 10vw, 5rem)",
+                fontWeight: "500",
                 lineHeight: "0.9",
                 margin: "-0.05em 0 0 0",
                 fontFamily: "Inter, sans-serif",
@@ -233,7 +238,7 @@ export default function Banner({
             >
               Nilgiri Tahr
             </h1>
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
 
@@ -258,9 +263,10 @@ export default function Banner({
             style={{
               width: "3px",
               height: activeIndex === index ? "40px" : "20px",
-              background: activeIndex === index 
-                ? "rgba(255, 255, 255, 0.9)" 
-                : "rgba(255, 255, 255, 0.3)",
+              background:
+                activeIndex === index
+                  ? "rgba(255, 255, 255, 0.9)"
+                  : "rgba(255, 255, 255, 0.3)",
               transition: "all 0.8s ease",
               borderRadius: "2px",
             }}
@@ -291,14 +297,14 @@ export default function Banner({
       >
         <span>SCROLL</span>
         <motion.div
-          animate={{ 
+          animate={{
             scaleX: [1, 1.8, 1],
-            opacity: [0.4, 1, 0.4]
+            opacity: [0.4, 1, 0.4],
           }}
-          transition={{ 
-            duration: 2.5, 
+          transition={{
+            duration: 2.5,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
           style={{
             width: "50px",
@@ -346,32 +352,33 @@ export default function Banner({
 
         {/* Vertical Line */}
         <motion.div
-          animate={{ 
+          animate={{
             scaleY: [1, 1.5, 1],
-            opacity: [0.4, 1, 0.4]
+            opacity: [0.4, 1, 0.4],
           }}
-          transition={{ 
-            duration: 2.8, 
+          transition={{
+            duration: 2.8,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
           style={{
             width: "2px",
             height: "80px",
-            background: "linear-gradient(to bottom, transparent, #ffffff, transparent)",
+            background:
+              "linear-gradient(to bottom, transparent, #ffffff, transparent)",
             transformOrigin: "center",
           }}
         />
 
         {/* Arrow Down */}
         <motion.div
-          animate={{ 
+          animate={{
             y: [0, 8, 0],
           }}
-          transition={{ 
-            duration: 2, 
+          transition={{
+            duration: 2,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
           style={{
             marginTop: "0.5rem",
@@ -382,6 +389,26 @@ export default function Banner({
           ↓
         </motion.div>
       </motion.div>
+
+      {/* Recent News Ticker */}
+
+      <div className={styles.newsTicker}>
+        <span className={styles.newsHeading}>Recent News</span>
+
+        {/* You can tweak speed via the CSS var below (e.g., 16s / 24s) */}
+        <div
+          className={styles.tickerWrapper}
+          style={{ ["--ticker-speed" as any]: "20s" }}
+        >
+          <div className={styles.tickerTrack}>
+            {loopedNews.map((news, i) => (
+              <span key={i} className={styles.newsItem}>
+                {news}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
     </motion.div>
   );
 }

@@ -2,12 +2,12 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay } from 'swiper/modules';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay } from "swiper/modules";
 import Image from "next/image";
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import styles from "./NewsRoom.module.css";
 
 export default function NewsRoom() {
@@ -18,44 +18,50 @@ export default function NewsRoom() {
       id: "press-release",
       title: "Press Release",
       count: 12,
-      description: "Official announcements and updates about Project Nilgiri Tahr conservation efforts and research findings.",
-      icon: "📰"
+      description:
+        "Official announcements and updates about Project Nilgiri Tahr conservation efforts and research findings.",
+      icon: "📰",
     },
     {
       id: "annual-reports",
-      title: "Annual Reports", 
+      title: "Annual Reports",
       count: 5,
-      description: "Comprehensive yearly reports documenting conservation progress, research outcomes, and project achievements.",
-      icon: "📊"
+      description:
+        "Comprehensive yearly reports documenting conservation progress, research outcomes, and project achievements.",
+      icon: "📊",
     },
     {
       id: "magazines",
       title: "Magazines",
       count: 18,
-      description: "Featured articles and stories about Nilgiri Tahr conservation in various wildlife and nature magazines.",
-      icon: "📖"
+      description:
+        "Featured articles and stories about Nilgiri Tahr conservation in various wildlife and nature magazines.",
+      icon: "📖",
     },
     {
       id: "newsletters",
-      title: "Newsletters", 
+      title: "Newsletters",
       count: 8,
-      description: "Regular updates and insights from our conservation work in the Western Ghats ecosystem.",
-      icon: "📧"
+      description:
+        "Regular updates and insights from our conservation work in the Western Ghats ecosystem.",
+      icon: "📧",
     },
     {
       id: "in-the-news",
       title: "In The News",
       count: 24,
-      description: "Media coverage and news articles featuring our Nilgiri Tahr conservation initiatives.",
-      icon: "📺"
+      description:
+        "Media coverage and news articles featuring our Nilgiri Tahr conservation initiatives.",
+      icon: "📺",
     },
     {
       id: "article-publication",
       title: "Article Publication",
       count: 16,
-      description: "Scientific papers and research publications documenting our conservation research and findings.",
-      icon: "📄"
-    }
+      description:
+        "Scientific papers and research publications documenting our conservation research and findings.",
+      icon: "📄",
+    },
   ];
 
   const recentNews = [
@@ -64,28 +70,31 @@ export default function NewsRoom() {
       title: "New Nilgiri Tahr Population Survey Reveals Promising Results",
       date: "December 15, 2024",
       category: "Press Release",
-      excerpt: "Latest comprehensive survey shows stable population growth in key conservation areas across the Western Ghats.",
+      excerpt:
+        "Latest comprehensive survey shows stable population growth in key conservation areas across the Western Ghats.",
       image: "/banners/DJI_0036.jpg",
-      readTime: "3 min read"
+      readTime: "3 min read",
     },
     {
-      id: "news-2", 
+      id: "news-2",
       title: "Community Conservation Programs Show Remarkable Success",
       date: "December 10, 2024",
       category: "In The News",
-      excerpt: "Local communities play crucial role in habitat restoration and Nilgiri Tahr protection efforts.",
+      excerpt:
+        "Local communities play crucial role in habitat restoration and Nilgiri Tahr protection efforts.",
       image: "/banners/DJI_0036.jpg",
-      readTime: "5 min read"
+      readTime: "5 min read",
     },
     {
       id: "news-3",
       title: "Research Publication: Habitat Preferences of Nilgiri Tahr",
-      date: "December 5, 2024", 
+      date: "December 5, 2024",
       category: "Article Publication",
-      excerpt: "New research reveals critical habitat requirements for sustainable Nilgiri Tahr conservation.",
+      excerpt:
+        "New research reveals critical habitat requirements for sustainable Nilgiri Tahr conservation.",
       image: "/banners/DJI_0036.jpg",
-      readTime: "8 min read"
-    }
+      readTime: "8 min read",
+    },
   ];
 
   const containerVariants = {
@@ -160,7 +169,7 @@ export default function NewsRoom() {
           {/* Main Heading */}
           <h2
             style={{
-              fontSize: "clamp(2.5rem, 5vw, 4rem)",
+              fontSize: "clamp(2rem, 5vw, 3rem)",
               fontWeight: "900",
               lineHeight: "1.1",
               margin: "0 0 2rem 0",
@@ -169,7 +178,8 @@ export default function NewsRoom() {
               letterSpacing: "-0.02em",
             }}
           >
-            News Room — stay updated with the latest conservation news, research findings, and community initiatives.
+            News Room — stay updated with the latest conservation news, research
+            findings, and community initiatives.
           </h2>
 
           {/* Description */}
@@ -183,7 +193,9 @@ export default function NewsRoom() {
               fontWeight: "400",
             }}
           >
-            Get the latest updates on our conservation work, research publications, media coverage, and community engagement initiatives protecting the Nilgiri Tahr.
+            Get the latest updates on our conservation work, research
+            publications, media coverage, and community engagement initiatives
+            protecting the Nilgiri Tahr.
           </p>
 
           {/* View All Button */}
@@ -289,8 +301,8 @@ export default function NewsRoom() {
             spaceBetween={24}
             slidesPerView={1}
             navigation={{
-              nextEl: '.swiper-button-next-categories',
-              prevEl: '.swiper-button-prev-categories',
+              nextEl: ".swiper-button-next-categories",
+              prevEl: ".swiper-button-prev-categories",
             }}
             autoplay={{
               delay: 4000,
@@ -358,7 +370,7 @@ export default function NewsRoom() {
                   >
                     {category.icon}
                   </div>
-                  
+
                   <div>
                     <h4
                       style={{
@@ -371,7 +383,7 @@ export default function NewsRoom() {
                     >
                       {category.title}
                     </h4>
-                    
+
                     <div
                       style={{
                         fontSize: "2rem",
@@ -383,7 +395,7 @@ export default function NewsRoom() {
                     >
                       {category.count}
                     </div>
-                    
+
                     <p
                       style={{
                         fontSize: "1rem",
@@ -431,10 +443,12 @@ export default function NewsRoom() {
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = "#52b788";
                   e.currentTarget.style.color = "#ffffff";
-                  e.currentTarget.style.transform = "translateY(-50%) scale(1.1)";
+                  e.currentTarget.style.transform =
+                    "translateY(-50%) scale(1.1)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "rgba(255, 255, 255, 0.95)";
+                  e.currentTarget.style.background =
+                    "rgba(255, 255, 255, 0.95)";
                   e.currentTarget.style.color = "#1b4332";
                   e.currentTarget.style.transform = "translateY(-50%) scale(1)";
                 }}
@@ -467,10 +481,12 @@ export default function NewsRoom() {
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = "#52b788";
                   e.currentTarget.style.color = "#ffffff";
-                  e.currentTarget.style.transform = "translateY(-50%) scale(1.1)";
+                  e.currentTarget.style.transform =
+                    "translateY(-50%) scale(1.1)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "rgba(255, 255, 255, 0.95)";
+                  e.currentTarget.style.background =
+                    "rgba(255, 255, 255, 0.95)";
                   e.currentTarget.style.color = "#1b4332";
                   e.currentTarget.style.transform = "translateY(-50%) scale(1)";
                 }}
@@ -483,9 +499,7 @@ export default function NewsRoom() {
       </motion.div>
 
       {/* Recent News Section */}
-      <motion.div
-        variants={itemVariants}
-      >
+      <motion.div variants={itemVariants}>
         <div
           style={{
             textAlign: "center",
@@ -495,7 +509,7 @@ export default function NewsRoom() {
           <div
             style={{
               fontSize: "1rem",
-              fontWeight: "600", 
+              fontWeight: "600",
               color: "#52b788",
               marginBottom: "1rem",
               fontFamily: "Inter, sans-serif",

@@ -219,8 +219,7 @@ export default function MissionVisionVictories() {
               fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
               fontWeight: "800",
               margin: "0 0 1rem 0",
-              background:
-                "linear-gradient(135deg, #081c15, #1b4332, #2d5016, #52b788)",
+              background: "black",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",

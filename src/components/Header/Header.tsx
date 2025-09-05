@@ -134,7 +134,9 @@ export default function Header({
           left: 0,
           right: 0,
           zIndex: 1000,
-          background: isScrolled ? "#0a0b0a5b" : "#0a0b0a41",
+          background: isScrolled
+            ? "rgba(10, 9, 9, 0.19)"
+            : "rgba(10, 9, 9, 0.19)",
           backdropFilter: isScrolled ? "none" : "none",
           borderBottom: isScrolled ? "none" : "none",
           boxShadow: isScrolled ? "none" : "none",

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
+import { AtomCategories } from "./components/AtomCategories";
 import styles from "./PhotoGallery.module.css";
 
 export default function PhotoGallery() {
@@ -213,7 +214,7 @@ export default function PhotoGallery() {
             {/* Main Heading */}
             <h2
               style={{
-                fontSize: "clamp(2.5rem, 5vw, 4rem)",
+                fontSize: "clamp(2rem, 5vw, 3rem)",
                 fontWeight: "900",
                 lineHeight: "1.1",
                 margin: "0 0 2rem 0",
@@ -337,9 +338,59 @@ export default function PhotoGallery() {
               Categories
             </h3>
           </div>
-
-          {/* Category Grid - Fixed Layout */}
           <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginBottom: "6rem",
+            }}
+          >
+            <AtomCategories onSelect={(id) => setSelectedCategory(id)} />
+          </div>
+
+          {/* <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginBottom: "6rem",
+            }}
+          >
+            <AtomGallery />
+          </div>
+ */}
+          {/* Category Grid - Fixed Layout */}
+          {/* Category Grid - Circle Style */}
+          {/* <div
+            className={styles.categoryGrid}
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
+              gap: "2rem",
+              justifyItems: "center",
+              marginBottom: "4rem",
+              maxWidth: "1000px",
+              margin: "0 auto 4rem auto",
+            }}
+          >
+            {categories.map((category) => (
+              <motion.button
+                key={category.id}
+                variants={itemVariants}
+                whileHover={{ scale: 1.1 }}
+                onClick={() => setSelectedCategory(category.id)}
+                className={`${styles.categoryCircle} ${
+                  selectedCategory === category.id ? styles.activeCategory : ""
+                }`}
+              >
+                <div className={styles.circleContent}>
+                  <div className={styles.circleLabel}>{category.label}</div>
+                  <div className={styles.circleCount}>{category.count}</div>
+                </div>
+              </motion.button>
+            ))}
+          </div> 
+ */}
+          {/* <div
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
@@ -412,11 +463,11 @@ export default function PhotoGallery() {
                 </div>
               </motion.button>
             ))}
-          </div>
+          </div> */}
         </motion.div>
 
         {/* Image Gallery Grid */}
-        <motion.div
+        {/* <motion.div
           variants={itemVariants}
           style={{
             marginBottom: "4rem",
@@ -444,9 +495,9 @@ export default function PhotoGallery() {
                   transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                   cursor: "pointer",
                 }}
-              >
-                {/* Image */}
-                <div
+              > */}
+        {/* Image */}
+        {/*                 <div
                   style={{
                     height: "250px",
                     width: "250px",
@@ -466,10 +517,10 @@ export default function PhotoGallery() {
                       transform:
                         hoveredImage === image.id ? "scale(1.1)" : "scale(1)",
                     }}
-                  />
+                  /> */}
 
-                  {/* Overlay on hover */}
-                  <div
+        {/* Overlay on hover */}
+        {/*                   <div
                     style={{
                       position: "absolute",
                       top: 0,
@@ -501,10 +552,10 @@ export default function PhotoGallery() {
                     >
                       🔍
                     </div>
-                  </div>
+                  </div> */}
 
-                  {/* Category Badge */}
-                  <div
+        {/* Category Badge */}
+        {/* <div
                     style={{
                       position: "absolute",
                       top: "1rem",
@@ -521,10 +572,10 @@ export default function PhotoGallery() {
                   >
                     {image.category}
                   </div>
-                </div>
+                </div> */}
 
-                {/* Image Info */}
-                <div
+        {/* Image Info */}
+        {/* <div
                   style={{
                     padding: "1.5rem",
                     display: "flex",
@@ -591,16 +642,16 @@ export default function PhotoGallery() {
               </motion.div>
             ))}
           </div>
-        </motion.div>
+        </motion.div> */}
 
         {/* Load More Section */}
-        <motion.div
+        {/* <motion.div
           variants={itemVariants}
           style={{
             textAlign: "center",
           }}
-        >
-          <motion.button
+        > */}
+        {/* <motion.button
             whileHover={{ scale: 1.05 }}
             style={{
               background: "linear-gradient(135deg, #52b788, #40916c)",
@@ -619,8 +670,8 @@ export default function PhotoGallery() {
             }}
           >
             LOAD MORE IMAGES
-          </motion.button>
-        </motion.div>
+          </motion.button> */}
+        {/* </motion.div> */}
       </div>
     </motion.section>
   );

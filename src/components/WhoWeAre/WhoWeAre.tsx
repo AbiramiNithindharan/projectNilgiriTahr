@@ -224,7 +224,7 @@ export default function WhoWeAre() {
           {/* Main Heading */}
           <h2
             style={{
-              fontSize: "clamp(2.5rem, 5vw, 4rem)",
+              fontSize: "clamp(2rem, 5vw, 3rem)",
               fontWeight: "900",
               lineHeight: "1.1",
               margin: "0 0 2rem 0",

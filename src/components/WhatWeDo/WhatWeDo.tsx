@@ -136,7 +136,7 @@ export default function WhatWeDo() {
           {/* Main Heading */}
           <h2
             style={{
-              fontSize: "clamp(2.5rem, 5vw, 4rem)",
+              fontSize: "clamp(2rem, 5vw, 3rem)",
               fontWeight: "900",
               lineHeight: "1.1",
               margin: "0 0 2rem 0",
@@ -211,8 +211,8 @@ export default function WhatWeDo() {
         >
           <div
             style={{
-              fontSize: "clamp(4rem, 12vw, 10rem)",
-              fontWeight: "900",
+              fontSize: "clamp(3rem, 12vw, 8rem)",
+              fontWeight: "700",
               fontFamily: "Inter, sans-serif",
               letterSpacing: "-0.05em",
               textTransform: "uppercase",

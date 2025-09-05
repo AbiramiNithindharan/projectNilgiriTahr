@@ -200,7 +200,7 @@ export default function WhereWeWork() {
           </div>
           <h2
             style={{
-              fontSize: "clamp(2.5rem, 5vw, 4rem)",
+              fontSize: "clamp(2rem, 5vw, 3rem)",
               fontWeight: "900",
               lineHeight: "1.1",
               margin: "0 0 2rem 0",
@@ -326,7 +326,7 @@ export default function WhereWeWork() {
               fontSize: "clamp(1.8rem, 4vw, 2.5rem)",
               fontWeight: "700",
               margin: "0 0 3rem 0",
-              color: "#1b4332",
+              color: "#f6f9f8ff",
               fontFamily: "Poppins, sans-serif",
               textAlign: "center",
             }}
