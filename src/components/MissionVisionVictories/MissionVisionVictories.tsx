@@ -51,21 +51,21 @@ export default function MissionVisionVictories() {
       title: "Survey 2024",
       icon: "📊",
       content:
-        "Comprehensive population survey conducted across all Nilgiri Tahr habitats, documenting current distribution patterns and population dynamics to inform conservation strategies.",
+        "A comprehensive survey was conducted in the year 2024, across Nilgiri Tahr habitats, documenting their population size, distribution patterns, and habitat use to strengthen long-term conservation strategies.",
     },
     {
       id: "radio-collaring",
       title: "Radio Collaring",
       icon: "📡",
       content:
-        "Advanced radio collaring program to track individual animals, understand movement patterns, and monitor behavior for effective habitat management and protection.",
+        "Radio-collaring Nilgiri Tahr to track their movements, habitat use, and behavior, providing vital insights for science-based conservation and management.",
     },
     {
       id: "survey-2025",
       title: "Survey 2025",
       icon: "🔬",
       content:
-        "Planned extensive field survey using cutting-edge technology and community participation to assess conservation progress and plan future protection measures.",
+        "The 2025 Nilgiri Tahr survey continues our mission to monitor populations across key habitats, updating trends in distribution, numbers, and health to guide future conservation action",
     },
   ];
 
@@ -249,9 +249,9 @@ export default function MissionVisionVictories() {
               fontWeight: "400",
             }}
           >
-            Key milestones and ongoing initiatives showcasing our conservation
-            progress
-            <br /> and commitment to protecting the Nilgiri Tahr.
+            “From surveying rugged peaks to restoring grasslands and building
+            bonds with communities, our success stories reflect every step taken
+            to secure a future for the Nilgiri Tahr.”
           </p>
         </motion.div>
 

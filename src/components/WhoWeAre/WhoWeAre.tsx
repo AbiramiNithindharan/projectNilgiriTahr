@@ -13,9 +13,16 @@ import styles from "./WhoWeAre.module.css";
 interface TeamMember {
   name: string;
   image: string;
+
   about: string;
   isPartner?: boolean;
   website?: string;
+}
+
+interface Card extends TeamMember {
+  section: string;
+  description?: string; // optional, because partners don’t have one
+  isPartner?: boolean;
 }
 
 interface Partner {
@@ -27,6 +34,7 @@ interface Partner {
 interface TeamSection {
   id: string;
   title: string;
+  description: string;
   members: TeamMember[];
   partners?: Partner[];
 }
@@ -38,6 +46,7 @@ export default function WhoWeAre() {
     {
       id: "board-members",
       title: "Board Members",
+      description: "Guiding our mission with vision and expertise.",
       members: [
         {
           name: "Thiru.M.G.Ganesan",
@@ -56,6 +65,7 @@ export default function WhoWeAre() {
     {
       id: "research-team",
       title: "Research Team",
+      description: "On the ground, uncovering insights for conservation.",
       members: [
         {
           name: "Dr.M.Ashok Kumar",
@@ -74,6 +84,8 @@ export default function WhoWeAre() {
     {
       id: "scientific-committee",
       title: "Scientific Committee",
+      description:
+        "Knowledge behind the breakthroughs in the Nilgiri Tahr conservation.",
       members: [
         {
           name: "K.Manigandan",
@@ -98,6 +110,7 @@ export default function WhoWeAre() {
     {
       id: "our-partners",
       title: "Our Partners",
+      description: "joining hands to safe guard the Nilgiri Tahr.",
       members: [],
       partners: [
         {
@@ -115,16 +128,17 @@ export default function WhoWeAre() {
   ];
 
   // Flatten all members from all sections
-  const allMembers = teamSections.reduce((acc, section) => {
-    const sectionMembers = section.members.map((member) => ({
+  const allMembers: Card[] = teamSections.reduce<Card[]>((acc, section) => {
+    const sectionMembers: Card[] = section.members.map((member) => ({
       ...member,
       section: section.title,
+      description: section.description,
     }));
     return [...acc, ...sectionMembers];
-  }, [] as (TeamMember & { section: string })[]);
+  }, []);
 
   // Add partners as special cards
-  const partnerCards =
+  const partnerCards: Card[] =
     teamSections
       .find((s) => s.id === "our-partners")
       ?.partners?.map((partner) => ({
@@ -136,7 +150,7 @@ export default function WhoWeAre() {
         website: partner.website,
       })) || [];
 
-  const allCards = [...allMembers, ...partnerCards];
+  const allCards: Card[] = [...allMembers, ...partnerCards];
 
   return (
     <section
@@ -326,9 +340,9 @@ export default function WhoWeAre() {
                 fontFamily: "Inter, sans-serif",
               }}
             >
-              Meet the dedicated professionals working tirelessly to protect and
-              preserve the Nilgiri Tahr through scientific research and
-              conservation efforts.
+              A dedicated team of researchers, forest staff, veterinarians, and
+              community partners working together to safeguard the future of the
+              Nilgiri Tahr.
             </p>
           </div>
 
@@ -502,6 +516,19 @@ export default function WhoWeAre() {
                           }}
                         >
                           {member.section}
+                        </p>
+                        <p
+                          style={{
+                            fontSize: "0.9rem",
+                            fontWeight: "400",
+                            margin: "0 0 1rem 0",
+                            color: "#52b788",
+                            fontFamily: "Poppins, sans-serif",
+                            lineHeight: "1.3",
+                            minHeight: "1.8rem",
+                          }}
+                        >
+                          {member.description}
                         </p>
                       </div>
 

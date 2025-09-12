@@ -37,7 +37,7 @@ export default function Home() {
         isVisible={showHeader}
       />
       <Banner
-        imageSrc="/banners/DJI_0036.jpg"
+        imageSrc="/banners/final-banner-image.jpg"
         onAnimationComplete={handleBannerAnimationComplete}
       />
       <MissionVisionVictories />

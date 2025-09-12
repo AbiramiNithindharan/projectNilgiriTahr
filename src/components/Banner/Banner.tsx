@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -7,6 +9,7 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/autoplay";
 import styles from "./Banner.module.css";
+import Link from "next/link";
 
 interface BannerProps {
   imageSrc: string;
@@ -33,12 +36,14 @@ export default function Banner({
   // Banner images array
   const bannerImages = [
     {
-      src: "/banners/DJI_0036.png",
+      src: "/banners/final-banner-image.jpg",
       alt: "Nilgiri Tahr conservation work",
+      link: "/conservation", // 👈 unique page for this slide
     },
     {
       src: "/banners/Banner_2.jpg",
       alt: "Western Ghats landscape",
+      link: "/projects", // 👈 unique page for this slide
     },
   ];
   // Recent News
@@ -127,6 +132,36 @@ export default function Banner({
                     objectFit: "cover",
                   }}
                 />
+                {/* Know More Button */}
+                {activeIndex === index && (
+                  <Link href={image.link} style={{ textDecoration: "none" }}>
+                    <motion.button
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      animate={{ y: [0, -5, 0] }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                      style={{
+                        position: "absolute",
+                        bottom: "13%",
+                        left: "60%",
+                        transform: "translateX(-50%)",
+                        padding: "0.8rem 2rem",
+                        background: "linear-gradient(135deg, #ffb703, #ffdd57)",
+                        color: "#111",
+                        borderRadius: "50px",
+                        fontWeight: "600",
+                        cursor: "pointer",
+                        border: "none",
+                      }}
+                    >
+                      Know More
+                    </motion.button>
+                  </Link>
+                )}
               </div>
             </SwiperSlide>
           ))}
@@ -147,8 +182,37 @@ export default function Banner({
           padding: "120px clamp(2rem, 5vw, 4rem) 0",
         }}
       >
+        {/* <motion.a
+          href="#about"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          animate={{ y: [0, -5, 0] }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          style={{
+            display: "inline-block",
+            marginTop: "22rem",
+            marginLeft: "300px",
+            padding: "0.9rem 2.2rem",
+            borderRadius: "50px",
+            background: "linear-gradient(135deg, #ffb703, #ffdd57)",
+            color: "#111",
+            fontWeight: 600,
+            textTransform: "uppercase",
+            fontSize: "0.95rem",
+            letterSpacing: "0.08em",
+            boxShadow: "0 6px 14px rgba(0,0,0,0.25)",
+            cursor: "pointer",
+            textDecoration: "none",
+          }}
+        >
+          Know More
+        </motion.a> */}
         {/* Large Typography - Centered */}
-        <div
+        {/* <div
           style={{
             textAlign: "center",
             color: "#ffffff",
@@ -159,87 +223,7 @@ export default function Banner({
             alignItems: "center",
             justifyContent: "center",
           }}
-        >
-          {/* <motion.div
-            initial={{ y: -120, opacity: 0 }}
-            animate={{ y: 120, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            <h1
-              style={{
-                fontSize: "clamp(2rem, 10vw, 5rem)",
-                fontWeight: "500",
-                lineHeight: "0.9",
-                margin: "0",
-                fontFamily: "Inter, sans-serif",
-                letterSpacing: "-0.04em",
-                textTransform: "lowercase",
-              }}
-            >
-              We're the Agency for the nilgiri tahr
-            </h1>
-          </motion.div>
- */}
-          {/* <motion.div
-            initial={{ y: -80, opacity: 0 }}
-            animate={{ y: 120, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-          >
-            <h1
-              style={{
-                fontSize: "clamp(2rem, 10vw, 5rem)",
-                fontWeight: "500",
-                lineHeight: "0.9",
-                margin: "-0.05em 0 0 0",
-                fontFamily: "Inter, sans-serif",
-                letterSpacing: "-0.04em",
-                textTransform: "lowercase",
-              }}
-            >
-              Agency
-            </h1>
-          </motion.div>
-
-          <motion.div
-            initial={{ y: -120, opacity: 0 }}
-            animate={{ y: 120, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-          >
-            <h1
-              style={{
-                fontSize: "clamp(2rem, 10vw, 5rem)",
-                fontWeight: "500",
-                lineHeight: "0.9",
-                margin: "-0.05em 0 0 0",
-                fontFamily: "Inter, sans-serif",
-                letterSpacing: "-0.04em",
-                textTransform: "lowercase",
-              }}
-            >
-              for the
-            </h1>
-          </motion.div>
-
-          <motion.div
-            initial={{ y: -80, opacity: 0 }}
-            animate={{ y: 120, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
-          >
-            <h1
-              style={{
-                fontSize: "clamp(2rem, 10vw, 5rem)",
-                fontWeight: "500",
-                lineHeight: "0.9",
-                margin: "-0.05em 0 0 0",
-                fontFamily: "Inter, sans-serif",
-                letterSpacing: "-0.04em",
-                textTransform: "lowercase",
-              }}
-            >
-              Nilgiri Tahr
-            </h1>
-          </motion.div> */}
-        </div>
+        ></div> */}
       </div>
 
       {/* Progress Indicators */}
