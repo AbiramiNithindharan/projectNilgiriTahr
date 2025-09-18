@@ -9,24 +9,16 @@ import MissionVisionVictories from "../components/MissionVisionVictories/Mission
 import WhereWeWork from "../components/WhereWeWork/WhereWeWork";
 import NewsRoom from "../components/NewsRoom/NewsRoom";
 import PhotoGallery from "../components/PhotoGallery/PhotoGallery";
-import FilmSection from "../components/FilmSection/FilmSection";
 import styles from "./page.module.css";
 
 export default function Home() {
   const [showHeader, setShowHeader] = useState(false);
 
-  const handleMenuClick = () => {
-    console.log("Menu clicked!");
-    // Add your menu functionality here
-  };
-
-  const handleContactClick = () => {
-    console.log("Contact Us clicked!");
-    // Add your contact functionality here
-  };
+  const handleMenuClick = () => console.log("Menu clicked!");
+  const handleContactClick = () => console.log("Contact Us clicked!");
 
   const handleBannerAnimationComplete = () => {
-    setShowHeader(true);
+    setShowHeader(true); // ✅ reveal header only after banner
   };
 
   return (

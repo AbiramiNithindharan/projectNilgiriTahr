@@ -38,12 +38,12 @@ export default function Banner({
     {
       src: "/banners/final-banner-image.jpg",
       alt: "Nilgiri Tahr conservation work",
-      link: "/conservation", // 👈 unique page for this slide
+      link: "/banner-content-1", // 👈 unique page for this slide
     },
     {
       src: "/banners/Banner_2.jpg",
       alt: "Western Ghats landscape",
-      link: "/projects", // 👈 unique page for this slide
+      link: "/banner-content-2", // 👈 unique page for this slide
     },
   ];
   // Recent News
@@ -123,107 +123,73 @@ export default function Banner({
                   height: "100%",
                 }}
               >
+                {/* Background Image */}
                 <Image
                   src={image.src}
                   alt={image.alt}
                   fill
-                  priority={index === 0}
+                  priority
+                  sizes="100vw"
                   style={{
                     objectFit: "cover",
                   }}
                 />
-                {/* Know More Button */}
+
+                {/* Overlay content (always above image) */}
                 {activeIndex === index && (
-                  <Link href={image.link} style={{ textDecoration: "none" }}>
-                    <motion.button
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      animate={{ y: [0, -5, 0] }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                      }}
-                      style={{
-                        position: "absolute",
-                        bottom: "13%",
-                        left: "60%",
-                        transform: "translateX(-50%)",
-                        padding: "0.8rem 2rem",
-                        background: "linear-gradient(135deg, #ffb703, #ffdd57)",
-                        color: "#111",
-                        borderRadius: "50px",
-                        fontWeight: "600",
-                        cursor: "pointer",
-                        border: "none",
-                      }}
-                    >
-                      Know More
-                    </motion.button>
-                  </Link>
+                  <div
+                    style={{
+                      position: "absolute",
+                      bottom: "13%",
+                      left: "80%",
+                      transform: "translateX(-50%)",
+                      zIndex: 999999, // 👈 higher than next/image span
+                      pointerEvents: "auto",
+                    }}
+                  >
+                    <Link href={image.link} style={{ textDecoration: "none" }}>
+                      <motion.button
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.95 }}
+                        animate={{ y: [0, -5, 0] }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                        }}
+                        style={{
+                          background: "#000000",
+                          border: "2px solid #ffffff",
+                          color: "#ffffff",
+                          padding: "1rem 2rem",
+                          fontSize: "1rem",
+                          fontWeight: "600",
+                          fontFamily: "Inter, sans-serif",
+                          textTransform: "uppercase",
+                          letterSpacing: "0.1em",
+                          cursor: "pointer",
+                          transition: "all 0.3s ease",
+                          marginTop: "2rem",
+                          position: "relative",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = "#ffffff";
+                          e.currentTarget.style.color = "#000000";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = "transparent";
+                          e.currentTarget.style.color = "#ffffff";
+                        }}
+                      >
+                        KNOW MORE
+                      </motion.button>
+                    </Link>
+                  </div>
                 )}
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
-      </div>
-
-      {/* Main Content Container */}
-      <div
-        style={{
-          position: "relative",
-          zIndex: 10,
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          maxWidth: "1400px",
-          margin: "0 auto",
-          padding: "120px clamp(2rem, 5vw, 4rem) 0",
-        }}
-      >
-        {/* <motion.a
-          href="#about"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          animate={{ y: [0, -5, 0] }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          style={{
-            display: "inline-block",
-            marginTop: "22rem",
-            marginLeft: "300px",
-            padding: "0.9rem 2.2rem",
-            borderRadius: "50px",
-            background: "linear-gradient(135deg, #ffb703, #ffdd57)",
-            color: "#111",
-            fontWeight: 600,
-            textTransform: "uppercase",
-            fontSize: "0.95rem",
-            letterSpacing: "0.08em",
-            boxShadow: "0 6px 14px rgba(0,0,0,0.25)",
-            cursor: "pointer",
-            textDecoration: "none",
-          }}
-        >
-          Know More
-        </motion.a> */}
-        {/* Large Typography - Centered */}
-        {/* <div
-          style={{
-            textAlign: "center",
-            color: "#ffffff",
-            maxWidth: "100%",
-            width: "100%",
-            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        ></div> */}
       </div>
 
       {/* Progress Indicators */}

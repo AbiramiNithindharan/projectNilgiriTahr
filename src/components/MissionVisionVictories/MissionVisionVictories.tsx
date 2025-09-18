@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { easeOut } from "framer-motion";
 import styles from "./MissionVisionVictories.module.css";
+import Link from "next/link";
 
 export default function MissionVisionVictories() {
   const containerVariants = {
@@ -34,14 +35,14 @@ export default function MissionVisionVictories() {
       title: "Our Vision",
       icon: "🦌",
       content:
-        "Our vision is to be a hub for passionate individuals, conservationists, and communities united in their commitment to safeguarding the Nilgiri tahr and its unique ecosystem.",
+        "We envision a living sanctuary of collaboration, where people and nature come together in harmony. A place where conservationists, communities, and dreamers unite to protect the Nilgiri Tahr — the mountain monarch of the Western Ghats — and the delicate tapestry of life it represents. Through shared wisdom and collective action, we aspire to see these misty highlands flourish, with thriving herds roaming free as symbols of resilience, hope, and balance. Our vision is a future, where protecting the Nilgiri Tahr becomes a legacy of care passed down through generations.",
     },
     {
       id: "our-mission",
       title: "Our Mission",
       icon: "🌿",
       content:
-        "Our mission is to champion the conservation and protection of Nilgiri tahr, an iconic species endemic to the Western Ghats of Tamil Nadu.",
+        "Our mission is to guard the Nilgiri Tahr, an ancient and enduring spirit of the mountains, with science as our guide and communities as our strength. We strive to heal the grasslands, restore lost habitats, and safeguard these wild beings from the threats of a changing world. By weaving together research, education, and local stewardship, we seek to create landscapes where wildlife and people coexist in harmony. In protecting the Nilgiri Tahr, we protect the heart of the Western Ghats — ensuring its mist-clad peaks continue to echo with life for centuries to come.",
     },
   ];
 
@@ -264,84 +265,90 @@ export default function MissionVisionVictories() {
           }}
         >
           {victories.map((victory, index) => (
-            <motion.div
+            <Link
               key={victory.id}
-              variants={sectionVariants}
-              whileHover={{
-                y: -8,
-                scale: 1.02,
-                transition: { duration: 0.2 },
-              }}
-              style={{
-                background: "rgba(255, 255, 255, 0.95)",
-                backdropFilter: "blur(15px)",
-                borderRadius: "16px",
-                padding: "2.5rem 2rem",
-                textAlign: "center",
-                boxShadow: "0 8px 32px rgba(27, 67, 50, 0.08)",
-                border: "1px solid rgba(255, 255, 255, 0.3)",
-                transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                cursor: "pointer",
-                position: "relative",
-                overflow: "hidden",
-              }}
+              href={`/victory-sections/${victory.id}`} // each card links to /sections/[id]
+              style={{ textDecoration: "none" }}
             >
-              {/* Subtle background pattern */}
-              <div
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  right: 0,
-                  width: "100px",
-                  height: "100px",
-                  background:
-                    "linear-gradient(45deg, rgba(82, 183, 136, 0.05), transparent)",
-                  borderRadius: "0 16px 0 100px",
+              <motion.div
+                key={victory.id}
+                variants={sectionVariants}
+                whileHover={{
+                  y: -8,
+                  scale: 1.02,
+                  transition: { duration: 0.2 },
                 }}
-              />
-
-              <div
                 style={{
-                  fontSize: "3.5rem",
-                  marginBottom: "1.5rem",
-                  filter: "drop-shadow(0 4px 8px rgba(27, 67, 50, 0.2))",
+                  background: "rgba(255, 255, 255, 0.95)",
+                  backdropFilter: "blur(15px)",
+                  borderRadius: "16px",
+                  padding: "2.5rem 2rem",
+                  textAlign: "center",
+                  boxShadow: "0 8px 32px rgba(27, 67, 50, 0.08)",
+                  border: "1px solid rgba(255, 255, 255, 0.3)",
+                  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                  cursor: "pointer",
                   position: "relative",
-                  zIndex: 2,
+                  overflow: "hidden",
                 }}
               >
-                {victory.icon}
-              </div>
+                {/* Subtle background pattern */}
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    right: 0,
+                    width: "100px",
+                    height: "100px",
+                    background:
+                      "linear-gradient(45deg, rgba(82, 183, 136, 0.05), transparent)",
+                    borderRadius: "0 16px 0 100px",
+                  }}
+                />
 
-              <h3
-                style={{
-                  fontSize: "clamp(1.3rem, 2.5vw, 1.6rem)",
-                  fontWeight: "700",
-                  color: "#1b4332",
-                  marginBottom: "1.5rem",
-                  fontFamily: "Poppins, sans-serif",
-                  position: "relative",
-                  zIndex: 2,
-                }}
-              >
-                {victory.title}
-              </h3>
+                <div
+                  style={{
+                    fontSize: "3.5rem",
+                    marginBottom: "1.5rem",
+                    filter: "drop-shadow(0 4px 8px rgba(27, 67, 50, 0.2))",
+                    position: "relative",
+                    zIndex: 2,
+                  }}
+                >
+                  {victory.icon}
+                </div>
 
-              <p
-                style={{
-                  fontSize: "clamp(0.95rem, 2vw, 1.05rem)",
-                  lineHeight: "1.6",
-                  color: "#2d5016",
-                  fontFamily: "Poppins, sans-serif",
-                  fontWeight: "400",
-                  margin: "0",
-                  opacity: 0.9,
-                  position: "relative",
-                  zIndex: 2,
-                }}
-              >
-                {victory.content}
-              </p>
-            </motion.div>
+                <h3
+                  style={{
+                    fontSize: "clamp(1.3rem, 2.5vw, 1.6rem)",
+                    fontWeight: "700",
+                    color: "#1b4332",
+                    marginBottom: "1.5rem",
+                    fontFamily: "Poppins, sans-serif",
+                    position: "relative",
+                    zIndex: 2,
+                  }}
+                >
+                  {victory.title}
+                </h3>
+
+                <p
+                  style={{
+                    fontSize: "clamp(0.95rem, 2vw, 1.05rem)",
+                    lineHeight: "1.6",
+                    color: "#2d5016",
+                    fontFamily: "Poppins, sans-serif",
+                    fontWeight: "400",
+                    margin: "0",
+                    opacity: 0.9,
+                    position: "relative",
+                    zIndex: 2,
+                  }}
+                >
+                  {victory.content}
+                </p>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </div>

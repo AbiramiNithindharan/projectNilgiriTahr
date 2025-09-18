@@ -61,6 +61,55 @@ export default function WhatWeDo() {
       sectionId: "policy-advocacy",
       image: "/images/policy-advocacy.jpg",
     },
+    {
+      title: "BIENNIAL SYNCHRONISED SURVEY",
+      description:
+        "Coordinated, synchronized surveys would help in delineating the actual distributional areas, current population, evaluating conservation challenges and getting an effective population enumeration.",
+      sectionId: "biennial-synchronized-survey",
+      image: "/images/conservation-research.jpg",
+    },
+    {
+      title: "TRANQUILIZATION AND COLLARING",
+      description:
+        "Radio collaring helps to understand the animal movement pattern, habitat use, home range and behaviour of the collared individuals across the divisions.",
+      sectionId: "tranquilization-and-collaring",
+      image: "/images/conservation-research.jpg",
+    },
+    {
+      title: "REINTRODUCTION AND MONITORING",
+      description:
+        "Reintroduced populations would be extensively monitored to understand the adaptation and challenges in the process.",
+      sectionId: "reintroduction-and-monitoring",
+      image: "/images/conservation-research.jpg",
+    },
+    {
+      title: "DIAGNOSIS AND TREATMENT",
+      description:
+        "Based on the pathological analysis and diagnostics for abnormal swellings, suggested preventive measures, treatment plans could be adopted for the affected animals across various divisions",
+      sectionId: "diagnosis-and-treatment",
+      image: "/images/conservation-research.jpg",
+    },
+    {
+      title: "SHOLA GRASSLAND RESTORATION PILOT ",
+      description:
+        "Grassland restoration work involving removal of invasive species and planting of native Grass species in Nilgiri Tahr habitats which lead to substantial improvements in the hydrology of the region.",
+      sectionId: "shola-grassland-restoration-pilot",
+      image: "/images/conservation-research.jpg",
+    },
+    {
+      title: "IMPLEMENTATION OF ECO-TOURISM PROGRAMMES",
+      description:
+        "These eco-tourism centres will enable the students and public to understand the conservation significance and ecological importance of the endemic mammal, Nilgiri tahr.",
+      sectionId: "implementation-of-eco-tourism-programmes",
+      image: "/images/conservation-research.jpg",
+    },
+    {
+      title: "COMMUNICATION AND OUTREACH",
+      description:
+        "Outreach programmes shall be organized to exhibit the conservation value of this species at educational institutions, media and among citizens hence leading to the successful community-based conservation of Nilgiri Tahr.",
+      sectionId: "communication-and-outreach",
+      image: "/images/conservation-research.jpg",
+    },
   ];
 
   return (
@@ -378,9 +427,16 @@ export default function WhatWeDo() {
                       {card.title.includes("Research") && "🔬"}
                       {card.title.includes("Habitat") && "🌱"}
                       {card.title.includes("Community") && "🤝"}
+                      {card.title.includes("COMMUNICATION") && "🤝"}
                       {card.title.includes("Monitoring") && "📊"}
+                      {card.title.includes("MONITORING") && "📊"}
+                      {card.title.includes("SURVEY") && "📊"}
                       {card.title.includes("Documentation") && "📋"}
                       {card.title.includes("Policy") && "📜"}
+                      {card.title.includes("COLLARING") && "🦌"}
+                      {card.title.includes("TREATMENT") && "🏥"}
+                      {card.title.includes("GRASSLAND") && "🌱"}
+                      {card.title.includes("ECO-TOURISM") && "📈"}
 
                       {/* Overlay for image placeholder */}
                       <div

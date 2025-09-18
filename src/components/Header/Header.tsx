@@ -143,7 +143,7 @@ export default function Header({
           padding: isScrolled ? "0.5rem 2rem" : "1rem 2rem",
           minHeight: isScrolled ? "70px" : "100px",
           willChange: "transform, opacity",
-          transition: "all 0.3s ease",
+          transition: "all 0.2s ease",
         }}
       >
         <div

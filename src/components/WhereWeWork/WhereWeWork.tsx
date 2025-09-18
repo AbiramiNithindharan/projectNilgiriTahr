@@ -9,6 +9,8 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import styles from "./WhereWeWork.module.css";
 import Image from "next/image";
+import { administrativeAreas } from "@/data/administrativeAreas";
+import Link from "next/link";
 
 export default function WhereWeWork() {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
@@ -40,73 +42,6 @@ export default function WhereWeWork() {
       icon: "🌿",
       details:
         "Rich biodiversity zones supporting the broader ecosystem of the Western Ghats.",
-    },
-  ];
-
-  const administrativeAreas = [
-    {
-      id: "districts",
-      title: "Districts",
-      description:
-        "Administrative districts across Tamil Nadu and Kerala where Nilgiri Tahr populations are found and protected.",
-      icon: "🏛️",
-      type: "administrative",
-    },
-    {
-      id: "circles",
-      title: "Circles",
-      description:
-        "Forest department circles responsible for Nilgiri Tahr conservation and habitat management.",
-      icon: "⭕",
-      type: "administrative",
-    },
-    {
-      id: "divisions",
-      title: "Divisions",
-      description:
-        "Forest divisions implementing on-ground conservation activities for Nilgiri Tahr protection.",
-      icon: "🗂️",
-      type: "administrative",
-    },
-    {
-      id: "biosphere-reserves",
-      title: "Biosphere Reserves",
-      description:
-        "UNESCO Biosphere Reserves protecting critical Nilgiri Tahr habitats and promoting sustainable development.",
-      icon: "🌍",
-      type: "protected",
-    },
-    {
-      id: "tiger-reserves",
-      title: "Tiger Reserves",
-      description:
-        "Tiger reserves that also protect Nilgiri Tahr populations as part of their comprehensive wildlife conservation efforts.",
-      icon: "🐅",
-      type: "protected",
-    },
-    {
-      id: "elephant-reserves",
-      title: "Elephant Reserves",
-      description:
-        "Elephant reserves where Nilgiri Tahr share habitat space, creating integrated conservation landscapes.",
-      icon: "🐘",
-      type: "protected",
-    },
-    {
-      id: "national-parks",
-      title: "National Parks",
-      description:
-        "National parks providing the highest level of protection for Nilgiri Tahr and their natural habitats.",
-      icon: "🏞️",
-      type: "protected",
-    },
-    {
-      id: "wildlife-sanctuaries",
-      title: "Wildlife Sanctuaries",
-      description:
-        "Wildlife sanctuaries dedicated to protecting Nilgiri Tahr and other endemic species of the Western Ghats.",
-      icon: "🦌",
-      type: "protected",
     },
   ];
 
@@ -235,19 +170,6 @@ export default function WhereWeWork() {
             marginBottom: "6rem",
           }}
         >
-          {/* <h3
-            style={{
-              fontSize: "clamp(1.8rem, 4vw, 2.5rem)",
-              fontWeight: "700",
-              margin: "0 0 3rem 0",
-              color: "#1b4332",
-              fontFamily: "Poppins, sans-serif",
-              textAlign: "center",
-            }}
-          >
-            Visuals of Work Areas
-          </h3> */}
-
           <div
             style={{
               display: "grid",
@@ -384,75 +306,78 @@ export default function WhereWeWork() {
             >
               {administrativeAreas.map((area, index) => (
                 <SwiperSlide key={area.id}>
-                  <motion.div
-                    initial={{ y: 20, opacity: 0 }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.4, delay: (index % 4) * 0.1 }}
-                    viewport={{ once: true }}
-                    whileHover={{ y: -8, scale: 1.02 }}
-                    style={{
-                      background:
-                        area.type === "protected"
-                          ? "linear-gradient(135deg, rgba(82, 183, 136, 0.95), rgba(64, 145, 108, 0.9))"
-                          : "rgba(255, 255, 255, 0.95)",
-                      color: area.type === "protected" ? "#ffffff" : "#1b4332",
-                      borderRadius: "16px",
-                      padding: "2rem 1.5rem",
-                      textAlign: "center",
-                      boxShadow: "0 8px 32px rgba(27, 67, 50, 0.08)",
-                      border:
-                        area.type === "protected"
-                          ? "1px solid rgba(255, 255, 255, 0.2)"
-                          : "1px solid rgba(27, 67, 50, 0.1)",
-                      transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                      cursor: "pointer",
-                      height: "320px",
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <div
+                  <Link href={area.link} passHref>
+                    <motion.div
+                      initial={{ y: 20, opacity: 0 }}
+                      whileInView={{ y: 0, opacity: 1 }}
+                      transition={{ duration: 0.4, delay: (index % 4) * 0.1 }}
+                      viewport={{ once: true }}
+                      whileHover={{ y: -8, scale: 1.02 }}
                       style={{
-                        fontSize: "3rem",
-                        marginBottom: "1rem",
-                        filter:
+                        background:
                           area.type === "protected"
-                            ? "drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2))"
-                            : "none",
-                      }}
-                    >
-                      {area.icon}
-                    </div>
-
-                    <h4
-                      style={{
-                        fontSize: "1.3rem",
-                        fontWeight: "700",
-                        margin: "0 0 1rem 0",
-                        fontFamily: "Poppins, sans-serif",
-                        lineHeight: "1.3",
-                      }}
-                    >
-                      {area.title}
-                    </h4>
-
-                    <p
-                      style={{
-                        fontSize: "0.9rem",
-                        lineHeight: "1.5",
-                        margin: "0",
-                        fontFamily: "Poppins, sans-serif",
-                        opacity: area.type === "protected" ? 0.95 : 0.8,
-                        flex: 1,
+                            ? "linear-gradient(135deg, rgba(82, 183, 136, 0.95), rgba(64, 145, 108, 0.9))"
+                            : "rgba(255, 255, 255, 0.95)",
+                        color:
+                          area.type === "protected" ? "#ffffff" : "#1b4332",
+                        borderRadius: "16px",
+                        padding: "2rem 1.5rem",
+                        textAlign: "center",
+                        boxShadow: "0 8px 32px rgba(27, 67, 50, 0.08)",
+                        border:
+                          area.type === "protected"
+                            ? "1px solid rgba(255, 255, 255, 0.2)"
+                            : "1px solid rgba(27, 67, 50, 0.1)",
+                        transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                        cursor: "pointer",
+                        height: "320px",
                         display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
+                        flexDirection: "column",
+                        justifyContent: "space-between",
                       }}
                     >
-                      {area.description}
-                    </p>
-                  </motion.div>
+                      <div
+                        style={{
+                          fontSize: "3rem",
+                          marginBottom: "1rem",
+                          filter:
+                            area.type === "protected"
+                              ? "drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2))"
+                              : "none",
+                        }}
+                      >
+                        {area.icon}
+                      </div>
+
+                      <h4
+                        style={{
+                          fontSize: "1.3rem",
+                          fontWeight: "700",
+                          margin: "0 0 1rem 0",
+                          fontFamily: "Poppins, sans-serif",
+                          lineHeight: "1.3",
+                        }}
+                      >
+                        {area.title}
+                      </h4>
+
+                      <p
+                        style={{
+                          fontSize: "0.9rem",
+                          lineHeight: "1.5",
+                          margin: "0",
+                          fontFamily: "Poppins, sans-serif",
+                          opacity: area.type === "protected" ? 0.95 : 0.8,
+                          flex: 1,
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
+                        {area.description}
+                      </p>
+                    </motion.div>
+                  </Link>
                 </SwiperSlide>
               ))}
             </Swiper>

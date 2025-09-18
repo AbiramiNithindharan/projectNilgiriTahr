@@ -4,19 +4,49 @@
   height: 100vh;
   overflow: hidden;
   background: #0a0a0a;
+  isolation: isolate;
 }
 
+/* Banner image */
 .bannerImage {
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
 
+/* Each slide wrapper */
+.slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Know More button */
+.knowButton {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.8rem 2rem;
+  background: linear-gradient(135deg, #ffb703, #ffdd57);
+  color: #111;
+  font-weight: 600;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  z-index: 50;
+}
+
+.knowButton:hover {
+  background: linear-gradient(135deg, #ffdd57, #ffb703);
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
 /* --- News Ticker --- */
 .newsTicker {
   position: absolute;
   bottom: 1.5rem;
-
   left: 50%;
   transform: translateX(-50%);
   width: calc(100% - 4rem);
@@ -34,9 +64,10 @@
   overflow: hidden;
   backdrop-filter: blur(6px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  pointer-events: auto;
 }
 
-/* Modern pill-style heading */
+/* News heading pill */
 .newsHeading {
   background: linear-gradient(135deg, #ffb703, #ffdd57);
   color: #111;
@@ -48,15 +79,12 @@
   text-transform: uppercase;
   letter-spacing: 0.07em;
   border-radius: 999px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25),
-    inset 0 1px 2px rgba(255, 255, 255, 0.4);
   flex-shrink: 0;
   display: flex;
   align-items: center;
   gap: 0.4rem;
 }
 
-/* optional: small glowing dot to make it feel "live" */
 .newsHeading::before {
   content: "";
   width: 8px;
@@ -67,7 +95,7 @@
   display: inline-block;
 }
 
-/* Track container with fade edges */
+/* News ticker track */
 .tickerWrapper {
   --ticker-speed: 20s;
   flex: 1;
@@ -87,7 +115,6 @@
   animation: tickerScroll var(--ticker-speed) linear infinite;
 }
 
-/* Pause when hovered */
 .tickerWrapper:hover .tickerTrack {
   animation-play-state: paused;
 }
@@ -104,7 +131,6 @@
   color: #ffdd57;
 }
 
-/* Seamless looping */
 @keyframes tickerScroll {
   from {
     transform: translateX(0);
@@ -113,83 +139,4 @@
   to {
     transform: translateX(-50%);
   }
-}
-
-
-/* Mobile responsive adjustments */
-@media (max-width: 768px) {
-  .banner {
-    padding: 0 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .banner {
-    padding: 0 0.5rem;
-  }
-}
-
-/* Custom animations */
-@keyframes float {
-
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes pulse {
-
-  0%,
-  100% {
-    opacity: 0.1;
-  }
-
-  50% {
-    opacity: 0.2;
-  }
-}
-
-/* Custom Swiper Styles */
-.banner :global(.swiper) {
-  width: 100%;
-  height: 100%;
-}
-
-.banner :global(.swiper-slide) {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.banner :global(.swiper-slide-active) {
-  z-index: 1;
-}
-
-/* Disable default Swiper navigation */
-.banner :global(.swiper-button-next),
-.banner :global(.swiper-button-prev) {
-  display: none;
-}
-
-.banner :global(.swiper-pagination) {
-  display: none;
-}
-
-/* Smooth transition effects */
-.banner :global(.swiper-slide img) {
-  transition: transform 0.6s ease;
-}
-
-.banner :global(.swiper-slide-active img) {
-  transform: scale(1);
-}
-
-.banner :global(.swiper-slide-next img),
-.banner :global(.swiper-slide-prev img) {
-  transform: scale(1.05);
 }
