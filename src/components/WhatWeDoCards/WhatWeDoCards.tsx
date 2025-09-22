@@ -37,6 +37,69 @@ export default function WhatWeDoCards() {
       sectionId: "monitoring-protection",
       image: "/images/monitoring-protection.jpg",
     },
+    {
+      title: "Research & Documentation",
+      description:
+        "Systematic documentation of Nilgiri Tahr populations, breeding patterns, and environmental factors affecting their survival through advanced research methodologies and scientific studies.",
+      sectionId: "research-documentation",
+      image: "/images/research-documentation.jpg",
+    },
+    {
+      title: "Policy & Advocacy",
+      description:
+        "Working with government agencies and conservation organizations to develop and implement effective policies for Nilgiri Tahr protection and Western Ghats ecosystem conservation.",
+      sectionId: "policy-advocacy",
+      image: "/images/policy-advocacy.jpg",
+    },
+    {
+      title: "BIENNIAL SYNCHRONISED SURVEY",
+      description:
+        "Coordinated, synchronized surveys would help in delineating the actual distributional areas, current population, evaluating conservation challenges and getting an effective population enumeration.",
+      sectionId: "biennial-synchronized-survey",
+      image: "/images/conservation-research.jpg",
+    },
+    {
+      title: "TRANQUILIZATION AND COLLARING",
+      description:
+        "Radio collaring helps to understand the animal movement pattern, habitat use, home range and behaviour of the collared individuals across the divisions.",
+      sectionId: "tranquilization-and-collaring",
+      image: "/images/conservation-research.jpg",
+    },
+    {
+      title: "REINTRODUCTION AND MONITORING",
+      description:
+        "Reintroduced populations would be extensively monitored to understand the adaptation and challenges in the process.",
+      sectionId: "reintroduction-and-monitoring",
+      image: "/images/conservation-research.jpg",
+    },
+    {
+      title: "DIAGNOSIS AND TREATMENT",
+      description:
+        "Based on the pathological analysis and diagnostics for abnormal swellings, suggested preventive measures, treatment plans could be adopted for the affected animals across various divisions",
+      sectionId: "diagnosis-and-treatment",
+      image: "/images/conservation-research.jpg",
+    },
+    {
+      title: "SHOLA GRASSLAND RESTORATION PILOT ",
+      description:
+        "Grassland restoration work involving removal of invasive species and planting of native Grass species in Nilgiri Tahr habitats which lead to substantial improvements in the hydrology of the region.",
+      sectionId: "shola-grassland-restoration-pilot",
+      image: "/images/conservation-research.jpg",
+    },
+    {
+      title: "IMPLEMENTATION OF ECO-TOURISM PROGRAMMES",
+      description:
+        "These eco-tourism centres will enable the students and public to understand the conservation significance and ecological importance of the endemic mammal, Nilgiri tahr.",
+      sectionId: "implementation-of-eco-tourism-programmes",
+      image: "/images/conservation-research.jpg",
+    },
+    {
+      title: "COMMUNICATION AND OUTREACH",
+      description:
+        "Outreach programmes shall be organized to exhibit the conservation value of this species at educational institutions, media and among citizens hence leading to the successful community-based conservation of Nilgiri Tahr.",
+      sectionId: "communication-and-outreach",
+      image: "/images/conservation-research.jpg",
+    },
   ];
 
   const containerVariants = {
@@ -104,40 +167,62 @@ export default function WhatWeDoCards() {
                 transition: "all 0.3s ease",
                 cursor: "pointer",
                 position: "relative",
-                height: "400px",
+                height: "500px",
+                gap: "10px",
+                marginBottom: "20px",
               }}
             >
               {/* Image Section */}
               <div
                 style={{
-                  position: "relative",
                   height: "200px",
+                  position: "relative",
                   overflow: "hidden",
+                  borderRadius: "16px 16px 0 0",
                 }}
               >
-                <img
-                  src={card.image}
-                  alt={card.title}
+                <div
                   style={{
                     width: "100%",
                     height: "100%",
-                    objectFit: "cover",
-                    transition: "transform 0.3s ease",
-                    transform:
-                      hoveredCard === index ? "scale(1.05)" : "scale(1)",
+                    background: "linear-gradient(135deg, #e8f5f0, #a8dab5)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "4rem",
+                    color: "#1b4332",
+                    fontWeight: "bold",
+                    position: "relative",
                   }}
-                />
-                <div
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    background:
-                      "linear-gradient(to bottom, transparent, rgba(0,0,0,0.1))",
-                  }}
-                />
+                >
+                  {/* Placeholder icon based on card type */}
+                  {card.title.includes("Research") && "🔬"}
+                  {card.title.includes("Habitat") && "🌱"}
+                  {card.title.includes("Community") && "🤝"}
+                  {card.title.includes("COMMUNICATION") && "🤝"}
+                  {card.title.includes("Monitoring") && "📊"}
+                  {card.title.includes("MONITORING") && "📊"}
+                  {card.title.includes("SURVEY") && "📊"}
+                  {card.title.includes("Documentation") && "📋"}
+                  {card.title.includes("Policy") && "📜"}
+                  {card.title.includes("COLLARING") && "🦌"}
+                  {card.title.includes("TREATMENT") && "🏥"}
+                  {card.title.includes("GRASSLAND") && "🌱"}
+                  {card.title.includes("ECO-TOURISM") && "📈"}
+
+                  {/* Overlay for image placeholder */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      background:
+                        "linear-gradient(45deg, rgba(27, 67, 50, 0.1), rgba(82, 183, 136, 0.1))",
+                    }}
+                  />
+                </div>
               </div>
 
               {/* Content Section */}
@@ -161,32 +246,7 @@ export default function WhatWeDoCards() {
                 >
                   {card.title}
                 </h3>
-
-                {/* Description overlay on hover */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{
-                    opacity: hoveredCard === index ? 1 : 0,
-                    y: hoveredCard === index ? 0 : 20,
-                  }}
-                  transition={{ duration: 0.3 }}
-                  style={{
-                    position: "absolute",
-                    top: "60px",
-                    left: "clamp(1.25rem, 2.5vw, 1.5rem)",
-                    right: "clamp(1.25rem, 2.5vw, 1.5rem)",
-                    bottom: "clamp(1.25rem, 2.5vw, 1.5rem)",
-                    background: "rgba(255, 255, 255, 0.95)",
-                    borderRadius: "8px",
-                    padding: "1rem",
-                    boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
-                    backdropFilter: "blur(10px)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    zIndex: 10,
-                  }}
-                >
+                <div style={{ flex: 1 }}>
                   <p
                     style={{
                       fontSize: "clamp(0.9rem, 1.8vw, 1rem)",
@@ -199,28 +259,6 @@ export default function WhatWeDoCards() {
                     }}
                   >
                     {card.description}
-                  </p>
-                </motion.div>
-
-                {/* Default state content */}
-                <div
-                  style={{
-                    opacity: hoveredCard === index ? 0 : 1,
-                    transition: "opacity 0.3s ease",
-                  }}
-                >
-                  <p
-                    style={{
-                      fontSize: "clamp(0.9rem, 1.8vw, 1rem)",
-                      lineHeight: "1.6",
-                      color: "#6b7280",
-                      fontFamily: "Poppins, sans-serif",
-                      fontWeight: "400",
-                      margin: "0 0 1rem 0",
-                    }}
-                  >
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Hover to learn more.
                   </p>
                 </div>
               </div>

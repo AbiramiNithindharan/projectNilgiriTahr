@@ -9,6 +9,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import styles from "./WhoWeAre.module.css";
+import Link from "next/link";
 
 interface TeamMember {
   name: string;
@@ -334,33 +335,35 @@ export default function WhoWeAre() {
           </h2>
 
           {/* Learn More Button */}
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            style={{
-              background: "transparent",
-              border: "2px solid #000000",
-              color: "#000000",
-              padding: "1rem 2rem",
-              fontSize: "1rem",
-              fontWeight: "600",
-              fontFamily: "Inter, sans-serif",
-              textTransform: "uppercase",
-              letterSpacing: "0.1em",
-              cursor: "pointer",
-              transition: "all 0.3s ease",
-              marginTop: "2rem",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#000000";
-              e.currentTarget.style.color = "#ffffff";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "transparent";
-              e.currentTarget.style.color = "#000000";
-            }}
-          >
-            LEARN MORE
-          </motion.button>
+          <Link href={"/who-we-are"}>
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              style={{
+                background: "transparent",
+                border: "2px solid #000000",
+                color: "#000000",
+                padding: "1rem 2rem",
+                fontSize: "1rem",
+                fontWeight: "600",
+                fontFamily: "Inter, sans-serif",
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+                cursor: "pointer",
+                transition: "all 0.3s ease",
+                marginTop: "2rem",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "#000000";
+                e.currentTarget.style.color = "#ffffff";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "transparent";
+                e.currentTarget.style.color = "#000000";
+              }}
+            >
+              LEARN MORE
+            </motion.button>
+          </Link>
         </motion.div>
       </div>
 

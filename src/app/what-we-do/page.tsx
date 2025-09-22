@@ -1,21 +1,21 @@
 "use client";
 
-import { useState } from 'react';
-import Header from '../../components/Header/Header';
-import WhatWeDoaBanner from '../../components/WhatWeDoBanner/WhatWeDoBanner';
-import MissionVisionVictories from '../../components/MissionVisionVictories/MissionVisionVictories';
-import WhatWeDoCards from '../../components/WhatWeDoCards/WhatWeDoCards';
-import styles from './page.module.css';
+import { useState } from "react";
+import Header from "../../components/Header/Header";
+import WhatWeDoBanner from "../../components/WhatWeDoBanner/WhatWeDoBanner";
+
+import WhatWeDoCards from "../../components/WhatWeDoCards/WhatWeDoCards";
+import styles from "./page.module.css";
 
 export default function WhatWeDoPage() {
   const [showHeader, setShowHeader] = useState(false);
 
   const handleMenuClick = () => {
-    console.log('Menu clicked!');
+    console.log("Menu clicked!");
   };
 
   const handleContactClick = () => {
-    console.log('Contact Us clicked!');
+    console.log("Contact Us clicked!");
   };
 
   const handleBannerAnimationComplete = () => {
@@ -24,16 +24,14 @@ export default function WhatWeDoPage() {
 
   return (
     <div className={styles.container}>
-      <Header 
-        onMenuClick={handleMenuClick} 
+      <Header
+        onMenuClick={handleMenuClick}
         onContactClick={handleContactClick}
         isVisible={showHeader}
       />
-      <WhatWeDoaBanner 
-        onAnimationComplete={handleBannerAnimationComplete}
-      />
-      <MissionVisionVictories />
-      {/* <WhatWeDoCards /> */}
+      <WhatWeDoBanner onAnimationComplete={handleBannerAnimationComplete} />
+
+      <WhatWeDoCards />
     </div>
   );
 }

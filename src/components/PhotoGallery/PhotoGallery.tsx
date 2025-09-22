@@ -208,7 +208,7 @@ export default function PhotoGallery() {
                 letterSpacing: "0.1em",
               }}
             >
-              11
+              10
             </div>
 
             {/* Main Heading */}
@@ -323,7 +323,7 @@ export default function PhotoGallery() {
                 letterSpacing: "0.1em",
               }}
             >
-              12
+              11
             </div>
             <h3
               style={{

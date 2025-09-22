@@ -72,13 +72,10 @@ export default function Header({
     };
 
     if (isVisible) {
-      const delayId = setTimeout(() => {
-        window.addEventListener("scroll", throttledScroll, { passive: true });
-        lastScrollY.current = window.scrollY;
-      }, 2000);
+      window.addEventListener("scroll", throttledScroll, { passive: true });
+      lastScrollY.current = window.scrollY;
 
       return () => {
-        clearTimeout(delayId);
         if (timeoutId) clearTimeout(timeoutId);
         window.removeEventListener("scroll", throttledScroll);
       };
@@ -134,9 +131,7 @@ export default function Header({
           left: 0,
           right: 0,
           zIndex: 1000,
-          background: isScrolled
-            ? "rgba(10, 9, 9, 0.19)"
-            : "rgba(10, 9, 9, 0.19)",
+          background: isScrolled ? "transparent" : "rgba(255, 255, 255, 0.95)",
           backdropFilter: isScrolled ? "none" : "none",
           borderBottom: isScrolled ? "none" : "none",
           boxShadow: isScrolled ? "none" : "none",
@@ -166,7 +161,7 @@ export default function Header({
           <Logo
             src={leftLogoSrc}
             alt={leftLogoAlt}
-            size={isScrolled ? "small" : "large"}
+            size={isScrolled ? "medium" : "large"}
             delay={0.1}
             isVisible={isVisible}
           />
@@ -208,7 +203,7 @@ export default function Header({
               <Logo
                 src={rightDonateLogoSrc}
                 alt={rightDonateLogoAlt}
-                size="small"
+                size="medium"
                 delay={0}
                 isVisible={true}
               />

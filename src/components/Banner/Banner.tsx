@@ -12,7 +12,7 @@ import styles from "./Banner.module.css";
 import Link from "next/link";
 
 interface BannerProps {
-  imageSrc: string;
+  imageSrc?: string;
   imageAlt?: string;
   title?: string;
   subtitle?: string;
@@ -33,58 +33,129 @@ export default function Banner({
   const [activeIndex, setActiveIndex] = useState(0);
   const bannerControls = useAnimation();
 
+  // header measurement
+  const [headerHeight, setHeaderHeight] = useState(0);
+  const [headerOverlaying, setHeaderOverlaying] = useState(false); // fixed/sticky/absolute
+
   // Banner images array
   const bannerImages = [
     {
-      src: "/banners/final-banner-image.jpg",
+      src: "/banners/final-banner-image.png",
       alt: "Nilgiri Tahr conservation work",
-      link: "/banner-content-1", // 👈 unique page for this slide
+      link: "/banner-content-1",
     },
     {
       src: "/banners/Banner_2.jpg",
       alt: "Western Ghats landscape",
-      link: "/banner-content-2", // 👈 unique page for this slide
+      link: "/banner-content-2",
     },
   ];
+
   // Recent News
   const recentNews = [
     "Nilgiri Tahr spotted in new habitats across the Western Ghats.",
     "Conservation project expands with community participation.",
     "Government announces new measures for wildlife protection.",
   ];
-
-  // Duplicate once for a seamless loop
   const loopedNews = [...recentNews, ...recentNews];
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
+  // measure header height and position (client-only)
+  useEffect(() => {
+    if (!isClient) return;
+
+    const selectors = [
+      "header",
+      "#header",
+      ".site-header",
+      "#site-header",
+      "[data-site-header]",
+      ".header",
+    ];
+
+    const findHeaderEl = () =>
+      selectors.reduce<HTMLElement | null>((found, sel) => {
+        if (found) return found;
+        const el = document.querySelector(sel) as HTMLElement | null;
+        return el ?? null;
+      }, null);
+
+    const measureHeader = () => {
+      const headerEl = findHeaderEl();
+      if (!headerEl) {
+        setHeaderHeight(0);
+        setHeaderOverlaying(false);
+        return;
+      }
+      const rect = headerEl.getBoundingClientRect();
+      const computed = window.getComputedStyle(headerEl);
+      const pos = computed.position || "";
+      const overlays = ["fixed", "sticky", "absolute"].includes(pos);
+      setHeaderHeight(Math.round(rect.height) || 0);
+      setHeaderOverlaying(overlays);
+    };
+
+    // initial measure
+    measureHeader();
+
+    // recalc on window resize
+    window.addEventListener("resize", measureHeader);
+
+    // observe header size changes if possible
+    let ro: ResizeObserver | null = null;
+    const headerEl = findHeaderEl();
+    if (headerEl && typeof ResizeObserver !== "undefined") {
+      ro = new ResizeObserver(measureHeader);
+      try {
+        ro.observe(headerEl);
+      } catch (e) {
+        // ignore
+      }
+    }
+
+    return () => {
+      window.removeEventListener("resize", measureHeader);
+      if (ro) ro.disconnect();
+    };
+  }, [isClient]);
+
   // Text animation duration
-  const textAnimationDuration = 2.5;
+  const textAnimationDuration = 0;
 
   useEffect(() => {
     if (isClient) {
       const timer = setTimeout(() => {
         setAnimationComplete(true);
         onAnimationComplete?.();
-      }, textAnimationDuration * 1000);
+      }, textAnimationDuration);
 
       return () => clearTimeout(timer);
     }
   }, [isClient, textAnimationDuration, bannerControls, onAnimationComplete]);
+
+  // container style: if header overlays, push banner down and reduce banner's height
+  const containerStyle: React.CSSProperties = {
+    position: "relative",
+    overflow: "hidden",
+    height:
+      headerOverlaying && headerHeight
+        ? `calc(${height} - ${headerHeight}px)`
+        : height,
+    marginTop:
+      headerOverlaying && headerHeight ? `${headerHeight - 70}px` : undefined,
+    background: "#000000",
+    marginBottom: "100px",
+  };
 
   return (
     <motion.div
       className={styles.banner}
       animate={bannerControls}
       initial={{ opacity: 1 }}
-      style={{
-        position: "relative",
-        overflow: "hidden",
-        height: "100vh",
-        background: "#000000",
-      }}
+      style={containerStyle}
     >
       {/* Swiper Background Carousel */}
       <div
@@ -158,7 +229,7 @@ export default function Banner({
                           ease: "easeInOut",
                         }}
                         style={{
-                          background: "#000000",
+                          background: "#0000006e",
                           border: "2px solid #ffffff",
                           color: "#ffffff",
                           padding: "1rem 2rem",
@@ -169,7 +240,8 @@ export default function Banner({
                           letterSpacing: "0.1em",
                           cursor: "pointer",
                           transition: "all 0.3s ease",
-                          marginTop: "2rem",
+                          marginRight: "50px",
+                          marginBottom: "100px",
                           position: "relative",
                         }}
                         onMouseEnter={(e) => {
@@ -177,7 +249,7 @@ export default function Banner({
                           e.currentTarget.style.color = "#000000";
                         }}
                         onMouseLeave={(e) => {
-                          e.currentTarget.style.background = "transparent";
+                          e.currentTarget.style.background = "#0000006e";
                           e.currentTarget.style.color = "#ffffff";
                         }}
                       >
@@ -341,7 +413,6 @@ export default function Banner({
       </motion.div>
 
       {/* Recent News Ticker */}
-
       <div className={styles.newsTicker}>
         <span className={styles.newsHeading}>Recent News</span>
 

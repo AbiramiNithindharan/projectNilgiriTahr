@@ -63,6 +63,7 @@ export function AtomCategories({ onSelect }: AtomCategoriesProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [box, setBox] = useState({ w: 640, h: 640 });
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [showOuterOrbit, setShowOuterOrbit] = useState(false);
 
   // Measure container for responsive center & radii
   useEffect(() => {
@@ -148,27 +149,31 @@ export function AtomCategories({ onSelect }: AtomCategoriesProps) {
           viewBox={`0 0 ${box.w} ${box.h}`}
         >
           {/* Main circular orbit */}
-          <circle
-            cx={center.x}
-            cy={center.y}
-            r={outerRadius}
-            fill="none"
-            stroke="rgba(255,255,255,0.25)"
-            strokeWidth="2"
-          />
+          {showOuterOrbit && (
+            <>
+              <circle
+                cx={center.x}
+                cy={center.y}
+                r={outerRadius}
+                fill="none"
+                stroke="rgba(255,255,255,0.25)"
+                strokeWidth="2"
+              />
 
-          {/* Lines from nucleus to each electron */}
-          {nodesWithPos.map((n) => (
-            <line
-              key={`line-${n.id}`}
-              x1={center.x}
-              y1={center.y}
-              x2={n.ex}
-              y2={n.ey}
-              stroke="rgba(255,255,255,0.15)"
-              strokeWidth="1.5"
-            />
-          ))}
+              {/* Lines from nucleus to each electron */}
+              {nodesWithPos.map((n) => (
+                <line
+                  key={`line-${n.id}`}
+                  x1={center.x}
+                  y1={center.y}
+                  x2={n.ex}
+                  y2={n.ey}
+                  stroke="rgba(255,255,255,0.15)"
+                  strokeWidth="1.5"
+                />
+              ))}
+            </>
+          )}
 
           {/* Expanded child orbit (if any) */}
           {nodesWithPos.map((n) => {
@@ -178,7 +183,7 @@ export function AtomCategories({ onSelect }: AtomCategoriesProps) {
 
             return (
               <g key={`child-orbit-${n.id}`}>
-                {/* ✅ SOLID full circle, no dash, and fully visible due to clamping */}
+                {/* ✅ SOLID full circle, no dash, and fully visible due to clamping*/}
                 <circle
                   cx={cx - 195}
                   cy={cy}
@@ -191,90 +196,89 @@ export function AtomCategories({ onSelect }: AtomCategoriesProps) {
             );
           })}
         </svg>
-
         {/* Nucleus */}
-        <motion.button
-          className={styles.nucleus}
-          style={{
-            left: center.x,
-            top: center.y,
-          }}
+        <motion.img
+          src="/gallery/nilgiri-tahr.jpg" // 🔥 replace with your image path
+          alt="Center Image"
+          className={styles.nucleusImage} // create a CSS class to style (size, circle, etc.)
           onClick={() => {
             onSelect("all");
             setExpandedId(null);
+            setShowOuterOrbit(!showOuterOrbit); // ✅ reveal outer orbit when clicked
           }}
-        >
-          All
-        </motion.button>
-
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+        />
         {/* Electrons (exactly ON the orbit) */}
-        {nodesWithPos.map((n, idx) => (
-          <motion.button
-            key={n.id}
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: idx * 0.08 }}
-            className={`${styles.electron} ${
-              expandedId === n.id ? styles.electronActive : ""
-            }`}
-            data-id={n.id}
-            style={{
-              left: n.ex - 70,
-              top: n.ey - 70,
-              // Rotate label so it sits outside the orbit
-              transform: "translate(-50%, -50%)",
-              zIndex: 2,
-            }}
-            onClick={() => handleNodeClick(n.id)}
-            aria-label={n.label}
-            title={n.label}
-          >
-            {n.icon}
-            <span
-              className={styles.electronLabel}
+        {showOuterOrbit &&
+          nodesWithPos.map((n, idx) => (
+            <motion.button
+              key={n.id}
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: idx * 0.08 }}
+              className={`${styles.electron} ${
+                expandedId === n.id ? styles.electronActive : ""
+              }`}
+              data-id={n.id}
               style={{
-                // push label radially outward from center
-                transform: `translate(${Math.cos(n.angle) * 92}px, ${
-                  Math.sin(n.angle) * 59
-                }px)`,
+                left: n.ex - 70,
+                top: n.ey - 70,
+                // Rotate label so it sits outside the orbit
+                transform: "translate(-50%, -50%)",
+                zIndex: 2,
               }}
+              onClick={() => handleNodeClick(n.id)}
+              aria-label={n.label}
+              title={n.label}
             >
-              {n.label}
-            </span>
-          </motion.button>
-        ))}
+              {n.icon}
+              <span
+                className={styles.electronLabel}
+                style={{
+                  // push label radially outward from center
+                  transform: `translate(${Math.cos(n.angle) * 92}px, ${
+                    Math.sin(n.angle) * 59
+                  }px)`,
+                }}
+              >
+                {n.label}
+              </span>
+            </motion.button>
+          ))}
 
         {/* Child electrons on their own orbit */}
-        {nodesWithPos.map((n) => {
-          if (expandedId !== n.id || !n.children?.length) return null;
+        {showOuterOrbit &&
+          nodesWithPos.map((n) => {
+            if (expandedId !== n.id || !n.children?.length) return null;
 
-          const { cx, cy } = getChildOrbitCenter(n);
-          const C = n.children.length;
+            const { cx, cy } = getChildOrbitCenter(n);
+            const C = n.children.length;
 
-          return n.children.map((ch, i) => {
-            const a = (i / C) * Math.PI * 2;
-            const x = cx + (childRadius + childNodeGap) * Math.cos(a); // ✅ slight outward push
-            const y = cy + (childRadius + childNodeGap) * Math.sin(a);
+            return n.children.map((ch, i) => {
+              const a = (i / C) * Math.PI * 2;
+              const x = cx + (childRadius + childNodeGap) * Math.cos(a); // ✅ slight outward push
+              const y = cy + (childRadius + childNodeGap) * Math.sin(a);
 
-            return (
-              <motion.button
-                key={ch.id}
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.1 + i * 0.06 }}
-                className={styles.childElectron}
-                data-parent={n.id}
-                style={{ left: x - 570, top: y - 30 }}
-                onClick={() => onSelect(ch.id)}
-                aria-label={ch.label}
-                title={ch.label}
-              >
-                {ch.icon}
-                <span className={styles.childLabel}>{ch.label}</span>
-              </motion.button>
-            );
-          });
-        })}
+              return (
+                <motion.button
+                  key={ch.id}
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.1 + i * 0.06 }}
+                  className={styles.childElectron}
+                  data-parent={n.id}
+                  style={{ left: x - 570, top: y - 30 }}
+                  onClick={() => onSelect(ch.id)}
+                  aria-label={ch.label}
+                  title={ch.label}
+                >
+                  {ch.icon}
+                  <span className={styles.childLabel}>{ch.label}</span>
+                </motion.button>
+              );
+            });
+          })}
       </div>
     </div>
   );
