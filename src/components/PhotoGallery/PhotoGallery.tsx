@@ -309,37 +309,6 @@ export default function PhotoGallery() {
         >
           <div
             style={{
-              textAlign: "center",
-              marginBottom: "3rem",
-            }}
-          >
-            <div
-              style={{
-                fontSize: "1rem",
-                fontWeight: "600",
-                color: "#52b788",
-                marginBottom: "1rem",
-                fontFamily: "Inter, sans-serif",
-                letterSpacing: "0.1em",
-              }}
-            >
-              11
-            </div>
-            <h3
-              style={{
-                fontSize: "clamp(2rem, 4vw, 3rem)",
-                fontWeight: "900",
-                margin: "0 0 2rem 0",
-                color: "#ffffff",
-                fontFamily: "Inter, sans-serif",
-                letterSpacing: "-0.02em",
-              }}
-            >
-              Categories
-            </h3>
-          </div>
-          <div
-            style={{
               display: "flex",
               justifyContent: "center",
               marginBottom: "6rem",

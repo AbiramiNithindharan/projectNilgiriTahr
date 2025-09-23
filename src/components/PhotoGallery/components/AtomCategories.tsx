@@ -33,11 +33,45 @@ const ATOM_NODES: AtomNode[] = [
     id: "nilgiri-tahr",
     label: "Nilgiri Tahr",
     icon: <Mountain size={20} />,
+    children: [
+      {
+        id: "associate-flora",
+        label: "Associate Flora",
+        icon: <ImageIcon size={18} />,
+      },
+      {
+        id: "flora",
+        label: "Associate Flora",
+        icon: <ImageIcon size={18} />,
+      },
+      {
+        id: "associat",
+        label: "Associate Flora",
+        icon: <ImageIcon size={18} />,
+      },
+    ],
   },
   {
     id: "landscape",
     label: "Landscape",
     icon: <Mountain size={20} />,
+    children: [
+      {
+        id: "associat",
+        label: "Associate Flora",
+        icon: <ImageIcon size={18} />,
+      },
+      {
+        id: "asso",
+        label: "Associate Flora",
+        icon: <ImageIcon size={18} />,
+      },
+      {
+        id: "ass",
+        label: "Associate Flora",
+        icon: <ImageIcon size={18} />,
+      },
+    ],
   },
   {
     id: "habitat-overview",
@@ -45,7 +79,17 @@ const ATOM_NODES: AtomNode[] = [
     icon: <Camera size={20} />,
     children: [
       {
-        id: "associate-flora",
+        id: "assora",
+        label: "Associate Flora",
+        icon: <ImageIcon size={18} />,
+      },
+      {
+        id: "aate-flora",
+        label: "Associate Flora",
+        icon: <ImageIcon size={18} />,
+      },
+      {
+        id: "te-flora",
         label: "Associate Flora",
         icon: <ImageIcon size={18} />,
       },
@@ -56,8 +100,126 @@ const ATOM_NODES: AtomNode[] = [
     id: "exhibition",
     label: "Conservation Exhibition",
     icon: <Megaphone size={20} />,
+    children: [
+      {
+        id: "assciate-flora",
+        label: "Associate Flora",
+        icon: <ImageIcon size={18} />,
+      },
+      {
+        id: "assoca",
+        label: "Associate Flora",
+        icon: <ImageIcon size={18} />,
+      },
+      {
+        id: "assiate-fla",
+        label: "Associate Flora",
+        icon: <ImageIcon size={18} />,
+      },
+    ],
   },
 ];
+
+const ORBIT_STYLES: Record<
+  string,
+  {
+    orbitColor: string;
+    childColor: string;
+    childSize: number;
+    orbitOffset: (
+      cx: number,
+      cy: number,
+      angle: number,
+      radius: number
+    ) => { cx: number; cy: number };
+    childAngleOffset?: number;
+    childLayout: (
+      i: number,
+      total: number,
+      orbitCx: number,
+      orbitCy: number,
+      childRadius: number
+    ) => { x: number; y: number };
+  }
+> = {
+  "nilgiri-tahr": {
+    orbitColor: "rgba(255, 206, 86, 0.8)",
+    childColor: "rgba(255, 206, 86, 0.9)",
+
+    childSize: 48,
+    // Orbit circle sits to the right
+    orbitOffset: (cx, cy, angle, radius) => ({ cx: cx + radius * 1.2, cy }),
+    childLayout: (i, total, cx, cy, r) => {
+      const angle = -Math.PI / 6 + (i / (total - 1 || 1)) * (Math.PI / 3);
+      const x = cx + r * Math.cos(angle);
+      const y = cy + r * Math.sin(angle);
+
+      // manual tweaks per child index
+      if (i === 0) return { x: x - 200, y: y - 50 }; // shift right
+      if (i === 1) return { x: x - 80, y: y - 40 }; // shift up
+      if (i === 2) return { x: x - 100, y: y - 20 }; // shift down
+      return { x, y };
+    },
+  },
+  landscape: {
+    orbitColor: "rgba(54, 162, 235, 0.8)",
+    childColor: "rgba(54, 162, 235, 0.9)",
+    childSize: 42,
+    orbitOffset: (cx, cy, angle, radius) => ({ cx, cy: cy + radius * 1.2 }),
+    childLayout: (i, total, cx, cy, r) => {
+      // Fan upwards in an arc
+      const angle = -Math.PI / 3 + (i / (total - 1 || 1)) * (Math.PI / 1.5);
+      const x = cx + r * Math.cos(angle);
+      const y = cy + r * Math.sin(angle);
+
+      // manual tweaks per child index
+      if (i === 0) return { x: x - 250, y: y + 130 }; // shift right
+      if (i === 1) return { x: x - 80, y: y - 40 }; // shift up
+      if (i === 2) return { x: x - 180, y: y - 80 }; // shift down
+      return { x, y };
+    },
+  },
+  exhibition: {
+    orbitColor: "rgba(255, 99, 132, 0.8)",
+    childColor: "rgba(255, 99, 132, 0.9)",
+    childSize: 44,
+    // Orbit circle sits to the right (like Nilgiri Tahr)
+    orbitOffset: (cx, cy, angle, radius) => ({ cx, cy: cy - radius * 1.2 }),
+    childLayout: (i, total, cx, cy, r) => {
+      // Fan upwards in an arc
+      const angle = -Math.PI / 3 + (i / (total - 1 || 1)) * (Math.PI / 1.5);
+      const x = cx + r * Math.cos(angle);
+      const y = cy + r * Math.sin(angle);
+
+      // manual tweaks per child index
+      if (i === 0) return { x: x - 250, y: y + 130 }; // shift right
+      if (i === 1) return { x: x - 190, y: y - 150 }; // shift up
+      if (i === 2) return { x: x + 5, y: y - 180 }; // shift down
+      return { x, y };
+    },
+  },
+  "habitat-overview": {
+    orbitColor: "rgba(82, 183, 136, 0.8)",
+    childColor: "rgba(82, 183, 136, 0.9)",
+    childSize: 40,
+    orbitOffset: (cx, cy, angle, radius) => ({
+      cx: cx - radius * 1.2,
+      cy,
+    }),
+    childLayout: (i, total, cx, cy, r) => {
+      // Fan upwards in an arc
+      const angle = -Math.PI / 3 + (i / (total - 1 || 1)) * (Math.PI / 1.5);
+      const x = cx + r * Math.cos(angle);
+      const y = cy + r * Math.sin(angle);
+
+      // manual tweaks per child index
+      if (i === 0) return { x: x - 250, y: y + 130 }; // shift right
+      if (i === 1) return { x: x - 190, y: y - 150 }; // shift up
+      if (i === 2) return { x: x - 180, y: y - 80 }; // shift down
+      return { x, y };
+    },
+  },
+};
 
 export function AtomCategories({ onSelect }: AtomCategoriesProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -180,16 +342,26 @@ export function AtomCategories({ onSelect }: AtomCategoriesProps) {
             if (expandedId !== n.id || !n.children?.length) return null;
 
             const { cx, cy } = getChildOrbitCenter(n);
-
+            const orbitStyle = ORBIT_STYLES[n.id] || {
+              orbitColor: "rgba(200,200,200,0.6)",
+              childColor: "rgba(200,200,200,0.9)",
+              childSize: 38,
+              orbitOffset: (cx: number, cy: number) => ({ cx, cy }),
+            };
+            const { cx: finalCx, cy: finalCy } = orbitStyle.orbitOffset(
+              cx,
+              cy,
+              n.angle,
+              childRadius
+            );
             return (
               <g key={`child-orbit-${n.id}`}>
-                {/* ✅ SOLID full circle, no dash, and fully visible due to clamping*/}
                 <circle
-                  cx={cx - 195}
-                  cy={cy}
+                  cx={finalCx}
+                  cy={finalCy}
                   r={childRadius}
                   fill="none"
-                  stroke="rgba(82,183,136,0.75)"
+                  stroke={orbitStyle.orbitColor}
                   strokeWidth="2"
                 />
               </g>
@@ -214,6 +386,13 @@ export function AtomCategories({ onSelect }: AtomCategoriesProps) {
           nodesWithPos.map((n, idx) => (
             <motion.button
               key={n.id}
+              style={{
+                left: `${n.ex - 30}px`,
+                top: `${n.ey - 30}px`,
+                transform: "translate(-50%, -50%)", // keep centered on orbit point
+                width: `${Math.max(56, box.w * 0.07)}px`, // responsive size
+                height: `${Math.max(56, box.w * 0.07)}px`,
+              }}
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: idx * 0.08 }}
@@ -221,13 +400,6 @@ export function AtomCategories({ onSelect }: AtomCategoriesProps) {
                 expandedId === n.id ? styles.electronActive : ""
               }`}
               data-id={n.id}
-              style={{
-                left: n.ex - 70,
-                top: n.ey - 70,
-                // Rotate label so it sits outside the orbit
-                transform: "translate(-50%, -50%)",
-                zIndex: 2,
-              }}
               onClick={() => handleNodeClick(n.id)}
               aria-label={n.label}
               title={n.label}
@@ -236,10 +408,11 @@ export function AtomCategories({ onSelect }: AtomCategoriesProps) {
               <span
                 className={styles.electronLabel}
                 style={{
-                  // push label radially outward from center
-                  transform: `translate(${Math.cos(n.angle) * 92}px, ${
-                    Math.sin(n.angle) * 59
-                  }px)`,
+                  transform: `translate(${
+                    Math.cos(n.angle) * (box.w * 0.15)
+                  }px, 
+                              ${Math.sin(n.angle) * (box.h * 0.1)}px)`,
+                  fontSize: `${clamp(box.w * 0.025, 12, 16)}px`, // responsive text size
                 }}
               >
                 {n.label}
@@ -248,27 +421,74 @@ export function AtomCategories({ onSelect }: AtomCategoriesProps) {
           ))}
 
         {/* Child electrons on their own orbit */}
+        {/* Child electrons on their own orbit */}
         {showOuterOrbit &&
           nodesWithPos.map((n) => {
             if (expandedId !== n.id || !n.children?.length) return null;
 
             const { cx, cy } = getChildOrbitCenter(n);
-            const C = n.children.length;
+            const orbitStyle = ORBIT_STYLES[n.id] || {
+              orbitOffset: (cx: number, cy: number) => ({ cx, cy }),
+              childLayout: (
+                i: number,
+                total: number,
+                cx: number,
+                cy: number,
+                r: number
+              ) => {
+                // fallback: circular layout
+                const angle = (i / total) * Math.PI * 2;
+                return {
+                  x: cx + r * Math.cos(angle),
+                  y: cy + r * Math.sin(angle),
+                };
+              },
+              childSize: 38,
+              childColor: "rgba(200,200,200,0.9)",
+            };
 
+            const { cx: finalCx, cy: finalCy } = orbitStyle.orbitOffset(
+              cx,
+              cy,
+              n.angle,
+              childRadius
+            );
+            const C = n.children.length;
             return n.children.map((ch, i) => {
-              const a = (i / C) * Math.PI * 2;
-              const x = cx + (childRadius + childNodeGap) * Math.cos(a); // ✅ slight outward push
-              const y = cy + (childRadius + childNodeGap) * Math.sin(a);
+              // Unique child positioning based on parent electron
+              const { x, y } = orbitStyle.childLayout(
+                i,
+                C,
+                finalCx,
+                finalCy,
+                childRadius + 60
+              );
 
               return (
                 <motion.button
                   key={ch.id}
                   initial={{ scale: 0, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ delay: 0.1 + i * 0.06 }}
+                  animate={{
+                    scale: 1,
+                    opacity: 1,
+                    x: x - finalCx,
+                    y: y - finalCy,
+                  }}
+                  transition={{
+                    delay: 0.1 + i * 0.08,
+                    type: "spring",
+                    stiffness: 80,
+                  }}
                   className={styles.childElectron}
                   data-parent={n.id}
-                  style={{ left: x - 570, top: y - 30 }}
+                  style={{
+                    left: `${finalCx}px`,
+                    top: `${finalCy}px`,
+                    transform: "translate(-50%, -50%)",
+                    width: `${orbitStyle.childSize}px`,
+                    height: `${orbitStyle.childSize}px`,
+                    backgroundColor: orbitStyle.childColor,
+                  }}
                   onClick={() => onSelect(ch.id)}
                   aria-label={ch.label}
                   title={ch.label}

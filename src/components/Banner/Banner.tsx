@@ -145,7 +145,7 @@ export default function Banner({
         ? `calc(${height} - ${headerHeight}px)`
         : height,
     marginTop:
-      headerOverlaying && headerHeight ? `${headerHeight - 70}px` : undefined,
+      headerOverlaying && headerHeight ? `${headerHeight - 50}px` : undefined,
     background: "#000000",
     marginBottom: "100px",
   };

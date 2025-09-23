@@ -41,6 +41,7 @@ export default function Header({
 }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(true);
   const lastScrollY = useRef(0);
   const router = useRouter();
 
@@ -57,6 +58,20 @@ export default function Header({
 
     lastScrollY.current = currentScrollY;
     setIsScrolled(currentScrollY > 1);
+  }, []);
+
+  useEffect(() => {
+    const checkWidth = () => {
+      // adjust breakpoints as you like
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+
+    checkWidth(); // run on mount
+    window.addEventListener("resize", checkWidth);
+
+    return () => {
+      window.removeEventListener("resize", checkWidth);
+    };
   }, []);
 
   // Throttled scroll listener
@@ -192,13 +207,16 @@ export default function Header({
                 flexShrink: 0,
               }}
             >
-              <Logo
-                src={rightLogoSrc}
-                alt={rightLogoAlt}
-                size="large"
-                delay={0}
-                isVisible={true}
-              />
+              {isDesktop && (
+                <Logo
+                  src={rightLogoSrc}
+                  alt={rightLogoAlt}
+                  size="large"
+                  delay={0}
+                  isVisible={true}
+                />
+              )}
+
               <MenuButton onClick={handleMenuToggle} variant="default" />
               <Logo
                 src={rightDonateLogoSrc}

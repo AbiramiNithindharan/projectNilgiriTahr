@@ -9,10 +9,12 @@
 
 .atomCanvas {
   position: relative;
-  width: min(90vw, 740px);
-  height: min(90vw, 740px);
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  /* keeps it square */
+  max-width: 600px;
+  /* optional */
   margin: 0 auto;
-  overflow: visible;
 }
 
 .atomSvg {
@@ -25,11 +27,13 @@
 
 .nucleusImage {
   position: absolute;
-  left: 35%;
-  top: 35%;
+  background-color: white;
+  left: 32%;
+  top: 32%;
   transform: translate(-50%, -50%);
-  width: 220px;
-  height: 220px;
+  width: clamp(100px, 18vw, 220px);
+  /* min 120px, scales with viewport, max 220px */
+  height: clamp(100px, 18vw, 220px);
   border-radius: 50%;
   border: 2px solid rgba(255, 255, 255, 0.18);
   object-fit: cover;
@@ -44,9 +48,9 @@
 .electron {
   position: absolute;
   z-index: 2;
-  width: 148px;
-  height: 148px;
-  font-size: 30px;
+  width: clamp(60px, 6vw, 148px);
+  height: clamp(60px, 6vw, 148px);
+  font-size: clamp(14px, 2vw, 18px);
   border-radius: 999px;
   border: 1.5px solid rgba(255, 255, 255, 0.25);
   background: rgba(255, 255, 255, 0.06);
@@ -54,7 +58,7 @@
   display: grid;
   place-items: center;
   cursor: pointer;
-  transition: box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .electron:hover {
@@ -86,8 +90,8 @@
   position: absolute;
   transform: translate(-50%, -50%);
   z-index: 2;
-  width: 116px;
-  height: 116px;
+  width: clamp(60px, 6vw, 148px);
+  height: clamp(60px, 6vw, 148px);
   border-radius: 999px;
   border: 1.5px solid rgba(82, 183, 136, 0.6);
   background: rgba(82, 183, 136, 0.12);
@@ -164,24 +168,7 @@
 }
 
 
-/* Responsive tweak: slightly smaller electrons on very small screens */
-@media (max-width: 480px) {
-  .nucleus {
-    width: 92px;
-    height: 92px;
-    font-size: 0.95rem;
-  }
 
-  .electron {
-    width: 62px;
-    height: 62px;
-  }
-
-  .childElectron {
-    width: 50px;
-    height: 50px;
-  }
-}
 
 
 /* Responsive adjustments */

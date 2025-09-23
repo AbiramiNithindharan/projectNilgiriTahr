@@ -527,7 +527,7 @@ export default function NewsRoom() {
                     border: "1px solid rgba(255, 255, 255, 0.3)",
                     transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                     cursor: "pointer",
-                    height: "320px",
+                    height: "360px",
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "space-between",
