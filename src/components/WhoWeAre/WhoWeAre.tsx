@@ -368,7 +368,7 @@ export default function WhoWeAre() {
       </div>
 
       {/* Team Members Section */}
-      <motion.div
+      {/* {<motion.div
         style={{
           background: "linear-gradient(180deg, #ffffff 0%, #f8fffe 100%)",
           padding: "80px 2rem",
@@ -382,9 +382,9 @@ export default function WhoWeAre() {
           style={{
             marginTop: "8rem",
           }}
-        >
-          {/* Section Header */}
-          <div
+        > */}
+      {/* Section Header */}
+      {/*  <div
             style={{
               textAlign: "center",
               marginBottom: "4rem",
@@ -426,9 +426,9 @@ export default function WhoWeAre() {
             >
               A dedicated team of researchers, forest staff, veterinarians, and
               community partners working together to safeguard the future of the
-              Nilgiri Tahr.
-            </p>
-            <motion.button
+              Nilgiri Tahr
+            </p> */}
+      {/*  <motion.button
               whileHover={{ scale: 1.02 }}
               style={{
                 background: "#000000",
@@ -454,11 +454,11 @@ export default function WhoWeAre() {
               }}
             >
               View All Our Team Members
-            </motion.button>
-          </div>
+            </motion.button> */}
+      {/*  </div> */}
 
-          {/* Team Members Slider */}
-          <motion.div
+      {/* Team Members Slider */}
+      {/*  <motion.div
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -544,9 +544,9 @@ export default function WhoWeAre() {
                         window.open(member.website, "_blank");
                       }
                     }}
-                  >
-                    {/* Member/Partner Image */}
-                    <div
+                  > */}
+      {/* Member/Partner Image */}
+      {/* <div
                       style={{
                         width: "120px",
                         height: "120px",
@@ -585,9 +585,9 @@ export default function WhoWeAre() {
                         />
                       </div>
                     </div>
-
-                    {/* Member/Partner Info */}
-                    <div
+ */}
+      {/* Member/Partner Info */}
+      {/*   <div
                       style={{
                         textAlign: "center",
                         flex: 1,
@@ -595,9 +595,9 @@ export default function WhoWeAre() {
                         flexDirection: "column",
                         justifyContent: "space-between",
                       }}
-                    >
-                      {/* Name and Section */}
-                      <div>
+                    > */}
+      {/* Name and Section */}
+      {/*  <div>
                         <h3
                           style={{
                             fontSize: "1.2rem",
@@ -643,10 +643,10 @@ export default function WhoWeAre() {
                         >
                           {member.description}
                         </p>
-                      </div>
+                      </div> */}
 
-                      {/* About/Description */}
-                      <div
+      {/* About/Description */}
+      {/* <div
                         style={{
                           flex: 1,
                           display: "flex",
@@ -671,10 +671,10 @@ export default function WhoWeAre() {
                           {member.about}
                         </p>
                       </div>
-
-                      {/* Partner Link Indicator */}
-                      {/*  {member.isPartner && ( */}
-                      {/*  <div
+ */}
+      {/* Partner Link Indicator */}
+      {/*  {member.isPartner && ( */}
+      {/*  <div
                           style={{
                             marginTop: "1rem",
                             padding: "0.5rem",
@@ -683,7 +683,7 @@ export default function WhoWeAre() {
                             border: "1px solid rgba(82, 183, 136, 0.2)",
                           }}
                         >  */}
-                      {/*  <span
+      {/*  <span
                             style={{
                               fontSize: "0.8rem",
                               color: "#1b4332",
@@ -693,16 +693,16 @@ export default function WhoWeAre() {
                           >
                             Click to visit website
                           </span> */}
-                      {/* </div> 
+      {/* </div> 
                        )}  */}
-                    </div>
-                  </motion.div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
+      {/*   </div> */}
+      {/* </motion.div>
+                </SwiperSlide> */}
+      {/*    ))} */}
+      {/*   </Swiper> */}
 
-            {/* Custom Navigation Buttons */}
-            {allCards.length > 4 && (
+      {/* Custom Navigation Buttons */}
+      {/* {allCards.length > 4 && (
               <>
                 <button
                   className="swiper-button-prev-team"
@@ -784,9 +784,9 @@ export default function WhoWeAre() {
                 </button>
               </>
             )}
-
-            {/* Custom Pagination */}
-            <div
+ */}
+      {/* Custom Pagination */}
+      {/* <div
               className="swiper-pagination-team"
               style={{
                 display: "flex",
@@ -798,7 +798,7 @@ export default function WhoWeAre() {
             />
           </motion.div>
         </motion.div>
-      </motion.div>
+      </motion.div> */}
     </section>
   );
 }

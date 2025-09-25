@@ -168,6 +168,14 @@
   background-clip: text;
 }
 
+.homeButton:hover svg {
+  stroke: #0070f3;
+  /* example blue hover */
+  transform: scale(1.1);
+  transition: all 0.2s ease;
+}
+
+
 /* Responsive design */
 @media (max-width: 1024px) {
   .header {
@@ -310,6 +318,7 @@
     transform: scale(1.1);
   }
 }
+
 
 @media (max-width: 480px) {
   .header {

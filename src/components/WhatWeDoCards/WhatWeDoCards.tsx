@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import styles from "./WhatWeDoCards.module.css";
 import { easeOut } from "framer-motion";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
 export default function WhatWeDoCards() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -132,139 +134,325 @@ export default function WhatWeDoCards() {
         minHeight: "80vh",
       }}
     >
+      {/* Work Cards Slider */}
       <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
+        initial={{ y: 50, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.5 }}
+        viewport={{ once: true }}
         style={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-          width: "100%",
+          position: "relative",
+          zIndex: 10,
+          marginTop: "8rem",
+          maxWidth: "1400px",
+          margin: "8rem auto 0",
         }}
       >
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))",
-            gap: "clamp(1.5rem, 3vw, 2rem)",
-          }}
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+          className={styles.swiperContainer}
         >
-          {cards.map((card, index) => (
-            <motion.div
-              key={index}
-              variants={cardVariants}
-              whileHover={{ y: -5 }}
-              onMouseEnter={() => setHoveredCard(index)}
-              onMouseLeave={() => setHoveredCard(null)}
-              style={{
-                background: "#ffffff",
-                borderRadius: "12px",
-                overflow: "hidden",
-                boxShadow:
-                  "0 4px 6px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.06)",
-                border: "1px solid #e5e7eb",
-                transition: "all 0.3s ease",
-                cursor: "pointer",
-                position: "relative",
-                height: "500px",
-                gap: "10px",
-                marginBottom: "20px",
-              }}
-            >
-              {/* Image Section */}
-              <div
-                style={{
-                  height: "200px",
-                  position: "relative",
-                  overflow: "hidden",
-                  borderRadius: "16px 16px 0 0",
-                }}
-              >
-                <div
+          <Swiper
+            modules={[Navigation, Autoplay]}
+            spaceBetween={24}
+            slidesPerView={1}
+            navigation={{
+              nextEl: ".swiper-button-next-work",
+              prevEl: ".swiper-button-prev-work",
+            }}
+            pagination={{
+              clickable: true,
+              el: ".swiper-pagination-work",
+              bulletClass: "swiper-pagination-bullet-custom",
+              bulletActiveClass: "swiper-pagination-bullet-active-custom",
+            }}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            loop={cards.length > 3}
+            breakpoints={{
+              640: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 24,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 32,
+              },
+            }}
+            style={{
+              padding: "2rem",
+              background: "rgba(27, 67, 50, 0.03)",
+              backdropFilter: "blur(10px)",
+              borderRadius: "20px",
+              border: "1px solid rgba(27, 67, 50, 0.1)",
+              position: "relative",
+            }}
+          >
+            {cards.map((card, index) => (
+              <SwiperSlide key={index}>
+                <motion.div
+                  initial={{ y: 20, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.4, delay: (index % 3) * 0.1 }}
+                  viewport={{ once: true }}
                   style={{
-                    width: "100%",
-                    height: "100%",
-                    background: "linear-gradient(135deg, #e8f5f0, #a8dab5)",
+                    background: "rgba(255, 255, 255, 0.95)",
+                    backdropFilter: "blur(15px)",
+                    borderRadius: "16px",
+                    overflow: "hidden",
+                    boxShadow: "0 8px 32px rgba(27, 67, 50, 0.08)",
+                    border: "1px solid rgba(255, 255, 255, 0.3)",
+                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                    cursor: "pointer",
+                    height: "420px", // Fixed height for all cards
                     display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "4rem",
-                    color: "#1b4332",
-                    fontWeight: "bold",
-                    position: "relative",
+                    flexDirection: "column",
+                  }}
+                  whileHover={{
+                    y: -8,
+                    scale: 1.02,
+                    boxShadow: "0 16px 48px rgba(27, 67, 50, 0.12)",
+                    transition: { duration: 0.2 },
                   }}
                 >
-                  {/* Placeholder icon based on card type */}
-                  {card.title.includes("Research") && "🔬"}
-                  {card.title.includes("Habitat") && "🌱"}
-                  {card.title.includes("Community") && "🤝"}
-                  {card.title.includes("COMMUNICATION") && "🤝"}
-                  {card.title.includes("Monitoring") && "📊"}
-                  {card.title.includes("MONITORING") && "📊"}
-                  {card.title.includes("SURVEY") && "📊"}
-                  {card.title.includes("Documentation") && "📋"}
-                  {card.title.includes("Policy") && "📜"}
-                  {card.title.includes("COLLARING") && "🦌"}
-                  {card.title.includes("TREATMENT") && "🏥"}
-                  {card.title.includes("GRASSLAND") && "🌱"}
-                  {card.title.includes("ECO-TOURISM") && "📈"}
-
-                  {/* Overlay for image placeholder */}
+                  {/* Card Image */}
                   <div
                     style={{
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      background:
-                        "linear-gradient(45deg, rgba(27, 67, 50, 0.1), rgba(82, 183, 136, 0.1))",
-                    }}
-                  />
-                </div>
-              </div>
-
-              {/* Content Section */}
-              <div
-                style={{
-                  padding: "clamp(1.25rem, 2.5vw, 1.5rem)",
-                  height: "200px",
-                  display: "flex",
-                  flexDirection: "column",
-                  position: "relative",
-                }}
-              >
-                <h3
-                  style={{
-                    fontSize: "clamp(1.1rem, 2.2vw, 1.25rem)",
-                    fontWeight: "600",
-                    color: "#1f2937",
-                    margin: "0 0 1rem 0",
-                    fontFamily: "Poppins, sans-serif",
-                  }}
-                >
-                  {card.title}
-                </h3>
-                <div style={{ flex: 1 }}>
-                  <p
-                    style={{
-                      fontSize: "clamp(0.9rem, 1.8vw, 1rem)",
-                      lineHeight: "1.6",
-                      color: "#374151",
-                      fontFamily: "Poppins, sans-serif",
-                      fontWeight: "400",
-                      margin: "0",
-                      textAlign: "center",
+                      height: "200px",
+                      position: "relative",
+                      overflow: "hidden",
+                      borderRadius: "16px 16px 0 0",
                     }}
                   >
-                    {card.description}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+                    <div
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        background: "linear-gradient(135deg, #e8f5f0, #a8dab5)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: "4rem",
+                        color: "#1b4332",
+                        fontWeight: "bold",
+                        position: "relative",
+                      }}
+                    >
+                      {/* Placeholder icon based on card type */}
+                      {card.title.includes("Research") && "🔬"}
+                      {card.title.includes("Habitat") && "🌱"}
+                      {card.title.includes("Community") && "🤝"}
+                      {card.title.includes("COMMUNICATION") && "🤝"}
+                      {card.title.includes("Monitoring") && "📊"}
+                      {card.title.includes("MONITORING") && "📊"}
+                      {card.title.includes("SURVEY") && "📊"}
+                      {card.title.includes("Documentation") && "📋"}
+                      {card.title.includes("Policy") && "📜"}
+                      {card.title.includes("COLLARING") && "🦌"}
+                      {card.title.includes("TREATMENT") && "🏥"}
+                      {card.title.includes("GRASSLAND") && "🌱"}
+                      {card.title.includes("ECO-TOURISM") && "📈"}
+
+                      {/* Overlay for image placeholder */}
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: 0,
+                          left: 0,
+                          right: 0,
+                          bottom: 0,
+                          background:
+                            "linear-gradient(45deg, rgba(27, 67, 50, 0.1), rgba(82, 183, 136, 0.1))",
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Card Content */}
+                  <div
+                    style={{
+                      padding: "1.5rem",
+                      flex: 1,
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    {/* Title */}
+                    <div>
+                      <h3
+                        style={{
+                          fontSize: "1.3rem",
+                          fontWeight: "700",
+                          margin: "0 0 1rem 0",
+                          color: "#1b4332",
+                          fontFamily: "Poppins, sans-serif",
+                          lineHeight: "1.3",
+                          minHeight: "2.6rem",
+                        }}
+                      >
+                        {card.title}
+                      </h3>
+                    </div>
+
+                    {/* Description */}
+                    <div style={{ flex: 1 }}>
+                      <p
+                        style={{
+                          fontSize: "0.9rem",
+                          color: "#2d5016",
+                          lineHeight: "1.5",
+                          margin: "0",
+                          fontFamily: "Poppins, sans-serif",
+                          opacity: 0.9,
+                          display: "-webkit-box",
+                          WebkitLineClamp: 5, // Limit to 5 lines
+                          WebkitBoxOrient: "vertical",
+                          overflow: "hidden",
+                        }}
+                      >
+                        {card.description}
+                      </p>
+                    </div>
+
+                    {/* Learn More Button */}
+                    <div style={{ marginTop: "1rem" }}>
+                      <button
+                        style={{
+                          background: "transparent",
+                          color: "#52b788",
+                          border: "2px solid #52b788",
+                          borderRadius: "8px",
+                          padding: "0.5rem 1rem",
+                          fontSize: "0.85rem",
+                          fontWeight: "600",
+                          fontFamily: "Poppins, sans-serif",
+                          cursor: "pointer",
+                          transition: "all 0.3s ease",
+                          width: "100%",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = "#52b788";
+                          e.currentTarget.style.color = "#ffffff";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = "transparent";
+                          e.currentTarget.style.color = "#52b788";
+                        }}
+                      >
+                        Learn More
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          {/* Custom Navigation Buttons */}
+          {cards.length > 3 && (
+            <>
+              <button
+                className="swiper-button-prev-work"
+                style={{
+                  position: "absolute",
+                  left: "-1.5rem",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  background: "rgba(255, 255, 255, 0.95)",
+                  backdropFilter: "blur(10px)",
+                  border: "1px solid rgba(82, 183, 136, 0.2)",
+                  borderRadius: "50%",
+                  width: "50px",
+                  height: "50px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  cursor: "pointer",
+                  fontSize: "1.5rem",
+                  color: "#1b4332",
+                  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                  zIndex: 10,
+                  boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "#52b788";
+                  e.currentTarget.style.color = "#ffffff";
+                  e.currentTarget.style.transform =
+                    "translateY(-50%) scale(1.1)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background =
+                    "rgba(255, 255, 255, 0.95)";
+                  e.currentTarget.style.color = "#1b4332";
+                  e.currentTarget.style.transform = "translateY(-50%) scale(1)";
+                }}
+              >
+                ‹
+              </button>
+              <button
+                className="swiper-button-next-work"
+                style={{
+                  position: "absolute",
+                  right: "-1.5rem",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  background: "rgba(255, 255, 255, 0.95)",
+                  backdropFilter: "blur(10px)",
+                  border: "1px solid rgba(82, 183, 136, 0.2)",
+                  borderRadius: "50%",
+                  width: "50px",
+                  height: "50px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  cursor: "pointer",
+                  fontSize: "1.5rem",
+                  color: "#1b4332",
+                  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                  zIndex: 10,
+                  boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "#52b788";
+                  e.currentTarget.style.color = "#ffffff";
+                  e.currentTarget.style.transform =
+                    "translateY(-50%) scale(1.1)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background =
+                    "rgba(255, 255, 255, 0.95)";
+                  e.currentTarget.style.color = "#1b4332";
+                  e.currentTarget.style.transform = "translateY(-50%) scale(1)";
+                }}
+              >
+                ›
+              </button>
+            </>
+          )}
+
+          {/* Custom Pagination */}
+          <div
+            className="swiper-pagination-work"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "0.8rem",
+              marginTop: "2rem",
+            }}
+          />
+        </motion.div>
       </motion.div>
     </section>
   );

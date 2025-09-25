@@ -237,7 +237,7 @@ export default function WhereWeWork() {
         </motion.div>
 
         {/* Protected Areas and Administrative Units Slider */}
-        <motion.div
+        {/* <motion.div
           variants={cardVariants}
           style={{
             marginBottom: "4rem",
@@ -380,10 +380,10 @@ export default function WhereWeWork() {
                   </Link>
                 </SwiperSlide>
               ))}
-            </Swiper>
+            </Swiper> */}
 
-            {/* Custom Navigation Buttons */}
-            {administrativeAreas.length > 4 && (
+        {/* Custom Navigation Buttons */}
+        {/* {administrativeAreas.length > 4 && (
               <>
                 <button
                   className="swiper-button-prev-areas"
@@ -465,9 +465,9 @@ export default function WhereWeWork() {
                 </button>
               </>
             )}
-
-            {/* Custom Pagination */}
-            <div
+ */}
+        {/* Custom Pagination */}
+        {/*  <div
               className="swiper-pagination-areas"
               style={{
                 display: "flex",
@@ -478,7 +478,46 @@ export default function WhereWeWork() {
               }}
             />
           </div>
-        </motion.div>
+        </motion.div> */}
+
+        {/* Learn More Button */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Link href="/protective-areas-admin-units">
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              style={{
+                background: "transparent",
+                border: "2px solid #ffffff",
+                color: "#ffffff",
+                padding: "1rem 2rem",
+                fontSize: "1rem",
+                fontWeight: "600",
+                fontFamily: "Inter, sans-serif",
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+                cursor: "pointer",
+                transition: "all 0.3s ease",
+                marginTop: "2rem",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "#ffffff";
+                e.currentTarget.style.color = "#000000";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "transparent";
+                e.currentTarget.style.color = "#ffffff";
+              }}
+            >
+              LEARN MORE
+            </motion.button>
+          </Link>
+        </div>
       </div>
     </motion.section>
   );

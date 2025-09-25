@@ -2,8 +2,9 @@
 
 import { useEffect, useState, useRef, useCallback } from "react";
 import { motion, useMotionValue } from "framer-motion";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import styles from "./Header.module.css";
+import { Home } from "lucide-react";
 
 // Import new components
 import Logo from "./components/Logo";
@@ -127,6 +128,8 @@ export default function Header({
     { label: "Contact Us", href: "#contact-us" },
   ];
 
+  const pathname = usePathname();
+
   return (
     <>
       <motion.header
@@ -146,7 +149,7 @@ export default function Header({
           left: 0,
           right: 0,
           zIndex: 1000,
-          background: isScrolled ? "transparent" : "rgba(255, 255, 255, 0.95)",
+          background: isScrolled ? "transparent" : "rgba(255, 255, 255, 1)",
           backdropFilter: isScrolled ? "none" : "none",
           borderBottom: isScrolled ? "none" : "none",
           boxShadow: isScrolled ? "none" : "none",
@@ -172,6 +175,29 @@ export default function Header({
             transition: "all 0.3s ease",
           }}
         >
+          {pathname !== "/" && (
+            <motion.button
+              onClick={() => router.push("/")}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3 }}
+              className={styles.homeButton}
+              style={{
+                background: "transparent",
+                border: "none",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "0.4rem",
+                marginRight: "20px",
+              }}
+              aria-label="Go to home"
+            >
+              <Home size={24} strokeWidth={2} />
+            </motion.button>
+          )}
+
           {/* Left Logo */}
           <Logo
             src={leftLogoSrc}

@@ -96,6 +96,36 @@ export default function NewsRoom() {
       image: "/banners/DJI_0036.jpg",
       readTime: "8 min read",
     },
+    {
+      id: "news-4",
+      title: "Research Publication: Habitat Preferences of Nilgiri Tahr",
+      date: "December 5, 2024",
+      category: "Article Publication",
+      excerpt:
+        "New research reveals critical habitat requirements for sustainable Nilgiri Tahr conservation.",
+      image: "/banners/DJI_0036.jpg",
+      readTime: "8 min read",
+    },
+    {
+      id: "news-5",
+      title: "Research Publication: Habitat Preferences of Nilgiri Tahr",
+      date: "December 5, 2024",
+      category: "Article Publication",
+      excerpt:
+        "New research reveals critical habitat requirements for sustainable Nilgiri Tahr conservation.",
+      image: "/banners/DJI_0036.jpg",
+      readTime: "8 min read",
+    },
+    {
+      id: "news-6",
+      title: "Research Publication: Habitat Preferences of Nilgiri Tahr",
+      date: "December 5, 2024",
+      category: "Article Publication",
+      excerpt:
+        "New research reveals critical habitat requirements for sustainable Nilgiri Tahr conservation.",
+      image: "/banners/DJI_0036.jpg",
+      readTime: "8 min read",
+    },
   ];
 
   const victories = [
@@ -314,6 +344,7 @@ export default function NewsRoom() {
           </Link>
         ))}
       </div>
+
       <div
         style={{
           maxWidth: "1600px",
@@ -586,7 +617,7 @@ export default function NewsRoom() {
           </Swiper>
 
           {/* Custom Navigation Buttons */}
-          {newsCategories.length > 4 && (
+          {newsCategories.length > 3 && (
             <>
               <button
                 className="swiper-button-prev-categories"
@@ -670,7 +701,12 @@ export default function NewsRoom() {
       </motion.div>
 
       {/* Recent News Section */}
-      <motion.div variants={itemVariants}>
+      <motion.div
+        variants={itemVariants}
+        style={{
+          marginBottom: "4rem",
+        }}
+      >
         <div
           style={{
             textAlign: "center",
@@ -703,138 +739,258 @@ export default function NewsRoom() {
           </h3>
         </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))",
-            gap: "2rem",
-          }}
-        >
-          {recentNews.map((news) => (
-            <motion.article
-              key={news.id}
-              variants={itemVariants}
-              whileHover={{ y: -8, scale: 1.02 }}
-              style={{
-                background: "rgba(255, 255, 255, 0.95)",
-                borderRadius: "16px",
-                overflow: "hidden",
-                boxShadow: "0 8px 32px rgba(27, 67, 50, 0.08)",
-                border: "1px solid rgba(255, 255, 255, 0.3)",
-                transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                cursor: "pointer",
-              }}
-            >
-              {/* News Image */}
-              <div
-                style={{
-                  height: "200px",
-                  position: "relative",
-                  overflow: "hidden",
-                }}
-              >
-                <Image
-                  src={news.image}
-                  alt={news.title}
-                  fill
+        <div className={styles.swiperContainer}>
+          <Swiper
+            modules={[Navigation, Autoplay]}
+            spaceBetween={24}
+            slidesPerView={1}
+            navigation={{
+              nextEl: ".swiper-recent-news-button-next",
+              prevEl: ".swiper-recent-news-button-prev",
+            }}
+            autoplay={{
+              delay: 4000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            loop={recentNews.length > 3}
+            breakpoints={{
+              640: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 24,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 32,
+              },
+              1280: {
+                slidesPerView: 4,
+                spaceBetween: 32,
+              },
+            }}
+            style={{
+              padding: "2rem",
+              background: "rgba(0, 0, 0, 0.02)",
+              backdropFilter: "blur(10px)",
+              borderRadius: "20px",
+              border: "1px solid rgba(0, 0, 0, 0.05)",
+              position: "relative",
+            }}
+          >
+            {recentNews.map((news) => (
+              <SwiperSlide key={news.id}>
+                <motion.article
+                  key={news.id}
+                  variants={itemVariants}
+                  whileHover={{ y: -8, scale: 1.02 }}
                   style={{
-                    objectFit: "cover",
-                  }}
-                />
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "1rem",
-                    left: "1rem",
-                    background: "#52b788",
-                    color: "#ffffff",
-                    padding: "0.5rem 1rem",
-                    borderRadius: "20px",
-                    fontSize: "0.8rem",
-                    fontWeight: "600",
-                    fontFamily: "Inter, sans-serif",
-                  }}
-                >
-                  {news.category}
-                </div>
-              </div>
-
-              {/* News Content */}
-              <div
-                style={{
-                  padding: "1.5rem",
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    marginBottom: "1rem",
-                    fontSize: "0.9rem",
-                    color: "#666666",
-                    fontFamily: "Inter, sans-serif",
-                  }}
-                >
-                  <span>{news.date}</span>
-                  <span>{news.readTime}</span>
-                </div>
-
-                <h4
-                  style={{
-                    fontSize: "1.3rem",
-                    fontWeight: "700",
-                    color: "#1b4332",
-                    margin: "0 0 1rem 0",
-                    fontFamily: "Inter, sans-serif",
-                    lineHeight: "1.3",
-                  }}
-                >
-                  {news.title}
-                </h4>
-
-                <p
-                  style={{
-                    fontSize: "1rem",
-                    color: "#666666",
-                    lineHeight: "1.6",
-                    margin: "0 0 1.5rem 0",
-                    fontFamily: "Inter, sans-serif",
-                  }}
-                >
-                  {news.excerpt}
-                </p>
-
-                <button
-                  style={{
-                    background: "transparent",
-                    border: "1px solid #52b788",
-                    color: "#52b788",
-                    padding: "0.8rem 1.5rem",
-                    fontSize: "0.9rem",
-                    fontWeight: "600",
-                    fontFamily: "Inter, sans-serif",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.1em",
+                    background: "rgba(255, 255, 255, 0.95)",
+                    borderRadius: "16px",
+                    overflow: "hidden",
+                    boxShadow: "0 8px 32px rgba(27, 67, 50, 0.08)",
+                    border: "1px solid rgba(255, 255, 255, 0.3)",
+                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                     cursor: "pointer",
-                    transition: "all 0.3s ease",
-                    borderRadius: "8px",
-                    width: "100%",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "#52b788";
-                    e.currentTarget.style.color = "#ffffff";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "transparent";
-                    e.currentTarget.style.color = "#52b788";
                   }}
                 >
-                  READ MORE
-                </button>
-              </div>
-            </motion.article>
-          ))}
+                  {/* News Image */}
+                  <div
+                    style={{
+                      height: "200px",
+                      position: "relative",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <Image
+                      src={news.image}
+                      alt={news.title}
+                      fill
+                      style={{
+                        objectFit: "cover",
+                      }}
+                    />
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: "1rem",
+                        left: "1rem",
+                        background: "#52b788",
+                        color: "#ffffff",
+                        padding: "0.5rem 1rem",
+                        borderRadius: "20px",
+                        fontSize: "0.8rem",
+                        fontWeight: "600",
+                        fontFamily: "Inter, sans-serif",
+                      }}
+                    >
+                      {news.category}
+                    </div>
+                  </div>
+
+                  {/* News Content */}
+                  <div
+                    style={{
+                      padding: "1.5rem",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        marginBottom: "1rem",
+                        fontSize: "0.9rem",
+                        color: "#666666",
+                        fontFamily: "Inter, sans-serif",
+                      }}
+                    >
+                      <span>{news.date}</span>
+                      <span>{news.readTime}</span>
+                    </div>
+
+                    <h4
+                      style={{
+                        fontSize: "1.3rem",
+                        fontWeight: "700",
+                        color: "#1b4332",
+                        margin: "0 0 1rem 0",
+                        fontFamily: "Inter, sans-serif",
+                        lineHeight: "1.3",
+                      }}
+                    >
+                      {news.title}
+                    </h4>
+
+                    <p
+                      style={{
+                        fontSize: "1rem",
+                        color: "#666666",
+                        lineHeight: "1.6",
+                        margin: "0 0 1.5rem 0",
+                        fontFamily: "Inter, sans-serif",
+                      }}
+                    >
+                      {news.excerpt}
+                    </p>
+
+                    <button
+                      style={{
+                        background: "transparent",
+                        border: "1px solid #52b788",
+                        color: "#52b788",
+                        padding: "0.8rem 1.5rem",
+                        fontSize: "0.9rem",
+                        fontWeight: "600",
+                        fontFamily: "Inter, sans-serif",
+                        textTransform: "uppercase",
+                        letterSpacing: "0.1em",
+                        cursor: "pointer",
+                        transition: "all 0.3s ease",
+                        borderRadius: "8px",
+                        width: "100%",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = "#52b788";
+                        e.currentTarget.style.color = "#ffffff";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = "transparent";
+                        e.currentTarget.style.color = "#52b788";
+                      }}
+                    >
+                      READ MORE
+                    </button>
+                  </div>
+                </motion.article>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          {/* Custom Navigation Buttons */}
+          {recentNews.length > 4 && (
+            <>
+              <button
+                className="swiper-recent-news-button-prev"
+                style={{
+                  position: "absolute",
+                  left: "-1.5rem",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  background: "rgba(255, 255, 255, 0.95)",
+                  backdropFilter: "blur(10px)",
+                  border: "1px solid rgba(82, 183, 136, 0.2)",
+                  borderRadius: "50%",
+                  width: "50px",
+                  height: "50px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  cursor: "pointer",
+                  fontSize: "1.5rem",
+                  color: "#1b4332",
+                  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                  zIndex: 10,
+                  boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "#52b788";
+                  e.currentTarget.style.color = "#ffffff";
+                  e.currentTarget.style.transform =
+                    "translateY(-50%) scale(1.1)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background =
+                    "rgba(255, 255, 255, 0.95)";
+                  e.currentTarget.style.color = "#1b4332";
+                  e.currentTarget.style.transform = "translateY(-50%) scale(1)";
+                }}
+              >
+                ‹
+              </button>
+              <button
+                className="swiper-recent-news-button-next"
+                style={{
+                  position: "absolute",
+                  right: "-1.5rem",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  background: "rgba(255, 255, 255, 0.95)",
+                  backdropFilter: "blur(10px)",
+                  border: "1px solid rgba(82, 183, 136, 0.2)",
+                  borderRadius: "50%",
+                  width: "50px",
+                  height: "50px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  cursor: "pointer",
+                  fontSize: "1.5rem",
+                  color: "#1b4332",
+                  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                  zIndex: 10,
+                  boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "#52b788";
+                  e.currentTarget.style.color = "#ffffff";
+                  e.currentTarget.style.transform =
+                    "translateY(-50%) scale(1.1)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background =
+                    "rgba(255, 255, 255, 0.95)";
+                  e.currentTarget.style.color = "#1b4332";
+                  e.currentTarget.style.transform = "translateY(-50%) scale(1)";
+                }}
+              >
+                ›
+              </button>
+            </>
+          )}
         </div>
       </motion.div>
     </motion.section>

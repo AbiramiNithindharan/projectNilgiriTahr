@@ -9,6 +9,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import styles from "./WhatWeDo.module.css";
+import Link from "next/link";
 
 interface WorkCard {
   title: string;
@@ -215,33 +216,35 @@ export default function WhatWeDo() {
           </p>
 
           {/* Learn More Button */}
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            style={{
-              background: "transparent",
-              border: "2px solid #ffffff",
-              color: "#ffffff",
-              padding: "1rem 2rem",
-              fontSize: "1rem",
-              fontWeight: "600",
-              fontFamily: "Inter, sans-serif",
-              textTransform: "uppercase",
-              letterSpacing: "0.1em",
-              cursor: "pointer",
-              transition: "all 0.3s ease",
-              marginTop: "2rem",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#ffffff";
-              e.currentTarget.style.color = "#000000";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "transparent";
-              e.currentTarget.style.color = "#ffffff";
-            }}
-          >
-            EXPLORE OUR WORK
-          </motion.button>
+          <Link href="/what-we-do">
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              style={{
+                background: "transparent",
+                border: "2px solid #ffffff",
+                color: "#ffffff",
+                padding: "1rem 2rem",
+                fontSize: "1rem",
+                fontWeight: "600",
+                fontFamily: "Inter, sans-serif",
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+                cursor: "pointer",
+                transition: "all 0.3s ease",
+                marginTop: "2rem",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "#ffffff";
+                e.currentTarget.style.color = "#000000";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "transparent";
+                e.currentTarget.style.color = "#ffffff";
+              }}
+            >
+              EXPLORE OUR WORK
+            </motion.button>
+          </Link>
         </motion.div>
 
         {/* Right Side - Large "CONSERVATION" text */}
@@ -276,7 +279,7 @@ export default function WhatWeDo() {
       </div>
 
       {/* Work Cards Section */}
-      <motion.div
+      {/* <motion.div
         initial={{ y: 50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.5 }}
@@ -288,9 +291,9 @@ export default function WhatWeDo() {
           maxWidth: "1400px",
           margin: "8rem auto 0",
         }}
-      >
-        {/* Section Header */}
-        <div
+      > */}
+      {/* Section Header */}
+      {/*  <div
           style={{
             textAlign: "center",
             marginBottom: "4rem",
@@ -321,9 +324,9 @@ export default function WhatWeDo() {
             Our Work
           </h3>
         </div>
-
-        {/* Work Cards Slider */}
-        <motion.div
+ */}
+      {/* Work Cards Slider */}
+      {/* <motion.div
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.3 }}
@@ -399,9 +402,9 @@ export default function WhatWeDo() {
                     boxShadow: "0 16px 48px rgba(27, 67, 50, 0.12)",
                     transition: { duration: 0.2 },
                   }}
-                >
-                  {/* Card Image */}
-                  <div
+                > */}
+      {/* Card Image */}
+      {/* <div
                     style={{
                       height: "200px",
                       position: "relative",
@@ -422,9 +425,9 @@ export default function WhatWeDo() {
                         fontWeight: "bold",
                         position: "relative",
                       }}
-                    >
-                      {/* Placeholder icon based on card type */}
-                      {card.title.includes("Research") && "🔬"}
+                    > */}
+      {/* Placeholder icon based on card type */}
+      {/*  {card.title.includes("Research") && "🔬"}
                       {card.title.includes("Habitat") && "🌱"}
                       {card.title.includes("Community") && "🤝"}
                       {card.title.includes("COMMUNICATION") && "🤝"}
@@ -436,10 +439,10 @@ export default function WhatWeDo() {
                       {card.title.includes("COLLARING") && "🦌"}
                       {card.title.includes("TREATMENT") && "🏥"}
                       {card.title.includes("GRASSLAND") && "🌱"}
-                      {card.title.includes("ECO-TOURISM") && "📈"}
+                      {card.title.includes("ECO-TOURISM") && "📈"} */}
 
-                      {/* Overlay for image placeholder */}
-                      <div
+      {/* Overlay for image placeholder */}
+      {/*  <div
                         style={{
                           position: "absolute",
                           top: 0,
@@ -451,10 +454,10 @@ export default function WhatWeDo() {
                         }}
                       />
                     </div>
-                  </div>
+                  </div> */}
 
-                  {/* Card Content */}
-                  <div
+      {/* Card Content */}
+      {/*  <div
                     style={{
                       padding: "1.5rem",
                       flex: 1,
@@ -462,9 +465,9 @@ export default function WhatWeDo() {
                       flexDirection: "column",
                       justifyContent: "space-between",
                     }}
-                  >
-                    {/* Title */}
-                    <div>
+                  > */}
+      {/* Title */}
+      {/* <div>
                       <h3
                         style={{
                           fontSize: "1.3rem",
@@ -478,10 +481,10 @@ export default function WhatWeDo() {
                       >
                         {card.title}
                       </h3>
-                    </div>
+                    </div> */}
 
-                    {/* Description */}
-                    <div style={{ flex: 1 }}>
+      {/* Description */}
+      {/*  <div style={{ flex: 1 }}>
                       <p
                         style={{
                           fontSize: "0.9rem",
@@ -499,9 +502,9 @@ export default function WhatWeDo() {
                         {card.description}
                       </p>
                     </div>
-
-                    {/* Learn More Button */}
-                    <div style={{ marginTop: "1rem" }}>
+ */}
+      {/* Learn More Button */}
+      {/* <div style={{ marginTop: "1rem" }}>
                       <button
                         style={{
                           background: "transparent",
@@ -533,9 +536,9 @@ export default function WhatWeDo() {
               </SwiperSlide>
             ))}
           </Swiper>
-
-          {/* Custom Navigation Buttons */}
-          {cards.length > 3 && (
+ */}
+      {/* Custom Navigation Buttons */}
+      {/* {cards.length > 3 && (
             <>
               <button
                 className="swiper-button-prev-work"
@@ -615,9 +618,9 @@ export default function WhatWeDo() {
               </button>
             </>
           )}
-
-          {/* Custom Pagination */}
-          <div
+ */}
+      {/* Custom Pagination */}
+      {/*  <div
             className="swiper-pagination-work"
             style={{
               display: "flex",
@@ -627,8 +630,8 @@ export default function WhatWeDo() {
               marginTop: "2rem",
             }}
           />
-        </motion.div>
-      </motion.div>
+        </motion.div> */}
+      {/*  </motion.div> */}
     </section>
   );
 }

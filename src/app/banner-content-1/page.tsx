@@ -9,7 +9,7 @@ export default function NilgiriTahrInfoPage() {
         <div className={styles.titleSection}>
           <h1 className={styles.heading}>Nilgiri Tahr</h1>
           <p className={styles.subtitle}>
-            The Endangered Mountain Ungulate of Tamil Nadu
+            The Endangered Mountain ungulates of western ghats.
           </p>
         </div>
 
@@ -28,10 +28,12 @@ export default function NilgiriTahrInfoPage() {
         <div className={styles.card}>
           <p>
             The state animal of Tamil Nadu, the{" "}
-            <strong>Nilgiri Tahr (Nilgiritragus hylocrius)</strong>, inhabits
-            the verdant sub-alpine grasslands of the Western Ghats, spanning
-            Tamil Nadu and Kerala. It was declared state animal of Tamil Nadu in
-            the year 1988.
+            <strong>
+              Nilgiri Tahr (<i>Nilgiritragus hylocrius</i>)
+            </strong>
+            , inhabits the verdant sub-alpine grasslands of the Western Ghats,
+            spanning Tamil Nadu and Kerala. It was declared state animal of
+            Tamil Nadu in the year 1988.
           </p>
 
           <p>

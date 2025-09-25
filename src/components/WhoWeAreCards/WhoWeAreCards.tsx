@@ -14,22 +14,26 @@ export default function WhoWeAreCards() {
   const cards = [
     {
       title: "Board Members",
-      description: "Our board comprises distinguished wildlife conservationists, forest officials, and environmental scientists who provide strategic guidance for Nilgiri Tahr conservation initiatives and policy development.",
+      description:
+        "Our board comprises distinguished wildlife conservationists, forest officials, and environmental scientists who provide strategic guidance for Nilgiri Tahr conservation initiatives and policy development.",
       sectionId: "board-members",
     },
     {
       title: "Research Team",
-      description: "A dedicated team of wildlife biologists, ecologists, and field researchers conducting cutting-edge studies on Nilgiri Tahr behavior, population dynamics, and habitat requirements for evidence-based conservation.",
+      description:
+        "A dedicated team of wildlife biologists, ecologists, and field researchers conducting cutting-edge studies on Nilgiri Tahr behavior, population dynamics, and habitat requirements for evidence-based conservation.",
       sectionId: "research-team",
     },
     {
       title: "Scientific Committee",
-      description: "Leading experts in wildlife conservation, veterinary science, and ecosystem management who review research findings and develop scientific protocols for Nilgiri Tahr protection and habitat restoration.",
+      description:
+        "Leading experts in wildlife conservation, veterinary science, and ecosystem management who review research findings and develop scientific protocols for Nilgiri Tahr protection and habitat restoration.",
       sectionId: "scientific-committee",
     },
     {
       title: "Our Partners",
-      description: "Collaborative network including Tamil Nadu Forest Department, local communities, international conservation organizations, and academic institutions working together for Nilgiri Tahr conservation success.",
+      description:
+        "Collaborative network including Tamil Nadu Forest Department, local communities, international conservation organizations, and academic institutions working together for Nilgiri Tahr conservation success.",
       sectionId: "our-partners",
     },
   ];
@@ -60,9 +64,9 @@ export default function WhoWeAreCards() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
       });
     }
   };
@@ -120,14 +124,18 @@ export default function WhoWeAreCards() {
               lineHeight: "1.6",
             }}
           >
-            Meet the dedicated professionals committed to protecting and conserving the endangered Nilgiri Tahr
+            Meet the dedicated professionals committed to protecting and
+            conserving the endangered Nilgiri Tahr
           </p>
         </motion.div>
 
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: isClient && window.innerWidth >= 768 ? "repeat(4, 1fr)" : "repeat(2, 1fr)",
+            gridTemplateColumns:
+              isClient && window.innerWidth >= 768
+                ? "repeat(4, 1fr)"
+                : "repeat(2, 1fr)",
             gap: "clamp(1rem, 2vw, 1.5rem)",
           }}
         >
@@ -135,9 +143,9 @@ export default function WhoWeAreCards() {
             <motion.div
               key={index}
               variants={cardVariants}
-              whileHover={{ 
+              whileHover={{
                 y: -3,
-                transition: { duration: 0.2 }
+                transition: { duration: 0.2 },
               }}
               onClick={() => scrollToSection(card.sectionId)}
               style={{
@@ -149,20 +157,22 @@ export default function WhoWeAreCards() {
                 transition: "all 0.3s ease",
                 cursor: "pointer",
                 textAlign: "center",
-                minHeight: "clamp(120px, 25vw, 200px)", // Reduced height for mobile
+                minHeight: "clamp(120px, 25vw, 250px)", // Reduced height for mobile
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.15)";
+                e.currentTarget.style.boxShadow =
+                  "0 4px 12px rgba(0, 0, 0, 0.15)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.1)";
+                e.currentTarget.style.boxShadow =
+                  "0 2px 8px rgba(0, 0, 0, 0.1)";
               }}
             >
               <h3
                 style={{
                   fontSize: "clamp(1rem, 3vw, 1.5rem)",
                   fontWeight: "600",
-                  color: "#1f2937",
+                  color: "#1b4332",
                   margin: "0 0 clamp(0.5rem, 1vw, 1rem) 0",
                   fontFamily: "Poppins, sans-serif",
                   lineHeight: "1.2",
@@ -170,7 +180,7 @@ export default function WhoWeAreCards() {
               >
                 {card.title}
               </h3>
-              
+
               <p
                 style={{
                   fontSize: "clamp(0.75rem, 2vw, 1rem)",
@@ -180,7 +190,7 @@ export default function WhoWeAreCards() {
                   fontWeight: "400",
                   margin: "0",
                   display: "-webkit-box",
-                  WebkitLineClamp: 3, // Limit to 3 lines on mobile
+                  WebkitLineClamp: 6, // Limit to 3 lines on mobile
                   WebkitBoxOrient: "vertical",
                   overflow: "hidden",
                   textOverflow: "ellipsis",
