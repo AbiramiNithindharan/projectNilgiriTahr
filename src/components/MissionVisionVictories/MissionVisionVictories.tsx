@@ -48,15 +48,11 @@ export default function MissionVisionVictories() {
 
   return (
     <motion.section
+      className={styles.section}
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
-      style={{
-        padding: "120px 2rem 80px",
-        background: "#ffffff",
-        minHeight: "100vh",
-      }}
     >
       <div
         style={{
@@ -118,7 +114,7 @@ export default function MissionVisionVictories() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
             gap: "2rem",
             marginBottom: "6rem",
           }}

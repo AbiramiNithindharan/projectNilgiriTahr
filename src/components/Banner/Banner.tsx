@@ -40,7 +40,7 @@ export default function Banner({
   // Banner images array
   const bannerImages = [
     {
-      src: "/banners/final-banner-image.png",
+      src: "/banners/DJI_0036.jpg",
       alt: "Nilgiri Tahr conservation work",
       link: "/banner-content-1",
     },
@@ -203,8 +203,124 @@ export default function Banner({
                   sizes="100vw"
                   style={{
                     objectFit: "cover",
+                    objectPosition: "center",
                   }}
                 />
+
+                <div className={styles.imageOverlay}></div>
+
+                {/* Banner Text Overlay - show only on first image */}
+                {activeIndex === index && index === 0 && (
+                  <div
+                    style={{
+                      position: "relative",
+                      zIndex: 10,
+                      bottom: "10%",
+                      height: "80%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      maxWidth: "1000px",
+                      margin: "0 auto",
+                      padding: "120px clamp(2rem, 5vw, 4rem) 0",
+                    }}
+                  >
+                    {/* Large Typography - Centered */}
+                    <div
+                      style={{
+                        textAlign: "center",
+                        color: "#ffffff",
+                        maxWidth: "100%",
+                        width: "100%",
+                        textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <motion.div
+                        initial={{ y: 80, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.8, delay: 0.3 }}
+                      >
+                        <h1
+                          style={{
+                            fontSize: "clamp(2.5rem, 10vw, 5rem)",
+                            fontWeight: "300",
+                            lineHeight: "0.9",
+                            marginBottom: "10px",
+                            fontFamily: "Inter, sans-serif",
+                            letterSpacing: "-0.04em",
+                            textTransform: "lowercase",
+                          }}
+                        >
+                          Conserving the
+                        </h1>
+                      </motion.div>
+
+                      <motion.div
+                        initial={{ y: 80, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.8, delay: 0.5 }}
+                      >
+                        <h1
+                          style={{
+                            fontSize: "clamp(2.5rem, 10vw, 5rem)",
+                            fontWeight: "300",
+                            lineHeight: "0.9",
+                            margin: "-0.05em 0 10px 0",
+                            fontFamily: "Inter, sans-serif",
+                            letterSpacing: "-0.04em",
+                            textTransform: "lowercase",
+                          }}
+                        >
+                          mountain
+                        </h1>
+                      </motion.div>
+
+                      <motion.div
+                        initial={{ y: 80, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.8, delay: 0.7 }}
+                      >
+                        <h1
+                          style={{
+                            fontSize: "clamp(2.5rem, 10vw, 5rem)",
+                            fontWeight: "300",
+                            lineHeight: "0.9",
+                            margin: "-0.05em 0 10px 0",
+                            fontFamily: "Inter, sans-serif",
+                            letterSpacing: "-0.04em",
+                            textTransform: "lowercase",
+                          }}
+                        >
+                          monarchs of the
+                        </h1>
+                      </motion.div>
+
+                      <motion.div
+                        initial={{ y: 80, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.8, delay: 0.9 }}
+                      >
+                        <h1
+                          style={{
+                            fontSize: "clamp(2.5rem, 10vw, 5rem)",
+                            fontWeight: "300",
+                            lineHeight: "0.9",
+                            margin: "-0.05em 0 10px 0",
+                            fontFamily: "Inter, sans-serif",
+                            letterSpacing: "-0.04em",
+                            textTransform: "lowercase",
+                          }}
+                        >
+                          Western Ghats
+                        </h1>
+                      </motion.div>
+                    </div>
+                  </div>
+                )}
 
                 {/* Overlay content (always above image) */}
                 {activeIndex === index && (
@@ -228,22 +344,7 @@ export default function Banner({
                           repeat: Infinity,
                           ease: "easeInOut",
                         }}
-                        style={{
-                          background: "#0000006e",
-                          border: "2px solid #ffffff",
-                          color: "#ffffff",
-                          padding: "1rem 2rem",
-                          fontSize: "1rem",
-                          fontWeight: "600",
-                          fontFamily: "Inter, sans-serif",
-                          textTransform: "uppercase",
-                          letterSpacing: "0.1em",
-                          cursor: "pointer",
-                          transition: "all 0.3s ease",
-                          marginRight: "50px",
-                          marginBottom: "100px",
-                          position: "relative",
-                        }}
+                        className={styles.knowMoreBtn}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.background = "#ffffff";
                           e.currentTarget.style.color = "#000000";

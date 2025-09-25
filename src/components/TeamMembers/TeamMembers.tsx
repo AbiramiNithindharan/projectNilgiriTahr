@@ -40,21 +40,21 @@ export default function TeamMembers() {
       members: [
         {
           name: "Tmt. Supriya Sahu, IAS",
-          image: "/fallback.png",
+          image: "/members/supriya-sahu.jpg",
           alt: "Tmt. Supriya Sahu, IAS",
           about:
             "Additional Chief Secretary to the Government of Tamil Nadu, Department of Environment, Climate Change & Forests, Tmt. Supriya Sahu is a 1991-batch IAS officer with a distinguished career in public administration and environmental leadership. She provides strategic direction for policies and programs that address critical issues including wildlife conservation, forest management, climate resilience, and pollution control. Under her visionary leadership, Tamil Nadu has launched several landmark initiatives such as the Tamil Nadu Climate Change Mission, Green Tamil Nadu Mission, and Project Nilgiri Tahr, which focuses on the scientific protection of the state animal and restoration of fragile high-altitude grasslands. She has been instrumental in integrating climate action with conservation planning, fostering a sustainable and resilient future for both people and ecosystems.",
         },
         {
           name: "Thiru Srinivas R. Reddy, IFS",
-          image: "/fallback.png",
+          image: "/members/srinivas-reddy-1.png",
           alt: "Thiru Srinivas R. Reddy, IFS",
           about:
             "Principal Chief Conservator of Forests (PCCF) and Head of Forest Force, Tamil Nadu, Thiru Srinivas R. Reddy assumed charge as PCCF & HoFF in October 2024. With a long-standing career in forest and wildlife management, he has also served as Chief Wildlife Warden since 2022. Over the years, he has held several key positions including Field Director of Mudumalai Tiger Reserve, Conservator of Forests (Genetics), and Managing Director of Tamil Nadu Tea Plantation Corporation. His expertise spans forest management, biodiversity conservation, wildlife protection enforcement, and strengthening frontline forest staff through training and capacity building. As a leader, he plays a vital role in guiding statewide conservation projects like Project Nilgiri Tahr, ensuring effective coordination between divisions and field teams for the protection of this endangered species.",
         },
         {
           name: "Thiru Rakesh Kumar Dogra, IFS",
-          image: "/fallback.png",
+          image: "/members/rakesh-kumar-dogra.jpg",
           alt: "Thiru Rakesh Kumar Dogra, IFS",
           about:
             "Principal Chief Conservator of Forests and Chief Wildlife Warden, Tamil Nadu, Thiru Rakesh Kumar Dogra oversees the protection and management of the state’s rich biodiversity. He is responsible for enforcing wildlife laws, supervising conservation activities across national parks, tiger reserves, and wildlife sanctuaries, and coordinating with national-level conservation programs. In his role, he ensures that strategic initiatives such as Project Nilgiri Tahr are implemented effectively, emphasizing habitat restoration, population monitoring, and field-level protection to secure the long-term survival of Tamil Nadu’s state animal and the high-altitude ecosystems it inhabits.",
@@ -178,14 +178,14 @@ export default function TeamMembers() {
         },
         {
           name: "Tamil Nadu Veterinary and Animal Sciences University (TANUVAS)",
-          logo: "/logo/aiwc-logo.png",
+          logo: "/logo/tnvasu.png",
           website: "https://www.tanuvas.ac.in/",
           about:
             "Tamil Nadu Veterinary and Animal Sciences University (TANUVAS) is a leading institution in veterinary science, animal health, and wildlife medicine. Its faculty and research teams support conservation by studying wildlife diseases, developing diagnostic tools, and conducting field-based health assessments. TANUVAS plays a crucial role in Project Nilgiri Tahr through veterinary care, treatment protocols, and disease management strategies that help maintain healthy wild populations.",
         },
         {
           name: "PSGR Krishnammal College for Women",
-          logo: "/logo/aiwc-logo.png",
+          logo: "/logo/psgr.jpg",
           website: "https://www.psgrkcw.ac.in/",
           about:
             "PSGR Krishnammal College for Women, Coimbatore, is a distinguished educational institution known for its strong emphasis on environmental education, sustainability, and community engagement. The college collaborates with Project Nilgiri Tahr in conservation awareness programs, student-driven outreach activities, and capacity-building initiatives. Through research projects and public campaigns, PSGR Krishnammal helps build climate and conservation literacy, fostering future champions for wildlife protection and ecological balance.",

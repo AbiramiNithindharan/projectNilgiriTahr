@@ -235,15 +235,7 @@ export default function WhoWeAre() {
   const allCards: Card[] = [...allMembers, ...partnerCards];
 
   return (
-    <section
-      id="who-we-are"
-      style={{
-        padding: "40px 0 0", // Further reduced top padding for wave integration
-        background: "#ffffff",
-        minHeight: "100vh",
-        position: "relative",
-      }}
-    >
+    <section id="who-we-are" className={styles.section}>
       {/* Main Split Screen Section */}
       <div
         style={{
@@ -251,11 +243,11 @@ export default function WhoWeAre() {
           margin: "0 auto",
           width: "100%",
           display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "clamp(3rem, 8vw, 8rem)",
+          gridTemplateColumns: window.innerWidth < 768 ? "1fr" : "1fr 1fr",
+          gap: "clamp(2rem, 6vw, 8rem)",
           alignItems: "center",
           padding: "20px 2rem 80px", // Reduced padding for better integration
-          minHeight: "70vh", // Adjusted height
+          minHeight: window.innerWidth < 768 ? "auto" : "70vh", // Adjusted height
         }}
       >
         {/* Left Side - Image with wave cut effect */}
@@ -264,12 +256,7 @@ export default function WhoWeAre() {
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
-          style={{
-            position: "relative",
-            height: "500px",
-            overflow: "hidden",
-            clipPath: "polygon(0 0, 100% 0, 85% 100%, 0% 100%)", // Wave cut on right side
-          }}
+          className={styles.clippedImage}
         >
           <Image
             src="/banners/DJI_0036.jpg"
