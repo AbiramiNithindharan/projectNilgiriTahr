@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
@@ -42,6 +42,15 @@ interface TeamSection {
 
 export default function WhoWeAre() {
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize(); // set on mount
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const teamSections: TeamSection[] = [
     {
@@ -243,11 +252,11 @@ export default function WhoWeAre() {
           margin: "0 auto",
           width: "100%",
           display: "grid",
-          gridTemplateColumns: window.innerWidth < 768 ? "1fr" : "1fr 1fr",
+          gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
           gap: "clamp(2rem, 6vw, 8rem)",
           alignItems: "center",
           padding: "20px 2rem 80px", // Reduced padding for better integration
-          minHeight: window.innerWidth < 768 ? "auto" : "70vh", // Adjusted height
+          minHeight: isMobile ? "auto" : "70vh", // Adjusted height
         }}
       >
         {/* Left Side - Image with wave cut effect */}
