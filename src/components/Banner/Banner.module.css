@@ -276,20 +276,22 @@
   }
 
   .slide {
-    aspect-ratio: auto;
-    /* don't force ratio */
-    height: auto;
-    /* let container shrink */
+    width: 100%;
+    aspect-ratio: 3200 / 1398;
+    /* 👈 pick ratio to match your important image */
+    position: relative;
+    overflow: hidden;
   }
 
   .bannerImage {
-    position: static !important;
+    position: absolute !important;
+    inset: 0;
     /* remove absolute fill */
     width: 100% !important;
     /* behave like <img> */
-    height: auto !important;
+    height: 100% !important;
     /* keep natural proportions */
-    object-fit: contain !important;
+    object-fit: cover !important;
     /* ✅ show full image, no crop */
     display: block !important;
   }

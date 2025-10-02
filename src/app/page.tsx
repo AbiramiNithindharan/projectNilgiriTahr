@@ -9,6 +9,7 @@ import MissionVisionVictories from "../components/MissionVisionVictories/Mission
 import WhereWeWork from "../components/WhereWeWork/WhereWeWork";
 import NewsRoom from "../components/NewsRoom/NewsRoom";
 import PhotoGallery from "../components/PhotoGallery/PhotoGallery";
+import Footer from "@/components/Footer/Footer";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -38,6 +39,7 @@ export default function Home() {
       <WhereWeWork />
       <NewsRoom />
       <PhotoGallery />
+      <Footer />
     </div>
   );
 }
