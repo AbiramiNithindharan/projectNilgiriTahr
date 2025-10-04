@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import React from "react";
 import Link from "next/link";
 import {
@@ -16,7 +17,7 @@ type ImportantLink = { label: string; href: string; external?: boolean };
 
 export default function Footer({
   companyName = "Project Nilgiri Thar.",
-  address = "Office of Project Director, Project Nilgiri Tahr, Bharathi Park Road, Forest Campus Coimbatore, Tmail Nadu 641043.",
+  address = "Office of Project Director, Project Nilgiri Tahr, Bharathi Park Road, Forest Campus Coimbatore, Tamil Nadu 641043.",
   email = "projectnilgiritahr@gmail.com",
   phone = "pd.pnt@tn.gov.in",
   importantLinks = [
@@ -45,68 +46,84 @@ export default function Footer({
 }) {
   const mapEmbedUrl =
     "https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d15665.025783948167!2d76.949385!3d11.019376!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTHCsDAxJzA5LjgiTiA3NsKwNTYnNTcuOCJF!5e0!3m2!1sen!2sin!4v1759381293441!5m2!1sen!2sin";
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut" as const,
+      },
+    },
+  };
   return (
-    <footer className={styles.footer}>
-      <div className={styles.container}>
-        <div className={styles.grid}>
-          {/* Address / Contact */}
-          <div>
-            <h3 className={styles.company}>{companyName}</h3>
-            <address className={styles.address}>
-              <div className={styles.row}>
-                <MapPin className={styles.iconLarge} />
-                <a href={mapEmbedUrl} target="_blank" rel="noopener noreferrer">
-                  {address}
-                </a>
-              </div>
-              <div className={styles.contactLinks}>
-                <h3 className={styles.company}>Email</h3>
-                <a href={`mailto:${email}`} className={styles.row}>
-                  <Mail className={styles.iconSmall} /> {email}
-                </a>
-                <a href={`tel:${phone}`} className={styles.row}>
-                  <Mail className={styles.iconSmall} /> {phone}
-                </a>
-              </div>
-            </address>
-          </div>
+    <motion.section
+      className={styles.section}
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+    >
+      <footer className={styles.footer}>
+        <div className={styles.container}>
+          <div className={styles.grid}>
+            {/* Address / Contact */}
+            <div>
+              <h3 className={styles.company}>{companyName}</h3>
+              <address className={styles.address}>
+                <div className={styles.row}>
+                  <MapPin className={styles.iconLarge} />
+                  <a
+                    href={mapEmbedUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {address}
+                  </a>
+                </div>
+                <div className={styles.contactLinks}>
+                  <h3 className={styles.company}>Email</h3>
+                  <a href={`mailto:${email}`} className={styles.row}>
+                    <Mail className={styles.iconSmall} /> {email}
+                  </a>
+                  <a href={`tel:${phone}`} className={styles.row}>
+                    <Mail className={styles.iconSmall} /> {phone}
+                  </a>
+                </div>
+              </address>
+            </div>
 
-          {/* Important Links */}
-          <div>
-            <h4 className={styles.heading}>Important Links</h4>
-            <ul className={styles.links}>
-              {importantLinks.map((l) => (
-                <li key={l.label}>
-                  {l.external ? (
-                    <a href={l.href} target="_blank" rel="noopener noreferrer">
-                      {l.label} <ExternalLink className={styles.iconXSmall} />
-                    </a>
-                  ) : (
-                    <Link href={l.href}>{l.label}</Link>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Map */}
-          <div>
-            <h4 className={styles.heading}>Find us on map</h4>
-            <div className={styles.mapEmbedWrapper}>
-              <iframe
-                src={mapEmbedUrl}
-                width="100%"
-                height="200"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
+            {/* Map */}
+            <div>
+              <h4 className={styles.heading}>Find us on map</h4>
+              <div className={styles.mapEmbedWrapper}>
+                <iframe
+                  src={mapEmbedUrl}
+                  width="100%"
+                  height="200"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
             </div>
           </div>
-
           {/* Socials */}
-          <div>
+          <div className={styles.socialLink}>
             <h4 className={styles.heading}>Connect with us</h4>
             <p className={styles.subtext}>
               Follow our socials for updates and news.
@@ -132,22 +149,15 @@ export default function Footer({
                 </a>
               )}
             </div>
+          </div>
+
+          <div className={styles.bottomBar}>
             <div className={styles.copyright}>
               © {new Date().getFullYear()} {companyName}. All rights reserved.
             </div>
           </div>
         </div>
-
-        <div className={styles.bottomBar}>
-          <div className={styles.bottomText}>
-            Made with care • Accessible • GDPR-aware
-          </div>
-          <div className={styles.bottomLinks}>
-            <Link href="/privacy">Privacy Policy</Link>
-            <Link href="/terms">Terms of Service</Link>
-          </div>
-        </div>
-      </div>
-    </footer>
+      </footer>
+    </motion.section>
   );
 }

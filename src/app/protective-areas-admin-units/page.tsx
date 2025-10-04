@@ -47,10 +47,10 @@ export default function WhereWeWork() {
       style={{
         marginTop: "70px",
         padding: "120px 2rem 80px",
-        background: "#000000",
+        background: "#ffffffff",
         minHeight: "100vh",
         position: "relative",
-        color: "#ffffff",
+        color: "#000000ff",
       }}
     >
       {/* Protected Areas and Administrative Units Slider */}
@@ -60,12 +60,24 @@ export default function WhereWeWork() {
           marginBottom: "4rem",
         }}
       >
+        <h2
+          style={{
+            fontSize: "clamp(2rem, 4vw, 3rem)",
+            fontWeight: "800",
+            margin: "0 0 1rem 0",
+            color: "#070707ff",
+            fontFamily: "Poppins, sans-serif",
+            textAlign: "center",
+          }}
+        >
+          Where We Work
+        </h2>
         <h3
           style={{
             fontSize: "clamp(1.8rem, 4vw, 2.5rem)",
             fontWeight: "700",
-            margin: "0 0 3rem 0",
-            color: "#f6f9f8ff",
+            margin: "0 0 1rem 0",
+            color: "#090909ff",
             fontFamily: "Poppins, sans-serif",
             textAlign: "center",
           }}

@@ -324,35 +324,6 @@ export default function WhatWeDoCards() {
                         {card.description}
                       </p>
                     </div>
-
-                    {/* Learn More Button */}
-                    <div style={{ marginTop: "1rem" }}>
-                      <button
-                        style={{
-                          background: "transparent",
-                          color: "#52b788",
-                          border: "2px solid #52b788",
-                          borderRadius: "8px",
-                          padding: "0.5rem 1rem",
-                          fontSize: "0.85rem",
-                          fontWeight: "600",
-                          fontFamily: "Poppins, sans-serif",
-                          cursor: "pointer",
-                          transition: "all 0.3s ease",
-                          width: "100%",
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.background = "#52b788";
-                          e.currentTarget.style.color = "#ffffff";
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.background = "transparent";
-                          e.currentTarget.style.color = "#52b788";
-                        }}
-                      >
-                        Learn More
-                      </button>
-                    </div>
                   </div>
                 </motion.div>
               </SwiperSlide>

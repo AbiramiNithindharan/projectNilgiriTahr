@@ -3,7 +3,10 @@
 import { motion } from "framer-motion";
 import { useState, useEffect, useMemo } from "react";
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay } from "swiper/modules";
 import styles from "./TeamMembers.module.css";
+import { setConfig } from "next/config";
 
 export default function TeamMembers() {
   const [expandedCards, setExpandedCards] = useState<{
@@ -11,6 +14,7 @@ export default function TeamMembers() {
   }>({});
   const [isClient, setIsClient] = useState(false);
   const [windowWidth, setWindowWidth] = useState<number>(0);
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
 
   useEffect(() => {
     setIsClient(true);
@@ -341,262 +345,411 @@ export default function TeamMembers() {
               {section.title}
             </h2>
 
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns:
-                  section.id === "our-partners"
-                    ? "repeat(auto-fit, minmax(200px, max-content))"
-                    : isClient && windowWidth >= 768
-                    ? "repeat(auto-fit, minmax(300px, 1fr))"
-                    : "1fr", // Single column on mobile for member cards
-                gap: "clamp(1rem, 2vw, 3rem)",
-                justifyContent:
-                  section.id === "our-partners" ? "center" : "initial",
-              }}
-            >
-              {section.id === "our-partners"
-                ? section.partners?.map((partner, partnerIndex) => {
-                    const cardId = `${section.id}-${partnerIndex}`;
+            {/* === Members Swiper === */}
+            {section.members && (
+              <div className={styles.swiperContainer}>
+                {/* Custom Navigation Buttons */}
+                {section.members.length > 3 && (
+                  <>
+                    <button
+                      className={`swiper-button-prev-${section.id}`}
+                      style={{
+                        position: "absolute",
+                        left: "-1.5rem",
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        background: "rgba(255, 255, 255, 0.95)",
+                        backdropFilter: "blur(10px)",
+                        border: "1px solid rgba(82, 183, 136, 0.2)",
+                        borderRadius: "50%",
+                        width: "50px",
+                        height: "50px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        cursor: "pointer",
+                        fontSize: "1.5rem",
+                        color: "#1b4332",
+                        transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                        zIndex: 10,
+                        boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = "#52b788";
+                        e.currentTarget.style.color = "#ffffff";
+                        e.currentTarget.style.transform =
+                          "translateY(-50%) scale(1.1)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background =
+                          "rgba(255, 255, 255, 0.95)";
+                        e.currentTarget.style.color = "#1b4332";
+                        e.currentTarget.style.transform =
+                          "translateY(-50%) scale(1)";
+                      }}
+                    >
+                      ‹
+                    </button>
+                    <button
+                      className={`swiper-button-next-${section.id}`}
+                      style={{
+                        position: "absolute",
+                        right: "-1.5rem",
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        background: "rgba(255, 255, 255, 0.95)",
+                        backdropFilter: "blur(10px)",
+                        border: "1px solid rgba(82, 183, 136, 0.2)",
+                        borderRadius: "50%",
+                        width: "50px",
+                        height: "50px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        cursor: "pointer",
+                        fontSize: "1.5rem",
+                        color: "#1b4332",
+                        transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                        zIndex: 10,
+                        boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = "#52b788";
+                        e.currentTarget.style.color = "#ffffff";
+                        e.currentTarget.style.transform =
+                          "translateY(-50%) scale(1.1)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background =
+                          "rgba(255, 255, 255, 0.95)";
+                        e.currentTarget.style.color = "#1b4332";
+                        e.currentTarget.style.transform =
+                          "translateY(-50%) scale(1)";
+                      }}
+                    >
+                      ›
+                    </button>
+                  </>
+                )}
+                <Swiper
+                  modules={[Navigation, Autoplay]}
+                  spaceBetween={30}
+                  slidesPerView={1}
+                  autoplay={{
+                    delay: 4000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                  }}
+                  loop={section.members.length > 3}
+                  grabCursor={true} // 👈 shows hand cursor + allows drag swipe
+                  touchRatio={1.2}
+                  breakpoints={{
+                    640: {
+                      slidesPerView: 1,
+                      spaceBetween: 20,
+                    },
+                    768: {
+                      slidesPerView: 2,
+                      spaceBetween: 24,
+                    },
+                    1024: {
+                      slidesPerView: 3,
+                      spaceBetween: 32,
+                    },
+                    1280: {
+                      slidesPerView: 3,
+                      spaceBetween: 32,
+                    },
+                  }}
+                  navigation={{
+                    nextEl: `.swiper-button-next-${section.id}`,
+                    prevEl: `.swiper-button-prev-${section.id}`,
+                  }}
+                  onBeforeInit={(swiper) => {
+                    const nav = swiper.params.navigation as any;
+                    nav.prevEl = `.swiper-button-prev-${section.id}`;
+                    nav.nextEl = `.swiper-button-next-${section.id}`;
+                  }}
+                >
+                  {section.members.map((member, index) => {
+                    const cardId = `${section.id}-${index}`;
                     const isExpanded = expandedCards[cardId];
 
                     return (
-                      <motion.div
-                        key={partnerIndex}
-                        variants={cardVariants}
-                        whileHover={{ y: -3, scale: 1.02 }}
-                        style={{
-                          background: "#ffffff",
-                          borderRadius: "12px",
-                          padding: "clamp(1.5rem, 3vw, 2rem)",
-                          boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
-                          border: "1px solid #e5e7eb",
-                          textAlign: "center",
-                          transition: "all 0.3s ease",
-                          minHeight: "clamp(150px, 25vw, 200px)",
-                          width: "fit-content",
-                          minWidth: "200px",
-                          maxWidth: "300px",
-                          display: "flex",
-                          flexDirection: "column",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          cursor: "pointer",
-                          margin: "0 auto",
-                        }}
-                        onClick={() => window.open(partner.website, "_blank")}
-                      >
-                        <div
-                          style={{
-                            width: "clamp(60px, 12vw, 100px)",
-                            height: "clamp(60px, 12vw, 100px)",
-                            marginBottom: "clamp(1rem, 2vw, 1.5rem)",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            position: "relative",
+                      <SwiperSlide key={index}>
+                        <motion.div
+                          initial={{ y: 20, opacity: 0 }}
+                          whileInView={{ y: 0, opacity: 1 }}
+                          transition={{
+                            duration: 0.4,
+                            delay: (index % 4) * 0.1,
                           }}
-                        >
-                          <Image
-                            src={partner.logo}
-                            alt={partner.name}
-                            fill
-                            style={{ objectFit: "contain" }}
-                          />
-                        </div>
-
-                        <h3
+                          viewport={{ once: true }}
+                          whileHover={{ y: -8, scale: 1.02 }}
+                          onMouseEnter={() => setHoveredCard(section.id)}
+                          onMouseLeave={() => setHoveredCard(null)}
                           style={{
-                            fontSize: "clamp(0.8rem, 2.2vw, 1.1rem)",
-                            fontWeight: "600",
-                            color: "#1b4332",
-                            margin: "0",
-                            fontFamily: "Poppins, sans-serif",
+                            background: "#fff",
+                            borderRadius: "12px",
+                            padding: "1.5rem",
+                            boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
                             textAlign: "center",
-                            lineHeight: "1.3",
-                          }}
-                        >
-                          {partner.name}
-                        </h3>
-
-                        <p
-                          style={{
-                            fontSize:
-                              windowWidth >= 768
-                                ? "clamp(0.75rem, 2vw, 0.95rem)"
-                                : "0.9rem",
-                            lineHeight: "1.5",
-                            color: "#2d5016",
-                            fontFamily: "Poppins, sans-serif",
-                            margin: "0",
-                            textAlign: "left",
-                            cursor:
-                              partner.about.length > 150
-                                ? "pointer"
-                                : "default",
-                          }}
-                          onClick={() =>
-                            partner.about.length > 150 && toggleCard(cardId)
-                          }
-                        >
-                          {isExpanded
-                            ? partner.about
-                            : truncateText(partner.about)}
-                          {partner.about.length > 150 && (
-                            <span
-                              style={{
-                                color: "#52b788",
-                                fontWeight: "600",
-                                marginLeft: "0.5rem",
-                                textDecoration: "underline",
-                              }}
-                            >
-                              {isExpanded ? " Show Less" : " Read More"}
-                            </span>
-                          )}
-                        </p>
-                      </motion.div>
-                    );
-                  })
-                : // Render member cards for other sections
-                  section.members.map((member, memberIndex) => {
-                    const cardId = `${section.id}-${memberIndex}`;
-                    const isExpanded = expandedCards[cardId];
-
-                    return (
-                      <motion.div
-                        key={memberIndex}
-                        variants={cardVariants}
-                        whileHover={{ y: -3 }}
-                        style={{
-                          background: "#ffffff",
-                          borderRadius: "8px",
-                          padding: "clamp(1rem, 2vw, 2rem)",
-                          boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
-                          border: "1px solid #e5e7eb",
-                          textAlign: "center",
-                          transition: "all 0.3s ease",
-
-                          display: "flex",
-                          flexDirection: "column",
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.boxShadow =
-                            "0 4px 12px rgba(0, 0, 0, 0.15)";
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.boxShadow =
-                            "0 2px 8px rgba(0, 0, 0, 0.1)";
-                        }}
-                      >
-                        <div
-                          style={{
-                            width: "clamp(70px, 15vw, 120px)",
-                            height: "clamp(70px, 15vw, 120px)",
-                            borderRadius: "50%",
-                            overflow: "hidden",
-                            margin: "0 auto clamp(1rem, 2vw, 1.5rem) auto",
-                            border: "clamp(2px, 0.5vw, 4px) solid #52b788",
-                            position: "relative",
-                          }}
-                        >
-                          <Image
-                            src={
-                              member.image === "/"
-                                ? "/fallback.png"
-                                : member.image
-                            }
-                            alt={member.alt}
-                            fill
-                            style={{
-                              objectFit: "cover",
-                              objectPosition: "center top",
-                            }}
-                          />
-                        </div>
-
-                        <h3
-                          style={{
-                            fontSize: "clamp(0.9rem, 2.5vw, 1.3rem)",
-                            fontWeight: "600",
-                            color: "#1b4332",
-                            marginBottom: "clamp(0.5rem, 1vw, 1rem)",
-                            fontFamily: "Poppins, sans-serif",
-                            lineHeight: "1.3",
-                          }}
-                        >
-                          {member.name}
-                        </h3>
-
-                        <div
-                          style={{
-                            flex: 1,
+                            height: "350px",
                             display: "flex",
                             flexDirection: "column",
+                            justifyContent: "space-between",
+                            transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                           }}
                         >
-                          <p
+                          <div
                             style={{
-                              fontSize:
-                                windowWidth >= 768
-                                  ? "clamp(0.75rem, 2vw, 0.95rem)"
-                                  : "0.9rem",
-                              lineHeight: "1.5",
-                              color: "#2d5016",
-                              fontFamily: "Poppins, sans-serif",
-                              fontWeight: "400",
-                              margin: "0",
-                              textAlign: "left",
-                              flex: 1,
-                              cursor:
-                                member.about.length > 150
-                                  ? "pointer"
-                                  : "default",
+                              width: "100px",
+                              height: "100px",
+                              borderRadius: "50%",
+                              overflow: "hidden",
+                              margin: "0 auto 1rem auto",
+                              border: "3px solid #52b788",
+                              position: "relative",
                             }}
-                            onClick={() =>
-                              member.about.length > 150 && toggleCard(cardId)
-                            }
+                          >
+                            <Image
+                              src={member.image}
+                              alt={member.alt}
+                              fill
+                              style={{ objectFit: "cover" }}
+                            />
+                          </div>
+                          <h3
+                            style={{
+                              fontWeight: "600",
+                              marginBottom: "0.5rem",
+                            }}
+                          >
+                            {member.name}
+                          </h3>
+                          <p
+                            onClick={() => toggleCard(cardId)}
+                            style={{
+                              fontSize: "0.9rem",
+                              textAlign: "left",
+                              cursor: "pointer",
+                            }}
                           >
                             {isExpanded
                               ? member.about
                               : truncateText(member.about)}
                             {member.about.length > 150 && (
                               <span
-                                style={{
-                                  color: "#52b788",
-                                  fontWeight: "600",
-                                  marginLeft: "0.5rem",
-                                  textDecoration: "underline",
-                                  cursor: "pointer",
-                                }}
+                                style={{ color: "#52b788", fontWeight: "600" }}
                               >
                                 {isExpanded ? " Show Less" : " Read More"}
                               </span>
                             )}
                           </p>
-                        </div>
-                      </motion.div>
+                        </motion.div>
+                      </SwiperSlide>
                     );
                   })}
-            </div>
+                </Swiper>
+              </div>
+            )}
+
+            {/* === Partners Swiper === */}
+            {section.partners && (
+              <div className={styles.swiperContainer}>
+                {/* Custom Navigation Buttons */}
+                {section.partners.length > 3 && (
+                  <>
+                    <button
+                      className={`swiper-button-prev-${section.id}`}
+                      style={{
+                        position: "absolute",
+                        left: "-1.5rem",
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        background: "rgba(255, 255, 255, 0.95)",
+                        backdropFilter: "blur(10px)",
+                        border: "1px solid rgba(82, 183, 136, 0.2)",
+                        borderRadius: "50%",
+                        width: "50px",
+                        height: "50px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        cursor: "pointer",
+                        fontSize: "1.5rem",
+                        color: "#1b4332",
+                        transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                        zIndex: 10,
+                        boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = "#52b788";
+                        e.currentTarget.style.color = "#ffffff";
+                        e.currentTarget.style.transform =
+                          "translateY(-50%) scale(1.1)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background =
+                          "rgba(255, 255, 255, 0.95)";
+                        e.currentTarget.style.color = "#1b4332";
+                        e.currentTarget.style.transform =
+                          "translateY(-50%) scale(1)";
+                      }}
+                    >
+                      ‹
+                    </button>
+                    <button
+                      className={`swiper-button-next-${section.id}`}
+                      style={{
+                        position: "absolute",
+                        right: "-1.5rem",
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        background: "rgba(255, 255, 255, 0.95)",
+                        backdropFilter: "blur(10px)",
+                        border: "1px solid rgba(82, 183, 136, 0.2)",
+                        borderRadius: "50%",
+                        width: "50px",
+                        height: "50px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        cursor: "pointer",
+                        fontSize: "1.5rem",
+                        color: "#1b4332",
+                        transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                        zIndex: 10,
+                        boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = "#52b788";
+                        e.currentTarget.style.color = "#ffffff";
+                        e.currentTarget.style.transform =
+                          "translateY(-50%) scale(1.1)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background =
+                          "rgba(255, 255, 255, 0.95)";
+                        e.currentTarget.style.color = "#1b4332";
+                        e.currentTarget.style.transform =
+                          "translateY(-50%) scale(1)";
+                      }}
+                    >
+                      ›
+                    </button>
+                  </>
+                )}
+                <Swiper
+                  modules={[Navigation, Autoplay]}
+                  spaceBetween={30}
+                  slidesPerView={1}
+                  autoplay={{
+                    delay: 4000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                  }}
+                  loop={section.partners.length > 3}
+                  grabCursor={true} // 👈 shows hand cursor + allows drag swipe
+                  touchRatio={1.2}
+                  breakpoints={{
+                    640: {
+                      slidesPerView: 1,
+                      spaceBetween: 20,
+                    },
+                    768: {
+                      slidesPerView: 2,
+                      spaceBetween: 24,
+                    },
+                    1024: {
+                      slidesPerView: 3,
+                      spaceBetween: 32,
+                    },
+                    1280: {
+                      slidesPerView: 4,
+                      spaceBetween: 32,
+                    },
+                  }}
+                  navigation={{
+                    nextEl: `.swiper-button-next-${section.id}`,
+                    prevEl: `.swiper-button-prev-${section.id}`,
+                  }}
+                  onBeforeInit={(swiper) => {
+                    const navigation = swiper.params.navigation as any;
+                    navigation.prevEl = `.swiper-button-next-${section.id}`;
+                    navigation.nextEl = `.swiper-button-prev-${section.id}`;
+                  }}
+                >
+                  {section.partners.map((partner, index) => {
+                    const cardId = `${section.id}-${index}`;
+                    const isExpanded = expandedCards[cardId];
+
+                    return (
+                      <SwiperSlide key={index}>
+                        <motion.div
+                          whileHover={{ y: -3 }}
+                          onClick={() => window.open(partner.website, "_blank")}
+                          style={{
+                            background: "#fff",
+                            borderRadius: "12px",
+                            padding: "1.5rem",
+                            boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+                            textAlign: "center",
+                            cursor: "pointer",
+                          }}
+                        >
+                          <div
+                            style={{
+                              width: "80px",
+                              height: "80px",
+                              margin: "0 auto 1rem auto",
+                              position: "relative",
+                            }}
+                          >
+                            <Image
+                              src={partner.logo}
+                              alt={partner.name}
+                              fill
+                              style={{ objectFit: "contain" }}
+                            />
+                          </div>
+                          <h3
+                            style={{
+                              fontSize: "1rem",
+                              fontWeight: "600",
+                              marginBottom: "0.5rem",
+                            }}
+                          >
+                            {partner.name}
+                          </h3>
+                          <p
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              toggleCard(cardId);
+                            }}
+                            style={{ fontSize: "0.85rem", textAlign: "left" }}
+                          >
+                            {isExpanded
+                              ? partner.about
+                              : truncateText(partner.about)}
+                            {partner.about.length > 150 && (
+                              <span
+                                style={{ color: "#52b788", fontWeight: "600" }}
+                              >
+                                {isExpanded ? " Show Less" : " Read More"}
+                              </span>
+                            )}
+                          </p>
+                        </motion.div>
+                      </SwiperSlide>
+                    );
+                  })}
+                </Swiper>
+              </div>
+            )}
           </motion.div>
         ))}
       </div>
-
-      <style jsx>{`
-        @keyframes float {
-          0%,
-          100% {
-            transform: translateY(0px) rotate(0deg);
-          }
-          33% {
-            transform: translateY(-15px) rotate(3deg);
-          }
-          66% {
-            transform: translateY(-8px) rotate(-2deg);
-          }
-        }
-      `}</style>
     </motion.section>
   );
 }

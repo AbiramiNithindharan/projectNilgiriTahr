@@ -15,7 +15,7 @@ export const administrativeAreas = [
       "The Nilgiri Tahr landscape is divided into 14 forest divisions, split between tiger reserve and non-tiger reserve areas.",
     icon: "🗂️",
     link: "/forest-divisions",
-    type: "administrative",
+    type: "protected",
   },
   {
     id: "biosphere-reserves",
@@ -24,7 +24,7 @@ export const administrativeAreas = [
       "Biosphere reserves represent the highest level of landscape conservation, integrating core protected zones with sustainable use areas for people and nature to coexist.",
     icon: "🌍",
     link: "/biosphere-reserves",
-    type: "protected",
+    type: "administrative",
   },
   {
     id: "tiger-reserves",
@@ -42,7 +42,7 @@ export const administrativeAreas = [
       "Elephant reserves where Nilgiri Tahr share habitat space, creating integrated conservation landscapes.",
     icon: "🐘",
     link: "elephant-reserves",
-    type: "protected",
+    type: "administrative",
   },
   {
     id: "national-parks",
@@ -60,7 +60,7 @@ export const administrativeAreas = [
       "Wildlife sanctuaries act as buffer areas around core habitats, providing connectivity and space for species to move between protected regions.",
     icon: "🦌",
     link: "/wildlife-sanctuaries",
-    type: "protected",
+    type: "administrative",
   },
   {
     id: "ranges",

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 interface MenuOverlayProps {
   isOpen: boolean;
@@ -8,11 +9,11 @@ interface MenuOverlayProps {
   menuItems: Array<{ label: string; href: string }>;
 }
 
-export default function MenuOverlay({ 
-  isOpen, 
-  onClose, 
-  onNavigate, 
-  menuItems 
+export default function MenuOverlay({
+  isOpen,
+  onClose,
+  onNavigate,
+  menuItems,
 }: MenuOverlayProps) {
   const [windowWidth, setWindowWidth] = useState(0);
 
@@ -43,7 +44,8 @@ export default function MenuOverlay({
         left: 0,
         right: 0,
         bottom: 0,
-        background: "linear-gradient(135deg, rgba(0, 30, 0, 0.95), rgba(20, 60, 20, 0.95))",
+        background:
+          "linear-gradient(135deg, rgba(0, 30, 0, 0.95), rgba(20, 60, 20, 0.95))",
         backdropFilter: "blur(20px)",
         zIndex: 2000,
         display: "flex",
@@ -142,35 +144,81 @@ export default function MenuOverlay({
             >
               The Nilgiri Tahr
             </h2>
-            <motion.button
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.7, duration: 0.3 }}
+            <div
               style={{
-                background: "rgba(168, 218, 181, 0.15)",
-                border: "2px solid #a8dab5",
-                color: "#f1faee",
-                padding: "clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem)",
-                borderRadius: "8px",
-                fontSize: "clamp(0.9rem, 2.5vw, 1.1rem)",
-                fontWeight: "600",
-                cursor: "pointer",
-                transition: "all 0.3s ease",
-                backdropFilter: "blur(10px)",
-                fontFamily: "Poppins, sans-serif",
-                alignSelf: isMobile ? "center" : "flex-start",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = "#a8dab5";
-                e.currentTarget.style.color = "#081c15";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "rgba(168, 218, 181, 0.15)";
-                e.currentTarget.style.color = "#f1faee";
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "20px",
               }}
             >
-              Know More
-            </motion.button>
+              <Link href={"/login"}>
+                <motion.button
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.7, duration: 0.3 }}
+                  style={{
+                    background: "rgba(168, 218, 181, 0.15)",
+                    border: "2px solid #a8dab5",
+                    color: "#f1faee",
+                    padding:
+                      "clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem)",
+                    borderRadius: "8px",
+                    fontSize: "clamp(0.9rem, 2.5vw, 1.1rem)",
+                    fontWeight: "600",
+                    cursor: "pointer",
+                    transition: "all 0.3s ease",
+                    backdropFilter: "blur(10px)",
+                    fontFamily: "Poppins, sans-serif",
+                    alignSelf: isMobile ? "center" : "flex-start",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "#a8dab5";
+                    e.currentTarget.style.color = "#081c15";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background =
+                      "rgba(168, 218, 181, 0.15)";
+                    e.currentTarget.style.color = "#f1faee";
+                  }}
+                >
+                  Login
+                </motion.button>
+              </Link>
+              <Link href={"/signup"}>
+                <motion.button
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.7, duration: 0.3 }}
+                  style={{
+                    background: "rgba(168, 218, 181, 0.15)",
+                    border: "2px solid #a8dab5",
+                    color: "#f1faee",
+                    padding:
+                      "clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem)",
+                    borderRadius: "8px",
+                    fontSize: "clamp(0.9rem, 2.5vw, 1.1rem)",
+                    fontWeight: "600",
+                    cursor: "pointer",
+                    transition: "all 0.3s ease",
+                    backdropFilter: "blur(10px)",
+                    fontFamily: "Poppins, sans-serif",
+                    alignSelf: isMobile ? "center" : "flex-start",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "#a8dab5";
+                    e.currentTarget.style.color = "#081c15";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background =
+                      "rgba(168, 218, 181, 0.15)";
+                    e.currentTarget.style.color = "#f1faee";
+                  }}
+                >
+                  Sign Up
+                </motion.button>
+              </Link>
+            </div>
           </motion.div>
 
           {/* Right Side - Navigation */}

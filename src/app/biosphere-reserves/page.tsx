@@ -14,7 +14,7 @@ export default function NilgiriTahrPage() {
         {/* Hero Image */}
         <div className={styles.heroImage}>
           <Image
-            src="/banners/Banner_2.jpg"
+            src="/gallery/biosphere-reserves.png"
             alt="Nilgiri Tahr"
             fill
             className={styles.image}

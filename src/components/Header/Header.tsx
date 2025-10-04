@@ -121,7 +121,7 @@ export default function Header({
   const menuItems = [
     { label: "Who We Are", href: "/who-we-are" },
     { label: "What We Do", href: "/what-we-do" },
-    { label: "Where We Work", href: "#where-we-work" },
+    { label: "Where We Work", href: "/protective-areas-admin-units" },
     { label: "News Room", href: "#news-room" },
     { label: "Photo Gallery", href: "#photo-gallery" },
     { label: "Blogs", href: "#blogs" },

@@ -31,7 +31,7 @@ export default function ProjectTitle({ title, isScrolled }: ProjectTitleProps) {
               fontSize: "clamp(12px, 2vw, 16px)",
               fontWeight: "700",
               margin: "0",
-              color: "#1b4332",
+              color: "#52b788",
               fontFamily: "Poppins, sans-serif",
               lineHeight: "1.1",
               whiteSpace: "nowrap",

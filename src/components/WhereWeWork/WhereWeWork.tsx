@@ -76,34 +76,12 @@ export default function WhereWeWork() {
       viewport={{ once: true, amount: 0.1 }}
       style={{
         padding: "120px 2rem 80px",
-        background: "#000000",
+        background: "#f8f5f5ff",
         minHeight: "100vh",
         position: "relative",
-        color: "#ffffff",
+        color: "#040404ff",
       }}
     >
-      {/* Background Image */}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          zIndex: 1,
-        }}
-      >
-        <Image
-          src="/banners/DJI_0036.jpg"
-          alt="Nilgiri Tahr habitat"
-          fill
-          style={{
-            objectFit: "cover",
-            opacity: 0.25,
-          }}
-        />
-      </div>
-
       <div
         style={{
           position: "relative",
@@ -139,7 +117,7 @@ export default function WhereWeWork() {
               fontWeight: "900",
               lineHeight: "1.1",
               margin: "0 0 2rem 0",
-              color: "#ffffff",
+              color: "#0a0a0aff",
               fontFamily: "Inter, sans-serif",
               letterSpacing: "-0.02em",
             }}
@@ -150,7 +128,7 @@ export default function WhereWeWork() {
           <p
             style={{
               fontSize: "1.1rem",
-              color: "#e0e6ed",
+              color: "#3a3b3bff",
               maxWidth: "600px",
               margin: "0 auto",
               lineHeight: "1.6",
@@ -493,8 +471,8 @@ export default function WhereWeWork() {
               whileHover={{ scale: 1.02 }}
               style={{
                 background: "transparent",
-                border: "2px solid #ffffff",
-                color: "#ffffff",
+                border: "2px solid #090909ff",
+                color: "#090909ff",
                 padding: "1rem 2rem",
                 fontSize: "1rem",
                 fontWeight: "600",
@@ -503,15 +481,15 @@ export default function WhereWeWork() {
                 letterSpacing: "0.1em",
                 cursor: "pointer",
                 transition: "all 0.3s ease",
-                marginTop: "2rem",
+                marginBottom: "4rem",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = "#ffffff";
-                e.currentTarget.style.color = "#000000";
+                e.currentTarget.style.background = "#000000";
+                e.currentTarget.style.color = "#ffffff";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.background = "transparent";
-                e.currentTarget.style.color = "#ffffff";
+                e.currentTarget.style.color = "#000000";
               }}
             >
               LEARN MORE
