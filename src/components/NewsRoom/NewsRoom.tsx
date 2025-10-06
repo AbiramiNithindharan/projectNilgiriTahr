@@ -210,460 +210,464 @@ export default function NewsRoom() {
   };
 
   return (
-    <motion.section
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.1 }}
-      style={{
-        background: "#ffffff",
-        minHeight: "100vh",
-        position: "relative",
-      }}
-    >
-      {/* Our Success Stories Section */}
-      <motion.div
-        variants={itemVariants}
+    <>
+      <motion.section
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
         style={{
-          marginBottom: "8rem",
-          background: "#000000",
-          width: "100%",
-          height: "100%",
+          background: "#ffffff",
+          minHeight: "100vh",
+          position: "relative",
         }}
       >
-        <div
+        {/* Our Success Stories Section */}
+        <motion.div
+          variants={itemVariants}
           style={{
-            textAlign: "center",
-            marginBottom: "4rem",
+            marginBottom: "8rem",
+            background: "#000000",
+            width: "100%",
+            height: "100%",
           }}
         >
-          <h2
-            style={{
-              fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
-              fontWeight: "800",
-              margin: "0 0 1rem 0",
-              lineHeight: "1.2",
-              color: "white",
-              paddingTop: "4rem",
-            }}
-          >
-            Our Success Stories
-          </h2>
           <div
             style={{
-              width: "80px",
-              height: "4px",
-              background: "linear-gradient(90deg, #52b788, #a8dab5)",
-              margin: "0 auto 2rem",
-              borderRadius: "2px",
-            }}
-          />
-          <p
-            style={{
-              fontSize: "clamp(1.1rem, 2.5vw, 1.3rem)",
-              color: "#ffffffff",
-              maxWidth: "800px",
-              margin: "0 auto",
-              lineHeight: "1.6",
-              fontFamily: "Poppins, sans-serif",
-              fontWeight: "400",
+              textAlign: "center",
+              marginBottom: "4rem",
             }}
           >
-            “From surveying rugged peaks to restoring grasslands and building
-            bonds with communities, our success stories reflect every step taken
-            to secure a future for the Nilgiri Tahr.”
-          </p>
-        </div>
+            <h2
+              style={{
+                fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
+                fontWeight: "800",
+                margin: "0 0 1rem 0",
+                lineHeight: "1.2",
+                color: "white",
+                paddingTop: "4rem",
+              }}
+            >
+              Our Success Stories
+            </h2>
+            <div
+              style={{
+                width: "80px",
+                height: "4px",
+                background: "linear-gradient(90deg, #52b788, #a8dab5)",
+                margin: "0 auto 2rem",
+                borderRadius: "2px",
+              }}
+            />
+            <p
+              style={{
+                fontSize: "clamp(1.1rem, 2.5vw, 1.3rem)",
+                color: "#ffffffff",
+                maxWidth: "800px",
+                margin: "0 auto",
+                lineHeight: "1.6",
+                fontFamily: "Poppins, sans-serif",
+                fontWeight: "400",
+              }}
+            >
+              “From surveying rugged peaks to restoring grasslands and building
+              bonds with communities, our success stories reflect every step
+              taken to secure a future for the Nilgiri Tahr.”
+            </p>
+          </div>
 
-        {/* Success Stories Cards */}
+          {/* Success Stories Cards */}
+          <div
+            className={styles.swiperContainer}
+            style={{ position: "relative", overflow: "visible" }}
+          >
+            <button
+              ref={prevRef}
+              className="swiper-button-prev-categories"
+              aria-label="Previous"
+              // keep minimal inline JS; visual state handled in CSS (touch-friendly)
+            >
+              ‹
+            </button>
+
+            <button
+              ref={nextRef}
+              className="swiper-button-next-categories"
+              aria-label="Next"
+            >
+              ›
+            </button>
+
+            <Swiper
+              className={styles.mySwiper}
+              key={victories.length}
+              modules={[Navigation, Autoplay]}
+              spaceBetween={24}
+              slidesPerView={1}
+              navigation={{
+                prevEl: prevRef.current,
+                nextEl: nextRef.current,
+              }}
+              autoplay={{
+                delay: 4000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+              }}
+              onBeforeInit={(swiper: any) => {
+                // tie the refs to swiper params before init
+                swiper.params.navigation.prevEl = prevRef.current;
+                swiper.params.navigation.nextEl = nextRef.current;
+              }}
+              loop={shouldLoop}
+              breakpoints={breakpoints}
+              style={{
+                padding: "2.5rem",
+                background: "rgba(0, 0, 0, 0.02)",
+                backdropFilter: "blur(10px)",
+                borderRadius: "20px",
+                border: "1px solid rgba(0, 0, 0, 0.05)",
+                position: "relative",
+              }}
+            >
+              {victories.map((victory, index) => (
+                <SwiperSlide key={victory.id} className={styles.swiperSlide}>
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.4, delay: (index % 4) * 0.1 }}
+                    viewport={{ once: true }}
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    onMouseEnter={() => setHoveredCard(victory.id)}
+                    onMouseLeave={() => setHoveredCard(null)}
+                    style={{
+                      background: "rgba(255, 255, 255, 0.95)",
+                      backdropFilter: "blur(15px)",
+                      borderRadius: "16px",
+                      padding: "2.5rem 2rem",
+                      textAlign: "center",
+                      boxShadow: "0 8px 32px rgba(27, 67, 50, 0.08)",
+                      border: "1px solid rgba(255, 255, 255, 0.3)",
+                      transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                      cursor: "pointer",
+                      height: "450px",
+                      position: "relative",
+                      overflow: "hidden",
+                    }}
+                  >
+                    {/* Subtle background pattern */}
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: 0,
+                        right: 0,
+                        width: "100px",
+                        height: "100px",
+                        background:
+                          "linear-gradient(45deg, rgba(82, 183, 136, 0.05), transparent)",
+                        borderRadius: "0 16px 0 100px",
+                      }}
+                    />
+
+                    <div
+                      style={{
+                        fontSize: "3.5rem",
+                        marginBottom: "1.5rem",
+                        filter: "drop-shadow(0 4px 8px rgba(27, 67, 50, 0.2))",
+                        position: "relative",
+                        zIndex: 2,
+                      }}
+                    >
+                      {victory.icon}
+                    </div>
+
+                    <h3
+                      style={{
+                        fontSize: "clamp(1.3rem, 2.5vw, 1.6rem)",
+                        fontWeight: "700",
+                        color: "#1b4332",
+                        marginBottom: "1.5rem",
+                        fontFamily: "Poppins, sans-serif",
+                        position: "relative",
+                        zIndex: 2,
+                      }}
+                    >
+                      {victory.title}
+                    </h3>
+
+                    <p
+                      style={{
+                        fontSize: "clamp(0.95rem, 2vw, 1.05rem)",
+                        lineHeight: "1.6",
+                        color: "#2d5016",
+                        fontFamily: "Poppins, sans-serif",
+                        fontWeight: "400",
+                        margin: "0",
+                        opacity: 0.9,
+                        position: "relative",
+                        zIndex: 2,
+                      }}
+                    >
+                      {victory.content}
+                    </p>
+                    <Link
+                      href={victory.link}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        marginTop: "1rem",
+                      }}
+                    >
+                      <motion.button
+                        whileHover={{ scale: 1.02 }}
+                        style={{
+                          background: "transparent",
+                          border: "2px solid #090909ff",
+                          color: "#090909ff",
+                          padding: "0.8rem 1.5rem",
+                          fontSize: "0.8rem",
+                          fontWeight: "600",
+                          fontFamily: "Inter, sans-serif",
+                          textTransform: "uppercase",
+                          letterSpacing: "0.1em",
+                          cursor: "pointer",
+                          transition: "all 0.3s ease",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = "#000000";
+                          e.currentTarget.style.color = "#ffffff";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = "transparent";
+                          e.currentTarget.style.color = "#000000";
+                        }}
+                      >
+                        LEARN MORE
+                      </motion.button>
+                    </Link>
+                  </motion.div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+
+            {/* Custom Navigation Buttons */}
+            {victories.length > 3 && (
+              <>
+                <button
+                  className="swiper-button-prev-categories"
+                  style={{
+                    position: "absolute",
+                    left: "-1.5rem",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    background: "rgba(255, 255, 255, 0.95)",
+                    backdropFilter: "blur(10px)",
+                    border: "1px solid rgba(82, 183, 136, 0.2)",
+                    borderRadius: "50%",
+                    width: "50px",
+                    height: "50px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    cursor: "pointer",
+                    fontSize: "1.5rem",
+                    color: "#1b4332",
+                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                    zIndex: 10,
+                    boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "#52b788";
+                    e.currentTarget.style.color = "#ffffff";
+                    e.currentTarget.style.transform =
+                      "translateY(-50%) scale(1.1)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background =
+                      "rgba(255, 255, 255, 0.95)";
+                    e.currentTarget.style.color = "#1b4332";
+                    e.currentTarget.style.transform =
+                      "translateY(-50%) scale(1)";
+                  }}
+                >
+                  ‹
+                </button>
+                <button
+                  className="swiper-button-next-categories"
+                  style={{
+                    position: "absolute",
+                    right: "-1.5rem",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    background: "rgba(255, 255, 255, 0.95)",
+                    backdropFilter: "blur(10px)",
+                    border: "1px solid rgba(82, 183, 136, 0.2)",
+                    borderRadius: "50%",
+                    width: "50px",
+                    height: "50px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    cursor: "pointer",
+                    fontSize: "1.5rem",
+                    color: "#1b4332",
+                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                    zIndex: 10,
+                    boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "#52b788";
+                    e.currentTarget.style.color = "#ffffff";
+                    e.currentTarget.style.transform =
+                      "translateY(-50%) scale(1.1)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background =
+                      "rgba(255, 255, 255, 0.95)";
+                    e.currentTarget.style.color = "#1b4332";
+                    e.currentTarget.style.transform =
+                      "translateY(-50%) scale(1)";
+                  }}
+                >
+                  ›
+                </button>
+              </>
+            )}
+          </div>
+        </motion.div>
+
         <div
-          className={styles.swiperContainer}
-          style={{ position: "relative", overflow: "visible" }}
+          style={{
+            padding: "0 2rem 10px",
+            maxWidth: "1600px",
+            margin: "0 auto",
+            width: "100%",
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "clamp(3rem, 8vw, 8rem)",
+            alignItems: "center",
+            marginBottom: "8rem",
+          }}
         >
-          <button
-            ref={prevRef}
-            className="swiper-button-prev-categories"
-            aria-label="Previous"
-            // keep minimal inline JS; visual state handled in CSS (touch-friendly)
-          >
-            ‹
-          </button>
-
-          <button
-            ref={nextRef}
-            className="swiper-button-next-categories"
-            aria-label="Next"
-          >
-            ›
-          </button>
-
-          <Swiper
-            className={styles.mySwiper}
-            key={victories.length}
-            modules={[Navigation, Autoplay]}
-            spaceBetween={24}
-            slidesPerView={1}
-            navigation={{
-              prevEl: prevRef.current,
-              nextEl: nextRef.current,
-            }}
-            autoplay={{
-              delay: 4000,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: true,
-            }}
-            onBeforeInit={(swiper: any) => {
-              // tie the refs to swiper params before init
-              swiper.params.navigation.prevEl = prevRef.current;
-              swiper.params.navigation.nextEl = nextRef.current;
-            }}
-            loop={shouldLoop}
-            breakpoints={breakpoints}
+          {/* Left Side - Content */}
+          <motion.div
+            variants={itemVariants}
             style={{
-              padding: "2.5rem",
-              background: "rgba(0, 0, 0, 0.02)",
-              backdropFilter: "blur(10px)",
-              borderRadius: "20px",
-              border: "1px solid rgba(0, 0, 0, 0.05)",
+              padding: "0.2rem 0",
+              marginTop: "100px",
+            }}
+          >
+            {/* Section Number */}
+            <div
+              style={{
+                fontSize: "1rem",
+                fontWeight: "600",
+                color: "#52b788",
+                marginBottom: "1rem",
+                fontFamily: "Inter, sans-serif",
+                letterSpacing: "0.1em",
+                marginTop: "40px",
+              }}
+            >
+              08
+            </div>
+
+            {/* Main Heading */}
+            <h2
+              style={{
+                fontSize: "clamp(2rem, 5vw, 3rem)",
+                fontWeight: "900",
+                lineHeight: "1.1",
+                margin: "0 0 2rem 0",
+                color: "#000000",
+                fontFamily: "Inter, sans-serif",
+                letterSpacing: "-0.02em",
+              }}
+            >
+              News Room — stay updated with the latest conservation news,
+              research findings, and community initiatives.
+            </h2>
+
+            {/* Description */}
+            <p
+              style={{
+                fontSize: "1.1rem",
+                lineHeight: "1.8",
+                margin: "0 0 2rem 0",
+                color: "#666666",
+                fontFamily: "Inter, sans-serif",
+                fontWeight: "400",
+              }}
+            >
+              Get the latest updates on our conservation work, research
+              publications, media coverage, and community engagement initiatives
+              protecting the Nilgiri Tahr.
+            </p>
+
+            {/* View All Button */}
+            <Link href={"/news-categories"}>
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                style={{
+                  background: "transparent",
+                  border: "2px solid #000000",
+                  color: "#000000",
+                  padding: "1rem 2rem",
+                  fontSize: "1rem",
+                  fontWeight: "600",
+                  fontFamily: "Inter, sans-serif",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1em",
+                  cursor: "pointer",
+                  transition: "all 0.3s ease",
+                  marginTop: "2rem",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "#000000";
+                  e.currentTarget.style.color = "#ffffff";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "transparent";
+                  e.currentTarget.style.color = "#000000";
+                }}
+              >
+                VIEW MORE
+              </motion.button>
+            </Link>
+          </motion.div>
+
+          {/* Right Side - Large "NEWS" text */}
+          <motion.div
+            variants={itemVariants}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              height: "100%",
               position: "relative",
             }}
           >
-            {victories.map((victory, index) => (
-              <SwiperSlide key={victory.id} className={styles.swiperSlide}>
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.4, delay: (index % 4) * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  onMouseEnter={() => setHoveredCard(victory.id)}
-                  onMouseLeave={() => setHoveredCard(null)}
-                  style={{
-                    background: "rgba(255, 255, 255, 0.95)",
-                    backdropFilter: "blur(15px)",
-                    borderRadius: "16px",
-                    padding: "2.5rem 2rem",
-                    textAlign: "center",
-                    boxShadow: "0 8px 32px rgba(27, 67, 50, 0.08)",
-                    border: "1px solid rgba(255, 255, 255, 0.3)",
-                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                    cursor: "pointer",
-                    height: "450px",
-                    position: "relative",
-                    overflow: "hidden",
-                  }}
-                >
-                  {/* Subtle background pattern */}
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: 0,
-                      right: 0,
-                      width: "100px",
-                      height: "100px",
-                      background:
-                        "linear-gradient(45deg, rgba(82, 183, 136, 0.05), transparent)",
-                      borderRadius: "0 16px 0 100px",
-                    }}
-                  />
-
-                  <div
-                    style={{
-                      fontSize: "3.5rem",
-                      marginBottom: "1.5rem",
-                      filter: "drop-shadow(0 4px 8px rgba(27, 67, 50, 0.2))",
-                      position: "relative",
-                      zIndex: 2,
-                    }}
-                  >
-                    {victory.icon}
-                  </div>
-
-                  <h3
-                    style={{
-                      fontSize: "clamp(1.3rem, 2.5vw, 1.6rem)",
-                      fontWeight: "700",
-                      color: "#1b4332",
-                      marginBottom: "1.5rem",
-                      fontFamily: "Poppins, sans-serif",
-                      position: "relative",
-                      zIndex: 2,
-                    }}
-                  >
-                    {victory.title}
-                  </h3>
-
-                  <p
-                    style={{
-                      fontSize: "clamp(0.95rem, 2vw, 1.05rem)",
-                      lineHeight: "1.6",
-                      color: "#2d5016",
-                      fontFamily: "Poppins, sans-serif",
-                      fontWeight: "400",
-                      margin: "0",
-                      opacity: 0.9,
-                      position: "relative",
-                      zIndex: 2,
-                    }}
-                  >
-                    {victory.content}
-                  </p>
-                  <Link
-                    href={victory.link}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      marginTop: "1rem",
-                    }}
-                  >
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      style={{
-                        background: "transparent",
-                        border: "2px solid #090909ff",
-                        color: "#090909ff",
-                        padding: "0.8rem 1.5rem",
-                        fontSize: "0.8rem",
-                        fontWeight: "600",
-                        fontFamily: "Inter, sans-serif",
-                        textTransform: "uppercase",
-                        letterSpacing: "0.1em",
-                        cursor: "pointer",
-                        transition: "all 0.3s ease",
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = "#000000";
-                        e.currentTarget.style.color = "#ffffff";
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = "transparent";
-                        e.currentTarget.style.color = "#000000";
-                      }}
-                    >
-                      LEARN MORE
-                    </motion.button>
-                  </Link>
-                </motion.div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-
-          {/* Custom Navigation Buttons */}
-          {victories.length > 3 && (
-            <>
-              <button
-                className="swiper-button-prev-categories"
-                style={{
-                  position: "absolute",
-                  left: "-1.5rem",
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  background: "rgba(255, 255, 255, 0.95)",
-                  backdropFilter: "blur(10px)",
-                  border: "1px solid rgba(82, 183, 136, 0.2)",
-                  borderRadius: "50%",
-                  width: "50px",
-                  height: "50px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  cursor: "pointer",
-                  fontSize: "1.5rem",
-                  color: "#1b4332",
-                  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                  zIndex: 10,
-                  boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "#52b788";
-                  e.currentTarget.style.color = "#ffffff";
-                  e.currentTarget.style.transform =
-                    "translateY(-50%) scale(1.1)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background =
-                    "rgba(255, 255, 255, 0.95)";
-                  e.currentTarget.style.color = "#1b4332";
-                  e.currentTarget.style.transform = "translateY(-50%) scale(1)";
-                }}
-              >
-                ‹
-              </button>
-              <button
-                className="swiper-button-next-categories"
-                style={{
-                  position: "absolute",
-                  right: "-1.5rem",
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  background: "rgba(255, 255, 255, 0.95)",
-                  backdropFilter: "blur(10px)",
-                  border: "1px solid rgba(82, 183, 136, 0.2)",
-                  borderRadius: "50%",
-                  width: "50px",
-                  height: "50px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  cursor: "pointer",
-                  fontSize: "1.5rem",
-                  color: "#1b4332",
-                  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                  zIndex: 10,
-                  boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "#52b788";
-                  e.currentTarget.style.color = "#ffffff";
-                  e.currentTarget.style.transform =
-                    "translateY(-50%) scale(1.1)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background =
-                    "rgba(255, 255, 255, 0.95)";
-                  e.currentTarget.style.color = "#1b4332";
-                  e.currentTarget.style.transform = "translateY(-50%) scale(1)";
-                }}
-              >
-                ›
-              </button>
-            </>
-          )}
-        </div>
-      </motion.div>
-
-      <div
-        style={{
-          padding: "0 2rem 10px",
-          maxWidth: "1600px",
-          margin: "0 auto",
-          width: "100%",
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "clamp(3rem, 8vw, 8rem)",
-          alignItems: "center",
-          marginBottom: "8rem",
-        }}
-      >
-        {/* Left Side - Content */}
-        <motion.div
-          variants={itemVariants}
-          style={{
-            padding: "0.2rem 0",
-            marginTop: "100px",
-          }}
-        >
-          {/* Section Number */}
-          <div
-            style={{
-              fontSize: "1rem",
-              fontWeight: "600",
-              color: "#52b788",
-              marginBottom: "1rem",
-              fontFamily: "Inter, sans-serif",
-              letterSpacing: "0.1em",
-              marginTop: "40px",
-            }}
-          >
-            08
-          </div>
-
-          {/* Main Heading */}
-          <h2
-            style={{
-              fontSize: "clamp(2rem, 5vw, 3rem)",
-              fontWeight: "900",
-              lineHeight: "1.1",
-              margin: "0 0 2rem 0",
-              color: "#000000",
-              fontFamily: "Inter, sans-serif",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            News Room — stay updated with the latest conservation news, research
-            findings, and community initiatives.
-          </h2>
-
-          {/* Description */}
-          <p
-            style={{
-              fontSize: "1.1rem",
-              lineHeight: "1.8",
-              margin: "0 0 2rem 0",
-              color: "#666666",
-              fontFamily: "Inter, sans-serif",
-              fontWeight: "400",
-            }}
-          >
-            Get the latest updates on our conservation work, research
-            publications, media coverage, and community engagement initiatives
-            protecting the Nilgiri Tahr.
-          </p>
-
-          {/* View All Button */}
-          <Link href={"/news-categories"}>
-            <motion.button
-              whileHover={{ scale: 1.02 }}
+            <div
               style={{
-                background: "transparent",
-                border: "2px solid #000000",
-                color: "#000000",
-                padding: "1rem 2rem",
-                fontSize: "1rem",
-                fontWeight: "600",
+                fontSize: "clamp(5rem, 12vw, 10rem)",
+                fontWeight: "800",
                 fontFamily: "Inter, sans-serif",
+                letterSpacing: "-0.05em",
                 textTransform: "uppercase",
-                letterSpacing: "0.1em",
-                cursor: "pointer",
-                transition: "all 0.3s ease",
-                marginTop: "2rem",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = "#000000";
-                e.currentTarget.style.color = "#ffffff";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "transparent";
-                e.currentTarget.style.color = "#000000";
+                opacity: 0.05,
+                transform: "rotate(-90deg)",
+                whiteSpace: "nowrap",
               }}
             >
-              VIEW MORE
-            </motion.button>
-          </Link>
-        </motion.div>
+              NEWS
+            </div>
+          </motion.div>
+        </div>
 
-        {/* Right Side - Large "NEWS" text */}
-        <motion.div
-          variants={itemVariants}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            height: "100%",
-            position: "relative",
-          }}
-        >
-          <div
-            style={{
-              fontSize: "clamp(5rem, 12vw, 10rem)",
-              fontWeight: "800",
-              fontFamily: "Inter, sans-serif",
-              letterSpacing: "-0.05em",
-              textTransform: "uppercase",
-              opacity: 0.05,
-              transform: "rotate(-90deg)",
-              whiteSpace: "nowrap",
-            }}
-          >
-            NEWS
-          </div>
-        </motion.div>
-      </div>
+        {/* News Categories Slider */}
 
-      {/* News Categories Slider */}
-
-      {/* Recent News Section */}
-    </motion.section>
+        {/* Recent News Section */}
+      </motion.section>
+    </>
   );
 }

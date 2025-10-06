@@ -5,6 +5,7 @@ import { motion, useMotionValue } from "framer-motion";
 import { useRouter, usePathname } from "next/navigation";
 import styles from "./Header.module.css";
 import { Home } from "lucide-react";
+import Link from "next/link";
 
 // Import new components
 import Logo from "./components/Logo";
@@ -122,9 +123,8 @@ export default function Header({
     { label: "Who We Are", href: "/who-we-are" },
     { label: "What We Do", href: "/what-we-do" },
     { label: "Where We Work", href: "/protective-areas-admin-units" },
-    { label: "News Room", href: "#news-room" },
-    { label: "Photo Gallery", href: "#photo-gallery" },
-    { label: "Blogs", href: "#blogs" },
+    { label: "News Room", href: "/news-categories" },
+    { label: "Photo Gallery", href: "/photo-gallery" },
     { label: "Contact Us", href: "/contact" },
   ];
 
@@ -175,37 +175,38 @@ export default function Header({
             transition: "all 0.3s ease",
           }}
         >
-          {pathname !== "/" && (
-            <motion.button
-              onClick={() => router.push("/")}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3 }}
-              className={styles.homeButton}
-              style={{
-                background: "transparent",
-                border: "none",
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                padding: "0.4rem",
-                marginRight: "20px",
-              }}
-              aria-label="Go to home"
-            >
-              <Home size={24} strokeWidth={2} />
-            </motion.button>
-          )}
+          <motion.button
+            onClick={() => router.push("/")}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.3 }}
+            className={styles.homeButton}
+            style={{
+              background: "transparent",
+              border: "none",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "0.4rem",
+              marginRight: "20px",
+              color: "#52b788",
+            }}
+            aria-label="Go to home"
+          >
+            <Home size={24} strokeWidth={2} />
+          </motion.button>
 
           {/* Left Logo */}
-          <Logo
-            src={leftLogoSrc}
-            alt={leftLogoAlt}
-            size={isScrolled ? "medium" : "large"}
-            delay={0.1}
-            isVisible={isVisible}
-          />
+          <Link href={"/"}>
+            <Logo
+              src={leftLogoSrc}
+              alt={leftLogoAlt}
+              size={isScrolled ? "medium" : "large"}
+              delay={0.1}
+              isVisible={isVisible}
+            />
+          </Link>
 
           {/* Project Title - Only when scrolled */}
           {isScrolled && (

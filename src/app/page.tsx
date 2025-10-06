@@ -39,7 +39,6 @@ export default function Home() {
       <WhereWeWork />
       <NewsRoom />
       <PhotoGallery />
-      <Footer />
     </div>
   );
 }
