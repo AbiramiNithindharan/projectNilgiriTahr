@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Header from "../components/Header/Header";
+import Footer from "@/components/Footer/Footer";
 
 export default function ClientLayout({
   children,
@@ -25,6 +26,7 @@ export default function ClientLayout({
         isVisible={isHome ? false : showHeader}
       />
       {children}
+      <Footer />
     </>
   );
 }

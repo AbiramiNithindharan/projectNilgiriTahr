@@ -125,7 +125,7 @@ export default function Header({
     { label: "News Room", href: "#news-room" },
     { label: "Photo Gallery", href: "#photo-gallery" },
     { label: "Blogs", href: "#blogs" },
-    { label: "Contact Us", href: "#contact-us" },
+    { label: "Contact Us", href: "/contact" },
   ];
 
   const pathname = usePathname();
