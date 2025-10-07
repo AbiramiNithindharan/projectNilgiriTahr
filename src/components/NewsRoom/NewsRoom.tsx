@@ -405,6 +405,7 @@ export default function NewsRoom() {
                         opacity: 0.9,
                         position: "relative",
                         zIndex: 2,
+                        textAlign: "justify",
                       }}
                     >
                       {victory.content}

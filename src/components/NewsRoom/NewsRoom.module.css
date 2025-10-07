@@ -10,6 +10,16 @@
   overflow: visible;
 }
 
+.swiperSlide {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
 /* Custom Swiper Pagination Styles */
 .swiperContainer :global(.swiper-pagination-bullet-custom) {
   width: 12px;
@@ -80,11 +90,52 @@
 }
 
 /* Responsive adjustments */
+
+@media (max-width: 2098px) {
+  .section {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+  }
+
+  .swiperContainer :global(.swiper-button-prev-categories),
+  .swiperContainer :global(.swiper-button-next-categories) {
+    width: 60px !important;
+    height: 60px !important;
+    font-size: 1.9rem !important;
+  }
+
+  .swiperContainer :global(.swiper-button-prev-categories) {
+    left: 8px !important;
+  }
+
+  .swiperContainer :global(.swiper-button-next-categories) {
+    right: 8px !important;
+  }
+
+
+}
+
 @media (max-width: 1024px) {
   .section {
     grid-template-columns: 1fr !important;
     text-align: center;
   }
+
+  .swiperContainer :global(.swiper-button-prev-categories),
+  .swiperContainer :global(.swiper-button-next-categories) {
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 1.2rem !important;
+  }
+
+  .swiperContainer :global(.swiper-button-prev-categories) {
+    left: 8px !important;
+  }
+
+  .swiperContainer :global(.swiper-button-next-categories) {
+    right: 8px !important;
+  }
+
 }
 
 @media (max-width: 768px) {

@@ -203,6 +203,7 @@ export default function WhatWeDo() {
           <p
             style={{
               fontSize: "1.1rem",
+              textAlign: "justify",
               lineHeight: "1.8",
               margin: "0 0 2rem 0",
               color: "#e0e6ed",

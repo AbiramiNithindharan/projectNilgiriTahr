@@ -6,6 +6,8 @@ import Image from "next/image";
 import { AtomCategories } from "./components/AtomCategories";
 import styles from "./PhotoGallery.module.css";
 
+import Link from "next/link";
+
 export default function PhotoGallery() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [hoveredImage, setHoveredImage] = useState<string | null>(null);
@@ -244,33 +246,35 @@ export default function PhotoGallery() {
             </p>
 
             {/* View All Button */}
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              style={{
-                background: "transparent",
-                border: "2px solid #ffffff",
-                color: "#ffffff",
-                padding: "1rem 2rem",
-                fontSize: "1rem",
-                fontWeight: "600",
-                fontFamily: "Inter, sans-serif",
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-                cursor: "pointer",
-                transition: "all 0.3s ease",
-                marginTop: "2rem",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = "#ffffff";
-                e.currentTarget.style.color = "#000000";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "transparent";
-                e.currentTarget.style.color = "#ffffff";
-              }}
-            >
-              BROWSE GALLERY
-            </motion.button>
+            <Link href={"/photo-gallery"}>
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                style={{
+                  background: "transparent",
+                  border: "2px solid #ffffff",
+                  color: "#ffffff",
+                  padding: "1rem 2rem",
+                  fontSize: "1rem",
+                  fontWeight: "600",
+                  fontFamily: "Inter, sans-serif",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1em",
+                  cursor: "pointer",
+                  transition: "all 0.3s ease",
+                  marginTop: "2rem",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "#ffffff";
+                  e.currentTarget.style.color = "#000000";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "transparent";
+                  e.currentTarget.style.color = "#ffffff";
+                }}
+              >
+                BROWSE GALLERY
+              </motion.button>
+            </Link>
           </div>
 
           {/* Right Side - Large "IMAGE" text */}
@@ -316,331 +320,7 @@ export default function PhotoGallery() {
           >
             <AtomCategories onSelect={(id) => setSelectedCategory(id)} />
           </div>
-
-          {/* <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              marginBottom: "6rem",
-            }}
-          >
-            <AtomGallery />
-          </div>
- */}
-          {/* Category Grid - Fixed Layout */}
-          {/* Category Grid - Circle Style */}
-          {/* <div
-            className={styles.categoryGrid}
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
-              gap: "2rem",
-              justifyItems: "center",
-              marginBottom: "4rem",
-              maxWidth: "1000px",
-              margin: "0 auto 4rem auto",
-            }}
-          >
-            {categories.map((category) => (
-              <motion.button
-                key={category.id}
-                variants={itemVariants}
-                whileHover={{ scale: 1.1 }}
-                onClick={() => setSelectedCategory(category.id)}
-                className={`${styles.categoryCircle} ${
-                  selectedCategory === category.id ? styles.activeCategory : ""
-                }`}
-              >
-                <div className={styles.circleContent}>
-                  <div className={styles.circleLabel}>{category.label}</div>
-                  <div className={styles.circleCount}>{category.count}</div>
-                </div>
-              </motion.button>
-            ))}
-          </div> 
- */}
-          {/* <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
-              gap: "1rem",
-              marginBottom: "4rem",
-              maxWidth: "1200px",
-              margin: "0 auto 4rem auto",
-            }}
-          >
-            {categories.map((category) => (
-              <motion.button
-                key={category.id}
-                variants={itemVariants}
-                whileHover={{ scale: 1.02 }}
-                onClick={() => setSelectedCategory(category.id)}
-                style={{
-                  background:
-                    selectedCategory === category.id
-                      ? "linear-gradient(135deg, #52b788, #40916c)"
-                      : "rgba(255, 255, 255, 0.05)",
-                  border:
-                    selectedCategory === category.id
-                      ? "1px solid #52b788"
-                      : "1px solid rgba(255, 255, 255, 0.1)",
-                  color:
-                    selectedCategory === category.id ? "#ffffff" : "#e0e6ed",
-                  padding: "1rem",
-                  borderRadius: "50px",
-                  cursor: "pointer",
-                  transition: "all 0.3s ease",
-                  textAlign: "center",
-                  fontFamily: "Inter, sans-serif",
-                  minHeight: "120px",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <div
-                  style={{
-                    fontSize: "0.9rem",
-                    fontWeight: "600",
-                    marginBottom: "0.5rem",
-                    lineHeight: "1.2",
-                  }}
-                >
-                  {category.label}
-                </div>
-                <div
-                  style={{
-                    fontSize: "1.5rem",
-                    fontWeight: "900",
-                    color:
-                      selectedCategory === category.id ? "#ffffff" : "#52b788",
-                    marginBottom: "0.25rem",
-                  }}
-                >
-                  {category.count}
-                </div>
-                <div
-                  style={{
-                    fontSize: "0.7rem",
-                    opacity: 0.7,
-                    textTransform: "uppercase",
-                    letterSpacing: "0.1em",
-                  }}
-                >
-                  images
-                </div>
-              </motion.button>
-            ))}
-          </div> */}
         </motion.div>
-
-        {/* Image Gallery Grid */}
-        {/* <motion.div
-          variants={itemVariants}
-          style={{
-            marginBottom: "4rem",
-          }}
-        >
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-              gap: "2rem",
-            }}
-          >
-            {filteredImages.map((image, index) => (
-              <motion.div
-                key={image.id}
-                variants={itemVariants}
-                whileHover={{ y: -8, scale: 1.02 }}
-                onMouseEnter={() => setHoveredImage(image.id)}
-                onMouseLeave={() => setHoveredImage(null)}
-                style={{
-                  background: "rgba(255, 255, 255, 0.05)",
-                  borderRadius: "20px",
-                  overflow: "hidden",
-                  boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3)",
-                  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                  cursor: "pointer",
-                }}
-              > */}
-        {/* Image */}
-        {/*                 <div
-                  style={{
-                    height: "250px",
-                    width: "250px",
-                    position: "relative",
-                    overflow: "hidden",
-                    top: 2,
-                    marginLeft: "40px",
-                  }}
-                >
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    fill
-                    style={{
-                      transition: "transform 0.3s ease",
-                      borderRadius: "200px",
-                      transform:
-                        hoveredImage === image.id ? "scale(1.1)" : "scale(1)",
-                    }}
-                  /> */}
-
-        {/* Overlay on hover */}
-        {/*                   <div
-                    style={{
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      background:
-                        "linear-gradient(45deg, rgba(0,0,0,0.7), rgba(82,183,136,0.3))",
-                      opacity: hoveredImage === image.id ? 1 : 0,
-                      transition: "opacity 0.3s ease",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <div
-                      style={{
-                        background: "rgba(255, 255, 255, 0.2)",
-                        backdropFilter: "blur(10px)",
-                        borderRadius: "50%",
-                        width: "60px",
-                        height: "60px",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        fontSize: "1.5rem",
-                        color: "#ffffff",
-                      }}
-                    >
-                      🔍
-                    </div>
-                  </div> */}
-
-        {/* Category Badge */}
-        {/* <div
-                    style={{
-                      position: "absolute",
-                      top: "1rem",
-                      left: "5rem",
-                      background: "#52b788",
-                      color: "#ffffff",
-                      padding: "0.5rem 1rem",
-                      borderRadius: "20px",
-                      fontSize: "0.8rem",
-                      fontWeight: "600",
-                      fontFamily: "Inter, sans-serif",
-                      textTransform: "capitalize",
-                    }}
-                  >
-                    {image.category}
-                  </div>
-                </div> */}
-
-        {/* Image Info */}
-        {/* <div
-                  style={{
-                    padding: "1.5rem",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <h4
-                    style={{
-                      fontSize: "1.2rem",
-                      fontWeight: "700",
-                      color: "#ffffff",
-                      margin: "0 0 0.5rem 0",
-                      fontFamily: "Inter, sans-serif",
-                    }}
-                  >
-                    {image.title}
-                  </h4>
-                  <p
-                    style={{
-                      fontSize: "0.9rem",
-                      color: "#e0e6ed",
-                      lineHeight: "1.5",
-                      margin: "0 0 1rem 0",
-                      fontFamily: "Inter, sans-serif",
-                      opacity: 0.8,
-                      textAlign: "center",
-                    }}
-                  >
-                    {image.description}
-                  </p>
-
-                  <button
-                    style={{
-                      background: "transparent",
-                      border: "1px solid rgba(255, 255, 255, 0.3)",
-                      color: "#ffffff",
-                      padding: "0.8rem 0.8rem",
-                      fontSize: "0.9rem",
-                      fontWeight: "600",
-                      fontFamily: "Inter, sans-serif",
-                      textTransform: "uppercase",
-                      letterSpacing: "0.1em",
-                      cursor: "pointer",
-                      transition: "all 0.3s ease",
-                      borderRadius: "8px",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background =
-                        "rgba(255, 255, 255, 0.1)";
-                      e.currentTarget.style.borderColor =
-                        "rgba(255, 255, 255, 0.5)";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background = "transparent";
-                      e.currentTarget.style.borderColor =
-                        "rgba(255, 255, 255, 0.3)";
-                    }}
-                  >
-                    VIEW FULL SIZE
-                  </button>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div> */}
-
-        {/* Load More Section */}
-        {/* <motion.div
-          variants={itemVariants}
-          style={{
-            textAlign: "center",
-          }}
-        > */}
-        {/* <motion.button
-            whileHover={{ scale: 1.05 }}
-            style={{
-              background: "linear-gradient(135deg, #52b788, #40916c)",
-              border: "none",
-              color: "#ffffff",
-              padding: "1.2rem 3rem",
-              fontSize: "1.1rem",
-              fontWeight: "600",
-              fontFamily: "Inter, sans-serif",
-              textTransform: "uppercase",
-              letterSpacing: "0.1em",
-              cursor: "pointer",
-              transition: "all 0.3s ease",
-              borderRadius: "50px",
-              boxShadow: "0 4px 20px rgba(82, 183, 136, 0.3)",
-            }}
-          >
-            LOAD MORE IMAGES
-          </motion.button> */}
-        {/* </motion.div> */}
       </div>
     </motion.section>
   );

@@ -83,7 +83,7 @@ export default function MissionVisionVictories() {
           </div>
           <h2
             style={{
-              fontSize: "clamp(2.5rem, 5vw, 4rem)",
+              fontSize: "clamp(2rem, 5vw, 4rem)",
               fontWeight: "900",
               lineHeight: "1.1",
               margin: "0 0 2rem 0",
@@ -165,6 +165,7 @@ export default function MissionVisionVictories() {
               <p
                 style={{
                   fontSize: "clamp(1rem, 2vw, 1.1rem)",
+                  textAlign: "justify",
                   lineHeight: "1.7",
                   color: "#2d5016",
                   fontFamily: "Poppins, sans-serif",

@@ -64,7 +64,7 @@ export default function NewsRoom() {
       id: "article-publication",
       title: "Article Publication",
       count: 16,
-      link: "/categories/article-publication",
+      link: "/news-categories/article-publication",
       description:
         "Scientific papers and research publications documenting our conservation research and findings.",
       icon: "📄",
@@ -73,7 +73,7 @@ export default function NewsRoom() {
       id: "blog",
       title: "Blog",
       count: 5,
-      link: "/categories/blog",
+      link: "/news-categories/blog",
       description:
         "Static documentation about our work and achievement regard nilgiri tahr project in detail",
       icon: "🖇️",
@@ -212,26 +212,6 @@ export default function NewsRoom() {
             marginBottom: "5rem",
           }}
         >
-          <div
-            style={{
-              textAlign: "center",
-              marginBottom: "4rem",
-            }}
-          >
-            <h3
-              style={{
-                fontSize: "clamp(2rem, 4vw, 3rem)",
-                fontWeight: "900",
-                margin: "0 0 2rem 0",
-                color: "#000000",
-                fontFamily: "Inter, sans-serif",
-                letterSpacing: "-0.02em",
-              }}
-            >
-              Categories
-            </h3>
-          </div>
-
           <div className={styles.swiperContainer}>
             <Swiper
               modules={[Navigation, Autoplay]}
