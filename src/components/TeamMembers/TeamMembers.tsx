@@ -126,14 +126,14 @@ export default function TeamMembers() {
       members: [
         {
           name: "Dr. S. S. Sathyakumar",
-          image: "/fallback.png",
+          image: "/members/dr-s-s-sathyaKumar.jpeg",
           alt: "Dr. S. S. Sathyakumar",
           about:
             "Scientist-G and Senior Professor at the Wildlife Institute of India (WII), Dehradun, is a wildlife ecologist with over 35 years of experience in mountain ecosystems and wildlife conservation. He specializes in the study of mountain ungulates, habitat ecology, and human-wildlife interactions. He has led numerous projects across the Himalayas, focusing on wildlife surveys, habitat management, and community-based conflict resolution. His expertise also includes training forest department staff and stakeholders in conservation practices. Dr. Sathyakumar has published over 260 research papers, reports, and book chapters and serves on several IUCN/SSC specialist groups, contributing to global wildlife conservation efforts",
         },
         {
           name: "Vivek Menon ",
-          image: "/fallback.png",
+          image: "/members/vivek-menon.jpg",
           alt: "Vivek Menon ",
           about:
             "Senior Advisor to the CEO & President of IFAW Asia, long-time leader of the Wildlife Trust of India (WTI), author, environmental commentator, and wildlife photographer, with a strong advocacy background. He has trained enforcement and wildlife protection staff in many countries, lectured internationally, and served on multiple IUCN commissions (Species Survival Commission, Asian Elephant Specialist Group, etc.). He has authored and edited several books (including /'Indian Mammals: A Field Guide/'), published over 250 scientific and popular articles, and been involved in founding multiple environmental NGOs. His professional focus includes wildlife protection policy, natural heritage conservation, and raising public awareness.",
@@ -147,14 +147,14 @@ export default function TeamMembers() {
         },
         {
           name: "Dr. Sreekumar Chirukandoth (TANUVAS)",
-          image: "/fallback.png",
+          image: "/members/sreeKumar.jpg",
           alt: "Dr. Sreekumar Chirukandoth (TANUVAS)",
           about:
             "Professor at Tamil Nadu Veterinary and Animal Sciences University (TANUVAS), Head of the Department of Wildlife Science, is a veterinarian and parasitologist with deep experience in wildlife health, diagnostics, and disease in both captive and free-range species. He teaches undergraduate, postgraduate, and doctoral students, manages wildlife health management programs, works with forest departments, NGOs, and zoos. His research spans molecular parasitology, immunology, infection in wildlife, disease diagnosis, and treatment. He has over 200 publications in related fields.",
         },
         {
           name: "Dr. S. Arumugam",
-          image: "/fallback.png",
+          image: "/members/shri-aarumugam.jpg",
           alt: "Dr. S. Arumugam",
           about:
             "Botanical Assistant at the Southern Regional Centre, Botanical Survey of India (BSI), Coimbatore, is a plant taxonomist with over 14 years of experience in floristics and angiosperm taxonomy, specializing in the grass family (Poaceae). He began his career as a Research Fellow in 2010 and became permanent staff in 2012.  He has contributed to key projects, including the Floristic Assessment of Megamalai Wildlife Sanctuary, Cyperaceae of Tamil Nadu, and the Flora of India (Poaceae Volumes 31 & 32), covering 25 genera and 139 species. Dr. Arumugam has published 20 research papers, described eight new taxa, rediscovered one species, and reported six new state records. He has presented his work at national and international conferences, supporting conservation and ecological restoration efforts across Tamil Nadu.",
@@ -695,7 +695,11 @@ export default function TeamMembers() {
                             padding: "1.5rem",
                             boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
                             textAlign: "center",
-                            cursor: "pointer",
+                            height: "350px",
+                            display: "flex",
+                            flexDirection: "column",
+                            justifyContent: "space-between",
+                            transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                           }}
                         >
                           <div
