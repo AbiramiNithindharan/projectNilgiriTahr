@@ -1,15 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+
 import styles from "./WhatWeDoCards.module.css";
 import { easeOut } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
 export default function WhatWeDoCards() {
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-
   const cards = [
     {
       title: "Conservation Research",

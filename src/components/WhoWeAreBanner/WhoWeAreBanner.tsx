@@ -12,8 +12,7 @@ export default function WhoWeAreBanner({
   onAnimationComplete,
 }: WhoWeAreBannerProps) {
   const [isClient, setIsClient] = useState(false);
-  const [animationComplete, setAnimationComplete] = useState(false);
-  const bannerControls = useAnimation();
+  const [_animationComplete, setAnimationComplete] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
@@ -147,9 +146,9 @@ export default function WhoWeAreBanner({
             }}
           >
             The Project Nilgiri Tahr is dedicated to protecting the endangered
-            Nilgiri Tahr, a species endemic to the Western Ghats. This critically
-            endangered mountain ungulate faces threats from habitat loss and human
-            encroachment.
+            Nilgiri Tahr, a species endemic to the Western Ghats. This
+            critically endangered mountain ungulate faces threats from habitat
+            loss and human encroachment.
           </motion.p>
 
           <motion.p
@@ -165,8 +164,8 @@ export default function WhoWeAreBanner({
             }}
           >
             Our mission is to ensure the long-term survival of this magnificent
-            species through scientific research, habitat restoration, and community
-            engagement.
+            species through scientific research, habitat restoration, and
+            community engagement.
           </motion.p>
         </div>
       </motion.section>
