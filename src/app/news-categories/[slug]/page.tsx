@@ -4,11 +4,13 @@ import CategoryClient from "./categoryClient";
 
 export const revalidate = 60;
 
-export default async function CategoryPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
+interface CategoryPageProps {
+  params: {
+    slug: string;
+  };
+}
+
+export default async function CategoryPage({ params }: CategoryPageProps) {
   const { slug } = params;
 
   const category = await client.fetch(
