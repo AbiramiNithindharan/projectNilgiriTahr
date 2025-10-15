@@ -4,7 +4,8 @@ export const apiVersion =
 
 export const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
 
-export const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
+export const projectId =
+  process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "v5e6ukrj";
 
 // Optional helper for debugging during local dev
 if (!projectId) {
