@@ -10,7 +10,7 @@ import Image from "next/image";
 import "swiper/css";
 import "swiper/css/navigation";
 import styles from "./category-page.module.css";
-import client from "@/lib/sanityClient";
+import { client } from "@/lib/sanityClient";
 
 interface News {
   _id: string;
