@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { client } from "@/lib/sanityClient";
+import { recentNewsQuery } from "@/lib/queries";
 import { motion, useAnimation } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
@@ -33,7 +35,7 @@ export default function Banner({
   const [animationComplete, setAnimationComplete] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const bannerControls = useAnimation();
-
+  const [recentNews, setRecentNews] = useState<string[]>([]);
   // header measurement
   const [headerHeight, setHeaderHeight] = useState(0);
   const [headerOverlaying, setHeaderOverlaying] = useState(false); // fixed/sticky/absolute
@@ -52,12 +54,36 @@ export default function Banner({
     },
   ];
 
-  // Recent News
-  const recentNews = [
-    "Nilgiri Tahr spotted in new habitats across the Western Ghats.",
-    "Conservation project expands with community participation.",
-    "Government announces new measures for wildlife protection.",
-  ];
+  useEffect(() => {
+    async function fetchNews() {
+      try {
+        const cutoffDate = new Date(
+          Date.now() - 30 * 24 * 60 * 60 * 1000
+        ).toISOString();
+
+        const data = await client.fetch(recentNewsQuery, { cutoffDate });
+
+        // Choose recent or fallback
+        const posts = data.recent.length > 0 ? data.recent : data.fallback;
+
+        const formatted = posts.map(
+          (p: any) =>
+            `${p.category ?? "General"}: ${p.excerpt ? " – " + p.excerpt : ""}`
+        );
+
+        setRecentNews(formatted);
+      } catch (error) {
+        console.error("Error fetching news:", error);
+        // fallback to empty array or some default text
+        setRecentNews([
+          "No recent news available at the moment. Please check back soon!",
+        ]);
+      }
+    }
+
+    fetchNews();
+  }, []);
+
   const loopedNews = [...recentNews, ...recentNews];
 
   useEffect(() => {
@@ -364,14 +390,20 @@ export default function Banner({
                 {/* You can tweak speed via the CSS var below (e.g., 16s / 24s) */}
                 <div
                   className={styles.tickerWrapper}
-                  style={{ ["--ticker-speed" as any]: "20s" }}
+                  style={{ ["--ticker-speed" as any]: "30s" }}
                 >
                   <div className={styles.tickerTrack}>
-                    {loopedNews.map((news, i) => (
-                      <span key={i} className={styles.newsItem}>
-                        {news}
+                    {recentNews.length === 0 ? (
+                      <span className={styles.newsItem}>
+                        Loading latest updates...
                       </span>
-                    ))}
+                    ) : (
+                      loopedNews.map((news, i) => (
+                        <span key={i} className={styles.newsItem}>
+                          {news}
+                        </span>
+                      ))
+                    )}
                   </div>
                 </div>
               </div>

@@ -1,0 +1,157 @@
+.cms-container {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("/banners/DJI_0036.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    overflow: hidden;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(0.5px);
+    z-index: 1;
+}
+
+/* Main Card */
+.cms-card {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.92);
+    padding: 2.5rem 2rem;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    max-width: 420px;
+    width: 90%;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cms-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+}
+
+/* Texts */
+.cms-title {
+    font-size: 1.9rem;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 0.4rem;
+}
+
+.cms-subtitle {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 1.6rem;
+}
+
+/* Form */
+.cms-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+.cms-input {
+    padding: 0.8rem 1rem;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.25s ease;
+}
+
+.cms-input:focus {
+    border-color: #0070f3;
+    box-shadow: 0 0 0 3px rgba(0, 112, 243, 0.15);
+}
+
+/* Button */
+.cms-button {
+    background-color: #0070f3;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.85rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.25s ease;
+}
+
+.cms-button:hover {
+    background-color: #005ac1;
+}
+
+/* Error */
+.cms-error {
+    color: #d93025;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+/* Error */
+.cms-loading {
+    color: #07ac28;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .cms-card {
+        max-width: 350px;
+        padding: 2rem 1.5rem;
+        border-radius: 12px;
+    }
+
+    .cms-title {
+        font-size: 1.6rem;
+    }
+
+    .cms-subtitle {
+        font-size: 0.85rem;
+    }
+
+    .cms-button {
+        padding: 0.75rem;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cms-container {
+        background-position: right;
+    }
+
+    .cms-card {
+        width: 90%;
+        padding: 1.8rem 1.2rem;
+    }
+
+    .cms-title {
+        font-size: 1.4rem;
+    }
+
+    .cms-subtitle {
+        font-size: 0.8rem;
+    }
+
+    .cms-input {
+        font-size: 0.9rem;
+        padding: 0.7rem 0.9rem;
+    }
+
+    .cms-button {
+        font-size: 0.9rem;
+        padding: 0.7rem;
+    }
+}

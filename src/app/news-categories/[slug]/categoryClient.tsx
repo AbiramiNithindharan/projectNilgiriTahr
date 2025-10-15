@@ -1,55 +1,51 @@
 "use client";
 
+import imageUrlBuilder from "@sanity/image-url";
+
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules";
-import { client } from "@/lib/sanityClient";
+import { Autoplay, Navigation } from "swiper/modules";
+import { useState } from "react";
+import Image from "next/image";
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/pagination";
-import styles from "./news-categories.module.css";
-import Link from "next/link";
+import styles from "./category-page.module.css";
+import client from "@/lib/sanityClient";
+
+interface News {
+  _id: string;
+  title: string;
+  slug: { current: string };
+  excerpt?: string;
+  publishedAt: string;
+  mainImage?: any;
+}
 
 interface Category {
   _id: string;
   title: string;
-  slug: string;
-  count: number;
-  description?: string;
-  icon?: string;
+  bannerImage?: string;
 }
 
-export default function NewsRoom() {
+export default function CategoryClient({
+  category,
+  news,
+  slug,
+}: {
+  category: Category;
+  news: News[];
+  slug: string;
+}) {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
-  const [categories, setCategories] = useState<Category[]>([]);
-
-  // Fetch categories dynamically from Sanity
-  useEffect(() => {
-    const fetchCategories = async () => {
-      const data: Category[] = await client.fetch(`
-        *[_type == "category"]{
-          _id,
-          title,
-          "slug": slug.current,
-          "count": count(*[_type=="post" && references(^._id)]),
-          "description": pt::text(body),
-          icon
-        }
-      `);
-      setCategories(data);
-    };
-    fetchCategories();
-  }, []);
-
+  const builder = imageUrlBuilder(client);
+  function urlFor(source: any) {
+    return builder.image(source);
+  }
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        duration: 0.8,
-        staggerChildren: 0.2,
-      },
+      transition: { duration: 0.8, staggerChildren: 0.2 },
     },
   };
 
@@ -58,10 +54,7 @@ export default function NewsRoom() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut" as const,
-      },
+      transition: { duration: 0.6, ease: "easeOut" as const },
     },
   };
 
@@ -138,10 +131,12 @@ export default function NewsRoom() {
               textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
             }}
           >
-            News & Updates
+            Recent News
           </motion.h1>
         </div>
       </motion.div>
+
+      {/* News Section */}
       <motion.section
         variants={containerVariants}
         initial="hidden"
@@ -149,29 +144,22 @@ export default function NewsRoom() {
         viewport={{ once: true, amount: 0.1 }}
         className={styles.section}
       >
-        {/* News Categories Slider */}
-        <motion.div
-          variants={itemVariants}
-          style={{
-            marginBottom: "5rem",
-          }}
-          className={styles.swiperContainer}
-        >
+        <motion.div variants={itemVariants} className={styles.swiperContainer}>
           <Swiper
-            key={categories.length}
+            key={news.length}
             modules={[Navigation, Autoplay]}
-            spaceBetween={24}
-            slidesPerView={1}
+            spaceBetween={30}
             navigation={{
-              nextEl: ".swiper-button-next-categories",
-              prevEl: ".swiper-button-prev-categories",
+              nextEl: ".swiper-button-next-news",
+              prevEl: ".swiper-button-prev-news",
             }}
             autoplay={{
               delay: 4000,
               disableOnInteraction: false,
               pauseOnMouseEnter: true,
             }}
-            loop={categories.length > 3}
+            loop={news.length > 2}
+            slidesPerView={1}
             breakpoints={{
               640: {
                 slidesPerView: 1,
@@ -186,7 +174,7 @@ export default function NewsRoom() {
                 spaceBetween: 32,
               },
               1280: {
-                slidesPerView: 4,
+                slidesPerView: 3,
                 spaceBetween: 32,
               },
             }}
@@ -199,90 +187,77 @@ export default function NewsRoom() {
               position: "relative",
             }}
           >
-            {categories.map((category, index) => (
-              <SwiperSlide key={category._id}>
-                <Link href={`/news-categories/${category.slug}`}>
-                  <motion.div
-                    initial={{ y: 20, opacity: 0 }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.4, delay: (index % 4) * 0.1 }}
-                    viewport={{ once: true }}
-                    whileHover={{ y: -8, scale: 1.02 }}
-                    onMouseEnter={() => setHoveredCard(category._id)}
-                    onMouseLeave={() => setHoveredCard(null)}
-                    style={{
-                      background: "rgba(255, 255, 255, 0.95)",
-                      borderRadius: "16px",
-                      padding: "2rem",
-                      textAlign: "center",
-                      boxShadow: "0 8px 32px rgba(27, 67, 50, 0.08)",
-                      border: "1px solid rgba(255, 255, 255, 0.3)",
-                      transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                      cursor: "pointer",
-                      height: "360px",
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <div
-                      style={{
-                        fontSize: "4rem",
-                        marginBottom: "1rem",
-                      }}
+            {news.map((item, index) => (
+              <SwiperSlide key={item._id} className={styles.newsCard}>
+                <motion.div
+                  initial={{ y: 20, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.4, delay: (index % 4) * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  onMouseEnter={() => setHoveredCard(item._id)}
+                  onMouseLeave={() => setHoveredCard(null)}
+                  style={{
+                    background: "rgba(255, 255, 255, 0.95)",
+                    borderRadius: "16px",
+                    padding: "1rem",
+                    textAlign: "left",
+                    boxShadow: "0 8px 32px rgba(27, 67, 50, 0.08)",
+                    border: "1px solid rgba(255, 255, 255, 0.3)",
+                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                    cursor: "pointer",
+                    height: "420px",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-start",
+                  }}
+                >
+                  {/* IMAGE */}
+                  <div className={styles.cardImage}>
+                    {item.mainImage?.asset?.url ? (
+                      <Image
+                        src={urlFor(item.mainImage).url()}
+                        alt={item.title || "News image"}
+                        fill
+                        className={styles.image}
+                      />
+                    ) : (
+                      <Image
+                        src="/banners/DJI_0036.jpg"
+                        alt="Placeholder image"
+                        fill
+                        className={styles.image}
+                      />
+                    )}
+                  </div>
+
+                  {/* CONTENT BELOW IMAGE */}
+                  <div className={styles.cardContent}>
+                    <p className={styles.date}>
+                      {new Date(item.publishedAt).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
+                    </p>
+                    <h3 className={styles.title}>{item.title}</h3>
+                    <p className={styles.subtitle}>{item.excerpt}</p>
+                    <a
+                      href={`/news-categories/${slug}/${item.slug.current}`}
+                      className={styles.readMore}
                     >
-                      {category.icon}
-                    </div>
-
-                    <div>
-                      <h4
-                        style={{
-                          fontSize: "1.4rem",
-                          fontWeight: "700",
-                          color: "#1b4332",
-                          margin: "0 0 0.5rem 0",
-                          fontFamily: "Inter, sans-serif",
-                        }}
-                      >
-                        {category.title}
-                      </h4>
-
-                      <div
-                        style={{
-                          fontSize: "2rem",
-                          fontWeight: "900",
-                          color: "#52b788",
-                          margin: "0.5rem 0 1rem 0",
-                          fontFamily: "Inter, sans-serif",
-                        }}
-                      >
-                        {category.count}
-                      </div>
-
-                      <p
-                        style={{
-                          fontSize: "1rem",
-                          color: "#666666",
-                          lineHeight: "1.6",
-                          margin: "0",
-                          fontFamily: "Inter, sans-serif",
-                          opacity: 0.9,
-                        }}
-                      >
-                        {category.description || "No description Available"}
-                      </p>
-                    </div>
-                  </motion.div>
-                </Link>
+                      Read Full Article →
+                    </a>
+                  </div>
+                </motion.div>
               </SwiperSlide>
             ))}
           </Swiper>
 
-          {/* Custom Navigation Buttons */}
-          {categories.length > 3 && (
+          {news.length > 2 && (
             <>
               <button
-                className="swiper-button-prev-categories"
+                className="swiper-button-prev-news"
                 style={{
                   position: "absolute",
                   left: "-1.5rem",
@@ -320,7 +295,7 @@ export default function NewsRoom() {
                 ‹
               </button>
               <button
-                className="swiper-button-next-categories"
+                className="swiper-button-next-news"
                 style={{
                   position: "absolute",
                   right: "-1.5rem",
