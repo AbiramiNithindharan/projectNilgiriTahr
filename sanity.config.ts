@@ -16,7 +16,7 @@ export default defineConfig({
   name: "ProjectNilgiriTahrStudio",
   title: "Project Nilgiri Tahr",
   basePath: "/studio",
-  projectId,
+  projectId: projectId!,
   dataset,
   // Add and edit the content schema in the './sanity/schemaTypes' folder
   schema,
