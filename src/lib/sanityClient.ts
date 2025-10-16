@@ -1,10 +1,14 @@
+// src/lib/sanityClient.ts
 import { createClient } from "next-sanity";
+import { projectId, dataset, apiVersion } from "@/sanity/config";
+
+console.log("Sanity client build check:", { projectId, dataset, apiVersion });
 
 export const client = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
-  apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION || "2025-10-10", // use ISO date string
-  useCdn: process.env.NODE_ENV === "production" || false,
+  projectId,
+  dataset,
+  apiVersion,
+  useCdn: process.env.NODE_ENV === "production",
 });
 
 export default client;
