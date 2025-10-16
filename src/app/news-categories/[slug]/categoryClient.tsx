@@ -36,7 +36,7 @@ export default function CategoryClient({
   news: News[];
   slug: string;
 }) {
-  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+  const [_hoveredCard, setHoveredCard] = useState<string | null>(null);
   const builder = imageUrlBuilder(client);
   function urlFor(source: any) {
     return builder.image(source);
