@@ -11,6 +11,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import styles from "./category-page.module.css";
 import { client } from "@/lib/sanityClient";
+import Link from "next/link";
 
 interface News {
   _id: string;
@@ -254,7 +255,7 @@ export default function CategoryClient({
             ))}
           </Swiper>
 
-          {news.length > 2 && (
+          {news.length > 1 && (
             <>
               <button
                 className="swiper-button-prev-news"
@@ -334,6 +335,48 @@ export default function CategoryClient({
               </button>
             </>
           )}
+        </motion.div>
+        {/* Back Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          style={{
+            marginTop: "3rem",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <Link href={"/news-categories"}>
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              style={{
+                background: "transparent",
+                border: "2px solid #000000",
+                color: "#000000",
+                padding: "1rem 2rem",
+                fontSize: "1rem",
+                fontWeight: "600",
+                fontFamily: "Inter, sans-serif",
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+                cursor: "pointer",
+                transition: "all 0.3s ease",
+                marginTop: "2rem",
+                marginBottom: "2rem",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "#000000";
+                e.currentTarget.style.color = "#ffffff";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "transparent";
+                e.currentTarget.style.color = "#000000";
+              }}
+            >
+              Back to News & Updates
+            </motion.button>
+          </Link>
         </motion.div>
       </motion.section>
     </>
