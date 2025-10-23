@@ -9,7 +9,7 @@
     font-family: system-ui, sans-serif;
 }
 
-h1 {
+.heading {
     margin-bottom: 1.5rem;
     color: #0d6efd;
 }
@@ -20,12 +20,12 @@ h1 {
     gap: 1rem;
 }
 
-label {
+.label {
     text-align: left;
     font-weight: 500;
 }
 
-input {
+.input {
     width: 100%;
     padding: 0.5rem 0.75rem;
     border: 1px solid #ddd;

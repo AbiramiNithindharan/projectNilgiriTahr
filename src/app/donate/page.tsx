@@ -78,33 +78,36 @@ export default function DonatePage() {
 
   return (
     <div className={styles.container}>
-      <h1>Support the Nilgiri Tahr Project</h1>
+      <h1 className={styles.heading}>Support the Nilgiri Tahr Project</h1>
 
       <div className={styles.form}>
-        <label>
+        <label className={styles.label}>
           Name:
           <input
             type="text"
             value={name}
+            className={styles.input}
             placeholder="Your name"
             onChange={(e) => setName(e.target.value)}
           />
         </label>
 
-        <label>
+        <label className={styles.label}>
           Email:
           <input
             type="email"
             value={email}
+            className={styles.input}
             placeholder="Your email"
             onChange={(e) => setEmail(e.target.value)}
           />
         </label>
 
-        <label>
+        <label className={styles.label}>
           Amount (₹):
           <input
             type="number"
+            className={styles.input}
             value={amount}
             onChange={(e) => setAmount(Number(e.target.value))}
             min="1"
