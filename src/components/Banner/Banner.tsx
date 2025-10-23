@@ -22,6 +22,14 @@ interface BannerProps {
   onAnimationComplete?: () => void;
 }
 
+interface NewsItem {
+  title: string;
+  excerpt: string;
+  categoryTitle: string;
+  categorySlug: string;
+  slug: string;
+}
+
 export default function Banner({
   imageSrc,
   imageAlt = "Banner",
@@ -35,7 +43,7 @@ export default function Banner({
   const [animationComplete, setAnimationComplete] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const bannerControls = useAnimation();
-  const [recentNews, setRecentNews] = useState<string[]>([]);
+  const [recentNews, setRecentNews] = useState<NewsItem[]>([]);
   // header measurement
   const [headerHeight, setHeaderHeight] = useState(0);
   const [headerOverlaying, setHeaderOverlaying] = useState(false); // fixed/sticky/absolute
@@ -66,17 +74,27 @@ export default function Banner({
         // Choose recent or fallback
         const posts = data.recent.length > 0 ? data.recent : data.fallback;
 
-        const formatted = posts.map(
-          (p: any) =>
-            `${p.category ?? "General"}: ${p.excerpt ? " – " + p.excerpt : ""}`
-        );
+        const formatted = posts.map((p: any) => ({
+          title: p.title ?? "Untitled",
+          excerpt: p.excerpt ?? "",
+          categoryTitle: p.categoryTitle ?? "General",
+          categorySlug: p.categorySlug ?? "general",
+          slug: p.slug ?? "",
+        }));
 
         setRecentNews(formatted);
       } catch (error) {
         console.error("Error fetching news:", error);
         // fallback to empty array or some default text
         setRecentNews([
-          "No recent news available at the moment. Please check back soon!",
+          {
+            title:
+              "No recent news available at the moment. Please check back soon!",
+            excerpt: "",
+            categoryTitle: "General",
+            categorySlug: "general",
+            slug: "no-news",
+          },
         ]);
       }
     }
@@ -84,7 +102,7 @@ export default function Banner({
     fetchNews();
   }, []);
 
-  const loopedNews = [...recentNews, ...recentNews];
+  const loopedNews: NewsItem[] = [...recentNews, ...recentNews];
 
   useEffect(() => {
     setIsClient(true);
@@ -383,31 +401,6 @@ export default function Banner({
                 </div>
               )}
 
-              {/* Recent News Ticker */}
-              <div className={styles.newsTicker}>
-                <span className={styles.newsHeading}>Recent News</span>
-
-                {/* You can tweak speed via the CSS var below (e.g., 16s / 24s) */}
-                <div
-                  className={styles.tickerWrapper}
-                  style={{ ["--ticker-speed" as any]: "30s" }}
-                >
-                  <div className={styles.tickerTrack}>
-                    {recentNews.length === 0 ? (
-                      <span className={styles.newsItem}>
-                        Loading latest updates...
-                      </span>
-                    ) : (
-                      loopedNews.map((news, i) => (
-                        <span key={i} className={styles.newsItem}>
-                          {news}
-                        </span>
-                      ))
-                    )}
-                  </div>
-                </div>
-              </div>
-
               {/* Progress Indicators */}
               <motion.div
                 initial={{ opacity: 0 }}
@@ -443,6 +436,35 @@ export default function Banner({
           </SwiperSlide>
         ))}
       </Swiper>
+      {/* Recent News Ticker */}
+      <div className={styles.newsTicker}>
+        <span className={styles.newsHeading}>Recent News</span>
+
+        {/* You can tweak speed via the CSS var below (e.g., 16s / 24s) */}
+        <div
+          className={styles.tickerWrapper}
+          style={{ ["--ticker-speed" as any]: "50s" }}
+        >
+          <div className={styles.tickerTrack}>
+            {recentNews.length === 0 ? (
+              <span className={styles.newsItem}>Loading latest updates...</span>
+            ) : (
+              loopedNews.map((news, i) => (
+                <Link
+                  key={i}
+                  href={`/news-categories/${news.categorySlug}/${news.slug}`}
+                  className={styles.newsItem}
+                  style={{ textDecoration: "none" }}
+                >
+                  <span style={{ whiteSpace: "nowrap" }}>
+                    {news.categoryTitle}: {news.title}
+                  </span>
+                </Link>
+              ))
+            )}
+          </div>
+        </div>
+      </div>
     </motion.div>
   );
 }

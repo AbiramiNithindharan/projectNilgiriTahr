@@ -5,15 +5,19 @@ export const recentNewsQuery = `
   | order(publishedAt desc) {
     title,
     excerpt,
-    "category": category->title,
+      "slug": slug.current,
+    "categoryTitle": category->title,
+    "categorySlug": category->slug.current,
     publishedAt
   },
   "fallback": *[_type == "post"]
   | order(publishedAt desc)[0...3] {
     title,
     excerpt,
-    "category": category->title,
-    publishedAt
+    "slug": slug.current,
+    "categoryTitle": category->title,
+    "categorySlug": category->slug.current,
+      publishedAt
   }
 }
 `;
