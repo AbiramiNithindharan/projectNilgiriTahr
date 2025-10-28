@@ -245,13 +245,15 @@ export default function Header({
               )}
 
               <MenuButton onClick={handleMenuToggle} variant="default" />
-              <Logo
-                src={rightDonateLogoSrc}
-                alt={rightDonateLogoAlt}
-                size="medium"
-                delay={0}
-                isVisible={true}
-              />
+              <Link href={"/donate"}>
+                <Logo
+                  src={rightDonateLogoSrc}
+                  alt={rightDonateLogoAlt}
+                  size="medium"
+                  delay={0}
+                  isVisible={true}
+                />
+              </Link>
             </motion.div>
           )}
 
@@ -259,13 +261,15 @@ export default function Header({
           {isScrolled && (
             <>
               <MenuButton onClick={handleMenuToggle} variant="compact" />
-              <Logo
-                src={rightDonateLogoSrc}
-                alt={rightDonateLogoAlt}
-                size="small"
-                delay={0.1}
-                isVisible={true}
-              />
+              <Link href={"/donate"}>
+                <Logo
+                  src={rightDonateLogoSrc}
+                  alt={rightDonateLogoAlt}
+                  size="small"
+                  delay={0.1}
+                  isVisible={true}
+                />
+              </Link>
             </>
           )}
         </div>

@@ -1,0 +1,96 @@
+.posterContainer {
+    padding: 3rem 1rem;
+    max-width: 1280px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    color: #111;
+}
+
+.posterTitle {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.posterMeta {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.posterGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.posterItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.posterItem:hover {
+    transform: translateY(-4px);
+}
+
+.posterImageWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.posterImage {
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.posterImageWrapper:hover .posterImage {
+    transform: scale(1.05);
+}
+
+.posterCaption {
+    margin-top: 0.8rem;
+    font-size: 0.95rem;
+    color: #444;
+    max-width: 90%;
+}
+
+.noPosters {
+    grid-column: 1 / -1;
+    font-size: 1rem;
+    color: #777;
+}
+
+/* Lightbox (Fullscreen Preview) */
+.lightboxOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    cursor: zoom-out;
+}
+
+.lightboxContent {
+    position: relative;
+    width: 90vw;
+    max-width: 700px;
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.lightboxImage {
+    object-fit: contain;
+}

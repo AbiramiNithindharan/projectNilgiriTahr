@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { PortableText } from "@portabletext/react";
 import Link from "next/link";
+import styles from "./NewsClient.module.css";
 
 export default function NewsClient({
   news,
@@ -12,133 +13,180 @@ export default function NewsClient({
   news: any;
   slug: string;
 }) {
+  const { scrollYProgress } = useScroll();
+  const y = useTransform(scrollYProgress, [0, 1], [0, 150]);
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
-      style={{
-        marginTop: "140px",
-        padding: "clamp(3rem, 6vw, 5rem) clamp(1rem, 5vw, 3rem)",
-        fontFamily: "Poppins, sans-serif",
-        background: "linear-gradient(135deg, #f8fffe 0%, #e8f5e8 100%)",
-        textAlign: "center",
-      }}
+      className={styles.newsContainer}
     >
-      <div style={{ maxWidth: "900px", marginInline: "auto" }}>
-        {/* SubTitle */}
-        <motion.h3
-          initial={{ y: 20, opacity: 0 }}
+      <div className={styles.inner}>
+        {/* Title */}
+        <motion.h1
+          initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6 }}
-          style={{
-            fontSize: "clamp(2rem, 4vw, 3rem)",
-            fontWeight: 700,
-            marginBottom: "1rem",
-            color: "#1b4332",
-            lineHeight: "1.2",
-          }}
+          className={styles.newsTitle}
         >
-          {`${news.title} - ${news.category?.title}`}
-        </motion.h3>
+          {news.title}
+        </motion.h1>
 
-        {/* Date + Category */}
-        <motion.p
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          style={{ color: "#555", marginBottom: "1.5rem" }}
-        >
+        {/* Meta */}
+        <p className={styles.newsMeta}>
           {new Date(news.publishedAt).toLocaleDateString("en-US", {
             year: "numeric",
             month: "long",
             day: "numeric",
           })}{" "}
           — {news.category?.title}
-        </motion.p>
+        </p>
 
-        {/* Hero Image */}
+        {/* Main Image */}
         {news.mainImage?.asset?.url && (
           <motion.div
+            className={styles.newsImageWrapper}
             initial={{ scale: 1.05, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
-            style={{
-              width: "100%",
-              height: "450px",
-              position: "relative",
-              borderRadius: "16px",
-              overflow: "hidden",
-              marginBottom: "2rem",
-            }}
+            transition={{ duration: 1.2 }}
           >
             <Image
               src={news.mainImage.asset.url}
               alt={news.mainImage.alt || news.title}
               fill
-              style={{ objectFit: "cover" }}
+              className={styles.newsMainImage}
             />
           </motion.div>
         )}
 
         {/* Excerpt */}
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6 }}
-        >
-          {news.excerpt && (
-            <p
-              style={{
-                fontSize: "2rem",
-                fontWeight: "600",
-                color: "#333",
-                marginBottom: "2rem",
-              }}
-            >
-              {news.excerpt}
-            </p>
-          )}
-        </motion.div>
+        {news.excerpt && (
+          <motion.div
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className={styles.newsExcerpt}
+          >
+            <p>{news.excerpt}</p>
+          </motion.div>
+        )}
 
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6 }}
-        >
-          {/* Body Content */}
-          {news.body && (
-            <PortableText
-              value={news.body}
-              components={{
-                block: {
-                  h2: ({ children }) => <h2>{children}</h2>,
-                  h3: ({ children }) => <h3>{children}</h3>,
-                  normal: ({ children }) => <p>{children}</p>,
-                },
-                list: {
-                  bullet: ({ children }) => <ul>{children}</ul>,
-                  number: ({ children }) => <ol>{children}</ol>,
-                },
-                listItem: {
-                  bullet: ({ children }) => <li>{children}</li>,
-                  number: ({ children }) => <li>{children}</li>,
-                },
-                marks: {
-                  link: ({ value, children }) => (
-                    <a
-                      href={value?.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {children}
-                    </a>
-                  ),
-                },
-              }}
-            />
-          )}
-        </motion.div>
+        {/* Divider */}
+        <div className={styles.sectionDivider}></div>
+
+        {/* Body Content */}
+        {news.body && (
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className={`${styles.newsBody} prose`}>
+              <PortableText
+                value={news.body}
+                components={{
+                  block: {
+                    h2: ({ children }) => <h2>{children}</h2>,
+                    h3: ({ children }) => <h3>{children}</h3>,
+                    normal: ({ children }) => <p>{children}</p>,
+                  },
+                  list: {
+                    bullet: ({ children }) => <ul>{children}</ul>,
+                    number: ({ children }) => <ol>{children}</ol>,
+                  },
+                  listItem: {
+                    bullet: ({ children }) => <li>{children}</li>,
+                    number: ({ children }) => <li>{children}</li>,
+                  },
+                  marks: {
+                    link: ({ value, children }) => (
+                      <a
+                        href={value?.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {children}
+                      </a>
+                    ),
+                  },
+                }}
+              />
+              {news.pdfAttachment?.asset?.url && (
+                <a
+                  href={news.pdfAttachment.asset.url}
+                  download
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="download-link"
+                >
+                  Download PDF
+                </a>
+              )}
+            </div>
+          </motion.div>
+        )}
+
+        {/* Divider */}
+        <div className={styles.sectionDivider}></div>
+
+        {/* Gallery Section */}
+        {news.gallery && news.gallery.length > 0 && (
+          <section className={styles.gallerySection}>
+            {news.gallery.map((item: any, index: number) => (
+              <motion.div
+                key={index}
+                className={`${styles.galleryItem} ${
+                  index % 2 === 0 ? styles.leftLayout : styles.rightLayout
+                }`}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+              >
+                {/* Image */}
+                {item.image?.asset?.url && (
+                  <motion.div
+                    initial={{ x: -50, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    viewport={{ once: true }}
+                    className={styles.galleryImageWrapper}
+                  >
+                    <Image
+                      src={item.image.asset.url}
+                      alt={item.image.alt || `Gallery image ${index + 1}`}
+                      width={600}
+                      height={400}
+                      className={styles.galleryImage}
+                    />
+                  </motion.div>
+                )}
+
+                {/* Caption & Body */}
+                <motion.div
+                  initial={{ x: 50, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                  viewport={{ once: true }}
+                  className={styles.galleryText}
+                >
+                  {item.caption && (
+                    <h3 className={styles.galleryCaption}>{item.caption}</h3>
+                  )}
+                  {item.body && (
+                    <div className={styles.galleryBody}>
+                      <PortableText value={item.body} />
+                    </div>
+                  )}
+                </motion.div>
+                <div className={styles.sectionDivider}></div>
+              </motion.div>
+            ))}
+          </section>
+        )}
+
         {/* Back Button */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -181,6 +229,8 @@ export default function NewsClient({
             </motion.button>
           </Link>
         </motion.div>
+        {/* Divider */}
+        <div className={styles.sectionDivider}></div>
       </div>
     </motion.div>
   );

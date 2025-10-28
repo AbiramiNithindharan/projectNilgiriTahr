@@ -1,4 +1,4 @@
-import { DocumentTextIcon } from "@sanity/icons";
+import { DocumentTextIcon, ImageIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
 
 export const postType = defineType({
@@ -28,6 +28,7 @@ export const postType = defineType({
     defineField({
       name: "mainImage",
       type: "image",
+      title: "Main Image (Featured)",
       options: { hotspot: true },
       fields: [
         defineField({
@@ -38,12 +39,72 @@ export const postType = defineType({
       ],
     }),
     defineField({
+      name: "gallery",
+      title: "Image Gallery",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          name: "galleryItem",
+          title: "Gallery Item",
+          icon: ImageIcon,
+          fields: [
+            defineField({
+              name: "image",
+              type: "image",
+              title: "Image",
+              options: { hotspot: true },
+              fields: [
+                defineField({
+                  name: "alt",
+                  type: "string",
+                  title: "Alternative text",
+                }),
+              ],
+            }),
+            defineField({
+              name: "caption",
+              title: "Caption / Description",
+              type: "string",
+            }),
+            defineField({
+              name: "body",
+              title: "Related Paragraph / Content",
+              type: "blockContent", // rich text support for this image
+            }),
+          ],
+          preview: {
+            select: {
+              title: "caption",
+              media: "image",
+            },
+            prepare(selection) {
+              const { title } = selection;
+              return {
+                title: title || "Gallery Item",
+                media: selection.media,
+              };
+            },
+          },
+        },
+      ],
+      options: {
+        layout: "grid",
+      },
+      description:
+        "Add one or more images with optional captions or paragraphs.",
+    }),
+    defineField({
       name: "category",
-      title: "Category",
+      title: "Post Category",
       type: "reference",
       to: [{ type: "category" }],
-      validation: (Rule) => Rule.required(),
+      options: {
+        filter: "categoryType == $type",
+        filterParams: { type: "post" },
+      },
     }),
+
     defineField({
       name: "publishedAt",
       title: "Date",
@@ -58,6 +119,15 @@ export const postType = defineType({
     defineField({
       name: "body",
       type: "blockContent",
+    }),
+    defineField({
+      name: "pdfAttachment",
+      title: "Attach PDF (optional)",
+      type: "file",
+      options: {
+        accept: ".pdf",
+      },
+      description: "Attach a downloadable PDF (if available)",
     }),
   ],
   preview: {

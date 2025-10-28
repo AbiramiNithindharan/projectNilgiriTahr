@@ -47,6 +47,19 @@ export const categoryType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "categoryType",
+      title: "Category Type",
+      type: "string",
+      options: {
+        list: [
+          { title: "Post", value: "post" },
+          { title: "Poster", value: "poster" },
+        ],
+        layout: "radio",
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: "body",
       title: "Description",
       type: "blockContent",

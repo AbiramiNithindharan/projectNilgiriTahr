@@ -152,39 +152,37 @@ export default function MenuOverlay({
                 gap: "20px",
               }}
             >
-              <Link href={"/cms-access-portal"}>
-                <motion.button
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ delay: 0.7, duration: 0.3 }}
-                  style={{
-                    background: "rgba(168, 218, 181, 0.15)",
-                    border: "2px solid #a8dab5",
-                    color: "#f1faee",
-                    padding:
-                      "clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem)",
-                    borderRadius: "8px",
-                    fontSize: "clamp(0.9rem, 2.5vw, 1.1rem)",
-                    fontWeight: "600",
-                    cursor: "pointer",
-                    transition: "all 0.3s ease",
-                    backdropFilter: "blur(10px)",
-                    fontFamily: "Poppins, sans-serif",
-                    alignSelf: isMobile ? "center" : "flex-start",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "#a8dab5";
-                    e.currentTarget.style.color = "#081c15";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background =
-                      "rgba(168, 218, 181, 0.15)";
-                    e.currentTarget.style.color = "#f1faee";
-                  }}
-                >
-                  Admin Login
-                </motion.button>
-              </Link>
+              <motion.button
+                onClick={() => onNavigate("/cms-access-portal")}
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.7, duration: 0.3 }}
+                style={{
+                  background: "rgba(168, 218, 181, 0.15)",
+                  border: "2px solid #a8dab5",
+                  color: "#f1faee",
+                  padding: "clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem)",
+                  borderRadius: "8px",
+                  fontSize: "clamp(0.9rem, 2.5vw, 1.1rem)",
+                  fontWeight: "600",
+                  cursor: "pointer",
+                  transition: "all 0.3s ease",
+                  backdropFilter: "blur(10px)",
+                  fontFamily: "Poppins, sans-serif",
+                  alignSelf: isMobile ? "center" : "flex-start",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "#a8dab5";
+                  e.currentTarget.style.color = "#081c15";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background =
+                    "rgba(168, 218, 181, 0.15)";
+                  e.currentTarget.style.color = "#f1faee";
+                }}
+              >
+                Admin Login
+              </motion.button>
             </div>
           </motion.div>
 

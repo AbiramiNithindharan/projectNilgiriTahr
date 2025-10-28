@@ -32,7 +32,7 @@ export default function NewsRoom() {
           _id,
           title,
           "slug": slug.current,
-          "count": count(*[_type=="post" && references(^._id)]),
+          "count": count(*[(_type=="post" || _type=="poster") && references(^._id)]),
           "description": pt::text(body),
           icon
         }
