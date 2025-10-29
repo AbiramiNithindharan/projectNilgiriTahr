@@ -1,49 +1,94 @@
 .container {
-    max-width: 480px;
-    margin-top: 120px;
-    margin: 4rem auto;
-    padding: 2rem;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("/banners/DJI_0036.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    overflow: hidden;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.bgOverlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(0.5px);
+    z-index: 1;
+}
+
+/* Main Card */
+.donateCard {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.92);
+    padding: 2.5rem 2rem;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    max-width: 490px;
+    width: 90%;
     text-align: center;
-    font-family: system-ui, sans-serif;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.heading {
-    margin-bottom: 1.5rem;
-    color: #0d6efd;
+.donateCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
 }
 
-.form {
+.donateHeading {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #282828;
+    margin-bottom: 0.8rem;
+}
+
+.donateForm {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    align-items: flex-start;
 }
 
 .label {
-    text-align: left;
+    width: 100%;
     font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+    color: #222;
+    text-align: left;
 }
 
 .input {
     width: 100%;
-    padding: 0.5rem 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    border: 1px solid #bbb;
+    border-radius: 6px;
     font-size: 1rem;
-    margin-top: 0.25rem;
+    outline: none;
+    transition: all 0.25s ease;
+}
+
+.input:focus {
+    border-color: #0070f3;
+    box-shadow: 0 0 0 3px rgba(0, 112, 243, 0.15);
 }
 
 .button {
-    padding: 0.75rem;
-    background-color: #0d6efd;
+    background-color: #0070f3;
     color: white;
     border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.2s ease;
+    margin: 5px auto;
+    border-radius: 6px;
+    padding: 0.85rem;
     font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.25s ease;
 }
 
 .button:disabled {
@@ -53,4 +98,51 @@
 
 .button:hover:not(:disabled) {
     background-color: #0b5ed7;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .donate-card {
+        max-width: 350px;
+        padding: 2rem 1.5rem;
+        border-radius: 12px;
+    }
+
+    .donate-heading {
+        font-size: 1.6rem;
+    }
+
+
+
+    .button {
+        padding: 0.75rem;
+        font-size: 0.95rem;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .container {
+        background-position: right;
+    }
+
+    .donate-card {
+        width: 90%;
+        padding: 1.8rem 1.2rem;
+    }
+
+    .donate-heading {
+        font-size: 1.4rem;
+    }
+
+
+    .input {
+        font-size: 0.9rem;
+        padding: 0.7rem 0.9rem;
+    }
+
+    .button {
+        font-size: 0.9rem;
+        padding: 0.7rem;
+    }
 }
