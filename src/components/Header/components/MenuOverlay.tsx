@@ -153,7 +153,7 @@ export default function MenuOverlay({
               }}
             >
               <motion.button
-                onClick={() => onNavigate("/cms-access-portal")}
+                onClick={() => onNavigate("/admin")}
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.7, duration: 0.3 }}

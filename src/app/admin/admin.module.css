@@ -1,0 +1,142 @@
+/* ===== Base Container ===== */
+.portalContainer {
+    min-height: 100vh;
+    width: 100%;
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-image: url("/banners/DJI_0036.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+.bgOverlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(0.5px);
+    z-index: 1;
+}
+
+/* ===== Card ===== */
+.portalCard {
+    background: rgba(239, 233, 233, 0.04);
+    backdrop-filter: blur(16px);
+    z-index: 2;
+    border-radius: 20px;
+    width: 450px;
+    max-width: 90%;
+    padding: 2rem;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.35);
+    transition: all 0.3s ease;
+}
+
+/* ===== Tab Switcher ===== */
+.tabSwitcher {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tabButton {
+    flex: 1;
+    background: transparent;
+    color: #ccc;
+    font-size: 1rem;
+    padding: 0.6rem 0;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.tabButton:hover {
+    color: #fff;
+}
+
+.active {
+    color: #fff;
+    border-bottom: 2px solid #3b82f6;
+}
+
+/* ===== Form Wrapper ===== */
+.formWrapper {
+    position: relative;
+    min-height: 340px;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Large Tablets & Small Laptops */
+@media (max-width: 1024px) {
+    .portalContainer {
+        margin-top: 80px;
+        background-attachment: scroll;
+    }
+
+    .portalCard {
+        width: 480px;
+        padding: 1.8rem;
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    .portalContainer {
+        margin-top: 70px;
+        padding: 0 1rem;
+    }
+
+    .portalCard {
+        width: 100%;
+        padding: 1.5rem;
+        border-radius: 16px;
+    }
+
+    .tabButton {
+        font-size: 0.95rem;
+        padding: 0.5rem 0;
+    }
+
+    .formWrapper {
+        min-height: 300px;
+    }
+}
+
+/* Mobile Devices */
+@media (max-width: 480px) {
+    .portalContainer {
+        margin-top: 60px;
+        padding: 0 1rem;
+        background-position: top;
+    }
+
+    .portalCard {
+        padding: 1.2rem;
+        border-radius: 14px;
+        width: 100%;
+    }
+
+    .tabSwitcher {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+    }
+
+    .tabButton {
+        width: 100%;
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+
+    .formWrapper {
+        min-height: 260px;
+    }
+}

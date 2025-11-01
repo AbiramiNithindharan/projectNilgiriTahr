@@ -12,8 +12,8 @@ declare global {
 
 export default function DonatePage() {
   const [amount, setAmount] = useState<number>(100);
-  const [name, setName] = useState(" ");
-  const [email, setEmail] = useState(" ");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
 
   // Load Razorpay script once on mount
@@ -59,7 +59,12 @@ export default function DonatePage() {
           const verifyRes = await fetch("/api/verify-payment", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(response),
+            body: JSON.stringify({
+              ...response,
+              name,
+              email,
+              amount,
+            }),
           });
 
           const data = await verifyRes.json();

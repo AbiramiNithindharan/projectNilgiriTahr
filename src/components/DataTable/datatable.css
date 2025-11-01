@@ -1,0 +1,38 @@
+.datatable-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 1rem;
+    border-radius: 10px;
+}
+
+.datatable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.datatable th,
+.datatable td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+.datatable th {
+    background: #f9fafb;
+    font-weight: 600;
+    color: #374151;
+    font-size: 0.9rem;
+}
+
+.dataTable th.sortable:hover {
+    background-color: #f0f0f0;
+}
+
+.datatable tr:hover {
+    background-color: #f3f4f6;
+}
+
+.datatable td {
+    color: #111827;
+}
