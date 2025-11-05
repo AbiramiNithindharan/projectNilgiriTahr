@@ -1,0 +1,176 @@
+.tableContainer {
+    width: 100%;
+    overflow-x: auto;
+    background: #ffffff;
+    border-radius: 12px;
+
+}
+
+/* ===========================
+   Table Base
+=========================== */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "Inter", sans-serif;
+    font-size: 0.95rem;
+    color: #1f2937;
+}
+
+.table thead {
+    background: #f9fafb;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.table th {
+    text-align: left;
+    padding: 0.9rem 1.2rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #374151;
+    border-bottom: 2px solid #e5e7eb;
+    user-select: none;
+    transition: color 0.2s ease;
+}
+
+.table th:hover {
+    color: #2563eb;
+}
+
+.table td {
+    padding: 0.85rem 1.2rem;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+}
+
+/* ===========================
+   Row Styling
+=========================== */
+.table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.table tbody tr:nth-child(even) {
+    background: #f9fafb;
+}
+
+.table tbody tr:hover {
+    background: #f1f5f9;
+}
+
+/* ===========================
+   Status Text
+=========================== */
+.table td span {
+    display: inline-block;
+    font-weight: 600;
+    border-radius: 6px;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.85rem;
+}
+
+.table td span[style*="green"] {
+    background: #dcfce7;
+    color: #15803d !important;
+}
+
+.table td span[style*="orange"] {
+    background: #fef9c3;
+    color: #92400e !important;
+}
+
+.table td span[style*="red"] {
+    background: #fee2e2;
+    color: #b91c1c !important;
+}
+
+/* ===========================
+   No Results Row
+=========================== */
+.table td[colspan] {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #6b7280;
+    padding: 2rem 0;
+}
+
+/* ===========================
+   Pagination
+=========================== */
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.pagination button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+    background: #1e40af;
+}
+
+.pagination button:disabled {
+    background: #93c5fd;
+    cursor: not-allowed;
+}
+
+.pagination span {
+    font-size: 0.95rem;
+    color: #374151;
+    font-weight: 500;
+}
+
+/* ===========================
+   Responsive
+=========================== */
+@media (max-width: 768px) {
+
+    .table th,
+    .table td {
+        padding: 0.7rem 0.8rem;
+    }
+
+    .pagination {
+        gap: 0.6rem;
+    }
+
+    .pagination button {
+        width: 100%;
+        max-width: 100px;
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 428px) {
+
+    .table th,
+    .table td {
+        padding: 0.5rem 0.6rem;
+    }
+
+    .pagination {
+        gap: 0.4rem;
+    }
+
+    .pagination button {
+        width: 100%;
+        max-width: 50px;
+        font-size: 0.5rem;
+    }
+}

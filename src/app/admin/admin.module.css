@@ -79,10 +79,12 @@
     .portalContainer {
         margin-top: 80px;
         background-attachment: scroll;
+        padding: 0 1.5rem;
     }
 
     .portalCard {
-        width: 480px;
+        width: 100%;
+        max-width: 460px;
         padding: 1.8rem;
     }
 }
@@ -91,11 +93,16 @@
 @media (max-width: 768px) {
     .portalContainer {
         margin-top: 70px;
-        padding: 0 1rem;
+        padding: 0 1.2rem;
+        justify-content: center;
+        align-items: center;
     }
 
     .portalCard {
         width: 100%;
+        max-width: 420px;
+        margin: 0 auto;
+        /* keeps it centered */
         padding: 1.5rem;
         border-radius: 16px;
     }
@@ -122,6 +129,8 @@
         padding: 1.2rem;
         border-radius: 14px;
         width: 100%;
+        max-width: 380px;
+        margin: 0 auto;
     }
 
     .tabSwitcher {

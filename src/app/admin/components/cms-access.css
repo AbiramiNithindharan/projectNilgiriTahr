@@ -105,8 +105,17 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+    .cms-container {
+        padding: 0 1.2rem;
+        background-attachment: scroll;
+        justify-content: center;
+        align-items: center;
+    }
+
     .cms-card {
-        max-width: 350px;
+        max-width: 400px;
+        width: 100%;
+        margin: 0 auto;
         padding: 2rem 1.5rem;
         border-radius: 12px;
     }
@@ -128,10 +137,13 @@
 @media (max-width: 480px) {
     .cms-container {
         background-position: right;
+        padding: 0 1rem;
     }
 
     .cms-card {
-        width: 90%;
+        width: 100%;
+        max-width: 360px;
+        margin: 0 auto;
         padding: 1.8rem 1.2rem;
     }
 

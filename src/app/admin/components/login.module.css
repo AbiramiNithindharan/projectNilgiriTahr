@@ -92,3 +92,30 @@
     font-size: 0.9rem;
     text-align: center;
 }
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1.2rem;
+        background-attachment: scroll;
+    }
+
+    .card {
+        max-width: 380px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+        border-radius: 14px;
+    }
+
+    .title {
+        font-size: 1.3rem;
+    }
+
+    .inputText {
+        font-size: 0.95rem;
+    }
+
+    .button {
+        font-size: 0.95rem;
+    }
+}
