@@ -1,0 +1,153 @@
+/* Navbar.module.css */
+
+.navbar {
+    position: fixed;
+    background-color: #0ebd4e;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    left: 0;
+    right: 0;
+    z-index: 999;
+    width: 100%;
+    transition: background-color 0.2s ease;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.75rem 0.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo Section */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+}
+
+.logoIcon {
+    width: 28px;
+    height: 28px;
+    color: #f3f4f3;
+}
+
+.logoText {
+    font-size: 1.25rem;
+    font-weight: 700;
+    font-family: "Poppins", sans-serif;
+    color: #f6f7f6;
+}
+
+
+.menu {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    gap: 2rem;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.menu a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+}
+
+.menu a:hover {
+    color: #1b4332;
+}
+
+
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    color: #f7fbf9;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.icon:hover {
+    color: #ebf703;
+}
+
+/* Cart count badge */
+.cartWrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cartCount {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    background-color: #ff4d4d;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
+    min-width: 18px;
+    text-align: center;
+    line-height: 1;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.hamburger {
+    background: none;
+    border: none;
+    display: none;
+    cursor: pointer;
+}
+
+.menuIcon {
+    width: 24px;
+    height: 24px;
+    color: #374151;
+}
+
+/* Mobile Dropdown */
+.mobileMenu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    background-color: #f9fafb;
+    border-top: 1px solid #e5e7eb;
+    padding: 1rem 0;
+    font-weight: 500;
+    color: #374151;
+}
+
+.mobileMenu a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+}
+
+.mobileMenu a:hover {
+    color: #16a34a;
+}
+
+/* Responsive Rules */
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}

@@ -2,10 +2,13 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import CMSAccessForm from "./components/CmsAccessForm";
-import DonationAdminForm from "./components/DonationAdminForm";
-import styles from "./admin.module.css";
+import dynamic from "next/dynamic";
 
+import DashboardLogin from "./components/DashboardLogin";
+import styles from "./admin.module.css";
+const CMSAccessForm = dynamic(() => import("./components/CmsAccessForm"), {
+  ssr: false,
+});
 export default function CMSPortal() {
   const [activeTab, setActiveTab] = useState<"cms" | "donation">("cms");
 
@@ -33,7 +36,7 @@ export default function CMSPortal() {
             }`}
             onClick={() => setActiveTab("donation")}
           >
-            Donation Admin
+            Dashboard Login
           </button>
         </div>
 
@@ -57,7 +60,7 @@ export default function CMSPortal() {
                 exit={{ opacity: 0, x: -30 }}
                 transition={{ duration: 0.5 }}
               >
-                <DonationAdminForm />
+                <DashboardLogin />
               </motion.div>
             )}
           </AnimatePresence>

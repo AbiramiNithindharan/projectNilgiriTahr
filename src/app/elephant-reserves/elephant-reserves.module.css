@@ -2,7 +2,7 @@
     min-height: 100vh;
     background: linear-gradient(to bottom, #f0fdf4, #ffffff, #ecfdf5);
     padding: 4rem 1.5rem;
-    margin-top: 80px;
+    margin-top: 140px;
 }
 
 .container {
@@ -57,7 +57,7 @@
 
 .card p {
     margin-bottom: 1.5rem;
-    font-size: 1.125rem;
+    font-size: clamp(0.65rem, 1.5vw, 0.8rem);
 }
 
 .subheading {

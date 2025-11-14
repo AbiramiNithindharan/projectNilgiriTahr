@@ -255,6 +255,53 @@ export default function MenuOverlay({
                     </button>
                   </motion.li>
                 ))}
+                {/* ✅ Donate + Shop links only for mobile */}
+                {isMobile && (
+                  <>
+                    <motion.li
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ delay: 1.4, duration: 0.3 }}
+                    >
+                      <button
+                        onClick={() => onNavigate("/donate")}
+                        style={{
+                          background: "none",
+                          border: "none",
+                          color: "#f1faee",
+                          fontSize: "clamp(1.1rem, 3vw, 1.5rem)",
+                          fontWeight: "500",
+                          padding: "0.5rem 0",
+                          textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+                          cursor: "pointer",
+                        }}
+                      >
+                        Donate
+                      </button>
+                    </motion.li>
+                    <motion.li
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ delay: 1.6, duration: 0.3 }}
+                    >
+                      <button
+                        onClick={() => onNavigate("/e-com/store")}
+                        style={{
+                          background: "none",
+                          border: "none",
+                          color: "#f1faee",
+                          fontSize: "clamp(1.1rem, 3vw, 1.5rem)",
+                          fontWeight: "500",
+                          padding: "0.5rem 0",
+                          textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+                          cursor: "pointer",
+                        }}
+                      >
+                        Shop
+                      </button>
+                    </motion.li>
+                  </>
+                )}
               </ul>
             </nav>
           </motion.div>

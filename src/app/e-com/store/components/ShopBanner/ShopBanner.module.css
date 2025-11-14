@@ -1,0 +1,120 @@
+/* ==== Base Section ==== */
+.bannerSection {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 80vh;
+    overflow: hidden;
+    margin-top: 140px;
+}
+
+/* Responsive heights */
+@media (max-width: 768px) {
+    .bannerSection {
+        height: 70vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .bannerSection {
+        height: 60vh;
+    }
+}
+
+/* ==== Background Image ==== */
+.bannerImage {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ==== Overlays ==== */
+.blurOverlay {
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(2.5px);
+    background-color: rgba(0, 0, 0, 0.35);
+    z-index: 10;
+}
+
+.gradientOverlay {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    background: linear-gradient(135deg,
+            rgba(27, 67, 50, 0.6),
+            rgba(82, 183, 136, 0.3));
+}
+
+/* ==== Text Content ==== */
+.textContainer {
+    position: absolute;
+    inset: 0;
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 2rem;
+}
+
+/* ==== Title ==== */
+.bannerTitle {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    font-size: clamp(1.8rem, 5vw, 3.5rem);
+}
+
+/* ==== Subtitle/Text ==== */
+.bannerText {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+    max-width: 800px;
+    font-size: clamp(1rem, 3.5vw, 1.5rem);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+}
+
+/* ==== Shop Now Button ==== */
+.shopButton {
+    background: linear-gradient(90deg, #0ebd4e, #46bf73);
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    padding: 0.9rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 1px;
+    font-family: "Poppins", sans-serif;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+.shopButton:hover {
+    background: linear-gradient(90deg, #46bf73, #0ebd4e);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+}
+
+.shopButton:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 480px) {
+    .shopButton {
+        font-size: 0.95rem;
+        padding: 0.8rem 1.6rem;
+    }
+}

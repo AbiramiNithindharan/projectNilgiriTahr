@@ -5,6 +5,7 @@ import { motion, useMotionValue } from "framer-motion";
 import { useRouter, usePathname } from "next/navigation";
 import styles from "./Header.module.css";
 import { Home } from "lucide-react";
+import { AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
 // Import new components
@@ -23,6 +24,8 @@ interface HeaderProps {
   rightLogoAlt?: string;
   rightDonateLogoSrc?: string;
   rightDonateLogoAlt?: string;
+  shopLogoSrc?: string;
+  shopLogoAlt?: string;
   onMenuClick?: () => void;
   onContactClick?: () => void;
   isVisible?: boolean;
@@ -37,6 +40,8 @@ export default function Header({
   rightLogoAlt = "Right Logo",
   rightDonateLogoSrc = "/logo/donation.png",
   rightDonateLogoAlt = "donate Logo",
+  shopLogoSrc = "/logo/shop-bag-logo.png",
+  shopLogoAlt = "Shop Logo",
   onMenuClick,
   onContactClick,
   isVisible = false,
@@ -47,39 +52,26 @@ export default function Header({
   const lastScrollY = useRef(0);
   const router = useRouter();
 
-  // Motion values for smoother animations
   const headerY = useMotionValue(0);
   const headerOpacity = useMotionValue(1);
 
-  // Scroll handler
   const handleScroll = useCallback(() => {
     const currentScrollY = window.scrollY;
     const scrollDiff = currentScrollY - lastScrollY.current;
-
     if (Math.abs(scrollDiff) < 3) return;
-
     lastScrollY.current = currentScrollY;
     setIsScrolled(currentScrollY > 1);
   }, []);
 
   useEffect(() => {
-    const checkWidth = () => {
-      // adjust breakpoints as you like
-      setIsDesktop(window.innerWidth >= 1024);
-    };
-
-    checkWidth(); // run on mount
+    const checkWidth = () => setIsDesktop(window.innerWidth >= 1024);
+    checkWidth();
     window.addEventListener("resize", checkWidth);
-
-    return () => {
-      window.removeEventListener("resize", checkWidth);
-    };
+    return () => window.removeEventListener("resize", checkWidth);
   }, []);
 
-  // Throttled scroll listener
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
-
     const throttledScroll = () => {
       if (timeoutId) return;
       timeoutId = setTimeout(() => {
@@ -87,11 +79,9 @@ export default function Header({
         timeoutId = null as any;
       }, 16);
     };
-
     if (isVisible) {
       window.addEventListener("scroll", throttledScroll, { passive: true });
       lastScrollY.current = window.scrollY;
-
       return () => {
         if (timeoutId) clearTimeout(timeoutId);
         window.removeEventListener("scroll", throttledScroll);
@@ -99,21 +89,14 @@ export default function Header({
     }
   }, [isVisible, handleScroll]);
 
-  const handleMenuToggle = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const handleMenuClose = () => {
-    setIsMenuOpen(false);
-  };
+  const handleMenuToggle = () => setIsMenuOpen(!isMenuOpen);
+  const handleMenuClose = () => setIsMenuOpen(false);
 
   const handleNavigation = (href: string) => {
     handleMenuClose();
     if (href.startsWith("#")) {
       const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
+      if (element) element.scrollIntoView({ behavior: "smooth" });
     } else {
       router.push(href);
     }
@@ -133,6 +116,7 @@ export default function Header({
   return (
     <>
       <motion.header
+        id="site-header"
         className={styles.header}
         initial={{ y: -120, opacity: 0 }}
         animate={{
@@ -149,14 +133,15 @@ export default function Header({
           left: 0,
           right: 0,
           zIndex: 1000,
-          background: isScrolled ? "transparent" : "rgba(255, 255, 255, 1)",
-          backdropFilter: isScrolled ? "none" : "none",
-          borderBottom: isScrolled ? "none" : "none",
-          boxShadow: isScrolled ? "none" : "none",
+          background: isScrolled
+            ? "rgba(255, 255, 255, 0.95)"
+            : "rgba(255, 255, 255, 1)",
+          boxShadow: isScrolled
+            ? "0 2px 6px rgba(0,0,0,0.08)"
+            : "0 4px 20px rgba(0,0,0,0.08)",
           padding: isScrolled ? "0.5rem 2rem" : "1rem 2rem",
           minHeight: isScrolled ? "70px" : "100px",
-          willChange: "transform, opacity",
-          transition: "all 0.2s ease",
+          transition: "all 0.3s ease",
         }}
       >
         <div
@@ -197,18 +182,28 @@ export default function Header({
             <Home size={24} strokeWidth={2} />
           </motion.button>
 
-          {/* Left Logo */}
-          <Link href={"/"}>
-            <Logo
-              src={leftLogoSrc}
-              alt={leftLogoAlt}
-              size={isScrolled ? "medium" : "large"}
-              delay={0.1}
-              isVisible={isVisible}
-            />
-          </Link>
+          {isDesktop ? (
+            <Link href={"/"}>
+              <Logo
+                src={leftLogoSrc}
+                alt={leftLogoAlt}
+                size={isScrolled ? "medium" : "large"}
+                delay={0.1}
+                isVisible={isVisible}
+              />
+            </Link>
+          ) : (
+            <Link href={"/"}>
+              <Logo
+                src={leftLogoSrc}
+                alt={leftLogoAlt}
+                size={isScrolled ? "small" : "medium"}
+                delay={0.1}
+                isVisible={isVisible}
+              />
+            </Link>
+          )}
 
-          {/* Project Title - Only when scrolled */}
           {isScrolled && (
             <ProjectTitle
               isScrolled={isScrolled}
@@ -216,10 +211,8 @@ export default function Header({
             />
           )}
 
-          {/* Center Text - Only when not scrolled */}
           {!isScrolled && <CenterText isVisible={isVisible} />}
 
-          {/* Right Section - Only when not scrolled */}
           {!isScrolled && (
             <motion.div
               initial={{ x: 50, opacity: 0 }}
@@ -243,45 +236,67 @@ export default function Header({
                   isVisible={true}
                 />
               )}
-
               <MenuButton onClick={handleMenuToggle} variant="default" />
-              <Link href={"/donate"}>
-                <Logo
-                  src={rightDonateLogoSrc}
-                  alt={rightDonateLogoAlt}
-                  size="medium"
-                  delay={0}
-                  isVisible={true}
-                />
-              </Link>
+              <div className={styles.headerIcons}>
+                <Link href={"/donate"}>
+                  <Logo
+                    src={rightDonateLogoSrc}
+                    alt={rightDonateLogoAlt}
+                    size="medium"
+                    delay={0}
+                    isVisible={true}
+                  />
+                </Link>
+                <Link href={"/e-com/store"}>
+                  <Logo
+                    src={shopLogoSrc}
+                    alt={shopLogoAlt}
+                    size="medium"
+                    delay={0}
+                    isVisible={true}
+                  />
+                </Link>
+              </div>
             </motion.div>
           )}
 
-          {/* Compact Menu Button - Only when scrolled */}
           {isScrolled && (
             <>
               <MenuButton onClick={handleMenuToggle} variant="compact" />
-              <Link href={"/donate"}>
-                <Logo
-                  src={rightDonateLogoSrc}
-                  alt={rightDonateLogoAlt}
-                  size="small"
-                  delay={0.1}
-                  isVisible={true}
-                />
-              </Link>
+              <div className={styles.headerIcons}>
+                <Link href={"/donate"}>
+                  <Logo
+                    src={rightDonateLogoSrc}
+                    alt={rightDonateLogoAlt}
+                    size="small"
+                    delay={0.1}
+                    isVisible={true}
+                  />
+                </Link>
+                <Link href={"/e-com/store"}>
+                  <Logo
+                    src={shopLogoSrc}
+                    alt={shopLogoAlt}
+                    size="small"
+                    delay={0}
+                    isVisible={true}
+                  />
+                </Link>
+              </div>
             </>
           )}
         </div>
       </motion.header>
-
-      {/* Menu Overlay */}
-      <MenuOverlay
-        isOpen={isMenuOpen}
-        onClose={handleMenuClose}
-        onNavigate={handleNavigation}
-        menuItems={menuItems}
-      />
+      <AnimatePresence>
+        {isMenuOpen && (
+          <MenuOverlay
+            isOpen={isMenuOpen}
+            onClose={handleMenuClose}
+            onNavigate={handleNavigation}
+            menuItems={menuItems}
+          />
+        )}
+      </AnimatePresence>
     </>
   );
 }

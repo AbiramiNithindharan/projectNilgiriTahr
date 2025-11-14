@@ -4,7 +4,7 @@ import { useState } from "react";
 import styles from "./login.module.css";
 import { motion } from "framer-motion";
 
-export default function DonationAdminForm() {
+export default function DashboardLogin() {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -44,7 +44,7 @@ export default function DonationAdminForm() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.9, ease: "easeOut" }}
       >
-        <h2 className={styles.title}>Donation Admin Login</h2>
+        <h2 className={styles.title}>Dashboard Login</h2>
         <form onSubmit={handleSubmit} className={styles.loginForm}>
           <label className={styles.label}>User Name</label>
           <input

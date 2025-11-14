@@ -82,7 +82,14 @@ export default function Footer({
           <div className={styles.grid}>
             {/* Address / Contact */}
             <div>
-              <h3 className={styles.company}>{companyName}</h3>
+              <h3
+                className={styles.company}
+                style={{
+                  fontFamily: "Poppins, sans-serif",
+                }}
+              >
+                {companyName}
+              </h3>
               <address className={styles.address}>
                 <div className={styles.row}>
                   <MapPin className={styles.iconLarge} />
@@ -90,16 +97,38 @@ export default function Footer({
                     href={mapEmbedUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    style={{
+                      fontFamily: "Poppins, sans-serif",
+                    }}
                   >
                     {address}
                   </a>
                 </div>
                 <div className={styles.contactLinks}>
-                  <h3 className={styles.company}>Email</h3>
-                  <a href={`mailto:${email}`} className={styles.row}>
+                  <h3
+                    className={styles.company}
+                    style={{
+                      fontFamily: "Poppins, sans-serif",
+                    }}
+                  >
+                    Email
+                  </h3>
+                  <a
+                    href={`mailto:${email}`}
+                    className={styles.row}
+                    style={{
+                      fontFamily: "Poppins, sans-serif",
+                    }}
+                  >
                     <Mail className={styles.iconSmall} /> {email}
                   </a>
-                  <a href={`tel:${phone}`} className={styles.row}>
+                  <a
+                    href={`tel:${phone}`}
+                    className={styles.row}
+                    style={{
+                      fontFamily: "Poppins, sans-serif",
+                    }}
+                  >
                     <Mail className={styles.iconSmall} /> {phone}
                   </a>
                 </div>
@@ -108,7 +137,14 @@ export default function Footer({
 
             {/* Map */}
             <div>
-              <h4 className={styles.heading}>Find us on map</h4>
+              <h4
+                className={styles.heading}
+                style={{
+                  fontFamily: "Poppins, sans-serif",
+                }}
+              >
+                Find us on map
+              </h4>
               <div className={styles.mapEmbedWrapper}>
                 <iframe
                   src={mapEmbedUrl}
@@ -123,9 +159,26 @@ export default function Footer({
             </div>
           </div>
           {/* Socials */}
-          <div className={styles.socialLink}>
-            <h4 className={styles.heading}>Connect with us</h4>
-            <p className={styles.subtext}>
+          <div
+            className={styles.socialLink}
+            style={{
+              fontFamily: "Poppins, sans-serif",
+            }}
+          >
+            <h4
+              className={styles.heading}
+              style={{
+                fontFamily: "Poppins, sans-serif",
+              }}
+            >
+              Connect with us
+            </h4>
+            <p
+              style={{
+                fontFamily: "Poppins, sans-serif",
+              }}
+              className={styles.subtext}
+            >
               Follow our socials for updates and news.
             </p>
             <div className={styles.socials}>

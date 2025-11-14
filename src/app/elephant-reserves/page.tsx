@@ -8,7 +8,14 @@ export default function NilgiriTahrPage() {
       <div className={styles.container}>
         {/* Title Section */}
         <div className={styles.titleSection}>
-          <h1 className={styles.heading}>Elephant Reserves</h1>
+          <h1
+            className={styles.heading}
+            style={{
+              fontFamily: "Poppins, sans-serif",
+            }}
+          >
+            Elephant Reserves
+          </h1>
         </div>
 
         {/* Hero Image */}
@@ -24,15 +31,32 @@ export default function NilgiriTahrPage() {
 
         {/* Content Card */}
         <div className={styles.card}>
-          <h2 className={styles.cardTitle}>Elephant Reserves (5)</h2>
-          <p className={styles.cardDescription}>
+          <h2
+            className={styles.cardTitle}
+            style={{
+              fontFamily: "Poppins, sans-serif",
+            }}
+          >
+            Elephant Reserves (5)
+          </h2>
+          <p
+            className={styles.cardDescription}
+            style={{
+              fontFamily: "Poppins, sans-serif",
+            }}
+          >
             Elephant reserves play a <strong>dual role</strong> by protecting
             elephants while also safeguarding habitats shared with Nilgiri Tahr.
             These reserves maintain ecological balance by conserving corridors
             and minimizing human-wildlife conflicts.
           </p>
 
-          <h3 className={styles.subHeading}>
+          <h3
+            className={styles.subHeading}
+            style={{
+              fontFamily: "Poppins, sans-serif",
+            }}
+          >
             Elephant Reserves in the Nilgiri Tahr Landscape:
           </h3>
           <ul className={styles.list}>
@@ -43,7 +67,12 @@ export default function NilgiriTahrPage() {
             <li>Agasthyamalai Elephant Reserve</li>
           </ul>
 
-          <p className={styles.cardFooter}>
+          <p
+            className={styles.cardFooter}
+            style={{
+              fontFamily: "Poppins, sans-serif",
+            }}
+          >
             These reserves enhance landscape-level conservation and ensure that
             management plans benefit both elephants and Tahrs by addressing
             common threats like deforestation, poaching, and habitat

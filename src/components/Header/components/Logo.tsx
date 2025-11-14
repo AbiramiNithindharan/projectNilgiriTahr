@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 interface LogoProps {
   src: string;
   alt: string;
-  size: "small" | "medium" | "large";
+  size: "verysmall" | "small" | "medium" | "large";
   delay?: number;
   isVisible?: boolean;
 }
@@ -19,6 +19,7 @@ export default function Logo({
   // Define sizes in one place for readability
   const sizeMap: Record<LogoProps["size"], string> = {
     medium: "clamp(40px, 6vw, 50px)",
+    verysmall: "clamp(10px,5vw, 20px)",
     small: "clamp(16px,5vw, 40px)",
     large: "clamp(100px, 18vw, 120px)",
   };

@@ -1,0 +1,123 @@
+/* --- Store Page Layout --- */
+.storeContainer {
+  width: 100%;
+  position: relative;
+  z-index: 5;
+  background: linear-gradient(120deg, #f0fdf4 0%, #d4f3dd 50%, #c2f7d1 100%);
+  padding: 5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.storeHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-left: 0.5rem;
+  margin-top: 80px;
+}
+
+.heading {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2d5016;
+  /* elegant green tone */
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.divider {
+  width: 180px;
+  height: 4px;
+  background-color: #a9faa3;
+  border: none;
+  border-radius: 2px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+
+.subheading {
+  font-size: 1.05rem;
+  color: #555;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* --- Product Grid --- */
+.grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  padding-top: 5rem;
+  max-width: 1300px;
+  width: 100%;
+}
+
+/* --- Error & Empty States --- */
+.error {
+  text-align: center;
+  color: #e63946;
+  font-size: 1.2rem;
+  margin-top: 3rem;
+
+}
+
+.emptyState {
+  text-align: center;
+  padding: 6rem 2rem;
+  background: #f9fafb;
+}
+
+.emptyImage {
+  width: 120px;
+  opacity: 0.8;
+  margin-bottom: 1rem;
+}
+
+.emptyText {
+  color: #475569;
+  font-size: 1.1rem;
+}
+
+.navbarWrapper {
+  position: sticky;
+  top: 140px;
+  z-index: 999;
+  background-color: #fff;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .heading {
+    font-size: 1.8rem;
+  }
+
+  .subheading {
+    font-size: 0.95rem;
+  }
+
+  .grid {
+    gap: 1.5rem;
+  }
+}
