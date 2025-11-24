@@ -25,7 +25,7 @@ export default function DashboardLogin() {
       const data = await res.json();
 
       if (res.ok) {
-        window.location.href = "/donation-admin/donations";
+        window.location.href = "/donation-admin";
       } else {
         setError(data.error || "Invalid credentials");
       }

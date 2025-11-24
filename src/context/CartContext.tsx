@@ -5,7 +5,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 type CartItem = {
   id: string;
   name: string;
-  size?: string;
+  size: string;
   price: number;
   quantity: number;
   image_url?: string;
@@ -15,7 +15,7 @@ type CartItem = {
 type CartContextType = {
   cartItems: CartItem[];
   addToCart: (item: CartItem) => void;
-  removeFromCart: (id: string) => void;
+  removeFromCart: (id: string, size: string) => void;
   clearCart: () => void;
   getCartCount: () => number;
   getCartTotal: () => number;
@@ -47,18 +47,27 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
   const addToCart = (item: CartItem) => {
     setCartItems((prev) => {
-      const existing = prev.find((p) => p.id === item.id);
+      const existing = prev.find(
+        (p) => p.id === item.id && p.size === item.size
+      );
       if (existing) {
         return prev.map((p) =>
-          p.id === item.id ? { ...p, quantity: p.quantity + item.quantity } : p
+          p.id === item.id && p.size === item.size
+            ? { ...p, quantity: p.quantity + item.quantity }
+            : p
         );
       }
-      return [...prev, { ...item, _addedAt: Date.now() }];
+      return [
+        ...prev,
+        { ...item, quantity: item.quantity, _addedAt: Date.now() },
+      ];
     });
   };
 
-  const removeFromCart = (id: string) => {
-    setCartItems((prev) => prev.filter((item) => item.id !== id));
+  const removeFromCart = (id: string, size: string) => {
+    setCartItems((prev) =>
+      prev.filter((item) => !(item.id === id && item.size === size))
+    );
   };
 
   const clearCart = () => {

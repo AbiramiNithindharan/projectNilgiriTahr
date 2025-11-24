@@ -61,13 +61,21 @@ export default function ShopBanner() {
 
         {/* ✅ Animated Shop Now Button */}
         <motion.button
+          onClick={handleScroll}
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           transition={{ duration: 0.8, delay: 1.1 }}
-          className={styles.shopButton}
-          onClick={handleScroll}
+          className={styles.shopBtn}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = "#ffffff";
+            e.currentTarget.style.color = "#000000";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = "#0000006e";
+            e.currentTarget.style.color = "#ffffff";
+          }}
         >
           Shop Now
         </motion.button>

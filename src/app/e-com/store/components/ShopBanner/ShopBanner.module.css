@@ -85,36 +85,57 @@
     padding: 0 1rem;
 }
 
-/* ==== Shop Now Button ==== */
-.shopButton {
-    background: linear-gradient(90deg, #0ebd4e, #46bf73);
+
+/* Know More button */
+
+
+.shopBtn {
+    background: #0000006e;
+    border: 2px solid #ffffff;
     color: #ffffff;
-    border: none;
-    border-radius: 50px;
-    padding: 0.9rem 2rem;
-    font-size: 1.1rem;
+    padding: 1rem 2rem;
+    font-size: 1rem;
     font-weight: 600;
+    font-family: Inter, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
     cursor: pointer;
-    letter-spacing: 1px;
-    font-family: "Poppins", sans-serif;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+    margin-right: 50px;
+    margin-bottom: 100px;
+    z-index: 20;
+    position: relative;
 }
 
-.shopButton:hover {
-    background: linear-gradient(90deg, #46bf73, #0ebd4e);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
-    transform: translateY(-3px);
+
+
+/* 📱 Mobile Responsive Adjustments */
+@media (max-width: 1172px) {
+    .shopBtn {
+        font-size: 0.7rem;
+        padding: 0.6rem 0.8rem;
+
+        margin-right: 50px;
+        margin-bottom: 50px;
+    }
 }
 
-.shopButton:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+@media (max-width: 768px) {
+    .shopBtn {
+        font-size: 0.5rem;
+        /* smaller font */
+        padding: 0.5rem 0.7rem;
+        /* smaller padding */
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
 }
 
 @media (max-width: 480px) {
-    .shopButton {
-        font-size: 0.95rem;
-        padding: 0.8rem 1.6rem;
+    .shopBtn {
+        font-size: 0.3rem;
+        padding: 0.3rem 0.8rem;
+        margin-right: 10px;
+        margin-bottom: 20px;
     }
 }

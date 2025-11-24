@@ -9,7 +9,7 @@ interface Product {
   title: string;
   price: number;
   image_url: string;
-  size?: string;
+  size: string;
   quantity?: number;
 }
 
@@ -36,7 +36,7 @@ export default function AddToCartButton({
       name: product.title,
       image_url: product.image_url,
       price: product.price,
-      size: product.size,
+      size: product.size ?? null,
       quantity: product.quantity ?? 1,
     });
 

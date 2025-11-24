@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "./client-layout";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,7 +37,22 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.className}`}
       >
         {/* ✅ client wrapper handles hooks & header */}
-        <ClientLayout>{children}</ClientLayout>
+        <ClientLayout>
+          {children}{" "}
+          <Toaster
+            position="bottom-right"
+            toastOptions={{
+              style: {
+                marginBottom: "30px",
+                padding: "2rem",
+                borderLeft: "5px solid blue",
+                borderRadius: "10px",
+                background: "#333",
+                color: "#fff",
+              },
+            }}
+          />
+        </ClientLayout>
       </body>
     </html>
   );

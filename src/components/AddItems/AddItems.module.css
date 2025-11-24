@@ -1,0 +1,281 @@
+.pageGrid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 2rem;
+    margin-top: 190px;
+    padding: 4rem 1rem;
+}
+
+.container {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    font-family: "Inter", sans-serif;
+    padding: 4rem;
+}
+
+.heading {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    width: 30%;
+    color: #0a0a0a;
+    border-bottom: 3px solid rgb(13, 184, 121);
+    padding-bottom: 5px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.label {
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+}
+
+.input,
+.textarea {
+    margin-top: 10px;
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #dcdcdc;
+    font-size: 15px;
+}
+
+.textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.subHeading {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.sizeGrid {
+    display: grid;
+    gap: 12px;
+}
+
+.sizeRow {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.dropZone {
+    border: 2px dashed #b3b3b3;
+    padding: 30px;
+    text-align: center;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.2s;
+    position: relative;
+    margin-top: 10px;
+}
+
+.dropZone:hover {
+    background: #fafafa;
+}
+
+.dragActive {
+    border-color: rgb(13, 184, 121) !important;
+    background: #f0f7ff !important;
+    transform: scale(1.02);
+}
+
+.hiddenInput {
+    opacity: 0;
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+}
+
+.placeholderText {
+    opacity: 0.6;
+    font-size: 0.95rem;
+}
+
+
+.previewWrapper {
+    position: relative;
+}
+
+.previewImg {
+    width: 180px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.removeImg {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: #ff4d4d;
+    color: white;
+    border-radius: 6px;
+    padding: 4px 8px;
+    cursor: pointer;
+    border: none;
+}
+
+.subHeading {
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.sizeGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.sizeRow {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+.sizeLabel {
+    width: 40px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.submitBtn {
+    margin-top: 20px;
+    background: #1cb97f;
+    color: #e9f4ee;
+    padding: 14px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.submitBtn:hover {
+    background: #14875d;
+    color: #e9fcf2;
+
+}
+
+.submitBtn:disabled {
+    background: #8fb3d1;
+    cursor: not-allowed;
+}
+
+.success {
+    color: green;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.error {
+    background: #ffdddd;
+    padding: 10px;
+    border-left: 4px solid red;
+    margin-bottom: 15px;
+    border-radius: 6px;
+}
+
+/* RIGHT PREVIEW CARD */
+.previewCard {
+    background: #ffffff;
+    padding: 4rem;
+    border-radius: 18px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+    height: fit-content;
+}
+
+.previewHeading {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid rgb(13, 184, 121);
+    width: 40%;
+    padding-bottom: 5px;
+}
+
+.cardBox {
+    border: 1px solid #e5e5e5;
+    border-radius: 16px;
+    padding: 1rem;
+}
+
+.cardImgWrapper {
+    width: 100%;
+    height: 220px;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.placeholderImg {
+    color: #999;
+    font-size: 1rem;
+}
+
+.cardContent {
+    margin-top: 1rem;
+}
+
+.previewCode {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.previewTitle {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-top: 0.3rem;
+}
+
+.previewPrice {
+    font-size: 1.1rem;
+    color: rgb(13, 184, 121);
+    font-weight: 600;
+}
+
+.previewDesc {
+    margin-top: 0.3rem;
+    color: #555;
+}
+
+.sizePreviewBox {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.sizeBadge {
+    background: #efefef;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .pageGrid {
+        grid-template-columns: 1fr;
+    }
+}

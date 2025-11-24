@@ -1,18 +1,181 @@
-.container {
+.checkoutPage {
+    padding: 2rem;
+    background: #f6f8fa;
+    min-height: 100vh;
+    margin-top: 190px;
+}
+
+/* Heading */
+.heading {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1c3d5a;
+    margin-bottom: 2rem;
     text-align: center;
-    padding: 3rem;
+    letter-spacing: 1px;
 }
 
-.payBtn {
-    background-color: #0072bb;
-    color: white;
-    padding: 0.8rem 1.5rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+/* ---- Main Layout ---- */
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Desktop layout: Form should be wider than summary */
+@media (min-width: 992px) {
+    .container {
+        display: grid;
+        grid-template-columns: 0.7fr 1.3fr;
+        /* Wider form, narrow summary */
+        gap: 2rem;
+    }
+}
+
+/* ---- Form ---- */
+.form {
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.sectionTitle {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin: 1rem 0;
+    color: #153448;
+    letter-spacing: 1.5px;
+}
+
+/* INPUTS */
+.input,
+.textarea {
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 0.4rem;
+    border: 1.8px solid #cdd6e0;
     font-size: 1rem;
+    transition: 0.2s;
+    background: white;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
 }
 
-.payBtn:hover {
-    background-color: #005fa3;
+.input:focus,
+.textarea:focus {
+    outline: none;
+    border-color: #0077cc;
+    box-shadow: 0 0 6px rgba(0, 119, 204, 0.2);
+}
+
+.textarea {
+    min-height: 90px;
+}
+
+
+
+/* Layout rows */
+.row {
+    display: flex;
+    gap: 1rem;
+}
+
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+}
+
+.secureNote {
+    margin-top: -5px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Submit Button */
+.submitBtn {
+    width: 100%;
+    padding: 1rem;
+    background: #0b5ed7;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    transition: 0.2s;
+}
+
+.submitBtn:hover {
+    background: #0849a3;
+}
+
+.paymentBox {
+    border: 1.5px solid rgba(8, 8, 8, 0.495);
+    padding: 1rem;
+}
+
+/* ---- Order Summary ---- */
+.summary {
+    background: white;
+    padding: 2rem;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.itemsList {
+    max-height: 320px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+}
+
+.item {
+    display: flex;
+    gap: 1rem;
+    border-bottom: 1px solid #eef1f4;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.item img {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.orderTotals {
+    margin-top: 1rem;
+}
+
+.line {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.6rem;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1d3557;
+    margin-top: 1rem;
+}
+
+/* Better mobile spacing */
+@media (max-width: 500px) {
+
+    .form,
+    .summary {
+        padding: 1.4rem;
+    }
+
+    .heading {
+        font-size: 1.6rem;
+    }
 }

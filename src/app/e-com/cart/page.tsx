@@ -15,11 +15,11 @@ export default function CartPage() {
   const total = subtotal + delivery;
 
   // 🔹 Confirm remove single item
-  const handleRemoveItem = (id: string) => {
+  const handleRemoveItem = (id: string, size: string) => {
     const confirmDelete = window.confirm(
       "Are you sure you want to remove this item from your cart?"
     );
-    if (confirmDelete) removeFromCart(id);
+    if (confirmDelete) removeFromCart(id, size);
   };
 
   // 🔹 Confirm clear entire cart
@@ -60,7 +60,7 @@ export default function CartPage() {
                   <p>Total: ₹{item.price}</p>
                 </div>
                 <button
-                  onClick={() => handleRemoveItem(item.id)}
+                  onClick={() => handleRemoveItem(item.id, item.size)}
                   className={styles.removeBtn}
                 >
                   ✖
@@ -87,7 +87,11 @@ export default function CartPage() {
               <span>Total</span>
               <span>₹{total}</span>
             </div>
-            <button className={styles.checkoutBtn}>Proceed to Checkout</button>
+            <Link href={"/e-com/checkout"}>
+              <button className={styles.checkoutBtn}>
+                Proceed to Checkout
+              </button>
+            </Link>
           </div>
         </div>
       )}

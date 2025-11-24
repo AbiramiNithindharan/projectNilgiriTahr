@@ -1,5 +1,5 @@
 .btn {
-    background-color: #00bb2c;
+    background-color: #31bd7b;
     color: white;
     border: none;
     padding: 0.9rem 2rem;
@@ -13,7 +13,7 @@
 }
 
 .btn:hover:not(:disabled) {
-    background-color: #018520;
+    background-color: #43ac7b;
     transform: translateY(-2px);
 }
 
@@ -55,7 +55,7 @@
     position: fixed;
     bottom: 30px;
     right: 30px;
-    background: #00bb2c;
+    background: #31bd7b;
     color: white;
     padding: 1rem 1.5rem;
     border-radius: 10px;

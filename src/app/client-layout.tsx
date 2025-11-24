@@ -6,10 +6,11 @@ import dynamic from "next/dynamic";
 import Header from "../components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import { CartProvider } from "@/context/CartContext";
-
+import DashboardHeader from "@/components/DashboardHeader/page";
 const Navbar = dynamic(
   () => import("@/app/e-com/store/components/Navbar/Navbar")
 );
+
 export default function ClientLayout({
   children,
 }: {
@@ -18,6 +19,7 @@ export default function ClientLayout({
   const pathname = usePathname();
   const isHome = pathname === "/";
   const isECom = pathname.startsWith("/e-com");
+  const isDashboardHeader = pathname.startsWith("/donation-admin");
 
   const [showHeader] = useState(true);
 
@@ -40,6 +42,7 @@ export default function ClientLayout({
           />
 
           {isECom && <Navbar />}
+          {isDashboardHeader && <DashboardHeader />}
         </div>
 
         {children}

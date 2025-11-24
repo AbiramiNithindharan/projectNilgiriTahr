@@ -19,7 +19,12 @@ export default function ProductDetail({
       setLoading(true);
       const { data, error } = await supabaseClient
         .from("products")
-        .select("*")
+        .select(
+          `
+  *,
+  product_stock ( size, stock )
+`
+        )
         .eq("id", id)
         .single();
 
@@ -55,7 +60,7 @@ export default function ProductDetail({
 
 /* ---------------- Client Component ---------------- */
 function ClientProductView({ product }: { product: any }) {
-  const [size, setSize] = useState<string | null>(null);
+  const [size, setSize] = useState<string>("");
   const [quantity, setQuantity] = useState<number>(1);
   const [isZoomOpen, setIsZoomOpen] = useState(false);
   const [zoom, setZoom] = useState(1);
@@ -77,8 +82,15 @@ function ClientProductView({ product }: { product: any }) {
     }
   };
 
+  const sizeStock: Record<string, number> = {};
+  product.product_stock?.forEach((v: any) => {
+    sizeStock[v.size] = v.stock;
+  });
+
   const handleSizeSelect = (selectedSize: string) => {
-    setSize(selectedSize);
+    if (sizeStock[selectedSize] > 0) {
+      setSize(selectedSize);
+    }
   };
 
   const increaseQty = () => setQuantity((prev) => prev + 1);
@@ -90,7 +102,7 @@ function ClientProductView({ product }: { product: any }) {
     const productData = { ...product, size, quantity };
 
     setTimeout(() => {
-      setSize(null);
+      setSize("");
       setQuantity(1);
     }, 300);
   };
@@ -130,30 +142,30 @@ function ClientProductView({ product }: { product: any }) {
           <h1>{product.title}</h1>
           <p className={styles.description}>{product.description}</p>
           <p className={styles.price}>₹{product.price}</p>
-          {product.stock > 0 ? (
-            <p className={styles.stock}>{product.stock} in stock</p>
-          ) : (
-            <p className={styles.outOfStock}>out of stock</p>
-          )}
 
           {/* Size Selection */}
           <div className={styles.sizeSection}>
             <h3>Select Size:</h3>
             <div className={styles.sizeOptions}>
-              {["S", "M", "L", "XL"].map((s) => (
-                <motion.button
-                  key={s}
-                  className={`${styles.sizeButton} ${
-                    size === s ? styles.active : ""
-                  }`}
-                  onClick={() => handleSizeSelect(s)}
-                  whileTap={{ scale: 0.9 }}
-                  whileHover={{ scale: 1.1 }}
-                  disabled={product.stock === 0}
-                >
-                  {s}
-                </motion.button>
-              ))}
+              {["S", "M", "L", "XL"].map((s) => {
+                const outOfStock = sizeStock[s] === 0;
+
+                return (
+                  <motion.button
+                    key={s}
+                    className={`${styles.sizeButton} 
+                    ${size === s ? styles.active : ""} 
+                    ${outOfStock ? styles.disabledSize : ""}
+                  `}
+                    onClick={() => handleSizeSelect(s)}
+                    whileTap={!outOfStock ? { scale: 0.9 } : {}}
+                    disabled={outOfStock}
+                  >
+                    {s}
+                    {outOfStock && <span className={styles.cross}>×</span>}
+                  </motion.button>
+                );
+              })}
             </div>
           </div>
 
@@ -161,14 +173,22 @@ function ClientProductView({ product }: { product: any }) {
           <div className={styles.quantitySection}>
             <h3>Quantity:</h3>
             <div className={styles.quantityControls}>
-              <button disabled={product.stock === 0} onClick={decreaseQty}>
+              <button disabled={!size || quantity <= 1} onClick={decreaseQty}>
                 −
               </button>
               <span>{quantity}</span>
-              <button disabled={product.stock === 0} onClick={increaseQty}>
+              <button
+                disabled={!size || quantity >= sizeStock[size]}
+                onClick={increaseQty}
+              >
                 +
               </button>
             </div>
+            {size && quantity >= sizeStock[size] && (
+              <p className={styles.stockWarning}>
+                Only {sizeStock[size]} left in stock for size {size}.
+              </p>
+            )}
           </div>
 
           {/* Add to Cart */}
@@ -180,20 +200,13 @@ function ClientProductView({ product }: { product: any }) {
           >
             <div onClick={handleAddToCart}>
               <AddToCartButton
-                product={{ ...product, size, quantity }}
-                disabled={!size}
+                product={{ ...product, size: size, quantity }}
+                disabled={size === ""}
               />
             </div>
-
-            {product.stock === 0 ? (
-              <p className={styles.outOfStockMsg}>
-                🚫 This product is currently out of stock.
-                <br />
-                We will restock it soon!
-              </p>
-            ) : !size ? (
+            {!size && (
               <p className={styles.sizeWarning}>Please select a size first.</p>
-            ) : null}
+            )}
           </motion.div>
         </motion.div>
       </motion.div>

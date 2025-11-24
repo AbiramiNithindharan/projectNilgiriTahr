@@ -16,7 +16,7 @@ import styles from "./Footer.module.css";
 type ImportantLink = { label: string; href: string; external?: boolean };
 
 export default function Footer({
-  companyName = "Project Nilgiri Thar.",
+  companyName = "Project Nilgiri Tahr.",
   address = "Office of Project Director, Project Nilgiri Tahr, Bharathi Park Road, Forest Campus Coimbatore, Tamil Nadu 641043.",
   email = "projectnilgiritahr@gmail.com",
   phone = "pd.pnt@tn.gov.in",

@@ -7,7 +7,7 @@
 }
 
 .title {
-    font-size: 2.3rem;
+    font-size: 2rem;
     margin-bottom: 2rem;
     text-align: center;
     color: #2d5016;
@@ -83,7 +83,7 @@
 .removeBtn {
     background: none;
     border: none;
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: #e63946;
     cursor: pointer;
     transition: transform 0.2s ease, color 0.3s ease;
@@ -97,20 +97,18 @@
 .clearBtn {
     display: block;
     margin: 2rem auto 0;
-    background: #f44336;
-    color: #fff;
+    color: #f44336;
     border: none;
     padding: 0.9rem 2rem;
     border-radius: 8px;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 3px 10px rgba(244, 67, 54, 0.3);
+    transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .clearBtn:hover {
-    background: #c62828;
+    color: #c62828;
     transform: translateY(-2px);
 }
 
@@ -128,8 +126,9 @@
 
 .summary h2 {
     margin-bottom: 1.2rem;
+    border-bottom: 2px solid #eee;
     color: #2d5016;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 600;
 }
 
@@ -144,18 +143,18 @@
 .total {
     display: flex;
     justify-content: space-between;
-    font-weight: bold;
     font-size: 1.2rem;
     margin-top: 1rem;
     border-top: 2px solid #eee;
     padding-top: 0.8rem;
     color: #2d5016;
+    font-weight: 600;
 }
 
 .checkoutBtn {
     width: 100%;
     margin-top: 1.5rem;
-    background-color: #00bb2c;
+    background-color: #31bd7b;
     color: white;
     border: none;
     padding: 1rem;
@@ -168,7 +167,7 @@
 }
 
 .checkoutBtn:hover {
-    background-color: #019623;
+    background-color: #218959;
     transform: translateY(-2px);
 }
 

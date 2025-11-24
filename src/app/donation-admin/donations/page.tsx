@@ -115,11 +115,6 @@ export default function DonationsDashboard() {
     }, 300);
   };
 
-  const handleLogout = async () => {
-    await fetch("/api/donation-admin/logout");
-    window.location.href = "/admin";
-  };
-
   const uniqueDonors = new Set(
     filteredDonations
       .map((d) => d.email?.trim().toLowerCase() || d.name?.trim().toLowerCase())
@@ -152,9 +147,6 @@ export default function DonationsDashboard() {
                 .toLocaleString("en-IN")}
             </p>
           </div>
-          <button onClick={handleLogout} className={styles.logout}>
-            Logout
-          </button>
         </div>
       </motion.div>
 
