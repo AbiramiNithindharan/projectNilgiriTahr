@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "deno.ns", "deno.unstable"]
+  },
+
+  "imports": {
+    "std/http/server.ts": "https://deno.land/std@0.168.0/http/server.ts",
+    "dotenv": "https://deno.land/x/dotenv@v3.2.2/load.ts",
+    "resend": "npm:resend"
+  }
+}

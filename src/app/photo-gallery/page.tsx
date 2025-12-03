@@ -6,6 +6,7 @@ import Image from "next/image";
 import styles from "./photogallery.module.css";
 import MenuButton from "@/components/PhotoGallery/components/MenuButton";
 import MenuOverlay from "@/components/PhotoGallery/components/MenuOverlay";
+import { useSearchParams } from "next/navigation";
 
 export default function PhotoGallery() {
   const categories = {
@@ -54,8 +55,12 @@ export default function PhotoGallery() {
     OurWork: "/gallery/our-work/our-work-3.JPG",
   };
 
+  const searchParams = useSearchParams();
+  const initialCategory =
+    (searchParams.get("category") as keyof typeof categories) || "NilgiriTahr";
+
   const [activeCategory, setActiveCategory] =
-    useState<keyof typeof categories>("NilgiriTahr");
+    useState<keyof typeof categories>(initialCategory);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -91,6 +96,13 @@ export default function PhotoGallery() {
     setActiveCategory(cat);
     setIsMenuOpen(false);
   };
+
+  useEffect(() => {
+    const cat = searchParams.get("category") as keyof typeof categories;
+    if (cat && categories[cat]) {
+      setActiveCategory(cat);
+    }
+  }, [searchParams]);
 
   return (
     <>

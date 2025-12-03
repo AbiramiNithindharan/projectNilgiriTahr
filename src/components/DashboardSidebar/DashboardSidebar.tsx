@@ -63,6 +63,7 @@ export default function DashboardSidebar({ open, onClose }: any) {
                 {" "}
                 Home{" "}
               </Link>{" "}
+              <div className={styles.sectionTitle}>Table</div>{" "}
               <Link
                 href="/donation-admin/donations"
                 onClick={onClose}
@@ -70,6 +71,14 @@ export default function DashboardSidebar({ open, onClose }: any) {
               >
                 {" "}
                 Donations{" "}
+              </Link>{" "}
+              <Link
+                href="/donation-admin/donations"
+                onClick={onClose}
+                className={styles.item}
+              >
+                {" "}
+                Products{" "}
               </Link>{" "}
               <div className={styles.sectionTitle}>Store</div>{" "}
               <Link

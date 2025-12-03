@@ -1,0 +1,10 @@
+{
+  "imports": {
+    "@supabase/supabase-js": "jsr:@supabase/supabase-js@^2.86.0",
+    "std/": "https://deno.land/std@0.168.0/"
+  },
+
+  "compilerOptions": {
+    "lib": ["deno.ns", "dom", "dom.iterable", "deno.unstable"]
+  }
+}

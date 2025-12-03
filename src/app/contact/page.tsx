@@ -27,6 +27,44 @@ export default function Contact() {
       },
     },
   };
+
+  async function handleContactSubmit(e: any) {
+    e.preventDefault();
+
+    const form = new FormData(e.target);
+
+    const res = await fetch("/api/contact-submit", {
+      method: "POST",
+      body: JSON.stringify({
+        name: form.get("name"),
+        email: form.get("email"),
+        message: form.get("message"),
+      }),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    alert("Message sent successfully!");
+  }
+
+  async function handleVolunteerSubmit(e: any) {
+    e.preventDefault();
+
+    const form = new FormData(e.target);
+
+    await fetch("/api/volunteer-submit", {
+      method: "POST",
+      body: JSON.stringify({
+        name: form.get("vname"),
+        email: form.get("vemail"),
+        phone: form.get("vphone"),
+        interest: form.get("vinterest"),
+      }),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    alert("Volunteer registration successful!");
+  }
+
   return (
     <>
       {/* Banner Section */}
@@ -146,7 +184,7 @@ export default function Contact() {
                 <p>
                   We’d love to hear from you. Please fill out the form below.
                 </p>
-                <form className={styles.form}>
+                <form className={styles.form} onSubmit={handleContactSubmit}>
                   <div className={styles.formGroup}>
                     <label htmlFor="name">Full Name</label>
                     <input type="text" id="name" name="name" required />
@@ -178,7 +216,7 @@ export default function Contact() {
               <div className={styles.formContainer}>
                 <h2>Volunteer Registration</h2>
                 <p>Join our team and make a difference in your community.</p>
-                <form className={styles.form}>
+                <form className={styles.form} onSubmit={handleVolunteerSubmit}>
                   <div className={styles.formGroup}>
                     <label htmlFor="vname">Full Name</label>
                     <input type="text" id="vname" name="vname" required />
