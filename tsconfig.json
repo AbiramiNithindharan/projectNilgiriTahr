@@ -34,5 +34,5 @@
     "src/app/api/auth/logout/route.js",
     "src/app/api/auth/login/route.js"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "supabase/functions"]
 }

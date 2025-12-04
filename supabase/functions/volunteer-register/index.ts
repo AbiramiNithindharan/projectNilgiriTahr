@@ -33,7 +33,7 @@ serve(async (req: Request): Promise<Response> => {
     // Admin notification
     await supabase.functions.invoke("send-email", {
       body: {
-        to: "YOUR_ADMIN_EMAIL@gmail.com",
+        to: "nithindharan.r@gmail.com",
         subject: "New Volunteer Registration",
         html: `
           <h3>New Volunteer</h3>
