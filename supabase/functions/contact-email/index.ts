@@ -19,7 +19,7 @@ serve(async (req: Request): Promise<Response> => {
     // Send email
     await supabase.functions.invoke("send-email", {
       body: {
-        to: "YOUR_ADMIN_EMAIL@gmail.com",
+        to: "nithindharan.r@gmail.com",
         subject: "New Contact Form Message",
         html: `
           <h3>New Contact Message</h3>
