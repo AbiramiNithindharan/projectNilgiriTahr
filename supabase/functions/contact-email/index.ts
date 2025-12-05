@@ -7,8 +7,8 @@ serve(async (req: Request): Promise<Response> => {
     const { name, email, message } = await req.json();
 
     const supabase = createClient(
-      Deno.env.get("SUPABASE_URL")!,
-      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
+      Deno.env.get("PROJECT_URL")!,
+      Deno.env.get("SERVICE_ROLE_KEY")!
     );
 
     // Save message
@@ -17,7 +17,7 @@ serve(async (req: Request): Promise<Response> => {
     // Send email
     await supabase.functions.invoke("send-email", {
       body: {
-        to: "nithindharan.r@gmail.com",
+        to: "nre_PzoMrZYF_K9jM3mBE2EHUJZWyCPv4wNBVithindharan.r@gmail.com",
         subject: "New Contact Form Message",
         html: `
           <h3>New Contact Message</h3>

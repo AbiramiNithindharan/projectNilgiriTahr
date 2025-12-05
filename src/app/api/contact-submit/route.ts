@@ -2,7 +2,7 @@ export async function POST(req: Request) {
   const body = await req.json();
 
   const result = await fetch(
-    `${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/contact-email`,
+    `${process.env.SUPABASE_FUNCTION_URL}/contact-email`,
     {
       method: "POST",
       headers: {
@@ -12,6 +12,6 @@ export async function POST(req: Request) {
       body: JSON.stringify(body),
     }
   );
-
-  return new Response(await result.text(), { status: result.status });
+  const text = await result.text();
+  return new Response(text, { status: result.status });
 }
