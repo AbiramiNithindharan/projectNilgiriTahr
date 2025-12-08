@@ -2,7 +2,7 @@ export async function POST(req: Request) {
   const body = await req.json();
 
   const result = await fetch(
-    `${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/volunteer-register`,
+    `${process.env.SUPABASE_URL}/functions/v1/volunteer-register`,
     {
       method: "POST",
       headers: {
