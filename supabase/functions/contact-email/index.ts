@@ -1,6 +1,5 @@
 import { serve } from "std/http/server.ts";
 import { createClient } from "@supabase/supabase-js";
-import { Resend } from "resend";
 
 serve(async (req: Request): Promise<Response> => {
   try {
@@ -11,22 +10,21 @@ serve(async (req: Request): Promise<Response> => {
       Deno.env.get("SERVICE_ROLE_KEY")!
     );
 
-    // Save message
+    // Save message in DB
     await supabase.from("contact_messages").insert({ name, email, message });
 
-    // Send email directly using Resend
-    const resend = new Resend(Deno.env.get("RESEND_API_KEY")!);
-
-    await resend.emails.send({
-      from: "Nilgiri Tahr Project <no-reply@sateline.co.in>",
-      to: "nithindharan.r@gmail.com",
-      subject: "New Contact Form Message",
-      html: `
-        <h3>New Contact Message</h3>
-        <p><b>Name:</b> ${name}</p>
-        <p><b>Email:</b> ${email}</p>
-        <p><b>Message:</b> ${message}</p>
-      `,
+    // Send email through send-email function
+    await supabase.functions.invoke("send-email", {
+      body: {
+        to: "nithindharan.r@gmail.com",
+        subject: "New Contact Form Message",
+        html: `
+          <h3>New Contact Message</h3>
+          <p><b>Name:</b> ${name}</p>
+          <p><b>Email:</b> ${email}</p>
+          <p><b>Message:</b> ${message}</p>
+        `,
+      },
     });
 
     return new Response(JSON.stringify({ success: true }), {
@@ -34,9 +32,11 @@ serve(async (req: Request): Promise<Response> => {
       headers: { "Content-Type": "application/json" },
     });
   } catch (err) {
-    console.error("Send Email Error:", err);
-    return new Response(JSON.stringify({ error: String(err) }), {
-      status: 500,
-    });
+    return new Response(
+      JSON.stringify({
+        error: err instanceof Error ? err.message : String(err),
+      }),
+      { status: 500 }
+    );
   }
 });
