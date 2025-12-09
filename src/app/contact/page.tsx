@@ -1,10 +1,20 @@
 "use client";
 
+import { useState } from "react";
+import Toast from "@/components/Toast/Toast";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import styles from "./contact.module.css";
 
 export default function Contact() {
+  const [toast, setToast] = useState<{ message: string; type: string } | null>(
+    null
+  );
+
+  function showToast(message: string, type: "success" | "error") {
+    setToast({ message, type });
+  }
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -31,42 +41,63 @@ export default function Contact() {
   async function handleContactSubmit(e: any) {
     e.preventDefault();
 
-    const form = new FormData(e.target);
+    try {
+      const form = new FormData(e.target);
 
-    const res = await fetch("/api/contact-submit", {
-      method: "POST",
-      body: JSON.stringify({
-        name: form.get("name"),
-        email: form.get("email"),
-        message: form.get("message"),
-      }),
-      headers: { "Content-Type": "application/json" },
-    });
+      const res = await fetch("/api/contact-submit", {
+        method: "POST",
+        body: JSON.stringify({
+          name: form.get("name"),
+          email: form.get("email"),
+          message: form.get("message"),
+        }),
+        headers: { "Content-Type": "application/json" },
+      });
 
-    alert("Message sent successfully!");
+      if (!res.ok) throw new Error("Failed to send message");
+
+      e.target.reset();
+      showToast("Message sent successfully!", "success");
+    } catch (err) {
+      showToast("Something went wrong! Please try again.", "error");
+    }
   }
 
   async function handleVolunteerSubmit(e: any) {
     e.preventDefault();
 
-    const form = new FormData(e.target);
+    try {
+      const form = new FormData(e.target);
 
-    await fetch("/api/volunteer-submit", {
-      method: "POST",
-      body: JSON.stringify({
-        name: form.get("vname"),
-        email: form.get("vemail"),
-        phone: form.get("vphone"),
-        interest: form.get("vinterest"),
-      }),
-      headers: { "Content-Type": "application/json" },
-    });
+      const res = await fetch("/api/volunteer-submit", {
+        method: "POST",
+        body: JSON.stringify({
+          name: form.get("vname"),
+          email: form.get("vemail"),
+          phone: form.get("vphone"),
+          interest: form.get("vinterest"),
+        }),
+        headers: { "Content-Type": "application/json" },
+      });
 
-    alert("Volunteer registration successful!");
+      if (!res.ok) throw new Error("Failed to submit volunteer form");
+
+      e.target.reset();
+      showToast("Volunteer registration successful!", "success");
+    } catch (err) {
+      showToast("Unable to register! Try again later.", "error");
+    }
   }
 
   return (
     <>
+      {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast(null)}
+        />
+      )}
       {/* Banner Section */}
       <motion.div
         className={styles.banner}
