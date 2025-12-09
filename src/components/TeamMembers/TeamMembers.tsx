@@ -64,14 +64,14 @@ export default function TeamMembers() {
             "Principal Chief Conservator of Forests and Chief Wildlife Warden, Tamil Nadu, Thiru Rakesh Kumar Dogra oversees the protection and management of the state’s rich biodiversity. He is responsible for enforcing wildlife laws, supervising conservation activities across national parks, tiger reserves, and wildlife sanctuaries, and coordinating with national-level conservation programs. In his role, he ensures that strategic initiatives such as Project Nilgiri Tahr are implemented effectively, emphasizing habitat restoration, population monitoring, and field-level protection to secure the long-term survival of Tamil Nadu’s state animal and the high-altitude ecosystems it inhabits.",
         },
         {
-          name: "Thiru.M.G.Ganesan",
+          name: "Thiru.M.G.Ganesan, IFS",
           image: "/members/thiru-mg-ganesan.png",
           alt: "Thiru.M.G.Ganesan",
           about:
             "Project Director a native of Ramanathapuram district has completed B.Sc.Agri at PAJANCOA &RI, Karaikal and M.Sc.Agri at GP Pant University at Uttarakhand. Worked as an agricultural officer and got selected as ACF in 2014. Trained at CASFOS dehradun from 2014 to 2016. Worked as ACF squad and vigilance, Eco development officer in KMTR, DD at ATR Pollachi, DD at AIWC. Now working as State Project Director, Project Nilgiri Tahr at Coimbatore. Majorly worked for tribal welfare, local community development, wildlife and wildlife forensics..",
         },
         {
-          name: "Thiru.K.Ganesh Ram",
+          name: "Thiru.K.Ganeshram",
           image: "/members/thiru-k-ganesh-ram.png",
           alt: "Thiru.K.Ganesh Ram",
           about:
