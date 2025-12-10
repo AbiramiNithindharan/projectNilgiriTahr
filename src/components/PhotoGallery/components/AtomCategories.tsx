@@ -31,57 +31,48 @@ const ATOM_NODES: AtomNode[] = [
   {
     id: "associate-fauna",
     label: "Associate Fauna",
-    icon: <Mountain size={20} />,
+    icon: (
+      <img
+        src="/gallery/associate-fauna/associate-fauna-1.JPG"
+        alt="Associate Fauna"
+        className="electron-img"
+      />
+    ),
   },
   {
     id: "nilgiri-tahr",
     label: "Nilgiri Tahr",
-    icon: <Mountain size={20} />,
-    /*  children: [
-      {
-        id: "portrait",
-        label: "portrait",
-        icon: <ImageIcon size={18} />,
-      },
-      {
-        id: "landscape",
-        label: "landscape",
-        icon: <ImageIcon size={18} />,
-      },
-      {
-        id: "group",
-        label: "Nilgiri tahr group",
-        icon: <ImageIcon size={18} />,
-      },
-    ], */
+    icon: (
+      <img
+        src="/gallery/nt-portrait/nilgiritahr-1.JPG"
+        alt="nilgiri tahr"
+        className="electron-img"
+      />
+    ),
   },
   {
     id: "our-work",
     label: "Our Work",
-    icon: <Camera size={20} />,
+
+    icon: (
+      <img
+        src="/gallery/our-work/our-work-1.JPG"
+        alt="nilgiri tahr"
+        className="electron-img"
+      />
+    ),
   },
 
   {
     id: "radio-collaring",
     label: "Radio Collaring",
-    icon: <Megaphone size={20} />,
-    /*  children: [
-      {
-        id: "assciate-flora",
-        label: "Associate Flora",
-        icon: <ImageIcon size={18} />,
-      },
-      {
-        id: "assoca",
-        label: "Associate Flora",
-        icon: <ImageIcon size={18} />,
-      },
-      {
-        id: "assiate-fla",
-        label: "Associate Flora",
-        icon: <ImageIcon size={18} />,
-      },
-    ], */
+    icon: (
+      <img
+        src="/gallery/radio-collared/rc-1.png"
+        alt="Radio collar"
+        className="electron-img"
+      />
+    ),
   },
 ];
 
@@ -244,8 +235,8 @@ export function AtomCategories({ onSelect }: AtomCategoriesProps) {
   const clamp = (v: number, min: number, max: number) =>
     Math.max(min, Math.min(max, v));
 
-  const outerRadius = Math.min(box.w, box.h) * 0.32;
-  const childOffsetBase = Math.min(box.w, box.h) * 0.46;
+  const outerRadius = Math.min(box.w, box.h) * 0.35;
+  const childOffsetBase = Math.min(box.w, box.h) * 0.64;
   const childRadius = Math.min(box.w, box.h) * 0.22;
   const childNodeGap = 16;
   const safePad = 8;
@@ -424,7 +415,7 @@ export function AtomCategories({ onSelect }: AtomCategoriesProps) {
                     transform: `translate(${
                       Math.cos(n.angle) * (box.w * 0.12)
                     }px, 
-                              ${Math.sin(n.angle) * (box.h * 0.09)}px)`,
+                              ${Math.sin(n.angle) * (box.h * 0.08)}px)`,
                     fontSize: `${clamp(box.w * 0.025, 12, 16)}px`,
                   }}
                 >
