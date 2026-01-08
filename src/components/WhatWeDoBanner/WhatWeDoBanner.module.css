@@ -1,6 +1,6 @@
 .banner {
   position: relative;
-  height: 40vh; /* Reduced from 60vh to 40vh */
+  height: 60vh;
   overflow: hidden;
 }
 

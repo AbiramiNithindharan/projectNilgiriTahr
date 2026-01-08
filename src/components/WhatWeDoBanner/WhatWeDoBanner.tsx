@@ -40,15 +40,15 @@ export default function WhatWeDoBanner({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, ease: "easeOut" as const }}
-        style={{ 
-          position: "relative", 
+        style={{
+          position: "relative",
           overflow: "hidden",
-          height: "40vh", // Reduced from 60vh to 40vh
+          height: "60vh",
           marginTop: "100px",
         }}
       >
         <motion.img
-          src="https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+          src="/gallery/nt-portrait/nilgiritahr-17.jpg"
           alt="Wildlife animals"
           className={styles.bannerImage}
           initial={{ scale: 1.1, y: -30, opacity: 0 }}
@@ -140,7 +140,12 @@ export default function WhatWeDoBanner({
               marginBottom: "2rem",
             }}
           >
-            Project Nilgiri Tahr is a comprehensive conservation initiative dedicated to protecting and preserving the endangered Nilgiri Tahr, a species endemic to the Western Ghats of Tamil Nadu and Kerala. Through scientific research, habitat restoration, and community engagement, we work to ensure the long-term survival of this magnificent species.
+            Project Nilgiri Tahr is a comprehensive conservation initiative
+            dedicated to protecting and preserving the endangered Nilgiri Tahr,
+            a species endemic to the Western Ghats of Tamil Nadu and Kerala.
+            Through scientific research, habitat restoration, and community
+            engagement, we work to ensure the long-term survival of this
+            magnificent species.
           </motion.p>
 
           <motion.p
@@ -155,7 +160,10 @@ export default function WhatWeDoBanner({
               fontWeight: "400",
             }}
           >
-            Our multifaceted approach includes population surveys, radio collaring studies, grassland restoration, and collaborative conservation efforts with local communities and stakeholders to create a sustainable future for the Nilgiri Tahr.
+            Our multifaceted approach includes population surveys, radio
+            collaring studies, grassland restoration, and collaborative
+            conservation efforts with local communities and stakeholders to
+            create a sustainable future for the Nilgiri Tahr.
           </motion.p>
         </div>
       </motion.section>

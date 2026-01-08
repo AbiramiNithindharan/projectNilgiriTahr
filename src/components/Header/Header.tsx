@@ -79,6 +79,7 @@ export default function Header({
         timeoutId = null as any;
       }, 16);
     };
+
     if (isVisible) {
       window.addEventListener("scroll", throttledScroll, { passive: true });
       lastScrollY.current = window.scrollY;

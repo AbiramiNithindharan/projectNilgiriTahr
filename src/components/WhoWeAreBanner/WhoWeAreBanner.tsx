@@ -42,8 +42,8 @@ export default function WhoWeAreBanner({
         style={{
           position: "relative",
           overflow: "hidden",
-          height: "60vh", // Increased from 40vh back to 60vh for desktop
-          marginTop: "100px", // Account for header
+          height: "60vh",
+          marginTop: "100px",
         }}
       >
         <motion.img

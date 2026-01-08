@@ -293,10 +293,9 @@ export default function Banner({
                           marginBottom: "10px",
                           fontFamily: "Inter, sans-serif",
                           letterSpacing: "-0.04em",
-                          textTransform: "lowercase",
                         }}
                       >
-                        Conserving the
+                        Conserving The
                       </h1>
                     </motion.div>
 
@@ -313,10 +312,9 @@ export default function Banner({
                           margin: "-0.05em 0 10px 0",
                           fontFamily: "Inter, sans-serif",
                           letterSpacing: "-0.04em",
-                          textTransform: "lowercase",
                         }}
                       >
-                        mountain
+                        Mountain
                       </h1>
                     </motion.div>
 
@@ -333,10 +331,9 @@ export default function Banner({
                           margin: "-0.05em 0 10px 0",
                           fontFamily: "Inter, sans-serif",
                           letterSpacing: "-0.04em",
-                          textTransform: "lowercase",
                         }}
                       >
-                        monarchs of the
+                        Monarchs Of The
                       </h1>
                     </motion.div>
 
@@ -353,7 +350,6 @@ export default function Banner({
                           margin: "-0.05em 0 10px 0",
                           fontFamily: "Inter, sans-serif",
                           letterSpacing: "-0.04em",
-                          textTransform: "lowercase",
                         }}
                       >
                         Western Ghats
