@@ -16,7 +16,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     groq`*[_type == "category" && slug.current == $slug][0]{
       _id, title, bannerImage
     }`,
-    { slug }
+    { slug },
   );
 
   if (!category) return <p>Category not found</p>;
@@ -25,7 +25,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const isPosterCategory = category.title?.toLowerCase().includes("poster");
 
   // Fetch data accordingly
-  const allItems = await client.fetch(
+  const news = await client.fetch(
     isPosterCategory
       ? groq`*[_type == "poster" && category._ref == $categoryId] | order(publishedAt desc){
           _id,
@@ -60,10 +60,9 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             body
           }
         }`,
-    { categoryId: category._id }
+    { categoryId: category._id },
   );
 
-  const news = filterRecentOrFallback(allItems);
   return (
     <CategoryClient
       category={category}
@@ -72,14 +71,4 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       isPosterCategory={isPosterCategory}
     />
   );
-}
-
-function filterRecentOrFallback(allNews: any[]) {
-  const now = new Date();
-  const thirtyDaysAgo = new Date();
-  thirtyDaysAgo.setDate(now.getDate() - 30);
-  const recent = allNews.filter(
-    (n) => new Date(n.publishedAt) >= thirtyDaysAgo
-  );
-  return recent.length ? recent : allNews.slice(0, 3);
 }
