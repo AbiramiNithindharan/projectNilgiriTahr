@@ -227,11 +227,15 @@ export default function NewsRoom() {
                   >
                     <div
                       style={{
-                        fontSize: "4rem",
                         marginBottom: "1rem",
                       }}
                     >
-                      {category.icon}
+                      <img
+                        src={`/icon/${category.icon}.png`}
+                        alt={category.icon}
+                        width={24}
+                        height={24}
+                      />
                     </div>
 
                     <div>
