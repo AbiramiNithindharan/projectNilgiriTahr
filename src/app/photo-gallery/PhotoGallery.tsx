@@ -23,8 +23,8 @@ export default function PhotoGallery() {
         title: "Portrait",
         images: [
           "/gallery/nt-portrait/nilgiritahr-1.JPG",
-          "/gallery/nt-portrait/nilgiritahr-18.JPG",
-          "/gallery/nt-portrait/nilgiritahr-23.JPG",
+          "/gallery/nt-portrait/nilgiritahr-18.jpg",
+          "/gallery/nt-portrait/nilgiritahr-23.jpeg",
         ],
       },
       {
@@ -33,42 +33,41 @@ export default function PhotoGallery() {
         images: [
           "/gallery/nt-portrait/nilgiritahr-2.JPG",
           "/gallery/nt-portrait/nilgiritahr-3.JPG",
-          "/gallery/nt-portrait/nilgiritahr-17.JPG",
+          "/gallery/nt-portrait/nilgiritahr-17.jpg",
           "/gallery/nt-portrait/nilgiritahr-16.JPG",
           "/gallery/nt-portrait/nilgiritahr-8.jpg",
           "/gallery/nt-portrait/nilgiritahr-7.jpg",
           "/gallery/nt-portrait/nilgiritahr-4.JPG",
           "/gallery/nt-portrait/nilgiritahr-3.JPG",
           "/gallery/nt-portrait/nilgiritahr-2.JPG",
-          "/gallery/nt-portrait/nilgiritahr-19.JPG",
-          "/gallery/nt-portrait/nilgiritahr-20.JPG",
-          "/gallery/nt-portrait/nilgiritahr-21.JPG",
-          "/gallery/nt-portrait/nilgiritahr-24.JPG",
-          "/gallery/nt-portrait/nilgiritahr-25.JPG",
-          "/gallery/nt-portrait/nilgiritahr-27.JPG",
-          "/gallery/nt-portrait/nilgiritahr-30.JPG",
-          "/gallery/nt-portrait/nilgiritahr-34.JPG",
-          "/gallery/nt-portrait/nilgiritahr-38.JPG",
+          "/gallery/nt-portrait/nilgiritahr-19.jpg",
+          "/gallery/nt-portrait/nilgiritahr-20.jpg",
+          "/gallery/nt-portrait/nilgiritahr-21.jpeg",
+          "/gallery/nt-portrait/nilgiritahr-24.jpeg",
+          "/gallery/nt-portrait/nilgiritahr-25.png",
+          "/gallery/nt-portrait/nilgiritahr-27.png",
+          "/gallery/nt-portrait/nilgiritahr-30.jpeg",
+          "/gallery/nt-portrait/nilgiritahr-34.jpeg",
+          "/gallery/nt-portrait/nilgiritahr-38.jpeg",
         ],
       },
       {
         id: 3,
         title: "Mountain",
         images: [
-          "/gallery/nt-portrait/nilgiritahr-1.JPG",
           "/gallery/nt-portrait/nilgiritahr-14.JPG",
-          "/gallery/nt-portrait/nilgiritahr-10.JPG",
+          "/gallery/nt-portrait/nilgiritahr-10.jpg",
           "/gallery/nt-portrait/nilgiritahr-9.jpg",
-          "/gallery/nt-portrait/nilgiritahr-22.JPG",
-          "/gallery/nt-portrait/nilgiritahr-26.JPG",
-          "/gallery/nt-portrait/nilgiritahr-28.JPG",
-          "/gallery/nt-portrait/nilgiritahr-29.JPG",
-          "/gallery/nt-portrait/nilgiritahr-35.JPG",
+          "/gallery/nt-portrait/nilgiritahr-22.jpeg",
+          "/gallery/nt-portrait/nilgiritahr-26.png",
+          "/gallery/nt-portrait/nilgiritahr-28.jpeg",
+          "/gallery/nt-portrait/nilgiritahr-29.jpeg",
+          "/gallery/nt-portrait/nilgiritahr-35.jpeg",
         ],
       },
       {
         id: 4,
-        title: "Mountain",
+        title: "Herd",
         images: [
           "/gallery/nt-portrait/nilgiritahr-5.JPG",
           "/gallery/nt-portrait/nilgiritahr-15.JPG",
@@ -93,11 +92,11 @@ export default function PhotoGallery() {
         id: 6,
         title: "Love",
         images: [
-          "/gallery/nt-portrait/nilgiritahr-31.JPG",
-          "/gallery/nt-portrait/nilgiritahr-32.JPG",
-          "/gallery/nt-portrait/nilgiritahr-33.JPG",
-          "/gallery/nt-portrait/nilgiritahr-36.JPG",
-          "/gallery/nt-portrait/nilgiritahr-37.JPG",
+          "/gallery/nt-portrait/nilgiritahr-31.jpeg",
+          "/gallery/nt-portrait/nilgiritahr-32.jpeg",
+          "/gallery/nt-portrait/nilgiritahr-33.jpeg",
+          "/gallery/nt-portrait/nilgiritahr-36.jpeg",
+          "/gallery/nt-portrait/nilgiritahr-37.jpeg",
         ],
       },
     ],
@@ -664,7 +663,7 @@ export default function PhotoGallery() {
             >
               {activeCategory}
               <span style={{ opacity: 0.6, margin: "0 8px" }}>›</span>
-              <motion.h2
+              <motion.span
                 key={activeSubId}
                 className={styles.categoryTitle}
                 initial={{ opacity: 0, y: -10 }}
@@ -672,7 +671,7 @@ export default function PhotoGallery() {
                 transition={{ duration: 0.3 }}
               >
                 {activeSubCategory?.title}
-              </motion.h2>
+              </motion.span>
             </motion.h2>
 
             <motion.div
@@ -750,13 +749,11 @@ export default function PhotoGallery() {
         <MenuOverlay
           isOpen={isMenuOpen}
           onClose={() => setIsMenuOpen(false)}
-          onNavigate={(cat) =>
-            setActiveCategory(cat as keyof typeof categories)
-          }
-          menuItems={Object.keys(categories).map((cat) => ({
-            label: cat,
-            href: cat,
-          }))}
+          categories={categories}
+          onSelect={(cat, subId) => {
+            setActiveCategory(cat as keyof typeof categories);
+            setActiveSubId(subId);
+          }}
         />
       )}
     </>

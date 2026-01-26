@@ -81,7 +81,7 @@ export default function NewsRoom() {
         }}
       >
         <motion.img
-          src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+          src="/gallery/nt-portrait/nilgiritahr-33.jpeg"
           alt="Forest landscape"
           className={styles.bannerImage}
           initial={{ scale: 1.1, y: -30, opacity: 0 }}
@@ -233,8 +233,8 @@ export default function NewsRoom() {
                       <img
                         src={`/icon/${category.icon}.png`}
                         alt={category.icon}
-                        width={24}
-                        height={24}
+                        width={60}
+                        height={60}
                       />
                     </div>
 

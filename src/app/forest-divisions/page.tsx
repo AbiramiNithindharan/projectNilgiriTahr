@@ -36,13 +36,13 @@ export default function NilgiriTahrPage() {
           <div className={styles.section}>
             <h3 className={styles.subHeading}>Tiger Reserve Divisions (7)</h3>
             <ul className={styles.list}>
+              <li>Tirupur</li>
+              <li>Pollachi</li>
               <li>Mudumalai</li>
-              <li>Srivilliputhur</li>
               <li>Megamalai</li>
-              <li>Anamalai</li>
-              <li>Mundanthurai</li>
-              <li>Kalakad</li>
+              <li>Srivilliputhur</li>
               <li>Ambasamudram</li>
+              <li>Kalakkad</li>
             </ul>
           </div>
 
@@ -51,11 +51,11 @@ export default function NilgiriTahrPage() {
               Non-Tiger Reserve Divisions (7)
             </h3>
             <ul className={styles.list}>
-              <li>Coimbatore</li>
-              <li>Pollachi</li>
-              <li>Tiruppur</li>
               <li>Gudalur</li>
               <li>Nilgiris</li>
+              <li>Coimbatore</li>
+              <li>Theni</li>
+              <li>Tirunelveli</li>
               <li>Kodaikanal</li>
               <li>Kanyakumari</li>
             </ul>

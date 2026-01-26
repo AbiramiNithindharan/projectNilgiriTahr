@@ -92,7 +92,7 @@ export default function CategoryClient({
           style={{
             width: "100%",
             height: "100%",
-            objectFit: "cover",
+            objectFit: "fill",
           }}
         />
         <motion.div
@@ -146,7 +146,7 @@ export default function CategoryClient({
             variants={itemVariants}
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
               gap: "2rem",
               padding: "2rem",
             }}
@@ -260,7 +260,7 @@ export default function CategoryClient({
 
                             <a
                               href={`/api/download?file=${encodeURIComponent(
-                                poster.downloadableFile.asset.url
+                                poster.downloadableFile.asset.url,
                               )}`}
                               style={{
                                 display: "inline-block",
@@ -424,7 +424,7 @@ export default function CategoryClient({
                         <p className={styles.date}>
                           {new Date(item.publishedAt).toLocaleDateString(
                             "en-US",
-                            { year: "numeric", month: "long", day: "numeric" }
+                            { year: "numeric", month: "long", day: "numeric" },
                           )}
                         </p>
                         <h3 className={styles.title}>{item.title}</h3>

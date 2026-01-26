@@ -1,20 +1,24 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import styles from "./menuOverlay.module.css";
 import Link from "next/link";
 
-interface MenuOverlayProps {
+type Props = {
   isOpen: boolean;
   onClose: () => void;
-  onNavigate: (href: string) => void;
-  menuItems: Array<{ label: string; href: string }>;
-}
+  categories: Record<string, { id: number; title: string }[]>;
+  onSelect: (cat: string, subId: number) => void;
+};
 
 export default function MenuOverlay({
   isOpen,
   onClose,
-  onNavigate,
-  menuItems,
-}: MenuOverlayProps) {
+  categories,
+  onSelect,
+}: Props) {
+  const [openCat, setOpenCat] = useState<string | null>(null);
   const [windowWidth, setWindowWidth] = useState(0);
 
   useEffect(() => {
@@ -40,154 +44,126 @@ export default function MenuOverlay({
       }}
       style={{
         position: "absolute",
-        top: "100%", // sits just below the category bar
+        top: "100%",
         left: 0,
         width: "100%",
         backgroundColor: "#ffffff",
         boxShadow: "0 4px 10px rgba(0,0,0,0.15)",
         borderRadius: "0 0 10px 10px",
         zIndex: 999,
-        display: "block",
-        height: "auto",
+
         overflow: "hidden",
       }}
     >
+      {/* Close Button */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.3 }}
         style={{
           width: "100%",
-          padding: "1rem 1.5rem",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-start",
-          background: "transparent",
+          padding: "1.5rem",
+          position: "relative",
         }}
       >
-        {/* Close Button */}
-        <motion.div
-          initial={{ x: 50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.3 }}
+        <button
+          onClick={onClose}
           style={{
             position: "absolute",
-            top: "2rem",
-            right: "2rem",
+            top: "1rem",
+            right: "1.5rem",
+            background: "none",
+            border: "none",
+            fontSize: "2rem",
+            cursor: "pointer",
+            color: "#2d5016",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = "scale(1.2)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = "scale(1)";
           }}
         >
-          <button
-            onClick={onClose}
-            style={{
-              background: "none",
-              border: "none",
-              color: "#2d5016",
-              fontSize: "2rem",
-              cursor: "pointer",
-              padding: "0.5rem",
-              transition: "transform 0.3s ease",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "scale(1.2)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "scale(1)";
-            }}
-          >
-            ×
-          </button>
-        </motion.div>
+          ×
+        </button>
 
         {/* Menu Content */}
         <motion.div
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.4 }}
+          transition={{ delay: 0.3, duration: 0.4 }}
           style={{
             display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            width: "100%",
-            height: "100%",
-            padding: "clamp(1rem, 4vw, 4rem)",
-            maxWidth: "1400px",
-            margin: "0 auto",
-            flexDirection: isMobile ? "column" : "row",
-            gap: isMobile ? "2rem" : "4rem",
+            flexDirection: "column",
+            gap: "1.2rem",
+            marginTop: "2rem",
           }}
         >
-          {/* Right Side - Navigation */}
-          <motion.div
-            initial={{ x: 50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.4 }}
-            style={{
-              flex: isMobile ? "none" : 1,
-              display: "flex",
-              justifyContent: "center",
-              width: isMobile ? "100%" : "auto",
-            }}
-          >
-            <nav>
-              <ul
-                style={{
-                  listStyle: "none",
-                  padding: "0",
-                  margin: "0",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "clamp(1rem, 2vw, 1.5rem)",
-                  alignItems: isMobile ? "center" : "flex-start",
-                }}
-              >
-                {menuItems.map((item, index) => (
-                  <motion.li
-                    key={index}
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.6 + index * 0.1, duration: 0.3 }}
+          {Object.entries(categories).map(([cat, subs]) => {
+            const isOpenCat = openCat === cat;
+
+            return (
+              <div key={cat}>
+                {/* MAIN CATEGORY */}
+                <div
+                  onClick={() => setOpenCat(isOpenCat ? null : cat)}
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    fontWeight: 700,
+                    fontSize: "1.2rem",
+                    color: "#1b4332",
+                    cursor: "pointer",
+                    padding: "0.75rem 0",
+                    borderBottom: "1px solid #e5e5e5",
+                  }}
+                >
+                  {cat}
+                  <span>{isOpenCat ? "▲" : "▼"}</span>
+                </div>
+
+                {/* SUB CATEGORIES */}
+                {isOpenCat && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                    style={{
+                      paddingLeft: "1rem",
+                      marginTop: "0.5rem",
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "0.5rem",
+                    }}
                   >
-                    <button
-                      onClick={() => onNavigate(item.href)}
-                      style={{
-                        background: "none",
-                        border: "none",
-                        color: "#2d5016",
-                        textDecoration: "none",
-                        fontSize: "clamp(1.1rem, 3vw, 1.5rem)",
-                        fontWeight: "500",
-                        transition: "all 0.3s ease",
-                        padding: "0.5rem 0",
-                        borderBottom: "2px solid transparent",
-                        textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
-                        fontFamily: "Poppins, sans-serif",
-                        display: "block",
-                        textAlign: isMobile ? "center" : "left",
-                        cursor: "pointer",
-                        width: "100%",
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.borderBottomColor = "#a8dab5";
-                        e.currentTarget.style.color = "#a8dab5";
-                        e.currentTarget.style.transform = isMobile
-                          ? "scale(1.05)"
-                          : "translateX(10px)";
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.borderBottomColor = "transparent";
-                        e.currentTarget.style.color = "#f1faee";
-                        e.currentTarget.style.transform = isMobile
-                          ? "scale(1)"
-                          : "translateX(0)";
-                      }}
-                    >
-                      {item.label}
-                    </button>
-                  </motion.li>
-                ))}
-              </ul>
-            </nav>
-          </motion.div>
+                    {subs.map((sub) => (
+                      <button
+                        key={sub.id}
+                        onClick={() => {
+                          onSelect(cat, sub.id);
+                          onClose(); // 🔥 auto close
+                        }}
+                        style={{
+                          background: "#f1fbf8",
+                          border: "none",
+                          borderRadius: "6px",
+                          padding: "0.6rem 0.8rem",
+                          textAlign: "left",
+                          cursor: "pointer",
+                          color: "#2d6a4f",
+                          fontSize: "0.95rem",
+                        }}
+                      >
+                        {sub.title}
+                      </button>
+                    ))}
+                  </motion.div>
+                )}
+              </div>
+            );
+          })}
         </motion.div>
       </motion.div>
     </motion.div>
