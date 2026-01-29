@@ -56,7 +56,7 @@ const DEFAULT_ORBIT_STYLE: OrbitStyle = {
   },
 };
 
-const ELECTRON_BG = "rgb(255, 255, 255)";
+const ELECTRON_BG = "#52b788";
 
 const SUBCATEGORY_CLUSTER_OFFSET: Record<string, ResponsiveOffset> = {
   nilgiriTahr: {
@@ -105,17 +105,17 @@ const FONT_SIZE_CONFIG = {
   desktop: {
     nucleus: 18,
     mainCategory: 15,
-    subCategory: 12,
+    subCategory: 15,
   },
   tablet: {
     nucleus: 18,
     mainCategory: 13,
-    subCategory: 11,
+    subCategory: 13,
   },
   mobile: {
     nucleus: 18,
     mainCategory: 12,
-    subCategory: 10,
+    subCategory: 12,
   },
 };
 
@@ -250,32 +250,6 @@ export function AtomCategories({ onSelect }: AtomCategoriesProps) {
               ))}
             </>
           )}
-
-          {/* Expanded child orbit (if any) */}
-          {/* {nodesWithPos.map((n) => {
-            if (expandedId !== n.id || !n.subCategories.length) return null;
-
-            const { cx, cy } = getChildOrbitCenter(n);
-            const orbitStyle = ORBIT_STYLES[n.id] || DEFAULT_ORBIT_STYLE;
-            const { cx: finalCx, cy: finalCy } = orbitStyle.orbitOffset(
-              cx,
-              cy,
-              n.angle,
-              childRadius,
-            );
-            return (
-              <g key={`child-orbit-${n.id}`}>
-                <circle
-                  cx={finalCx}
-                  cy={finalCy}
-                  r={childRadius}
-                  fill="none"
-                  stroke={orbitStyle.orbitColor}
-                  strokeWidth="2"
-                />
-              </g>
-            );
-          })} */}
         </svg>
 
         {/* Nucleus */}
@@ -383,7 +357,7 @@ export function AtomCategories({ onSelect }: AtomCategoriesProps) {
                   aria-label={sub.label}
                   title={sub.label}
                 >
-                  {sub.icon}
+                  <span className={styles.childIcon}>{sub.icon}</span>
                   <span
                     className={styles.childLabel}
                     style={{ fontSize: `${fontSizes.subCategory}px` }}
