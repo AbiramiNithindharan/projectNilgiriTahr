@@ -4,12 +4,13 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import styles from "./menuOverlay.module.css";
 import Link from "next/link";
+import { GalleryCategory } from "@/data/galleryData";
 
 type Props = {
   isOpen: boolean;
   onClose: () => void;
-  categories: Record<string, { id: number; title: string }[]>;
-  onSelect: (cat: string, subId: number) => void;
+  categories: GalleryCategory[];
+  onSelect: (categoryId: string, subId: string) => void;
 };
 
 export default function MenuOverlay({
@@ -44,7 +45,7 @@ export default function MenuOverlay({
       }}
       style={{
         position: "absolute",
-        top: "100%",
+        top: "60%",
         left: 0,
         width: "100%",
         backgroundColor: "#ffffff",
@@ -100,14 +101,14 @@ export default function MenuOverlay({
             marginTop: "2rem",
           }}
         >
-          {Object.entries(categories).map(([cat, subs]) => {
-            const isOpenCat = openCat === cat;
+          {categories.map((category) => {
+            const isOpenCat = openCat === category.id;
 
             return (
-              <div key={cat}>
+              <div key={category.id}>
                 {/* MAIN CATEGORY */}
                 <div
-                  onClick={() => setOpenCat(isOpenCat ? null : cat)}
+                  onClick={() => setOpenCat(isOpenCat ? null : category.id)}
                   style={{
                     display: "flex",
                     justifyContent: "space-between",
@@ -120,7 +121,7 @@ export default function MenuOverlay({
                     borderBottom: "1px solid #e5e5e5",
                   }}
                 >
-                  {cat}
+                  {category.label}
                   <span>{isOpenCat ? "▲" : "▼"}</span>
                 </div>
 
@@ -138,11 +139,11 @@ export default function MenuOverlay({
                       gap: "0.5rem",
                     }}
                   >
-                    {subs.map((sub) => (
+                    {category.subCategories.map((sub) => (
                       <button
                         key={sub.id}
                         onClick={() => {
-                          onSelect(cat, sub.id);
+                          onSelect(category.id, sub.id);
                           onClose(); // 🔥 auto close
                         }}
                         style={{
@@ -156,7 +157,7 @@ export default function MenuOverlay({
                           fontSize: "0.95rem",
                         }}
                       >
-                        {sub.title}
+                        {sub.label}
                       </button>
                     ))}
                   </motion.div>

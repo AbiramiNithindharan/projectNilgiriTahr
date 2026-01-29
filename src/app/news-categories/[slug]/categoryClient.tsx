@@ -80,10 +80,7 @@ export default function CategoryClient({
         }}
       >
         <motion.img
-          src={
-            category.bannerImage ||
-            "https://images.unsplash.com/photo-1441974231531-c6227db76b6e"
-          }
+          src="/gallery/nt-portrait/nilgiritahr-33.jpeg"
           alt={category.title}
           className={styles.bannerImage}
           initial={{ scale: 1.1, y: -20, opacity: 0 }}
@@ -92,7 +89,8 @@ export default function CategoryClient({
           style={{
             width: "100%",
             height: "100%",
-            objectFit: "fill",
+            objectFit: "cover",
+            display: "block",
           }}
         />
         <motion.div
@@ -197,7 +195,15 @@ export default function CategoryClient({
                   <SwiperSlide key={poster._id}>
                     <motion.div
                       key={poster._id}
-                      className={styles.posterCard}
+                      style={{
+                        background: "white",
+                        borderRadius: "16px",
+                        boxShadow: "0 8px 32px rgba(27,67,50,0.08)",
+                        padding: "1rem",
+                        display: "flex",
+                        flexDirection: "column",
+                        height: "100%",
+                      }}
                       whileHover={{ scale: 1.02 }}
                       transition={{ duration: 0.3 }}
                     >
@@ -207,9 +213,7 @@ export default function CategoryClient({
                             src={poster.image.asset.url}
                             alt={poster.image.alt || poster.title}
                             fill
-                            style={{
-                              objectFit: "cover",
-                            }}
+                            className={styles.image}
                           />
                         </div>
                       )}
@@ -404,9 +408,9 @@ export default function CategoryClient({
                         borderRadius: "16px",
                         boxShadow: "0 8px 32px rgba(27,67,50,0.08)",
                         padding: "1rem",
-                        height: "420px",
                         display: "flex",
                         flexDirection: "column",
+                        height: "100%",
                       }}
                     >
                       <div className={styles.cardImage}>
