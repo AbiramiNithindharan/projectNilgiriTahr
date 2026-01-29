@@ -25,6 +25,8 @@ export default function PhotoGallery() {
   const initialCategoryId =
     searchParams.get("category") ?? galleryCategories[0].id;
 
+  const subFromUrl = searchParams.get("sub");
+
   const [activeCategoryId, setActiveCategoryId] =
     useState<string>(initialCategoryId);
 
@@ -32,17 +34,16 @@ export default function PhotoGallery() {
     () => getCategoryById(activeCategoryId),
     [activeCategoryId],
   );
-  const [activeSubId, setActiveSubId] = useState<string>(
-    activeCategory.subCategories[0].id,
-  );
+  const [activeSubId, setActiveSubId] = useState<string>(() => {
+    return (
+      activeCategory.subCategories.find((s) => s.id === subFromUrl)?.id ??
+      activeCategory.subCategories[0].id
+    );
+  });
 
   const [openCategoryId, setOpenCategoryId] = useState<string | null>(
     activeCategoryId,
   );
-
-  useEffect(() => {
-    setActiveSubId(activeCategory.subCategories[0].id);
-  }, [activeCategory]);
 
   const activeSubCategory = useMemo<SubCategory | undefined>(() => {
     return activeCategory.subCategories.find((sub) => sub.id === activeSubId);
@@ -79,6 +80,20 @@ export default function PhotoGallery() {
   useEffect(() => {
     setOpenCategoryId(activeCategoryId);
   }, [activeCategoryId]);
+
+  useEffect(() => {
+    const sub = searchParams.get("sub");
+
+    if (sub && activeCategory.subCategories.some((s) => s.id === sub)) {
+      setActiveSubId(sub);
+    } else {
+      setActiveSubId(activeCategory.subCategories[0].id);
+    }
+  }, [activeCategory, searchParams]);
+
+  useEffect(() => {
+    console.log("ACTIVE SUB:", activeSubId);
+  }, [activeSubId]);
 
   return (
     <>

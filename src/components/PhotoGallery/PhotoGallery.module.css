@@ -32,8 +32,8 @@
   left: 32%;
   top: 32%;
   transform: translate(-50%, -50%);
-  width: 220px;
-  height: 220px;
+  width: clamp(150px, 16vw, 220px);
+  height: clamp(150px, 16vw, 220px);
   border-radius: 50%;
   border: 2px solid rgba(255, 255, 255, 0.18);
   object-fit: cover;

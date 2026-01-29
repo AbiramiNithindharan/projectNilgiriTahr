@@ -12,7 +12,9 @@ type AtomCategoriesProps = {
 };
 
 type ResponsiveOffset = {
-  desktop: { x: number; y: number };
+  extraLarge: { x: number; y: number };
+  large?: { x: number; y: number };
+  desktop?: { x: number; y: number };
   tablet?: { x: number; y: number };
   mobile?: { x: number; y: number };
 };
@@ -60,41 +62,57 @@ const ELECTRON_BG = "#52b788";
 
 const SUBCATEGORY_CLUSTER_OFFSET: Record<string, ResponsiveOffset> = {
   nilgiriTahr: {
+    extraLarge: { x: 100, y: 40 },
+    large: { x: 100, y: 40 },
     desktop: { x: 100, y: 40 },
     tablet: { x: 90, y: 40 },
-    mobile: { x: 70, y: 60 },
+    mobile: { x: 60, y: 60 },
   },
   Mission: {
+    extraLarge: { x: 20, y: 60 },
+    large: { x: 30, y: 60 },
     desktop: { x: 30, y: 60 },
     tablet: { x: 30, y: 30 },
     mobile: { x: 25, y: 15 },
   },
   EcoSystem: {
+    extraLarge: { x: 40, y: 80 },
+    large: { x: 40, y: 80 },
     desktop: { x: 40, y: 80 },
     tablet: { x: 40, y: 90 },
     mobile: { x: 50, y: 60 },
   },
   Portfolio: {
+    extraLarge: { x: 50, y: 30 },
+    large: { x: 50, y: 30 },
     desktop: { x: 50, y: 30 },
     tablet: { x: 50, y: 30 },
     mobile: { x: 35, y: 15 },
   },
   Study: {
+    extraLarge: { x: 30, y: -10 },
+    large: { x: 30, y: -10 },
     desktop: { x: 30, y: -10 },
     tablet: { x: 40, y: -10 },
     mobile: { x: 50, y: -20 },
   },
   Location: {
+    extraLarge: { x: 30, y: 30 },
+    large: { x: 30, y: 30 },
     desktop: { x: 30, y: 30 },
     tablet: { x: 30, y: 50 },
     mobile: { x: 30, y: 30 },
   },
   Celebration: {
+    extraLarge: { x: 50, y: 60 },
+    large: { x: 50, y: 60 },
     desktop: { x: 50, y: 60 },
     tablet: { x: 50, y: 60 },
     mobile: { x: 35, y: 25 },
   },
   Poster: {
+    extraLarge: { x: -20, y: 40 },
+    large: { x: -20, y: 40 },
     desktop: { x: -20, y: 40 },
     tablet: { x: -20, y: 40 },
     mobile: { x: -10, y: 60 },
@@ -102,6 +120,16 @@ const SUBCATEGORY_CLUSTER_OFFSET: Record<string, ResponsiveOffset> = {
 };
 
 const FONT_SIZE_CONFIG = {
+  extraLarge: {
+    nucleus: 18,
+    mainCategory: 15,
+    subCategory: 15,
+  },
+  large: {
+    nucleus: 18,
+    mainCategory: 15,
+    subCategory: 15,
+  },
   desktop: {
     nucleus: 18,
     mainCategory: 15,
@@ -120,6 +148,8 @@ const FONT_SIZE_CONFIG = {
 };
 
 const NUCLEUS_POSITION_CONFIG = {
+  extraLarge: { x: 0, y: 0 },
+  large: { x: 0, y: 0 },
   desktop: { x: 0, y: 0 },
   tablet: { x: 0, y: 0 },
   mobile: { x: 0, y: 0 },
@@ -134,8 +164,10 @@ export function AtomCategories({ onSelect }: AtomCategoriesProps) {
 
   const getBreakpoint = () => {
     if (box.w <= 480) return "mobile";
-    if (box.w <= 1024) return "tablet";
-    return "desktop";
+    if (box.w <= 768) return "tablet";
+    if (box.w <= 992) return "desktop";
+    if (box.w <= 1200) return "large";
+    return "extraLarge";
   };
   const breakpoint = getBreakpoint();
   const fontSizes = FONT_SIZE_CONFIG[breakpoint];
@@ -312,61 +344,70 @@ export function AtomCategories({ onSelect }: AtomCategoriesProps) {
             const clusterConfig = SUBCATEGORY_CLUSTER_OFFSET[n.id];
 
             const clusterOffset = clusterConfig?.[breakpoint] ??
-              clusterConfig?.desktop ?? { x: 0, y: 0 };
+              clusterConfig?.extraLarge ?? { x: 0, y: 0 };
 
             const finalCx = cx + clusterOffset.x;
             const finalCy = cy + clusterOffset.y;
 
-            return n.subCategories.map((sub, i) => {
-              const BASE_OFFSET_X = -70; // left
-              const BASE_OFFSET_Y = -80; // up
+            return (
+              <div key={`sub-orbit-${n.id}`}>
+                {n.subCategories.map((sub, i) => {
+                  const BASE_OFFSET_X = -70;
+                  const BASE_OFFSET_Y = -80;
+                  const { x, y } = orbitStyle.childLayout(
+                    i,
+                    n.subCategories.length,
 
-              const { x, y } = orbitStyle.childLayout(
-                i,
-                n.subCategories.length,
+                    childRadius - 30,
+                  );
 
-                childRadius - 30,
-              );
+                  return (
+                    <motion.button
+                      key={`${n.id}-${sub.id}`}
+                      className={styles.childElectron}
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={{
+                        scale: 1,
+                        opacity: 1,
+                        x: x + BASE_OFFSET_X,
+                        y: y + BASE_OFFSET_Y,
+                      }}
+                      transition={{
+                        delay: 0.1 + i * 0.08,
+                        type: "spring",
+                        stiffness: 80,
+                      }}
+                      style={{
+                        left: finalCx,
+                        top: finalCy,
+                        backgroundColor: orbitStyle.childColor,
+                        zIndex: 100 + i,
+                      }}
+                      onClick={(e) => {
+                        e.stopPropagation();
 
-              return (
-                <motion.button
-                  key={`${n.id}-${sub.id}`}
-                  className={styles.childElectron}
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={{
-                    scale: 1,
-                    opacity: 1,
-                    x: x + BASE_OFFSET_X,
-                    y: y + BASE_OFFSET_Y,
-                  }}
-                  transition={{
-                    delay: 0.1 + i * 0.08,
-                    type: "spring",
-                    stiffness: 80,
-                  }}
-                  style={{
-                    left: finalCx,
-                    top: finalCy,
-                    backgroundColor: orbitStyle.childColor,
-                    zIndex: 100 + i,
-                  }}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    router.push(sub.route);
-                  }}
-                  aria-label={sub.label}
-                  title={sub.label}
-                >
-                  <span className={styles.childIcon}>{sub.icon}</span>
-                  <span
-                    className={styles.childLabel}
-                    style={{ fontSize: `${fontSizes.subCategory}px` }}
-                  >
-                    {sub.label}
-                  </span>
-                </motion.button>
-              );
-            });
+                        router.push(sub.route);
+
+                        requestAnimationFrame(() => {
+                          setExpandedId(null);
+                          setShowOuterOrbit(false);
+                        });
+                      }}
+                      aria-label={sub.label}
+                      title={sub.label}
+                    >
+                      <span className={styles.childIcon}>{sub.icon}</span>
+                      <span
+                        className={styles.childLabel}
+                        style={{ fontSize: `${fontSizes.subCategory}px` }}
+                      >
+                        {sub.label}
+                      </span>
+                    </motion.button>
+                  );
+                })}
+              </div>
+            );
           })}
       </div>
     </div>
