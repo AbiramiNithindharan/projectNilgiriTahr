@@ -214,7 +214,7 @@ export const galleryCategories: GalleryCategory[] = [
         id: "M-Stripes",
         label: "M-Stripes",
         images: [
-          "/gallery/Portfolio/M-Stripes/ANAIMALAIYAGAM_M-STRIPE.jpg",
+          "/gallery/Portfolio/M-Stripes/ANAIMALAIYAGAM_M-STRIPES.jpg",
           "/gallery/Portfolio/M-Stripes/M-STRIPES_CAMERATRAP.jpg",
         ],
       },

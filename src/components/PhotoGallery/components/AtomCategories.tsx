@@ -320,10 +320,12 @@ export function AtomCategories({ onSelect }: AtomCategoriesProps) {
                   transform: "translate(-50%, -50%)",
                   width: `${Math.max(78, box.w * 0.07)}px`,
                   height: `${Math.max(78, box.w * 0.07)}px`,
-                  backgroundColor: bg,
+                  backgroundImage: `url(${n.image})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
                 }}
               >
-                <span className={styles.electronIcon}>{n.icon}</span>
                 <span
                   className={styles.electronLabel}
                   style={{ fontSize: `${fontSizes.mainCategory}px` }}
@@ -380,7 +382,10 @@ export function AtomCategories({ onSelect }: AtomCategoriesProps) {
                       style={{
                         left: finalCx,
                         top: finalCy,
-                        backgroundColor: orbitStyle.childColor,
+                        backgroundImage: `url(${sub.image})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        backgroundRepeat: "no-repeat",
                         zIndex: 100 + i,
                       }}
                       onClick={(e) => {
@@ -396,7 +401,6 @@ export function AtomCategories({ onSelect }: AtomCategoriesProps) {
                       aria-label={sub.label}
                       title={sub.label}
                     >
-                      <span className={styles.childIcon}>{sub.icon}</span>
                       <span
                         className={styles.childLabel}
                         style={{ fontSize: `${fontSizes.subCategory}px` }}
