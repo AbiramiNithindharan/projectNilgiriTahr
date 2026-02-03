@@ -86,9 +86,9 @@ export const GALLERY_ATOM_CATEGORIES: AtomMainCategory[] = [
         image: "/gallery/radio-collared/radiocollar-1.JPG",
       },
       {
-        id: "Love",
-        label: "Love",
-        route: "/photo-gallery?category=nilgiriTahr&sub=Love",
+        id: "Fawn",
+        label: "Fawn",
+        route: "/photo-gallery?category=nilgiriTahr&sub=Fawn",
         icon: <Heart {...ICON_SUB} />,
         image: "/gallery/nt-portrait/nilgiritahr-31.jpeg",
       },

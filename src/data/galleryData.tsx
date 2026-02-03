@@ -86,8 +86,8 @@ export const galleryCategories: GalleryCategory[] = [
         ],
       },
       {
-        id: "Love",
-        label: "Love",
+        id: "Fawn",
+        label: "Fawn",
         images: [
           "/gallery/nt-portrait/nilgiritahr-31.jpeg",
           "/gallery/nt-portrait/nilgiritahr-32.jpeg",
