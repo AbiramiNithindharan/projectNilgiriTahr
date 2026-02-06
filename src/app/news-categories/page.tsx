@@ -82,7 +82,7 @@ export default function NewsRoom() {
       >
         <motion.img
           src="/gallery/nt-portrait/nilgiritahr-33.jpeg"
-          alt="Forest landscape"
+          alt="Tahr Habitat"
           className={styles.bannerImage}
           initial={{ scale: 1.1, y: -30, opacity: 0 }}
           animate={{ scale: 1, y: 0, opacity: 1 }}

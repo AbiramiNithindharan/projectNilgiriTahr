@@ -39,7 +39,7 @@ export async function POST(req: Request) {
     if (!paymentId || !orderId || !signature) {
       return NextResponse.json(
         { error: "Missing payment fields." },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -51,21 +51,21 @@ export async function POST(req: Request) {
     ) {
       return NextResponse.json(
         { error: "Invalid payment amount." },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     if (safeEmail && !validateEmail(safeEmail)) {
       return NextResponse.json(
         { error: "Invalid donor email." },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     if (safeName && !validateName(safeName)) {
       return NextResponse.json(
         { error: "Invalid donor name." },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -83,12 +83,29 @@ export async function POST(req: Request) {
       });
     }
 
+    const { data: existingPayment } = await supabaseAdmin
+      .from("donations")
+      .select("id")
+      .eq("payment_id", paymentId)
+      .single();
+
+    if (existingPayment) {
+      console.warn("⚠️ Duplicate payment verification attempt");
+
+      return NextResponse.json({
+        success: true,
+        referenceId: orderId,
+        amount: safeAmount,
+      });
+    }
+    const receiptNo = `NT-${new Date().getFullYear()}-${orderId.slice(-6)}`;
     // --- Store in Supabase ---
     const { error } = await supabaseAdmin.from("donations").insert([
       {
         payment_id: paymentId,
         order_id: orderId,
         razorpay_signature: signature,
+        receipt_no: receiptNo,
         name: safeName || "anonymous",
         email: safeEmail || "",
         amount: safeAmount,
@@ -107,11 +124,14 @@ export async function POST(req: Request) {
       console.error("❌ Supabase insertion error:", error.message);
       return NextResponse.json(
         { error: "Failed to store payment record." },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({
+      success: true,
+      referenceId: receiptNo,
+    });
   } catch (err: any) {
     console.error("❌ Verification error:", err.message);
     return NextResponse.json({ error: "Server error" }, { status: 500 });

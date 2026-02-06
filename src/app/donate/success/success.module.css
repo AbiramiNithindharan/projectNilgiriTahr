@@ -1,0 +1,45 @@
+.container {
+    min-height: 100vh;
+    background: #f4f6f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background: #ffffff;
+    max-width: 520px;
+    width: 100%;
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.title {
+    font-size: 24px;
+    color: #1a7f37;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #555;
+    margin-bottom: 24px;
+}
+
+.details div {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.success {
+    color: #1a7f37;
+    font-weight: 600;
+}
+
+.note {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #6b7280;
+}

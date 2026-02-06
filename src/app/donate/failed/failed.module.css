@@ -1,0 +1,49 @@
+.container {
+    min-height: 100vh;
+    background: #fff7ed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background: white;
+    max-width: 500px;
+    width: 100%;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.title {
+    color: #b42318;
+    font-size: 22px;
+}
+
+.message {
+    margin: 14px 0;
+    color: #444;
+}
+
+.reason {
+    background: #fef2f2;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.actions button {
+    margin-top: 20px;
+    background: #0d6efd;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.support {
+    margin-top: 18px;
+    font-size: 13px;
+    color: #555;
+}

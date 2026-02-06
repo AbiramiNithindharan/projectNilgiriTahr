@@ -140,7 +140,7 @@ export default function TeamMembers() {
         },
         {
           name: "Dr. Yash Veer Bhatnagar ",
-          image: "/fallback.png",
+          image: "/members/Yash-Veer.jpeg",
           alt: "Dr. Yash Veer Bhatnagar ",
           about:
             "Country Representative at IUCN, PhD (Wildlife Sciences) is a conservation scientist with over 30 years of experience focused on high-altitude ecosystems, mountain ungulates, and human-wildlife coexistence. He completed a Master’s in Agricultural Entomology and another in Wildlife Science from the Wildlife Institute of India (WII), and earned his PhD for research on ranging and habitat use by Himalayan ibex. He has worked at Nature Conservation Foundation since 2003, co-directing its High Altitude Program, and prior to that with WII and the Snow Leopard Trust. His expertise includes wildlife ecology, habitat modelling, participatory conservation planning, policy support, and conflict resolution between people and wildlife. He has more than 90 publications spanning peer-reviewed papers, technical reports and field studies.",

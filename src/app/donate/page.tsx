@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import styles from "./donate.module.css";
-
+import { useRouter } from "next/navigation";
 declare global {
   interface Window {
     Razorpay: any;
@@ -20,7 +20,7 @@ export default function DonatePage() {
     amount?: string;
   }>({});
   const [loading, setLoading] = useState(false);
-
+  const router = useRouter();
   // Load Razorpay script once
   useEffect(() => {
     const id = "razorpay-script";
@@ -125,13 +125,11 @@ export default function DonatePage() {
 
           const data = await verifyRes.json();
           if (data.success) {
-            setName("");
-            setEmail("");
-            setAmount("100");
-            setErrors({});
-            alert("✅ Payment Verified Successfully!");
+            router.push(
+              `/donate/success?ref=${data.referenceId}&amount=${amt}`,
+            );
           } else {
-            alert("❌ Payment verification failed.");
+            router.push(`/donate/failed?reason=verification_failed`);
           }
         },
         modal: {

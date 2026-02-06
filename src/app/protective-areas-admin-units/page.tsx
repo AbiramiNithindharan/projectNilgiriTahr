@@ -54,8 +54,8 @@ export default function WhereWeWork() {
         }}
       >
         <motion.img
-          src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
-          alt="Forest landscape"
+          src="/gallery/nt-portrait/nilgiritahr-33.jpeg"
+          alt="Tahr Habitat"
           className={styles.bannerImage}
           initial={{ scale: 1.1, y: -30, opacity: 0 }}
           animate={{ scale: 1, y: 0, opacity: 1 }}
