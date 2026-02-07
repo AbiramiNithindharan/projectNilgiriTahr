@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { easeOut } from "framer-motion";
 import styles from "./MissionVisionVictories.module.css";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function MissionVisionVictories() {
   const containerVariants = {
@@ -33,14 +34,14 @@ export default function MissionVisionVictories() {
     {
       id: "our-vision",
       title: "Our Vision",
-      icon: "🦌",
+      icon: "/gallery/nt-portrait/nilgiritahr-19.jpg",
       content:
         "We envision a living sanctuary of collaboration, where people and nature come together in harmony. A place where conservationists, communities, and young minds unite to protect the Nilgiri Tahr — the mountain monarch of the Western Ghats — and the delicate tapestry of life it represents. Through shared wisdom and collective action, we aspire to see these misty highlands flourish, with thriving herds roaming free as symbols of resilience, hope, and balance. Our vision is a future, where protecting the Nilgiri Tahr becomes a legacy of care passed down through generations.",
     },
     {
       id: "our-mission",
       title: "Our Mission",
-      icon: "🌿",
+      icon: "/icon/mission.jpg",
       content:
         "Our mission is to guard the Nilgiri Tahr, an ancient and enduring spirit of the mountains, with science as our guide and communities as our strength. We strive to heal the grasslands, restore lost habitats, and safeguard these wild beings from the threats of a changing world. By weaving together research, education, and local stewardship, we seek to create landscapes where wildlife and people coexist in harmony. In protecting the Nilgiri Tahr, we protect the heart of the Western Ghats — ensuring its mist-clad peaks continue to echo with life for centuries to come.",
     },
@@ -142,14 +143,37 @@ export default function MissionVisionVictories() {
             >
               <div
                 style={{
-                  fontSize: "4rem",
                   marginBottom: "1.5rem",
-                  filter: "drop-shadow(0 4px 8px rgba(27, 67, 50, 0.2))",
+                  display: "flex",
+                  justifyContent: "center",
                 }}
               >
-                {section.icon}
+                <div
+                  style={{
+                    width: "72px",
+                    height: "72px",
+                    borderRadius: "50%",
+                    overflow: "hidden",
+                    background: "rgba(82, 183, 136, 0.12)", // soft green halo
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    boxShadow: "0 6px 16px rgba(27, 67, 50, 0.18)",
+                  }}
+                >
+                  <Image
+                    src={section.icon}
+                    alt={section.title}
+                    width={48}
+                    height={48}
+                    priority={index === 0}
+                    style={{
+                      borderRadius: "50%",
+                      transform: "scale(1.25)",
+                    }}
+                  />
+                </div>
               </div>
-
               <h3
                 style={{
                   fontSize: "clamp(1.5rem, 3vw, 2rem)",
