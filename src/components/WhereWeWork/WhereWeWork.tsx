@@ -21,7 +21,7 @@ export default function WhereWeWork() {
       title: "Shola Grassland",
       description:
         "High-altitude grassland ecosystems interspersed with stunted tropical montane forests, providing crucial habitat for Nilgiri Tahr.",
-      icon: "🌾",
+      icon: "/gallery/nt-portrait/nilgiritahr-33.jpeg",
       details:
         "Critical grazing areas for Nilgiri Tahr herds in the upper elevations of the Western Ghats.",
     },
@@ -30,7 +30,7 @@ export default function WhereWeWork() {
       title: "Montane Forest",
       description:
         "Tropical montane cloud forests that provide shelter and browse for Nilgiri Tahr during adverse weather conditions.",
-      icon: "🌲",
+      icon: "/gallery/nt-portrait/nilgiritahr-31.jpeg",
       details:
         "Dense forest areas offering protection and diverse vegetation for wildlife.",
     },
@@ -39,7 +39,7 @@ export default function WhereWeWork() {
       title: "Evergreen Forest",
       description:
         "Dense evergreen forests in the lower elevations that form part of the Nilgiri Tahr's extended habitat range.",
-      icon: "🌿",
+      icon: "/gallery/nt-portrait/nilgiritahr-38.jpeg",
       details:
         "Rich biodiversity zones supporting the broader ecosystem of the Western Ghats.",
     },
@@ -214,54 +214,91 @@ export default function WhereWeWork() {
                       style={{
                         background: "rgba(255, 255, 255, 0.95)",
                         borderRadius: "16px",
-                        padding: "2rem",
-                        textAlign: "center",
                         boxShadow: "0 8px 32px rgba(27, 67, 50, 0.08)",
                         border: "1px solid rgba(255, 255, 255, 0.3)",
-                        transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                         cursor: "pointer",
-
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "space-between",
                         height: "100%",
                         minHeight: "380px",
+                        overflow: "hidden",
+                        display: "grid",
+                        gridTemplateRows: "50% 1fr",
                       }}
                     >
+                      {/* Image Section */}
                       <div
                         style={{
-                          fontSize: "4rem",
-                          marginBottom: "1rem",
+                          position: "relative",
+                          width: "100%",
+                          height: "100%",
                         }}
                       >
-                        {area.icon}
+                        <Image
+                          src={area.icon}
+                          alt={area.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                          style={{
+                            objectFit: "cover",
+                          }}
+                          priority={false}
+                        />
+
+                        {/* Dark overlay for title readability */}
+                        <div
+                          style={{
+                            position: "absolute",
+                            inset: 0,
+                            background:
+                              "linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.55))",
+                          }}
+                        />
+
+                        {/* Centered Title */}
+                        <h4
+                          style={{
+                            position: "absolute",
+                            top: "50%",
+                            left: "50%",
+                            transform: "translate(-50%, -50%)",
+                            color: "#ffffff",
+                            fontSize: "1.6rem",
+                            fontWeight: "700",
+                            fontFamily: "Poppins, sans-serif",
+                            margin: 0,
+                            textAlign: "center",
+                            padding: "0 1rem",
+                            lineHeight: "1.2",
+                            zIndex: 2,
+                            textShadow: "0 4px 12px rgba(0,0,0,0.4)",
+                          }}
+                        >
+                          {area.title}
+                        </h4>
                       </div>
-                      <h4
+                      {/* Content Section */}
+                      <div
                         style={{
-                          fontSize: "1.4rem",
-                          fontWeight: "700",
-                          color: "#1b4332",
-                          margin: "0 0 1rem 0",
-                          fontFamily: "Poppins, sans-serif",
+                          padding: "1.5rem 1.75rem 2rem",
+                          display: "flex",
+                          alignItems: "center",
                         }}
                       >
-                        {area.title}
-                      </h4>
-                      <p
-                        style={{
-                          fontSize: "1rem",
-                          color: "#2d5016",
-                          lineHeight: "1.6",
-                          margin: "0",
-                          fontFamily: "Poppins, sans-serif",
-                          opacity: 0.9,
-                          textAlign: "justify",
-                        }}
-                      >
-                        {hoveredCard === area.id
-                          ? area.details
-                          : area.description}
-                      </p>
+                        <p
+                          style={{
+                            fontSize: "1rem",
+                            color: "#2d5016",
+                            lineHeight: "1.6",
+                            margin: 0,
+                            fontFamily: "Poppins, sans-serif",
+                            opacity: 0.9,
+                            textAlign: "justify",
+                          }}
+                        >
+                          {hoveredCard === area.id
+                            ? area.details
+                            : area.description}
+                        </p>
+                      </div>
                     </motion.div>
                   </SwiperSlide>
                 ))}

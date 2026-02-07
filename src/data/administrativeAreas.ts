@@ -33,7 +33,7 @@ export const administrativeAreas = [
       "Tiger Reserves provide the highest degree of protection under India’s Wildlife Protection Act, benefiting Nilgiri Tahr populations through strict habitat preservation and funding support.",
 
     link: "/tiger-reserves",
-    image: "/gallery/tiger-reserves.jpg",
+    image: "/gallery/nt-portrait/nilgiritahr-28.jpeg",
     type: "protected",
   },
   {
@@ -41,7 +41,7 @@ export const administrativeAreas = [
     title: "Elephant Reserves",
     description:
       "Elephant reserves where Nilgiri Tahr share habitat space, creating integrated conservation landscapes.",
-    image: "/gallery/elephant-reserves.jpg",
+    image: "/gallery/nt-portrait/nilgiritahr-22.jpeg",
     link: "elephant-reserves",
     type: "administrative",
   },

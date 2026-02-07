@@ -134,7 +134,7 @@ export default function NewsRoom() {
     {
       id: "survey-2024",
       title: "Survey 2024",
-      icon: "📊",
+      image: "/gallery/survey-2024.JPG",
       link: "/victory-sections/survey-2024",
       content:
         "A comprehensive survey was conducted in the year 2024, across Nilgiri Tahr habitats, documenting their population size, distribution patterns, and habitat use to strengthen long-term conservation strategies.",
@@ -142,7 +142,7 @@ export default function NewsRoom() {
     {
       id: "radio-collaring",
       title: "Radio Collaring",
-      icon: "📡",
+      image: "/gallery/radio-collared.JPG",
       link: "/victory-sections/radio-collaring",
       content:
         "Radio-collaring Nilgiri Tahr to track their movements, habitat use, and behavior, providing vital insights for science-based conservation and management.",
@@ -150,7 +150,7 @@ export default function NewsRoom() {
     {
       id: "survey-2025",
       title: "Survey 2025",
-      icon: "🔬",
+      image: "/gallery/survey-2025.JPG",
       link: "/victory-sections/survey-2025",
       content:
         "The 2025 Nilgiri Tahr survey continues our mission to monitor populations across key habitats, updating trends in distribution, numbers, and health to guide future conservation action",
@@ -343,13 +343,15 @@ export default function NewsRoom() {
                       background: "rgba(255, 255, 255, 0.95)",
                       backdropFilter: "blur(15px)",
                       borderRadius: "16px",
-                      padding: "2.5rem 2rem",
                       textAlign: "center",
                       boxShadow: "0 8px 32px rgba(27, 67, 50, 0.08)",
                       border: "1px solid rgba(255, 255, 255, 0.3)",
                       transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                       cursor: "pointer",
                       height: "450px",
+                      padding: "0",
+                      display: "grid",
+                      gridTemplateRows: "50% 1fr",
                       position: "relative",
                       overflow: "hidden",
                     }}
@@ -368,84 +370,118 @@ export default function NewsRoom() {
                       }}
                     />
 
+                    {/* Image Hero */}
                     <div
                       style={{
-                        fontSize: "3.5rem",
+                        position: "relative",
+                        width: "100%",
                         marginBottom: "1.5rem",
-                        filter: "drop-shadow(0 4px 8px rgba(27, 67, 50, 0.2))",
-                        position: "relative",
-                        zIndex: 2,
                       }}
                     >
-                      {victory.icon}
-                    </div>
-
-                    <h3
-                      style={{
-                        fontSize: "clamp(1.3rem, 2.5vw, 1.6rem)",
-                        fontWeight: "700",
-                        color: "#1b4332",
-                        marginBottom: "1.5rem",
-                        fontFamily: "Poppins, sans-serif",
-                        position: "relative",
-                        zIndex: 2,
-                      }}
-                    >
-                      {victory.title}
-                    </h3>
-
-                    <p
-                      style={{
-                        fontSize: "clamp(0.95rem, 2vw, 1.05rem)",
-                        lineHeight: "1.6",
-                        color: "#2d5016",
-                        fontFamily: "Poppins, sans-serif",
-                        fontWeight: "400",
-                        margin: "0",
-                        opacity: 0.9,
-                        position: "relative",
-                        zIndex: 2,
-                        textAlign: "justify",
-                      }}
-                    >
-                      {victory.content}
-                    </p>
-                    <Link
-                      href={victory.link}
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        marginTop: "1rem",
-                      }}
-                    >
-                      <motion.button
-                        whileHover={{ scale: 1.02 }}
+                      <Image
+                        src={victory.image}
+                        alt={victory.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
                         style={{
-                          background: "transparent",
-                          border: "2px solid #090909ff",
-                          color: "#090909ff",
-                          padding: "0.8rem 1.5rem",
-                          fontSize: "0.8rem",
-                          fontWeight: "600",
-                          fontFamily: "Inter, sans-serif",
-                          textTransform: "uppercase",
-                          letterSpacing: "0.1em",
-                          cursor: "pointer",
-                          transition: "all 0.3s ease",
+                          objectFit: "fill",
                         }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.background = "#000000";
-                          e.currentTarget.style.color = "#ffffff";
+                        priority={index === 0}
+                      />
+
+                      {/* Overlay for contrast */}
+                      <div
+                        style={{
+                          position: "absolute",
+                          inset: 0,
+                          background:
+                            "linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.6))",
                         }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.background = "transparent";
-                          e.currentTarget.style.color = "#000000";
+                      />
+
+                      {/* Centered Title */}
+                      <h3
+                        style={{
+                          position: "absolute",
+                          top: "50%",
+                          left: "50%",
+                          transform: "translate(-50%, -50%)",
+                          color: "#ffffff",
+                          fontSize: "clamp(1.4rem, 2.5vw, 1.8rem)",
+                          fontWeight: "700",
+                          fontFamily: "Poppins, sans-serif",
+                          textAlign: "center",
+                          padding: "0 1rem",
+                          lineHeight: "1.2",
+                          textShadow: "0 4px 12px rgba(0,0,0,0.45)",
+                          zIndex: 2,
+                          margin: 0,
                         }}
                       >
-                        LEARN MORE
-                      </motion.button>
-                    </Link>
+                        {victory.title}
+                      </h3>
+                    </div>
+                    <div
+                      style={{
+                        padding: "1.75rem 2rem 2rem",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <p
+                        style={{
+                          fontSize: "clamp(0.95rem, 2vw, 1.05rem)",
+                          lineHeight: "1.6",
+                          color: "#2d5016",
+                          fontFamily: "Poppins, sans-serif",
+                          fontWeight: "400",
+                          margin: "0",
+                          opacity: 0.9,
+                          position: "relative",
+                          zIndex: 2,
+                          textAlign: "justify",
+                        }}
+                      >
+                        {victory.content}
+                      </p>
+                      <Link
+                        href={victory.link}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          marginTop: "1rem",
+                        }}
+                      >
+                        <motion.button
+                          whileHover={{ scale: 1.02 }}
+                          style={{
+                            background: "transparent",
+                            border: "2px solid #090909ff",
+                            color: "#090909ff",
+                            padding: "0.8rem 1.5rem",
+                            fontSize: "0.8rem",
+                            fontWeight: "600",
+                            fontFamily: "Inter, sans-serif",
+                            textTransform: "uppercase",
+                            letterSpacing: "0.1em",
+                            cursor: "pointer",
+                            transition: "all 0.3s ease",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.background = "#000000";
+                            e.currentTarget.style.color = "#ffffff";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.background = "transparent";
+                            e.currentTarget.style.color = "#000000";
+                          }}
+                        >
+                          LEARN MORE
+                        </motion.button>
+                      </Link>
+                    </div>
                   </motion.div>
                 </SwiperSlide>
               ))}

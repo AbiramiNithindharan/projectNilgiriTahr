@@ -8,6 +8,7 @@ import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import Image from "next/image";
 
 export default function WhoWeAreCards() {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
@@ -20,7 +21,7 @@ export default function WhoWeAreCards() {
   const cards = [
     {
       id: "1",
-      icon: "🎖️",
+      image: "/gallery/survey-2025.JPG",
       title: "Board Members",
       description:
         "Our board comprises distinguished wildlife conservationists, forest officials, and environmental scientists who provide strategic guidance for Nilgiri Tahr conservation initiatives and policy development.",
@@ -28,7 +29,7 @@ export default function WhoWeAreCards() {
     },
     {
       id: "2",
-      icon: "🔍",
+      image: "/gallery/Portfolio/BiennialSurvey/BS6.jpg",
       title: "Research Team",
       description:
         "A dedicated team of wildlife biologists, ecologists, and field researchers conducting cutting-edge studies on Nilgiri Tahr behavior, population dynamics, and habitat requirements for evidence-based conservation.",
@@ -36,7 +37,7 @@ export default function WhoWeAreCards() {
     },
     {
       id: "3",
-      icon: "🔬",
+      image: "/gallery/Portfolio/PilotStudy/PS2.jpg",
       title: "Scientific Committee",
       description:
         "Leading experts in wildlife conservation, veterinary science, and ecosystem management who review research findings and develop scientific protocols for Nilgiri Tahr protection and habitat restoration.",
@@ -44,7 +45,7 @@ export default function WhoWeAreCards() {
     },
     {
       id: "4",
-      icon: "🤝",
+      image: "/gallery/nt-portrait/nilgiritahr-18.jpg",
       title: "Our Partners",
       description:
         "Collaborative network including Tamil Nadu Forest Department, local communities, international conservation organizations, and academic institutions working together for Nilgiri Tahr conservation success.",
@@ -279,56 +280,92 @@ export default function WhoWeAreCards() {
                   style={{
                     background: "#ffffff",
                     borderRadius: "16px",
-                    padding: "clamp(1rem, 2vw, 2rem)",
+                    padding: 0,
                     boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
                     border: "1px solid #e5e7eb",
                     transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                     cursor: "pointer",
-                    textAlign: "center",
+                    textAlign: "left",
                     height: "350px",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
+                    display: "grid",
+                    gridTemplateRows: "40% 1fr",
+                    overflow: "hidden",
                   }}
                 >
+                  {/* Image section */}
                   <div
                     style={{
-                      fontSize: "2rem",
-                      marginBottom: "1rem",
+                      position: "relative",
+                      width: "100%",
+                      height: "100%",
                     }}
                   >
-                    {card.icon}
-                  </div>
-                  <h3
-                    style={{
-                      fontSize: "clamp(1rem, 3vw, 1.5rem)",
-                      fontWeight: "600",
-                      color: "#1b4332",
-                      margin: "0 0 clamp(0.5rem, 1vw, 1rem) 0",
-                      fontFamily: "Poppins, sans-serif",
-                      lineHeight: "1.2",
-                    }}
-                  >
-                    {card.title}
-                  </h3>
+                    <Image
+                      src={card.image}
+                      alt={card.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 25vw"
+                      style={{ objectFit: "cover" }}
+                    />
 
-                  <p
+                    {/* Overlay */}
+                    <div
+                      style={{
+                        position: "absolute",
+                        inset: 0,
+                        background:
+                          "linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.55))",
+                        zIndex: 1,
+                      }}
+                    />
+
+                    {/* Centered title */}
+                    <h3
+                      style={{
+                        position: "absolute",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                        color: "#ffffff",
+                        fontSize: "clamp(1.1rem, 2.4vw, 1.4rem)",
+                        fontWeight: "700",
+                        fontFamily: "Poppins, sans-serif",
+                        textAlign: "center",
+                        padding: "0 1rem",
+                        lineHeight: "1.2",
+                        textShadow: "0 4px 12px rgba(0,0,0,0.45)",
+                        zIndex: 2,
+                        margin: 0,
+                      }}
+                    >
+                      {card.title}
+                    </h3>
+                  </div>
+                  <div
                     style={{
-                      fontSize: "clamp(0.75rem, 2vw, 1rem)",
-                      lineHeight: "1.4",
-                      color: "#6b7280",
-                      fontFamily: "Poppins, sans-serif",
-                      fontWeight: "400",
-                      margin: "0",
-                      display: "-webkit-box",
-                      WebkitLineClamp: 6, // Limit to 3 lines on mobile
-                      WebkitBoxOrient: "vertical",
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
+                      padding: "1.25rem 1.5rem 1.75rem",
+                      display: "flex",
+                      alignItems: "center",
                     }}
                   >
-                    {card.description}
-                  </p>
+                    <p
+                      style={{
+                        fontSize: "clamp(0.75rem, 2vw, 1rem)",
+                        lineHeight: "1.4",
+                        color: "#6b7280",
+                        fontFamily: "Poppins, sans-serif",
+                        fontWeight: "400",
+                        margin: "0",
+                        display: "-webkit-box",
+                        WebkitLineClamp: 6, // Limit to 3 lines on mobile
+                        WebkitBoxOrient: "vertical",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                      }}
+                    >
+                      {card.description}
+                    </p>
+                  </div>
                 </motion.div>
               </SwiperSlide>
             ))}
