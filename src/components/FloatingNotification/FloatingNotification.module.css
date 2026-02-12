@@ -1,0 +1,157 @@
+/* ============================= */
+/* FLOATING ICON */
+/* ============================= */
+
+.floatingIcon {
+    position: fixed;
+    right: 24px;
+    top: 20%;
+    z-index: 9999;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Hanging Bell Swing Animation */
+.bell {
+    transform-origin: top center;
+    animation: bellSwing 3s ease-in-out infinite;
+}
+
+/* Realistic swing */
+@keyframes bellSwing {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(6deg);
+    }
+
+    50% {
+        transform: rotate(-6deg);
+    }
+
+    75% {
+        transform: rotate(4deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+/* Subtle glow pulse */
+.glow {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+
+    background: rgba(255, 200, 0, 0.3);
+
+    animation: glowPulse 2.5s infinite;
+}
+
+@keyframes glowPulse {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 0.2;
+    }
+
+    100% {
+        transform: scale(0.8);
+        opacity: 0.6;
+    }
+}
+
+/* ============================= */
+/* MODAL */
+/* ============================= */
+
+.overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.6);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 10000;
+
+    animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.modal {
+    position: relative;
+
+    background: white;
+    border-radius: 14px;
+    padding: 15px;
+
+    animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.85);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.popupImage {
+    border-radius: 10px;
+    max-width: 90vw;
+    height: auto;
+}
+
+/* Close button */
+
+.closeBtn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+
+    border: none;
+    background: transparent;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* ============================= */
+/* MOBILE RESPONSIVE */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+    .floatingIcon {
+        right: 12px;
+        top: auto;
+        bottom: 20%;
+    }
+
+}

@@ -105,13 +105,6 @@ export default function TeamMembers() {
             "Mr. K. Manigandan, Senior Research Fellow of Project Nilgiri Tahr, is a Wildlife Biologist. He received his Bachelor of Science in Zoology, Government Arts College, Coimbatore and Master of Science in Wildlife Biology from Government Arts College, The Nilgiris. He has studied Human Elephant Conflicts in Hosur Forest Division, Cauvery North Wildlife Sanctuary during his Master's. He worked as a Field Officer in A Rocha India (NGO), Bannerghatta National Park, Bangalore for Research and Monitoring of the Elephant Corridors. He is keen on Nature & Wildlife Conservation through Scientific Research and Conservation Education.",
         },
         {
-          name: "T.Nesan",
-          image: "/members/t-nesan.png",
-          alt: "T.Nesan",
-          about:
-            "Nesan T. serves as a Senior Research Fellow in the prestigious Nilgiri Thar project. He holds undergraduate and postgraduate degrees in Wildlife Biology from Ooty Arts and Science College. His academic pursuits highlighted in a dissertation entitled Status and Distribution of Tigers & Sympatric Carnivores in the Megamalai Division of Srivilliputhur Megamalai Tiger Reserve. With an intense passion for wildlife, Nesan has developed extensive experience with the wildlife, driven by his self-initiated interest in this remarkable species.",
-        },
-        {
           name: "K.Ragavendran",
           image: "/members/k-ragavendran.png",
           alt: "K.Ragavendran",
@@ -157,7 +150,7 @@ export default function TeamMembers() {
           image: "/members/shri-aarumugam.jpg",
           alt: "Dr. S. Arumugam",
           about:
-            "Botanical Assistant at the Southern Regional Centre, Botanical Survey of India (BSI), Coimbatore, is a plant taxonomist with over 14 years of experience in floristics and angiosperm taxonomy, specializing in the grass family (Poaceae). He began his career as a Research Fellow in 2010 and became permanent staff in 2012.  He has contributed to key projects, including the Floristic Assessment of Megamalai Wildlife Sanctuary, Cyperaceae of Tamil Nadu, and the Flora of India (Poaceae Volumes 31 & 32), covering 25 genera and 139 species. Dr. Arumugam has published 20 research papers, described eight new taxa, rediscovered one species, and reported six new state records. He has presented his work at national and international conferences, supporting conservation and ecological restoration efforts across Tamil Nadu.",
+            "Botanist at the Southern Regional Centre, Botanical Survey of India (BSI), Coimbatore, is a plant taxonomist with over 14 years of experience in floristics and angiosperm taxonomy, specializing in the grass family (Poaceae). He began his career as a Research Fellow in 2010 and became permanent staff in 2012.  He has contributed to key projects, including the Floristic Assessment of Megamalai Wildlife Sanctuary, Cyperaceae of Tamil Nadu, and the Flora of India (Poaceae Volumes 31 & 32), covering 25 genera and 139 species. Dr. Arumugam has published 20 research papers, described eight new taxa, rediscovered one species, and reported six new state records. He has presented his work at national and international conferences, supporting conservation and ecological restoration efforts across Tamil Nadu.",
         },
       ],
     },

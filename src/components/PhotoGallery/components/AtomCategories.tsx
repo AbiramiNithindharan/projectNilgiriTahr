@@ -61,61 +61,49 @@ const DEFAULT_ORBIT_STYLE: OrbitStyle = {
 const ELECTRON_BG = "#52b788";
 
 const SUBCATEGORY_CLUSTER_OFFSET: Record<string, ResponsiveOffset> = {
-  nilgiriTahr: {
-    extraLarge: { x: 100, y: 40 },
-    large: { x: 100, y: 40 },
-    desktop: { x: 100, y: 40 },
-    tablet: { x: 90, y: 40 },
-    mobile: { x: 60, y: 60 },
+  NilgiriTahr: {
+    extraLarge: { x: 220, y: 70 },
+    large: { x: 220, y: 40 },
+    desktop: { x: 220, y: 40 },
+    tablet: { x: 100, y: 60 },
+    mobile: { x: 80, y: 60 },
   },
-  Mission: {
-    extraLarge: { x: 20, y: 60 },
-    large: { x: 30, y: 60 },
-    desktop: { x: 30, y: 60 },
-    tablet: { x: 30, y: 30 },
-    mobile: { x: 25, y: 15 },
-  },
+
   EcoSystem: {
     extraLarge: { x: 40, y: 80 },
     large: { x: 40, y: 80 },
     desktop: { x: 40, y: 80 },
-    tablet: { x: 40, y: 90 },
-    mobile: { x: 50, y: 60 },
+    tablet: { x: -10, y: 90 },
+    mobile: { x: 10, y: 95 },
   },
   Portfolio: {
     extraLarge: { x: 50, y: 30 },
     large: { x: 50, y: 30 },
     desktop: { x: 50, y: 30 },
-    tablet: { x: 50, y: 30 },
-    mobile: { x: 35, y: 15 },
+    tablet: { x: 110, y: 80 },
+    mobile: { x: 80, y: 75 },
   },
   Study: {
-    extraLarge: { x: 30, y: -10 },
+    extraLarge: { x: 60, y: -10 },
     large: { x: 30, y: -10 },
-    desktop: { x: 30, y: -10 },
-    tablet: { x: 40, y: -10 },
-    mobile: { x: 50, y: -20 },
+    desktop: { x: 10, y: -10 },
+    tablet: { x: 0, y: 40 },
+    mobile: { x: 10, y: 40 },
   },
-  Location: {
-    extraLarge: { x: 30, y: 30 },
-    large: { x: 30, y: 30 },
-    desktop: { x: 30, y: 30 },
-    tablet: { x: 30, y: 50 },
-    mobile: { x: 30, y: 30 },
-  },
+
   Celebration: {
     extraLarge: { x: 50, y: 60 },
     large: { x: 50, y: 60 },
     desktop: { x: 50, y: 60 },
-    tablet: { x: 50, y: 60 },
-    mobile: { x: 35, y: 25 },
+    tablet: { x: 100, y: 40 },
+    mobile: { x: 80, y: 40 },
   },
   Poster: {
     extraLarge: { x: -20, y: 40 },
     large: { x: -20, y: 40 },
     desktop: { x: -20, y: 40 },
-    tablet: { x: -20, y: 40 },
-    mobile: { x: -10, y: 60 },
+    tablet: { x: 0, y: 60 },
+    mobile: { x: 10, y: 60 },
   },
 };
 
@@ -123,7 +111,7 @@ const FONT_SIZE_CONFIG = {
   extraLarge: {
     nucleus: 18,
     mainCategory: 15,
-    subCategory: 15,
+    subCategory: 10,
   },
   large: {
     nucleus: 18,

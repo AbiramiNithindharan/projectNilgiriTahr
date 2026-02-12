@@ -17,7 +17,6 @@ interface Category {
   slug: string;
   count: number;
   description?: string;
-  icon?: string;
 }
 
 export default function NewsRoom() {
@@ -34,7 +33,7 @@ export default function NewsRoom() {
           "slug": slug.current,
           "count": count(*[(_type=="post" || _type=="poster") && references(^._id)]),
           "description": pt::text(body),
-          icon
+        
         }
       `);
       setCategories(data);
@@ -222,49 +221,40 @@ export default function NewsRoom() {
                       height: "360px",
                       display: "flex",
                       flexDirection: "column",
-                      justifyContent: "space-between",
                     }}
                   >
-                    <div
-                      style={{
-                        marginBottom: "1rem",
-                      }}
-                    >
-                      <img
-                        src={`/icon/${category.icon}.png`}
-                        alt={category.icon}
-                        width={60}
-                        height={60}
-                      />
-                    </div>
-
                     <div>
                       <h4
                         style={{
                           fontSize: "1.4rem",
+                          textAlign: "center",
                           fontWeight: "700",
                           color: "#1b4332",
-                          margin: "0 0 0.5rem 0",
+                          margin: "2rem 0 0.5rem 0",
                           fontFamily: "Inter, sans-serif",
                         }}
                       >
                         {category.title}
                       </h4>
-
-                      <div
-                        style={{
-                          fontSize: "2rem",
-                          fontWeight: "900",
-                          color: "#52b788",
-                          margin: "0.5rem 0 1rem 0",
-                          fontFamily: "Inter, sans-serif",
-                        }}
-                      >
-                        {category.count}
-                      </div>
-
+                    </div>
+                    <div
+                      style={{
+                        flex: "0 0 auto",
+                        textAlign: "center",
+                        fontSize: "2rem",
+                        fontWeight: "900",
+                        color: "#52b788",
+                        margin: "1.5rem 0 1.5rem 0",
+                        fontFamily: "Inter, sans-serif",
+                      }}
+                    >
+                      {category.count}
+                    </div>
+                    <div>
                       <p
                         style={{
+                          marginTop: "auto",
+                          textAlign: "center",
                           fontSize: "1rem",
                           color: "#666666",
                           lineHeight: "1.6",
