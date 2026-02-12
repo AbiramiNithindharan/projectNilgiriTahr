@@ -35,7 +35,7 @@ export default function WhatWeDoCards() {
       description:
         "Our Project Nilgiri Tahr team implements advanced monitoring techniques including radio collaring and camera trapping to track population dynamics and ensure the safety of these magnificent mountain goats.",
       sectionId: "monitoring-protection",
-      image: "/gallery/what-we-do/Monitoring and Protection.CR2",
+      image: "/gallery/what-we-do/MonitoringandProtection.jpg",
     },
     {
       title: "Research & Documentation",
@@ -63,7 +63,7 @@ export default function WhatWeDoCards() {
       description:
         "Radio collaring helps to understand the animal movement pattern, habitat use, home range and behaviour of the collared individuals across the divisions.",
       sectionId: "tranquilization-and-collaring",
-      image: "/gallery/what-we-do/Tranquillization.CR2",
+      image: "/gallery/what-we-do/Tranquillization.jpg",
     },
     {
       title: "REINTRODUCTION AND MONITORING",
