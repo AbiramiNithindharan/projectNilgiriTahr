@@ -64,7 +64,7 @@ const SUBCATEGORY_CLUSTER_OFFSET: Record<string, ResponsiveOffset> = {
   NilgiriTahr: {
     extraLarge: { x: 220, y: 70 },
     large: { x: 220, y: 40 },
-    desktop: { x: 220, y: 40 },
+    desktop: { x: 150, y: 40 },
     tablet: { x: 100, y: 60 },
     mobile: { x: 80, y: 60 },
   },
@@ -274,7 +274,7 @@ export function AtomCategories({ onSelect }: AtomCategoriesProps) {
 
         {/* Nucleus */}
         <motion.img
-          src="/gallery/nilgiri-tahr.jpg"
+          src="/icon/galleryIcon.jpg"
           alt="Center Image"
           className={styles.nucleusImage}
           onClick={() => {

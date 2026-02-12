@@ -22,7 +22,9 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   if (!category) return <p>Category not found</p>;
 
   // Check if this is the Poster category
-  const isPosterCategory = category.title?.toLowerCase().includes("poster");
+  const isPosterCategory =
+    category.title?.toLowerCase().includes("poster") ||
+    category.title?.toLowerCase().includes("in the news");
 
   // Fetch data accordingly
   const news = await client.fetch(

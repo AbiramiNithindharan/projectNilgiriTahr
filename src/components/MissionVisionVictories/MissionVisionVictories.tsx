@@ -41,7 +41,7 @@ export default function MissionVisionVictories() {
     {
       id: "our-mission",
       title: "Our Mission",
-      icon: "/icon/mission.jpg",
+      icon: "/icon/mission.jpeg",
       content:
         "Our mission is to guard the Nilgiri Tahr, an ancient and enduring spirit of the mountains, with science as our guide and communities as our strength. We strive to heal the grasslands, restore lost habitats, and safeguard these wild beings from the threats of a changing world. By weaving together research, education, and local stewardship, we seek to create landscapes where wildlife and people coexist in harmony. In protecting the Nilgiri Tahr, we protect the heart of the Western Ghats — ensuring its mist-clad peaks continue to echo with life for centuries to come.",
     },
@@ -154,7 +154,7 @@ export default function MissionVisionVictories() {
                     height: "72px",
                     borderRadius: "50%",
                     overflow: "hidden",
-                    background: "rgba(82, 183, 136, 0.12)", // soft green halo
+                    background: "rgba(82, 183, 136, 0.12)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",

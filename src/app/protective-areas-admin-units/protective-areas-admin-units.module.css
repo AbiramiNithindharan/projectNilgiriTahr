@@ -7,6 +7,7 @@
     transition: transform 0.4s ease;
     overflow: hidden;
     will-change: transform;
+    object-fit: cover;
 }
 
 .cardImage:hover {

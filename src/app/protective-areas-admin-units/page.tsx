@@ -222,10 +222,10 @@ export default function WhereWeWork() {
                             : "1px solid rgba(27, 67, 50, 0.1)",
                         transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                         cursor: "pointer",
-                        height: "380px",
+                        height: "420px",
                         display: "flex",
                         flexDirection: "column",
-                        justifyContent: "space-between",
+                        overflow: "hidden",
                       }}
                     >
                       {/* Image at the top */}
@@ -235,6 +235,7 @@ export default function WhereWeWork() {
                           width: "100%",
                           height: "180px",
                           overflow: "hidden",
+                          flexShrink: 0,
                           borderRadius: "16px 16px 0 0",
                         }}
                       >
@@ -245,37 +246,48 @@ export default function WhereWeWork() {
                           className={styles.cardImage}
                         />
                       </div>
-
-                      <h4
+                      <div
                         style={{
-                          fontSize: "1.3rem",
-                          fontWeight: "700",
-                          paddingTop: "30px",
-                          margin: "0 0 1rem 0",
-                          fontFamily: "Poppins, sans-serif",
-                          lineHeight: "1.3",
-                          letterSpacing: "0.5px",
-                        }}
-                      >
-                        {area.title}
-                      </h4>
-
-                      <p
-                        style={{
-                          fontSize: "0.9rem",
-                          lineHeight: "1.5",
-                          margin: "0 0 30px 0",
-                          padding: "0 10px 0 10px",
-                          fontFamily: "Poppins, sans-serif",
-                          opacity: area.type === "protected" ? 0.95 : 0.8,
                           flex: 1,
                           display: "flex",
-                          alignItems: "center",
+                          flexDirection: "column",
                           justifyContent: "center",
+                          padding: "1.2rem",
                         }}
                       >
-                        {area.description}
-                      </p>
+                        <h4
+                          style={{
+                            fontSize: "1.2rem",
+                            fontWeight: "700",
+                            margin: "0 0 0.8rem 0",
+                            fontFamily: "Poppins, sans-serif",
+                            lineHeight: "1.3",
+                            minHeight: "3rem",
+                            display: "-webkit-box",
+                            WebkitLineClamp: 2,
+                            WebkitBoxOrient: "vertical",
+                            overflow: "hidden",
+                          }}
+                        >
+                          {area.title}
+                        </h4>
+
+                        <p
+                          style={{
+                            fontSize: "0.9rem",
+                            lineHeight: "1.5",
+                            margin: 0,
+                            fontFamily: "Poppins, sans-serif",
+                            opacity: area.type === "protected" ? 0.95 : 0.8,
+                            display: "-webkit-box",
+                            WebkitLineClamp: 4,
+                            WebkitBoxOrient: "vertical",
+                            overflow: "hidden",
+                          }}
+                        >
+                          {area.description}
+                        </p>
+                      </div>
                     </motion.div>
                   </Link>
                 </SwiperSlide>

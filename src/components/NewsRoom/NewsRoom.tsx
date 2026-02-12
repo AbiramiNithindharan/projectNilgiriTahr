@@ -132,10 +132,11 @@ export default function NewsRoom() {
 
   const victories = [
     {
-      id: "survey-2024",
-      title: "Survey 2024",
+      id: "assessment-2024",
+      title: "Assessement 2024",
       image: "/gallery/survey-2024.JPG",
       link: "/victory-sections/survey-2024",
+      position: "center",
       content:
         "A comprehensive survey was conducted in the year 2024, across Nilgiri Tahr habitats, documenting their population size, distribution patterns, and habitat use to strengthen long-term conservation strategies.",
     },
@@ -144,14 +145,16 @@ export default function NewsRoom() {
       title: "Radio Collaring",
       image: "/gallery/radio-collared.JPG",
       link: "/victory-sections/radio-collaring",
+      position: "center",
       content:
         "Radio-collaring Nilgiri Tahr to track their movements, habitat use, and behavior, providing vital insights for science-based conservation and management.",
     },
     {
-      id: "survey-2025",
-      title: "Survey 2025",
+      id: "assessment-2025",
+      title: "Assessement 2025",
       image: "/gallery/survey-2025.JPG",
       link: "/victory-sections/survey-2025",
+      position: "top",
       content:
         "The 2025 Nilgiri Tahr survey continues our mission to monitor populations across key habitats, updating trends in distribution, numbers, and health to guide future conservation action",
     },
@@ -348,7 +351,7 @@ export default function NewsRoom() {
                       border: "1px solid rgba(255, 255, 255, 0.3)",
                       transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                       cursor: "pointer",
-                      height: "450px",
+                      height: "550px",
                       padding: "0",
                       display: "grid",
                       gridTemplateRows: "50% 1fr",
@@ -376,6 +379,7 @@ export default function NewsRoom() {
                         position: "relative",
                         width: "100%",
                         marginBottom: "1.5rem",
+                        overflow: "hidden",
                       }}
                     >
                       <Image
@@ -384,7 +388,9 @@ export default function NewsRoom() {
                         fill
                         sizes="(max-width: 768px) 100vw, 33vw"
                         style={{
-                          objectFit: "fill",
+                          objectFit: "cover",
+                          objectPosition: victory.position,
+                          transform: "scale(1.5)",
                         }}
                         priority={index === 0}
                       />
@@ -426,7 +432,7 @@ export default function NewsRoom() {
                         padding: "1.75rem 2rem 2rem",
                         display: "flex",
                         flexDirection: "column",
-                        justifyContent: "space-between",
+                        height: "100%",
                       }}
                     >
                       <p
@@ -441,6 +447,7 @@ export default function NewsRoom() {
                           position: "relative",
                           zIndex: 2,
                           textAlign: "justify",
+                          flexGrow: 1,
                         }}
                       >
                         {victory.content}

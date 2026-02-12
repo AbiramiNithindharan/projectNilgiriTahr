@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-
+import Image from "next/image";
 import styles from "./WhatWeDoCards.module.css";
 import { easeOut } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -14,91 +14,91 @@ export default function WhatWeDoCards() {
       description:
         "Project Nilgiri Tahr conducts comprehensive scientific research to understand the behavior, ecology, and habitat requirements of this endangered species, providing crucial data for effective conservation strategies.",
       sectionId: "conservation-research",
-      image: "/images/conservation-research.jpg",
+      image: "/gallery/what-we-do/ConservationAndResearch.jpeg",
     },
     {
       title: "Habitat Restoration",
       description:
         "Through Project Nilgiri Tahr initiatives, we restore degraded grasslands and forest corridors, removing invasive species and replanting native vegetation to create sustainable habitats for the Nilgiri Tahr population.",
       sectionId: "habitat-restoration",
-      image: "/images/habitat-restoration.jpg",
+      image: "/gallery/what-we-do/HabitatRestoration.jpeg",
     },
     {
       title: "Community Engagement",
       description:
         "Project Nilgiri Tahr works closely with local tribal communities and stakeholders, fostering conservation awareness and developing sustainable livelihood programs that benefit both people and wildlife.",
       sectionId: "community-engagement",
-      image: "/images/community-engagement.jpg",
+      image: "/gallery/what-we-do/CommunityEngagement.jpeg",
     },
     {
       title: "Monitoring & Protection",
       description:
         "Our Project Nilgiri Tahr team implements advanced monitoring techniques including radio collaring and camera trapping to track population dynamics and ensure the safety of these magnificent mountain goats.",
       sectionId: "monitoring-protection",
-      image: "/images/monitoring-protection.jpg",
+      image: "/gallery/what-we-do/Monitoring and Protection.CR2",
     },
     {
       title: "Research & Documentation",
       description:
         "Systematic documentation of Nilgiri Tahr populations, breeding patterns, and environmental factors affecting their survival through advanced research methodologies and scientific studies.",
       sectionId: "research-documentation",
-      image: "/images/research-documentation.jpg",
+      image: "/gallery/what-we-do/ResearchAndDocumentation.jpeg",
     },
     {
       title: "Policy & Advocacy",
       description:
         "Working with government agencies and conservation organizations to develop and implement effective policies for Nilgiri Tahr protection and Western Ghats ecosystem conservation.",
       sectionId: "policy-advocacy",
-      image: "/images/policy-advocacy.jpg",
+      image: "/gallery/what-we-do/PolicyAndAdvocacy.jpeg",
     },
     {
       title: "BIENNIAL SYNCHRONISED SURVEY",
       description:
         "Coordinated, synchronized surveys would help in delineating the actual distributional areas, current population, evaluating conservation challenges and getting an effective population enumeration.",
       sectionId: "biennial-synchronized-survey",
-      image: "/images/conservation-research.jpg",
+      image: "/gallery/what-we-do/SynchronisedSurvey.jpeg",
     },
     {
       title: "TRANQUILIZATION AND COLLARING",
       description:
         "Radio collaring helps to understand the animal movement pattern, habitat use, home range and behaviour of the collared individuals across the divisions.",
       sectionId: "tranquilization-and-collaring",
-      image: "/images/conservation-research.jpg",
+      image: "/gallery/what-we-do/Tranquillization.CR2",
     },
     {
       title: "REINTRODUCTION AND MONITORING",
       description:
         "Reintroduced populations would be extensively monitored to understand the adaptation and challenges in the process.",
       sectionId: "reintroduction-and-monitoring",
-      image: "/images/conservation-research.jpg",
+      image: "/gallery/what-we-do/Reintroduction.jpeg",
     },
     {
       title: "DIAGNOSIS AND TREATMENT",
       description:
         "Based on the pathological analysis and diagnostics for abnormal swellings, suggested preventive measures, treatment plans could be adopted for the affected animals across various divisions",
       sectionId: "diagnosis-and-treatment",
-      image: "/images/conservation-research.jpg",
+      image: "/gallery/what-we-do/DiagnosisandTreatment.png",
     },
     {
       title: "SHOLA GRASSLAND RESTORATION PILOT ",
       description:
         "Grassland restoration work involving removal of invasive species and planting of native Grass species in Nilgiri Tahr habitats which lead to substantial improvements in the hydrology of the region.",
       sectionId: "shola-grassland-restoration-pilot",
-      image: "/images/conservation-research.jpg",
+      image: "/gallery/what-we-do/Shola.jpeg",
     },
     {
       title: "IMPLEMENTATION OF ECO-TOURISM PROGRAMMES",
       description:
         "These eco-tourism centres will enable the students and public to understand the conservation significance and ecological importance of the endemic mammal, Nilgiri tahr.",
       sectionId: "implementation-of-eco-tourism-programmes",
-      image: "/images/conservation-research.jpg",
+      image: "/gallery/what-we-do/EcoTourism.jpeg",
     },
     {
       title: "COMMUNICATION AND OUTREACH",
       description:
         "Outreach programmes shall be organized to exhibit the conservation value of this species at educational institutions, media and among citizens hence leading to the successful community-based conservation of Nilgiri Tahr.",
       sectionId: "communication-and-outreach",
-      image: "/images/conservation-research.jpg",
+      image: "/gallery/what-we-do/Outreach.jpeg",
     },
   ];
 
@@ -246,31 +246,25 @@ export default function WhatWeDoCards() {
                         position: "relative",
                       }}
                     >
-                      {/* Placeholder icon based on card type */}
-                      {card.title.includes("Research") && "🔬"}
-                      {card.title.includes("Habitat") && "🌱"}
-                      {card.title.includes("Community") && "🤝"}
-                      {card.title.includes("COMMUNICATION") && "🤝"}
-                      {card.title.includes("Monitoring") && "📊"}
-                      {card.title.includes("MONITORING") && "📊"}
-                      {card.title.includes("SURVEY") && "📊"}
-                      {card.title.includes("Documentation") && "📋"}
-                      {card.title.includes("Policy") && "📜"}
-                      {card.title.includes("COLLARING") && "🦌"}
-                      {card.title.includes("TREATMENT") && "🏥"}
-                      {card.title.includes("GRASSLAND") && "🌱"}
-                      {card.title.includes("ECO-TOURISM") && "📈"}
+                      <Image
+                        src={card.image}
+                        alt={card.title}
+                        fill
+                        style={{
+                          objectFit: "cover",
+                        }}
+                        sizes="(max-width: 768px) 100vw,
+           (max-width: 1200px) 50vw,
+           33vw"
+                      />
 
-                      {/* Overlay for image placeholder */}
+                      {/* Optional subtle overlay for better text harmony */}
                       <div
                         style={{
                           position: "absolute",
-                          top: 0,
-                          left: 0,
-                          right: 0,
-                          bottom: 0,
+                          inset: 0,
                           background:
-                            "linear-gradient(45deg, rgba(27, 67, 50, 0.1), rgba(82, 183, 136, 0.1))",
+                            "linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.15))",
                         }}
                       />
                     </div>

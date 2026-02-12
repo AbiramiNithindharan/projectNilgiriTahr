@@ -21,7 +21,7 @@ export default function WhereWeWork() {
       title: "Shola Grassland",
       description:
         "High-altitude grassland ecosystems interspersed with stunted tropical montane forests, providing crucial habitat for Nilgiri Tahr.",
-      icon: "/gallery/nt-portrait/nilgiritahr-33.jpeg",
+      icon: "/gallery/where-we-work/SholaGrassland.jpeg",
       details:
         "Critical grazing areas for Nilgiri Tahr herds in the upper elevations of the Western Ghats.",
     },
@@ -30,7 +30,7 @@ export default function WhereWeWork() {
       title: "Montane Forest",
       description:
         "Tropical montane cloud forests that provide shelter and browse for Nilgiri Tahr during adverse weather conditions.",
-      icon: "/gallery/nt-portrait/nilgiritahr-31.jpeg",
+      icon: "/gallery/where-we-work/MontaneForests.jpeg",
       details:
         "Dense forest areas offering protection and diverse vegetation for wildlife.",
     },
@@ -39,7 +39,7 @@ export default function WhereWeWork() {
       title: "Evergreen Forest",
       description:
         "Dense evergreen forests in the lower elevations that form part of the Nilgiri Tahr's extended habitat range.",
-      icon: "/gallery/nt-portrait/nilgiritahr-38.jpeg",
+      icon: "/gallery/where-we-work/evergreen.jpeg",
       details:
         "Rich biodiversity zones supporting the broader ecosystem of the Western Ghats.",
     },
@@ -177,7 +177,7 @@ export default function WhereWeWork() {
                 }}
                 loop={workAreas.length > 3}
                 breakpoints={{
-                  640: {
+                  468: {
                     slidesPerView: 1,
                     spaceBetween: 20,
                   },
