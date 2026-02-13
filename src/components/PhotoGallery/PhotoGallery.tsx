@@ -43,7 +43,7 @@ export default function PhotoGallery() {
       viewport={{ once: true, amount: 0.1 }}
       style={{
         padding: "120px 2rem 80px",
-        background: "#000000",
+        background: " #201d1ae6",
         minHeight: "100vh",
         position: "relative",
         color: "#ffffff",

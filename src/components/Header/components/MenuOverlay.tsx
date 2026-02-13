@@ -44,8 +44,13 @@ export default function MenuOverlay({
         left: 0,
         right: 0,
         bottom: 0,
-        background: "linear-gradient(135deg, #5f452dcb, #b48a5c)",
-        backdropFilter: "blur(20px)",
+        backgroundImage:
+          "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),url('/gallery/nt-portrait/nilgiritahr-2.JPG')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+
+        backdropFilter: "blur(10px)",
         zIndex: 2000,
         display: "flex",
         alignItems: "center",

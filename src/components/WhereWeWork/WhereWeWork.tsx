@@ -130,7 +130,7 @@ export default function WhereWeWork() {
                 fontWeight: "900",
                 lineHeight: "1.1",
                 margin: "0 0 2rem 0",
-                color: "#000",
+                color: "#2e2416",
                 fontFamily: "Inter, sans-serif",
                 letterSpacing: "-0.02em",
               }}
@@ -141,7 +141,7 @@ export default function WhereWeWork() {
             <p
               style={{
                 fontSize: "1.1rem",
-                color: "#000",
+                color: "#332719",
                 maxWidth: "600px",
                 margin: "0 auto",
                 lineHeight: "1.6",
@@ -286,7 +286,7 @@ export default function WhereWeWork() {
                         <p
                           style={{
                             fontSize: "1rem",
-                            color: "#92622f",
+                            color: "#30261b",
                             lineHeight: "1.6",
                             margin: 0,
                             fontFamily: "Poppins, sans-serif",

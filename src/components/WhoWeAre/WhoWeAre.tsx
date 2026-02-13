@@ -98,7 +98,7 @@ export default function WhoWeAre() {
               fontWeight: "900",
               lineHeight: "1.1",
               margin: "0 0 2rem 0",
-              color: "#000000",
+              color: "#2d2617",
               fontFamily: "Inter, sans-serif",
               letterSpacing: "-0.02em",
             }}

@@ -53,7 +53,7 @@ export function AtomCategories({ onSelect }: Props) {
           src="/icon/galleryIcon.jpg"
           alt="Nucleus"
           fill
-          style={{ objectFit: "cover" }}
+          style={{ objectFit: "cover", objectPosition: "center 40%" }}
         />
       </motion.div>
       {/* MAIN ELECTRONS */}

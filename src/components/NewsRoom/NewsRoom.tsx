@@ -230,7 +230,7 @@ export default function NewsRoom() {
           variants={itemVariants}
           style={{
             marginBottom: "8rem",
-            background: "#000000",
+            background: "#201d1ae6",
             width: "100%",
             height: "100%",
           }}
@@ -439,7 +439,7 @@ export default function NewsRoom() {
                         style={{
                           fontSize: "clamp(0.95rem, 2vw, 1.05rem)",
                           lineHeight: "1.6",
-                          color: "#92622f",
+                          color: "#362a1d",
                           fontFamily: "Poppins, sans-serif",
                           fontWeight: "400",
                           margin: "0",
