@@ -1,5 +1,5 @@
 .footer {
-    background: linear-gradient(135deg, rgba(0, 30, 0, 0.95), rgba(20, 60, 20, 0.95));
+    background-image: linear-gradient(135deg, #61472ecb, #ebb478);
     /* slate-900 */
     color: #f1f5f9;
     /* slate-100 */
@@ -125,9 +125,9 @@
     align-items: center;
     justify-content: center;
     height: 150px;
-    background-color: #348b37;
+    background-color: #b48a5c;
     /* slate-800 */
-    border: 1px solid #5e9e50;
+    border: 1px solid #b07b43;
     border-radius: 4px;
     color: #94a3b8;
     /* slate-400 */
@@ -137,7 +137,7 @@
 }
 
 .mapBox:hover {
-    background-color: #348b37;
+    background-color: #866645;
 }
 
 .subtext {
@@ -168,17 +168,17 @@
 }
 
 .socials a:hover {
-    background-color: #348b37;
+    background-color: #5f452d;
 }
 
 .copyright {
     margin-top: 1.5rem;
     font-size: 0.75rem;
-    color: #91b490;
+    color: #ffffff;
 }
 
 .bottomBar {
-    border-top: 1px solid #5c8c58;
+    border-top: 1px solid #fbfbfb;
     margin-top: 2.5rem;
     padding-top: 1.5rem;
     display: flex;
@@ -196,7 +196,7 @@
 
 .bottomText {
     font-size: 0.75rem;
-    color: #6b8b64;
+    color: #f9f9fa;
 }
 
 .bottomLinks {

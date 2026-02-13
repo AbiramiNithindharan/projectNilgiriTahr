@@ -52,7 +52,7 @@
 
 
 .knowMoreBtn {
-  background: #5f452d91;
+  background: #0000006e;
   border: 2px solid #ffffff;
   color: #ffffff;
   padding: 1rem 2rem;
@@ -112,7 +112,7 @@
   max-width: 1200px;
   height: auto;
   min-height: 22px;
-  background: linear-gradient(to right, #00000072, #4b3623c2);
+  background: linear-gradient(to right, #00000072, #2f2f2fb7);
   color: #fff;
   font-family: Inter, sans-serif;
   font-size: clamp(0.75rem, 1.8vw, 0.95rem);
@@ -132,7 +132,7 @@
 
 /* News heading pill */
 .newsHeading {
-  background: linear-gradient(135deg, #00000072, #4b3623c2);
+  background: linear-gradient(135deg, #f8960372, #4b3623c2);
   color: #f3f4f5;
   padding: 0.35rem 0.8rem;
   margin-left: 0.6rem;

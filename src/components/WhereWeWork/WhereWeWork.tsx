@@ -92,7 +92,7 @@ export default function WhereWeWork() {
           background: "#f8f5f5ff",
           minHeight: "100vh",
           position: "relative",
-          color: "#040404ff",
+          color: "#4e3825",
         }}
       >
         <div
@@ -130,7 +130,7 @@ export default function WhereWeWork() {
                 fontWeight: "900",
                 lineHeight: "1.1",
                 margin: "0 0 2rem 0",
-                color: "#0a0a0aff",
+                color: "#000",
                 fontFamily: "Inter, sans-serif",
                 letterSpacing: "-0.02em",
               }}
@@ -141,7 +141,7 @@ export default function WhereWeWork() {
             <p
               style={{
                 fontSize: "1.1rem",
-                color: "#3a3b3bff",
+                color: "#000",
                 maxWidth: "600px",
                 margin: "0 auto",
                 lineHeight: "1.6",
@@ -196,7 +196,7 @@ export default function WhereWeWork() {
                 }}
                 style={{
                   padding: "2rem",
-                  background: "rgba(0, 0, 0, 0.02)",
+                  background: "#f5eade",
                   backdropFilter: "blur(10px)",
                   borderRadius: "20px",
                   border: "1px solid rgba(0, 0, 0, 0.05)",
@@ -214,8 +214,8 @@ export default function WhereWeWork() {
                       style={{
                         background: "rgba(255, 255, 255, 0.95)",
                         borderRadius: "16px",
-                        boxShadow: "0 8px 32px rgba(27, 67, 50, 0.08)",
-                        border: "1px solid rgba(255, 255, 255, 0.3)",
+                        boxShadow: "0 8px 32px #35261950",
+                        border: "1px solid #352619",
                         cursor: "pointer",
                         height: "100%",
                         minHeight: "380px",
@@ -286,7 +286,7 @@ export default function WhereWeWork() {
                         <p
                           style={{
                             fontSize: "1rem",
-                            color: "#2d5016",
+                            color: "#92622f",
                             lineHeight: "1.6",
                             margin: 0,
                             fontFamily: "Poppins, sans-serif",
@@ -314,9 +314,9 @@ export default function WhereWeWork() {
                       left: "-1.5rem",
                       top: "50%",
                       transform: "translateY(-50%)",
-                      background: "rgba(255, 255, 255, 0.95)",
+                      background: "rgba(247, 235, 221, 0.95)",
                       backdropFilter: "blur(10px)",
-                      border: "1px solid rgba(82, 183, 136, 0.2)",
+                      border: "1px solid rgba(116, 108, 76, 0.2)",
                       borderRadius: "50%",
                       width: "50px",
                       height: "50px",
@@ -325,21 +325,21 @@ export default function WhereWeWork() {
                       justifyContent: "center",
                       cursor: "pointer",
                       fontSize: "1.5rem",
-                      color: "#1b4332",
+                      color: "#5f452d",
                       transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                       zIndex: 10,
                       boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = "#52b788";
+                      e.currentTarget.style.background = "#5f452d";
                       e.currentTarget.style.color = "#ffffff";
                       e.currentTarget.style.transform =
                         "translateY(-50%) scale(1.1)";
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.background =
-                        "rgba(255, 255, 255, 0.95)";
-                      e.currentTarget.style.color = "#1b4332";
+                        "rgba(247, 235, 221, 0.95)";
+                      e.currentTarget.style.color = "#5f452d";
                       e.currentTarget.style.transform =
                         "translateY(-50%) scale(1)";
                     }}
@@ -353,7 +353,7 @@ export default function WhereWeWork() {
                       right: "-1.5rem",
                       top: "50%",
                       transform: "translateY(-50%)",
-                      background: "rgba(255, 255, 255, 0.95)",
+                      background: "rgba(247, 235, 221, 0.95)",
                       backdropFilter: "blur(10px)",
                       border: "1px solid rgba(82, 183, 136, 0.2)",
                       borderRadius: "50%",
@@ -364,21 +364,21 @@ export default function WhereWeWork() {
                       justifyContent: "center",
                       cursor: "pointer",
                       fontSize: "1.5rem",
-                      color: "#1b4332",
+                      color: "#5f452d",
                       transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                       zIndex: 10,
                       boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = "#52b788";
+                      e.currentTarget.style.background = "#5f452d";
                       e.currentTarget.style.color = "#ffffff";
                       e.currentTarget.style.transform =
                         "translateY(-50%) scale(1.1)";
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.background =
-                        "rgba(255, 255, 255, 0.95)";
-                      e.currentTarget.style.color = "#1b4332";
+                        "rgba(247, 235, 221, 0.95)";
+                      e.currentTarget.style.color = "#5f452d";
                       e.currentTarget.style.transform =
                         "translateY(-50%) scale(1)";
                     }}
@@ -403,8 +403,8 @@ export default function WhereWeWork() {
                 whileHover={{ scale: 1.02 }}
                 style={{
                   background: "transparent",
-                  border: "2px solid #090909ff",
-                  color: "#090909ff",
+                  border: "2px solid #4d3824",
+                  color: "#352619",
                   padding: "1rem 2rem",
                   fontSize: "1rem",
                   fontWeight: "600",
@@ -416,12 +416,12 @@ export default function WhereWeWork() {
                   marginBottom: "4rem",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "#000000";
+                  e.currentTarget.style.background = "#352619";
                   e.currentTarget.style.color = "#ffffff";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.background = "transparent";
-                  e.currentTarget.style.color = "#000000";
+                  e.currentTarget.style.color = "#352619";
                 }}
               >
                 LEARN MORE

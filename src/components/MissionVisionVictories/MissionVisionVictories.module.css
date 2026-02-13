@@ -1,6 +1,6 @@
 .section {
   padding: clamp(60px, 10vw, 120px) clamp(0.5rem, 4vw, 2rem) clamp(40px, 8vw, 80px);
-  background: #ffffff;
+  background: #fffdfc;
   scroll-margin-top: 100px;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .card {
-  background: #ffffff;
+  background: #b48a5c;
   border-radius: 12px;
   padding: 2rem;
   text-align: center;
@@ -34,7 +34,7 @@
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  border-color: #52b788;
+  border-color: #5f452d;
 }
 
 .icon {
