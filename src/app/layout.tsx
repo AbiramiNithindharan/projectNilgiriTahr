@@ -4,7 +4,6 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "./client-layout";
 import { Toaster } from "react-hot-toast";
-import FloatingNotification from "@/components/FloatingNotification/FloatingNotification";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -53,7 +52,6 @@ export default function RootLayout({
               },
             }}
           />
-          <FloatingNotification />
         </ClientLayout>
       </body>
     </html>

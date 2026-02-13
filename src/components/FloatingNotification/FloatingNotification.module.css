@@ -3,15 +3,12 @@
 /* ============================= */
 
 .floatingIcon {
-    position: fixed;
-    right: 24px;
-    top: 20%;
+
+
     z-index: 9999;
     cursor: pointer;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
 }
 
 /* Hanging Bell Swing Animation */
@@ -43,35 +40,6 @@
     }
 }
 
-/* Subtle glow pulse */
-.glow {
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-
-    background: rgba(255, 200, 0, 0.3);
-
-    animation: glowPulse 2.5s infinite;
-}
-
-@keyframes glowPulse {
-    0% {
-        transform: scale(0.8);
-        opacity: 0.6;
-    }
-
-    50% {
-        transform: scale(1.2);
-        opacity: 0.2;
-    }
-
-    100% {
-        transform: scale(0.8);
-        opacity: 0.6;
-    }
-}
-
 /* ============================= */
 /* MODAL */
 /* ============================= */
@@ -83,9 +51,8 @@
     background: rgba(0, 0, 0, 0.6);
 
     display: flex;
-    justify-content: center;
     align-items: center;
-
+    justify-content: center;
     z-index: 10000;
 
     animation: fadeIn 0.25s ease;

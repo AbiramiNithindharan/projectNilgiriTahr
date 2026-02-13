@@ -33,7 +33,7 @@ export default function MenuButton({ onClick, variant }: MenuButtonProps) {
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.transform = "scale(1.1)";
-        e.currentTarget.style.background = "rgba(27, 67, 50, 0.1)";
+        e.currentTarget.style.background = "#5f452de2";
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform = "scale(1)";
@@ -44,7 +44,7 @@ export default function MenuButton({ onClick, variant }: MenuButtonProps) {
         style={{
           width: isCompact ? "20px" : "clamp(20px, 4vw, 28px)",
           height: isCompact ? "2px" : "3px",
-          background: "#52b788",
+          background: " #5F452D",
           borderRadius: isCompact ? "1px" : "2px",
           transition: "all 0.3s ease",
         }}
@@ -53,7 +53,7 @@ export default function MenuButton({ onClick, variant }: MenuButtonProps) {
         style={{
           width: isCompact ? "20px" : "clamp(20px, 4vw, 28px)",
           height: isCompact ? "2px" : "3px",
-          background: "#52b788",
+          background: " #5F452D",
           borderRadius: isCompact ? "1px" : "2px",
           transition: "all 0.3s ease",
         }}
@@ -62,7 +62,7 @@ export default function MenuButton({ onClick, variant }: MenuButtonProps) {
         style={{
           width: isCompact ? "20px" : "clamp(20px, 4vw, 28px)",
           height: isCompact ? "2px" : "3px",
-          background: "#52b788",
+          background: " #5F452D",
           borderRadius: isCompact ? "1px" : "2px",
           transition: "all 0.3s ease",
         }}

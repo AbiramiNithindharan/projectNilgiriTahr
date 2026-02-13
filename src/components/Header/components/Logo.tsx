@@ -44,7 +44,7 @@ export default function Logo({
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.transform = "scale(1.1)";
-        e.currentTarget.style.background = "rgba(27, 67, 50, 0.1)";
+        e.currentTarget.style.background = "#d4bb97";
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform = "scale(1)";

@@ -98,7 +98,7 @@ export default function WhoWeAre() {
               fontWeight: "900",
               lineHeight: "1.1",
               margin: "0 0 2rem 0",
-              color: "#000000",
+              color: "#4d3824",
               fontFamily: "Inter, sans-serif",
               letterSpacing: "-0.02em",
             }}
@@ -114,8 +114,8 @@ export default function WhoWeAre() {
               whileHover={{ scale: 1.02 }}
               style={{
                 background: "transparent",
-                border: "2px solid #000000",
-                color: "#000000",
+                border: "2px solid #4d3824",
+                color: "#4d3824",
                 padding: "1rem 2rem",
                 fontSize: "1rem",
                 fontWeight: "600",
@@ -127,12 +127,12 @@ export default function WhoWeAre() {
                 marginTop: "2rem",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = "#000000";
+                e.currentTarget.style.background = "#4d3824";
                 e.currentTarget.style.color = "#ffffff";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.background = "transparent";
-                e.currentTarget.style.color = "#000000";
+                e.currentTarget.style.color = "#4d3824";
               }}
             >
               LEARN MORE

@@ -49,30 +49,10 @@
   font-size: clamp(1.8rem, 4vw, 3.5rem);
 }
 
-/* Know More button */
-.knowButton {
-  position: absolute;
-  bottom: 15%;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 0.8rem 2rem;
-  background: linear-gradient(135deg, #ffb703, #ffdd57);
-  color: #111;
-  font-weight: 600;
-  border-radius: 50px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  z-index: 50;
-}
 
-.knowButton:hover {
-  background: linear-gradient(135deg, #ffdd57, #ffb703);
-  transform: translateX(-50%) translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-}
 
 .knowMoreBtn {
-  background: #0000006e;
+  background: #5f452d91;
   border: 2px solid #ffffff;
   color: #ffffff;
   padding: 1rem 2rem;
@@ -132,7 +112,7 @@
   max-width: 1200px;
   height: auto;
   min-height: 22px;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.65));
+  background: linear-gradient(to right, #00000072, #4b3623c2);
   color: #fff;
   font-family: Inter, sans-serif;
   font-size: clamp(0.75rem, 1.8vw, 0.95rem);
@@ -152,8 +132,8 @@
 
 /* News heading pill */
 .newsHeading {
-  background: linear-gradient(135deg, #ffb703, #ffdd57);
-  color: #111;
+  background: linear-gradient(135deg, #00000072, #4b3623c2);
+  color: #f3f4f5;
   padding: 0.35rem 0.8rem;
   margin-left: 0.6rem;
   margin-right: 0.8rem;

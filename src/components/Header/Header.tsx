@@ -14,6 +14,7 @@ import ProjectTitle from "./components/ProjectTitle";
 import CenterText from "./components/CenterText";
 import MenuButton from "./components/MenuButton";
 import MenuOverlay from "./components/MenuOverlay";
+import FloatingNotification from "../FloatingNotification/FloatingNotification";
 
 interface HeaderProps {
   title?: string;
@@ -176,7 +177,7 @@ export default function Header({
               justifyContent: "center",
               padding: "0.4rem",
               marginRight: "20px",
-              color: "#52b788",
+              color: "#5F452D",
             }}
             aria-label="Go to home"
           >
@@ -257,6 +258,7 @@ export default function Header({
                     isVisible={true}
                   />
                 </Link>
+                <FloatingNotification />
               </div>
             </motion.div>
           )}
@@ -283,6 +285,7 @@ export default function Header({
                     isVisible={true}
                   />
                 </Link>
+                <FloatingNotification />
               </div>
             </>
           )}

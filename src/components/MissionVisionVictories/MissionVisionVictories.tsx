@@ -88,7 +88,7 @@ export default function MissionVisionVictories() {
               fontWeight: "900",
               lineHeight: "1.1",
               margin: "0 0 2rem 0",
-              color: "#000000",
+              color: "#573f29",
               fontFamily: "Inter, sans-serif",
               letterSpacing: "-0.02em",
             }}
@@ -98,7 +98,7 @@ export default function MissionVisionVictories() {
           <p
             style={{
               fontSize: "1.1rem",
-              color: "#666666",
+              color: "#b48a5c",
               fontFamily: "Inter, sans-serif",
               maxWidth: "600px",
               margin: "0 auto",
@@ -178,7 +178,7 @@ export default function MissionVisionVictories() {
                 style={{
                   fontSize: "clamp(1.5rem, 3vw, 2rem)",
                   fontWeight: "700",
-                  color: "#1b4332",
+                  color: "#573f29",
                   marginBottom: "1.5rem",
                   fontFamily: "Poppins, sans-serif",
                 }}
@@ -191,7 +191,7 @@ export default function MissionVisionVictories() {
                   fontSize: "clamp(1rem, 2vw, 1.1rem)",
                   textAlign: "justify",
                   lineHeight: "1.7",
-                  color: "#2d5016",
+                  color: "#b48a5c",
                   fontFamily: "Poppins, sans-serif",
                   fontWeight: "400",
                   margin: "0",

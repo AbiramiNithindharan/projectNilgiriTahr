@@ -77,7 +77,7 @@ export default function MenuOverlay({
             border: "none",
             fontSize: "2rem",
             cursor: "pointer",
-            color: "#2d5016",
+            color: "#b48a5c",
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.transform = "scale(1.2)";
@@ -115,7 +115,7 @@ export default function MenuOverlay({
                     alignItems: "center",
                     fontWeight: 700,
                     fontSize: "1.2rem",
-                    color: "#1b4332",
+                    color: "#5F452D",
                     cursor: "pointer",
                     padding: "0.75rem 0",
                     borderBottom: "1px solid #e5e5e5",
@@ -153,7 +153,7 @@ export default function MenuOverlay({
                           padding: "0.6rem 0.8rem",
                           textAlign: "left",
                           cursor: "pointer",
-                          color: "#2d6a4f",
+                          color: "#b48a5c",
                           fontSize: "0.95rem",
                         }}
                       >

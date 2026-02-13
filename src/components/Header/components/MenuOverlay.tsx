@@ -44,8 +44,7 @@ export default function MenuOverlay({
         left: 0,
         right: 0,
         bottom: 0,
-        background:
-          "linear-gradient(135deg, rgba(0, 30, 0, 0.95), rgba(20, 60, 20, 0.95))",
+        background: "linear-gradient(135deg, #5f452dcb, #b48a5c)",
         backdropFilter: "blur(20px)",
         zIndex: 2000,
         display: "flex",
@@ -135,7 +134,7 @@ export default function MenuOverlay({
               style={{
                 fontSize: "clamp(1.8rem, 6vw, 3rem)",
                 fontWeight: "800",
-                color: "#f1faee",
+                color: "#f3f4f5",
                 margin: "0",
                 textShadow: "3px 3px 6px rgba(0, 0, 0, 0.7)",
                 fontFamily: "Poppins, sans-serif",
@@ -158,9 +157,9 @@ export default function MenuOverlay({
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.7, duration: 0.3 }}
                 style={{
-                  background: "rgba(168, 218, 181, 0.15)",
-                  border: "2px solid #a8dab5",
-                  color: "#f1faee",
+                  background: "rgba(218, 204, 168, 0.15)",
+                  border: "2px solid #f3f4f5",
+                  color: "#f3f4f5",
                   padding: "clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem)",
                   borderRadius: "8px",
                   fontSize: "clamp(0.9rem, 2.5vw, 1.1rem)",
@@ -172,13 +171,13 @@ export default function MenuOverlay({
                   alignSelf: isMobile ? "center" : "flex-start",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "#a8dab5";
-                  e.currentTarget.style.color = "#081c15";
+                  e.currentTarget.style.background = "#f3f4f5";
+                  e.currentTarget.style.color = "#5F452D";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.background =
-                    "rgba(168, 218, 181, 0.15)";
-                  e.currentTarget.style.color = "#f1faee";
+                    "rgba(218, 204, 168, 0.15)";
+                  e.currentTarget.style.color = "#f3f4f5";
                 }}
               >
                 Admin Login
@@ -222,7 +221,7 @@ export default function MenuOverlay({
                       style={{
                         background: "none",
                         border: "none",
-                        color: "#f1faee",
+                        color: "#f3f4f5",
                         textDecoration: "none",
                         fontSize: "clamp(1.1rem, 3vw, 1.5rem)",
                         fontWeight: "500",
@@ -237,15 +236,15 @@ export default function MenuOverlay({
                         width: "100%",
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.borderBottomColor = "#a8dab5";
-                        e.currentTarget.style.color = "#a8dab5";
+                        e.currentTarget.style.borderBottomColor = "#d4bb97";
+                        e.currentTarget.style.color = "#f3f4f5";
                         e.currentTarget.style.transform = isMobile
                           ? "scale(1.05)"
                           : "translateX(10px)";
                       }}
                       onMouseLeave={(e) => {
                         e.currentTarget.style.borderBottomColor = "transparent";
-                        e.currentTarget.style.color = "#f1faee";
+                        e.currentTarget.style.color = "#f3f4f5";
                         e.currentTarget.style.transform = isMobile
                           ? "scale(1)"
                           : "translateX(0)";
@@ -268,7 +267,7 @@ export default function MenuOverlay({
                         style={{
                           background: "none",
                           border: "none",
-                          color: "#f1faee",
+                          color: "#f3f4f5",
                           fontSize: "clamp(1.1rem, 3vw, 1.5rem)",
                           fontWeight: "500",
                           padding: "0.5rem 0",
@@ -289,7 +288,7 @@ export default function MenuOverlay({
                         style={{
                           background: "none",
                           border: "none",
-                          color: "#f1faee",
+                          color: "#f3f4f5",
                           fontSize: "clamp(1.1rem, 3vw, 1.5rem)",
                           fontWeight: "500",
                           padding: "0.5rem 0",

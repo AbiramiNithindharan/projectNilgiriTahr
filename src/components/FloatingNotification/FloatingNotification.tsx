@@ -30,7 +30,7 @@ export default function FloatingNotification() {
       <div className={styles.floatingIcon} onClick={() => setOpen(true)}>
         <div className={styles.glow}></div>
         <Image
-          src="/icon/bell.png"
+          src="/logo/bell-icon.png"
           alt="Notification"
           width={50}
           height={50}
