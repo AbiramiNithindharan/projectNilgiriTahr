@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -15,30 +15,79 @@ export function AtomCategories({ onSelect }: Props) {
   const [opened, setOpened] = useState(false);
   const [activeMain, setActiveMain] = useState<string | null>(null);
   const router = useRouter();
+  const [screenSize, setScreenSize] = useState<"desktop" | "tablet" | "mobile">(
+    "desktop",
+  );
+  const isMainActive = activeMain !== null;
+  React.useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setScreenSize("desktop");
+      } else if (window.innerWidth >= 640) {
+        setScreenSize("tablet");
+      } else {
+        setScreenSize("mobile");
+      }
+    };
 
-  const nucleusSize = opened ? 130 : 220;
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const mainCategories = GALLERY_ATOM_CATEGORIES;
-  const ORBIT_RADIUS = 280;
-  const ELECTRON_SIZE = 110;
+  const config = useMemo(() => {
+    switch (screenSize) {
+      case "tablet":
+        return {
+          nucleusSize: opened ? 150 : 180,
+          orbitRadius: 220,
+          electronSize: 75,
+          subRadius: 110,
+          subElectron: 95,
+          leftOffset: 60,
+          SubElectronPositionX: 10,
+          SubElectronPositionY: 0,
+        };
+      case "mobile":
+        return {
+          nucleusSize: opened ? 70 : 100,
+          orbitRadius: 100,
+          electronSize: 40,
+          subRadius: 45,
+          subElectron: 65,
+          leftOffset: 40,
+          SubElectronPositionX: 0,
+          SubElectronPositionY: 0,
+        };
+      default:
+        return {
+          nucleusSize: opened ? 180 : 220,
+          orbitRadius: 280,
+          electronSize: 90,
+          subRadius: 130,
+          subElectron: 110,
+          leftOffset: 100,
+          SubElectronPositionX: 5,
+          SubElectronPositionY: 5,
+        };
+    }
+  }, [screenSize, opened]);
+  const nucleusSize = config.nucleusSize;
+
+  const ORBIT_RADIUS = config.orbitRadius;
+  const ELECTRON_SIZE = config.electronSize;
+  const SubElectron = config.subElectron;
   const ELECTRON_RADIUS = ELECTRON_SIZE / 2;
+  const SubElectronPositionX = config.SubElectronPositionX;
+  const SubElectronPositionY = config.SubElectronPositionY;
   const spacing = 40;
 
   return (
     <div className={styles.wrapper}>
-      {/* ORBIT RING */}
-      {/*  {opened && (
-        <div
-          className={styles.orbitRing}
-          style={{
-            width: ORBIT_RADIUS * 2,
-            height: ORBIT_RADIUS * 2,
-          }}
-        />
-      )} */}
       {/* NUCLEUS */}
       <motion.div
-        className={styles.nucleus}
+        className={`${styles.nucleus} ${isMainActive ? styles.blurred : ""}`}
         animate={{
           width: nucleusSize,
           height: nucleusSize,
@@ -77,13 +126,14 @@ export function AtomCategories({ onSelect }: Props) {
           const y = Math.sin(angle) * (ORBIT_RADIUS - ELECTRON_RADIUS);
 
           if (isLeft) {
-            x -= 70;
+            x -= config.leftOffset;
           }
           return (
-            <>
+            <React.Fragment key={cat.id}>
               <motion.div
-                key={cat.id}
-                className={styles.electron}
+                className={`${styles.electronWrapper} ${
+                  isMainActive && activeMain !== cat.id ? styles.blurred : ""
+                }`}
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{
                   opacity: 1,
@@ -94,17 +144,12 @@ export function AtomCategories({ onSelect }: Props) {
                 whileHover={{ scale: 1.1 }}
                 exit={{ opacity: 0, scale: 0 }}
                 transition={{
-                  scale: {
-                    repeat: Infinity,
-                    duration: 4,
-                  },
+                  scale: { repeat: Infinity, duration: 4 },
                   type: "spring",
                   stiffness: 120,
                   damping: 14,
                 }}
                 style={{
-                  width: 110,
-                  height: 110,
                   top: "50%",
                   left: "50%",
                 }}
@@ -113,17 +158,26 @@ export function AtomCategories({ onSelect }: Props) {
                   setActiveMain((prev) => (prev === cat.id ? null : cat.id));
                 }}
               >
-                <Image
-                  src={cat.image}
-                  alt={cat.label}
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                <div
+                  className={styles.electron}
+                  style={{
+                    width: ELECTRON_SIZE,
+                    height: ELECTRON_SIZE,
+                  }}
+                >
+                  <Image
+                    src={cat.image}
+                    alt={cat.label}
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                </div>
+                <span className={styles.label}>{cat.label}</span>
               </motion.div>
               <AnimatePresence>
                 {activeMain === cat.id &&
                   cat.subCategories.map((sub, i) => {
-                    const SUB_RADIUS = 90;
+                    const SUB_RADIUS = config.subRadius;
 
                     const subAngle =
                       (i / cat.subCategories.length) * Math.PI * 2;
@@ -134,13 +188,13 @@ export function AtomCategories({ onSelect }: Props) {
                     return (
                       <motion.div
                         key={sub.id}
-                        className={styles.electron}
+                        className={styles.electronWrapper}
                         initial={{ opacity: 0, scale: 0 }}
                         animate={{
                           opacity: 1,
                           scale: 1,
-                          x: subX,
-                          y: subY,
+                          x: subX - SubElectronPositionX,
+                          y: subY - SubElectronPositionY,
                         }}
                         exit={{ opacity: 0, scale: 0 }}
                         transition={{
@@ -149,27 +203,38 @@ export function AtomCategories({ onSelect }: Props) {
                           damping: 14,
                         }}
                         style={{
-                          width: 70,
-                          height: 70,
                           top: "50%",
                           left: "50%",
+                          zIndex: "1000",
                         }}
                         onClick={() => {
                           router.push(sub.route);
                           onSelect?.(activeMain);
                         }}
                       >
-                        <Image
-                          src={sub.image}
-                          alt={sub.label}
-                          fill
-                          style={{ objectFit: "cover" }}
-                        />
+                        <div
+                          className={styles.electron}
+                          style={{
+                            width: SubElectron,
+                            height: SubElectron,
+                          }}
+                        >
+                          <Image
+                            src={sub.image}
+                            alt={sub.label}
+                            fill
+                            style={{
+                              objectFit: "cover",
+                            }}
+                          />
+                        </div>
+
+                        <span className={styles.label}>{sub.label}</span>
                       </motion.div>
                     );
                   })}
               </AnimatePresence>
-            </>
+            </React.Fragment>
           );
         })}
     </div>
