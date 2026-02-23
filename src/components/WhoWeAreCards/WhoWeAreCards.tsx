@@ -304,6 +304,8 @@ export default function WhoWeAreCards() {
                       src={card.image}
                       alt={card.title}
                       fill
+                      draggable={false}
+                      onContextMenu={(e) => e.preventDefault()}
                       sizes="(max-width: 768px) 100vw, 25vw"
                       style={{ objectFit: "cover" }}
                     />

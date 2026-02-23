@@ -66,7 +66,7 @@ export default function Banner({
     async function fetchNews() {
       try {
         const cutoffDate = new Date(
-          Date.now() - 30 * 24 * 60 * 60 * 1000
+          Date.now() - 30 * 24 * 60 * 60 * 1000,
         ).toISOString();
 
         const data = await client.fetch(recentNewsQuery, { cutoffDate });
@@ -233,7 +233,9 @@ export default function Banner({
                   width={1600}
                   height={699}
                   priority
+                  draggable={false}
                   sizes="100vw"
+                  onContextMenu={(e) => e.preventDefault()}
                   className={styles.bannerImage}
                   style={{ objectFit: "contain", objectPosition: "center top" }}
                 />
@@ -245,6 +247,8 @@ export default function Banner({
                   fill
                   priority
                   sizes="100vw"
+                  draggable={false}
+                  onContextMenu={(e) => e.preventDefault()}
                   className={styles.bannerImage}
                   style={{ objectFit: "cover", objectPosition: "center top" }}
                 />

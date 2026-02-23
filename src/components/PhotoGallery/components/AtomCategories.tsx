@@ -54,8 +54,8 @@ export function AtomCategories({ onSelect }: Props) {
           nucleusSize: opened ? 70 : 100,
           orbitRadius: 100,
           electronSize: 40,
-          subRadius: 45,
-          subElectron: 65,
+          subRadius: 55,
+          subElectron: 40,
           leftOffset: 40,
           SubElectronPositionX: 0,
           SubElectronPositionY: 0,
@@ -102,6 +102,8 @@ export function AtomCategories({ onSelect }: Props) {
           src="/icon/galleryIcon.jpg"
           alt="Nucleus"
           fill
+          draggable={false}
+          onContextMenu={(e) => e.preventDefault()}
           style={{ objectFit: "cover", objectPosition: "center 40%" }}
         />
       </motion.div>
@@ -169,6 +171,8 @@ export function AtomCategories({ onSelect }: Props) {
                     src={cat.image}
                     alt={cat.label}
                     fill
+                    draggable={false}
+                    onContextMenu={(e) => e.preventDefault()}
                     style={{ objectFit: "cover" }}
                   />
                 </div>
@@ -223,6 +227,8 @@ export function AtomCategories({ onSelect }: Props) {
                             src={sub.image}
                             alt={sub.label}
                             fill
+                            draggable={false}
+                            onContextMenu={(e) => e.preventDefault()}
                             style={{
                               objectFit: "cover",
                             }}

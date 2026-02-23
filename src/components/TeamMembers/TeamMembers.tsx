@@ -509,6 +509,8 @@ export default function TeamMembers() {
                               src={member.image}
                               alt={member.alt}
                               fill
+                              draggable={false}
+                              onContextMenu={(e) => e.preventDefault()}
                               style={{ objectFit: "cover" }}
                             />
                           </div>

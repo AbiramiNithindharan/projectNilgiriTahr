@@ -250,6 +250,8 @@ export default function WhatWeDoCards() {
                         src={card.image}
                         alt={card.title}
                         fill
+                        draggable={false}
+                        onContextMenu={(e) => e.preventDefault()}
                         style={{
                           objectFit: "cover",
                         }}

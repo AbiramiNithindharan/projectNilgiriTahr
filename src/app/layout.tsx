@@ -4,6 +4,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "./client-layout";
 import { Toaster } from "react-hot-toast";
+import ClientProtection from "@/components/ClientProtection";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,6 +39,7 @@ export default function RootLayout({
       >
         {/* ✅ client wrapper handles hooks & header */}
         <ClientLayout>
+          <ClientProtection />
           {children}{" "}
           <Toaster
             position="bottom-right"

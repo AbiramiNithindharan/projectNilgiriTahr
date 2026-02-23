@@ -115,6 +115,8 @@ export default function PhotoGallery() {
           alt={`${activeCategory.label} banner`}
           className={styles.bannerImage}
           initial={{ scale: 1.1, y: -30, opacity: 0 }}
+          draggable={false}
+          onContextMenu={(e) => e.preventDefault()}
           animate={{ scale: 1, y: 0, opacity: 1 }}
           transition={{
             duration: 1.2,
@@ -310,6 +312,8 @@ export default function PhotoGallery() {
                     width={300}
                     height={300}
                     className={styles.galleryImage}
+                    draggable={false}
+                    onContextMenu={(e) => e.preventDefault()}
                   />
                 </motion.div>
               ))}
@@ -350,6 +354,8 @@ export default function PhotoGallery() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5 }}
+                    draggable={false}
+                    onContextMenu={(e) => e.preventDefault()}
                   />
                 </div>
               </motion.div>

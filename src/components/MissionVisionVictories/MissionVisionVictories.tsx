@@ -161,17 +161,22 @@ export default function MissionVisionVictories() {
                     boxShadow: "0 6px 16px rgba(27, 67, 50, 0.18)",
                   }}
                 >
-                  <Image
-                    src={section.icon}
-                    alt={section.title}
-                    width={48}
-                    height={48}
-                    priority={index === 0}
-                    style={{
-                      borderRadius: "50%",
-                      transform: "scale(1.25)",
-                    }}
-                  />
+                  <div className="relative w-full">
+                    <Image
+                      src={section.icon}
+                      alt={section.title}
+                      width={48}
+                      height={48}
+                      priority={index === 0}
+                      draggable={false}
+                      onContextMenu={(e) => e.preventDefault()}
+                      style={{
+                        borderRadius: "50%",
+                        transform: "scale(1.25)",
+                      }}
+                    />
+                    <div className="absolute inset-0 z-10" />
+                  </div>
                 </div>
               </div>
               <h3

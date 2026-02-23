@@ -57,6 +57,8 @@ export default function WhoWeAreBanner({
             ease: [0.25, 0.1, 0.25, 1] as const,
             delay: 0.3,
           }}
+          draggable={false}
+          onContextMenu={(e) => e.preventDefault()}
           style={{
             width: "100%",
             height: "100%",

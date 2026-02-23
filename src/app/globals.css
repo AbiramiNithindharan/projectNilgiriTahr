@@ -3,6 +3,15 @@
   --foreground: #171717;
 }
 
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+body {
+  -webkit-touch-callout: none;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #ffffff;

@@ -49,6 +49,8 @@ export default function WhoWeAre() {
             src="/banners/who-we-are.JPG"
             alt="Nilgiri Tahr conservation work"
             fill
+            draggable={false}
+            onContextMenu={(e) => e.preventDefault()}
             style={{
               objectFit: "cover",
             }}

@@ -236,6 +236,8 @@ export default function WhereWeWork() {
                           src={area.icon}
                           alt={area.title}
                           fill
+                          draggable={false}
+                          onContextMenu={(e) => e.preventDefault()}
                           sizes="(max-width: 768px) 100vw, 33vw"
                           style={{
                             objectFit: "cover",

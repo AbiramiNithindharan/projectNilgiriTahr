@@ -44,6 +44,8 @@ export default function WhatWeDo() {
         <Image
           src="/banners/DJI_0036.jpg"
           alt="Nilgiri Tahr habitat"
+          draggable={false}
+          onContextMenu={(e) => e.preventDefault()}
           fill
           style={{
             objectFit: "cover",
