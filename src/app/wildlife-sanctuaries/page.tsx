@@ -17,8 +17,6 @@ export default function NilgiriTahrPage() {
             src="/gallery/wildlife-sanctuaries.JPG"
             alt="Nilgiri Tahr"
             fill
-            draggable={false}
-            onContextMenu={(e) => e.preventDefault()}
             className={styles.image}
             priority
           />

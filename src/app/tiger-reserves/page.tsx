@@ -17,8 +17,6 @@ export default function NilgiriTahrPage() {
             src="/gallery/tiger-reserves.jpg"
             alt="Nilgiri Tahr"
             fill
-            draggable={false}
-            onContextMenu={(e) => e.preventDefault()}
             className={styles.image}
             priority
           />
