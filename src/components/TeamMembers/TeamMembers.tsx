@@ -64,11 +64,11 @@ export default function TeamMembers() {
             "Principal Chief Conservator of Forests and Chief Wildlife Warden, Tamil Nadu, Thiru Rakesh Kumar Dogra oversees the protection and management of the state’s rich biodiversity. He is responsible for enforcing wildlife laws, supervising conservation activities across national parks, tiger reserves, and wildlife sanctuaries, and coordinating with national-level conservation programs. In his role, he ensures that strategic initiatives such as Project Nilgiri Tahr are implemented effectively, emphasizing habitat restoration, population monitoring, and field-level protection to secure the long-term survival of Tamil Nadu’s state animal and the high-altitude ecosystems it inhabits.",
         },
         {
-          name: "Thiru.M.G.Ganesan, IFS",
-          image: "/members/thiru-mg-ganesan.png",
-          alt: "Thiru.M.G.Ganesan",
+          name: "SELVI.S.SENBAGAPRIYA, IFS",
+          image: "/members/SENBAGAPRIYA.jpeg",
+          alt: "selvi.s.senbagapriya",
           about:
-            "Project Director a native of Ramanathapuram district has completed B.Sc.Agri at PAJANCOA &RI, Karaikal and M.Sc.Agri at GP Pant University at Uttarakhand. Worked as an agricultural officer and got selected as ACF in 2014. Trained at CASFOS dehradun from 2014 to 2016. Worked as ACF squad and vigilance, Eco development officer in KMTR, DD at ATR Pollachi, DD at AIWC. Now working as State Project Director, Project Nilgiri Tahr at Coimbatore. Majorly worked for tribal welfare, local community development, wildlife and wildlife forensics..",
+            "Ms. Senbagapriya, IFS, has been Project Director of Project Nilgiri Tahr in Coimbatore from January 2026. She was the Deputy Director (Administration) of AIWC (R, T & E), Vandalur, in the Tamil Nadu Forest Department from January 2024 to January 2026. She belongs to the 2013 batch of the Indian Forest Service (IFS), Tamil Nadu Cadre. She holds a bachelor’s degree in agriculture from Tamil Nadu Agricultural University, Coimbatore, and a postgraduate degree in Geography from the University of Madras, Chennai. She has eight years of experience in wildlife and biodiversity conservation, having worked in two territorial divisions and two wildlife divisions within the Tamil Nadu Forest Department.",
         },
         {
           name: "Thiru.K.Ganeshram",
@@ -434,7 +434,7 @@ export default function TeamMembers() {
                     pauseOnMouseEnter: true,
                   }}
                   loop={section.members.length > 3}
-                  grabCursor={true} // 👈 shows hand cursor + allows drag swipe
+                  grabCursor={true}
                   touchRatio={1.2}
                   breakpoints={{
                     640: {
@@ -522,25 +522,36 @@ export default function TeamMembers() {
                           >
                             {member.name}
                           </h3>
-                          <p
+                          <div
                             onClick={() => toggleCard(cardId)}
                             style={{
                               fontSize: "0.9rem",
                               textAlign: "left",
                               cursor: "pointer",
+                              overflowY: isExpanded ? "auto" : "hidden",
+                              maxHeight: isExpanded ? "140px" : "auto",
+                              paddingRight: "4px",
                             }}
+                            className={styles.scrollableText}
                           >
-                            {isExpanded
-                              ? member.about
-                              : truncateText(member.about)}
-                            {member.about.length > 150 && (
-                              <span
-                                style={{ color: "#52b788", fontWeight: "600" }}
-                              >
-                                {isExpanded ? " Show Less" : " Read More"}
-                              </span>
-                            )}
-                          </p>
+                            <p>
+                              {isExpanded
+                                ? member.about
+                                : truncateText(member.about)}
+                              {member.about.length > 150 && (
+                                <span
+                                  onClick={() => toggleCard(cardId)}
+                                  style={{
+                                    color: "#52b788",
+                                    fontWeight: "600",
+                                    cursor: "pointer",
+                                  }}
+                                >
+                                  {isExpanded ? " Show Less" : " Read More"}
+                                </span>
+                              )}
+                            </p>
+                          </div>
                         </motion.div>
                       </SwiperSlide>
                     );
@@ -721,24 +732,39 @@ export default function TeamMembers() {
                           >
                             {partner.name}
                           </h3>
-                          <p
+                          <div
                             onClick={(e) => {
                               e.stopPropagation();
                               toggleCard(cardId);
                             }}
-                            style={{ fontSize: "0.85rem", textAlign: "left" }}
+                            style={{
+                              fontSize: "0.85rem",
+                              textAlign: "left",
+                              cursor: "pointer",
+                              overflowY: isExpanded ? "auto" : "hidden",
+                              maxHeight: isExpanded ? "160px" : "auto",
+                              paddingRight: "4px",
+                            }}
+                            className={styles.scrollableText}
                           >
-                            {isExpanded
-                              ? partner.about
-                              : truncateText(partner.about)}
-                            {partner.about.length > 150 && (
-                              <span
-                                style={{ color: "#52b788", fontWeight: "600" }}
-                              >
-                                {isExpanded ? " Show Less" : " Read More"}
-                              </span>
-                            )}
-                          </p>
+                            <p>
+                              {isExpanded
+                                ? partner.about
+                                : truncateText(partner.about)}
+                              {partner.about.length > 150 && (
+                                <span
+                                  onClick={() => toggleCard(cardId)}
+                                  style={{
+                                    color: "#52b788",
+                                    fontWeight: "600",
+                                    cursor: "pointer",
+                                  }}
+                                >
+                                  {isExpanded ? " Show Less" : " Read More"}
+                                </span>
+                              )}
+                            </p>
+                          </div>
                         </motion.div>
                       </SwiperSlide>
                     );

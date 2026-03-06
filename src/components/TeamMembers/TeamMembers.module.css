@@ -71,6 +71,14 @@
   box-shadow: 0 15px 40px rgba(27, 67, 50, 0.15);
 }
 
+.scrollableText::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollableText::-webkit-scrollbar-thumb {
+  background: #52b788;
+  border-radius: 10px;
+}
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
