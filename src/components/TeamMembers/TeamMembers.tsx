@@ -540,7 +540,6 @@ export default function TeamMembers() {
                                 : truncateText(member.about)}
                               {member.about.length > 150 && (
                                 <span
-                                  onClick={() => toggleCard(cardId)}
                                   style={{
                                     color: "#52b788",
                                     fontWeight: "600",
