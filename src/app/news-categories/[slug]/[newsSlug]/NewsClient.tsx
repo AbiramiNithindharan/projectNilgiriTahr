@@ -157,30 +157,31 @@ export default function NewsClient({
                     <Image
                       src={item.image.asset.url}
                       alt={item.image.alt || `Gallery image ${index + 1}`}
-                      width={600}
-                      height={400}
+                      fill
                       className={styles.galleryImage}
                     />
                   </motion.div>
                 )}
 
                 {/* Caption & Body */}
-                <motion.div
-                  initial={{ x: 50, opacity: 0 }}
-                  whileInView={{ x: 0, opacity: 1 }}
-                  transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                  viewport={{ once: true }}
-                  className={styles.galleryText}
-                >
-                  {item.caption && (
-                    <h3 className={styles.galleryCaption}>{item.caption}</h3>
-                  )}
-                  {item.body && (
-                    <div className={styles.galleryBody}>
-                      <PortableText value={item.body} />
-                    </div>
-                  )}
-                </motion.div>
+                {item.body && (
+                  <motion.div
+                    initial={{ x: 50, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                    viewport={{ once: true }}
+                    className={styles.galleryText}
+                  >
+                    {item.caption && (
+                      <h3 className={styles.galleryCaption}>{item.caption}</h3>
+                    )}
+                    {item.body && (
+                      <div className={styles.galleryBody}>
+                        <PortableText value={item.body} />
+                      </div>
+                    )}
+                  </motion.div>
+                )}
                 <div className={styles.sectionDivider}></div>
               </motion.div>
             ))}
@@ -203,8 +204,8 @@ export default function NewsClient({
               whileHover={{ scale: 1.02 }}
               style={{
                 background: "transparent",
-                border: "2px solid #000000",
-                color: "#000000",
+                border: "2px solid #432d05",
+                color: "linear-gradient(135deg, #473422cb, #251d15)",
                 padding: "1rem 2rem",
                 fontSize: "1rem",
                 fontWeight: "600",
@@ -217,20 +218,19 @@ export default function NewsClient({
                 marginBottom: "2rem",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = "#000000";
+                e.currentTarget.style.background =
+                  "linear-gradient(135deg, #473422cb, #251d15)";
                 e.currentTarget.style.color = "#ffffff";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.background = "transparent";
-                e.currentTarget.style.color = "#000000";
+                e.currentTarget.style.color = "#251d15";
               }}
             >
               Back to Recent News
             </motion.button>
           </Link>
         </motion.div>
-        {/* Divider */}
-        <div className={styles.sectionDivider}></div>
       </div>
     </motion.div>
   );

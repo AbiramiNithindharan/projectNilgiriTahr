@@ -101,7 +101,7 @@ export default function CategoryClient({
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(45deg, rgba(27, 67, 50, 0.6), rgba(82, 183, 136, 0.3))",
+              "linear-gradient(45deg, rgba(67, 46, 27, 0.6), rgba(183, 134, 82, 0.3))",
           }}
         />
         <div
@@ -198,7 +198,7 @@ export default function CategoryClient({
                       style={{
                         background: "white",
                         borderRadius: "16px",
-                        boxShadow: "0 8px 32px rgba(27,67,50,0.08)",
+                        boxShadow: "0 8px 32px rgba(67, 49, 27, 0.08)",
                         padding: "1rem",
                         display: "flex",
                         flexDirection: "column",
@@ -251,7 +251,7 @@ export default function CategoryClient({
                               target="_blank"
                               rel="noopener noreferrer"
                               style={{
-                                background: "#1b4332",
+                                background: "#43361b",
                                 padding: "0.6rem 1rem",
                                 borderRadius: "6px",
                                 color: "white",
@@ -268,7 +268,7 @@ export default function CategoryClient({
                               )}`}
                               style={{
                                 display: "inline-block",
-                                background: "#40916C",
+                                background: "#b79052",
                                 color: "#fff",
                                 padding: "0.6rem 1.2rem",
                                 borderRadius: "8px",
@@ -297,7 +297,7 @@ export default function CategoryClient({
                       transform: "translateY(-50%)",
                       background: "rgba(255, 255, 255, 0.95)",
                       backdropFilter: "blur(10px)",
-                      border: "1px solid rgba(82, 183, 136, 0.2)",
+                      border: "1px solid rgba(183, 134, 82, 0.2)",
                       borderRadius: "50%",
                       width: "50px",
                       height: "50px",
@@ -306,13 +306,13 @@ export default function CategoryClient({
                       justifyContent: "center",
                       cursor: "pointer",
                       fontSize: "1.5rem",
-                      color: "#1b4332",
+                      color: "#43361b",
                       transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                       zIndex: 10,
                       boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = "#52b788";
+                      e.currentTarget.style.background = "#b79052";
                       e.currentTarget.style.color = "#ffffff";
                       e.currentTarget.style.transform =
                         "translateY(-50%) scale(1.1)";
@@ -320,7 +320,7 @@ export default function CategoryClient({
                     onMouseLeave={(e) => {
                       e.currentTarget.style.background =
                         "rgba(255, 255, 255, 0.95)";
-                      e.currentTarget.style.color = "#1b4332";
+                      e.currentTarget.style.color = "#43361b";
                       e.currentTarget.style.transform =
                         "translateY(-50%) scale(1)";
                     }}
@@ -345,13 +345,13 @@ export default function CategoryClient({
                       justifyContent: "center",
                       cursor: "pointer",
                       fontSize: "1.5rem",
-                      color: "#1b4332",
+                      color: "#43361b",
                       transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                       zIndex: 10,
                       boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = "#52b788";
+                      e.currentTarget.style.background = "#b79052";
                       e.currentTarget.style.color = "#ffffff";
                       e.currentTarget.style.transform =
                         "translateY(-50%) scale(1.1)";
@@ -359,7 +359,7 @@ export default function CategoryClient({
                     onMouseLeave={(e) => {
                       e.currentTarget.style.background =
                         "rgba(255, 255, 255, 0.95)";
-                      e.currentTarget.style.color = "#1b4332";
+                      e.currentTarget.style.color = "#43361b";
                       e.currentTarget.style.transform =
                         "translateY(-50%) scale(1)";
                     }}
@@ -466,13 +466,13 @@ export default function CategoryClient({
                       justifyContent: "center",
                       cursor: "pointer",
                       fontSize: "1.5rem",
-                      color: "#1b4332",
+                      color: "#43361b",
                       transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                       zIndex: 10,
                       boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = "#52b788";
+                      e.currentTarget.style.background = "#b79052";
                       e.currentTarget.style.color = "#ffffff";
                       e.currentTarget.style.transform =
                         "translateY(-50%) scale(1.1)";
@@ -480,7 +480,7 @@ export default function CategoryClient({
                     onMouseLeave={(e) => {
                       e.currentTarget.style.background =
                         "rgba(255, 255, 255, 0.95)";
-                      e.currentTarget.style.color = "#1b4332";
+                      e.currentTarget.style.color = "#43361b";
                       e.currentTarget.style.transform =
                         "translateY(-50%) scale(1)";
                     }}
@@ -505,13 +505,13 @@ export default function CategoryClient({
                       justifyContent: "center",
                       cursor: "pointer",
                       fontSize: "1.5rem",
-                      color: "#1b4332",
+                      color: "#43361b",
                       transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                       zIndex: 10,
                       boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = "#52b788";
+                      e.currentTarget.style.background = "#b79052";
                       e.currentTarget.style.color = "#ffffff";
                       e.currentTarget.style.transform =
                         "translateY(-50%) scale(1.1)";
@@ -519,7 +519,7 @@ export default function CategoryClient({
                     onMouseLeave={(e) => {
                       e.currentTarget.style.background =
                         "rgba(255, 255, 255, 0.95)";
-                      e.currentTarget.style.color = "#1b4332";
+                      e.currentTarget.style.color = "#43361b";
                       e.currentTarget.style.transform =
                         "translateY(-50%) scale(1)";
                     }}
@@ -544,29 +544,34 @@ export default function CategoryClient({
           }}
         >
           <Link href={"/news-categories"}>
-            <button
+            <motion.button
+              whileHover={{ scale: 1.02 }}
               style={{
                 background: "transparent",
-                border: "2px solid #000",
-                color: "#000",
+                border: "2px solid #432d05",
+                color: "linear-gradient(135deg, #473422cb, #251d15)",
                 padding: "1rem 2rem",
                 fontSize: "1rem",
                 fontWeight: "600",
                 textTransform: "uppercase",
                 letterSpacing: "0.1em",
                 cursor: "pointer",
+                transition: "all 0.3s ease",
+                marginTop: "2rem",
+                marginBottom: "2rem",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = "#000";
+                e.currentTarget.style.background =
+                  "linear-gradient(135deg, #473422cb, #251d15)";
                 e.currentTarget.style.color = "#fff";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.background = "transparent";
-                e.currentTarget.style.color = "#000";
+                e.currentTarget.style.color = "#251d15";
               }}
             >
               Back to News & Updates
-            </button>
+            </motion.button>
           </Link>
         </motion.div>
       </motion.section>

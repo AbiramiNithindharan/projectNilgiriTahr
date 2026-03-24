@@ -117,10 +117,10 @@ export default function WhoWeAreCards() {
             style={{
               fontSize: "clamp(2rem, 4vw, 3rem)",
               fontWeight: "700",
-              color: "#1b4332",
+              color: "#573f29",
               margin: "0 0 1rem 0",
               fontFamily: "Poppins, sans-serif",
-              background: "linear-gradient(135deg, #1b4332, #2d5016, #52b788)",
+              background: "linear-gradient(135deg, #432e1b, #503c16, #b7a052)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
@@ -157,7 +157,7 @@ export default function WhoWeAreCards() {
                   transform: "translateY(-50%)",
                   background: "rgba(255, 255, 255, 0.95)",
                   backdropFilter: "blur(10px)",
-                  border: "1px solid rgba(82, 183, 136, 0.2)",
+                  border: "1px solid rgba(183, 151, 82, 0.2)",
                   borderRadius: "50%",
                   width: "50px",
                   height: "50px",
@@ -166,13 +166,13 @@ export default function WhoWeAreCards() {
                   justifyContent: "center",
                   cursor: "pointer",
                   fontSize: "1.5rem",
-                  color: "#1b4332",
+                  color: "#43361b",
                   transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                   zIndex: 10,
                   boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "#52b788";
+                  e.currentTarget.style.background = "#b79052";
                   e.currentTarget.style.color = "#ffffff";
                   e.currentTarget.style.transform =
                     "translateY(-50%) scale(1.1)";
@@ -180,7 +180,7 @@ export default function WhoWeAreCards() {
                 onMouseLeave={(e) => {
                   e.currentTarget.style.background =
                     "rgba(255, 255, 255, 0.95)";
-                  e.currentTarget.style.color = "#1b4332";
+                  e.currentTarget.style.color = "#43361b";
                   e.currentTarget.style.transform = "translateY(-50%) scale(1)";
                 }}
               >
@@ -195,7 +195,7 @@ export default function WhoWeAreCards() {
                   transform: "translateY(-50%)",
                   background: "rgba(255, 255, 255, 0.95)",
                   backdropFilter: "blur(10px)",
-                  border: "1px solid rgba(82, 183, 136, 0.2)",
+                  border: "1px solid rgba(183, 151, 82, 0.2)",
                   borderRadius: "50%",
                   width: "50px",
                   height: "50px",
@@ -204,13 +204,13 @@ export default function WhoWeAreCards() {
                   justifyContent: "center",
                   cursor: "pointer",
                   fontSize: "1.5rem",
-                  color: "#1b4332",
+                  color: "#43361b",
                   transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                   zIndex: 10,
                   boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "#52b788";
+                  e.currentTarget.style.background = "#b79052";
                   e.currentTarget.style.color = "#ffffff";
                   e.currentTarget.style.transform =
                     "translateY(-50%) scale(1.1)";
@@ -218,7 +218,7 @@ export default function WhoWeAreCards() {
                 onMouseLeave={(e) => {
                   e.currentTarget.style.background =
                     "rgba(255, 255, 255, 0.95)";
-                  e.currentTarget.style.color = "#1b4332";
+                  e.currentTarget.style.color = "#43361b";
                   e.currentTarget.style.transform = "translateY(-50%) scale(1)";
                 }}
               >

@@ -7,6 +7,7 @@ export type SubCategory = {
 export type GalleryCategory = {
   id: string;
   label: string;
+  banner: string;
   subCategories: SubCategory[];
 };
 
@@ -14,6 +15,7 @@ export const galleryCategories: GalleryCategory[] = [
   {
     id: "NilgiriTahr",
     label: "Nilgiri Tahr",
+    banner: "/gallery/nt-portrait/nilgiritahr-15.JPG",
     subCategories: [
       {
         id: "Portrait",
@@ -64,6 +66,7 @@ export const galleryCategories: GalleryCategory[] = [
   {
     id: "EcoSystem",
     label: "EcoSystem",
+    banner: "/gallery/associate-fauna/associate-fauna-2.JPG",
     subCategories: [
       {
         id: "FloraAndFauna",
@@ -134,6 +137,7 @@ export const galleryCategories: GalleryCategory[] = [
   {
     id: "Portfolio",
     label: "Portfolio",
+    banner: "/gallery/Portfolio/BiennialSurvey/BS1.jpg",
     subCategories: [
       {
         id: "BiennialSurvey",
@@ -184,6 +188,7 @@ export const galleryCategories: GalleryCategory[] = [
   {
     id: "Poster",
     label: "Poster",
+    banner: "/gallery/Poster/Threats.jpg",
     subCategories: [
       {
         id: "Objectives",
@@ -230,6 +235,7 @@ export const galleryCategories: GalleryCategory[] = [
   {
     id: "Celebration",
     label: "Celebration",
+    banner: "/gallery/celebration/EnvironmentDay/WED1.jpg",
     subCategories: [
       {
         id: "Initiative",
@@ -279,6 +285,7 @@ export const galleryCategories: GalleryCategory[] = [
   {
     id: "Study",
     label: "Study",
+    banner: "/gallery/celebration/Photography/nilgiritahr-1.jpg",
     subCategories: [
       {
         id: "ExpertsMeet",

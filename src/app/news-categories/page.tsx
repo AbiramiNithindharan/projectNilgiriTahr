@@ -109,7 +109,7 @@ export default function NewsRoom() {
             right: 0,
             bottom: 0,
             background:
-              "linear-gradient(45deg, rgba(27, 67, 50, 0.6), rgba(82, 183, 136, 0.3))",
+              "linear-gradient(45deg, rgba(67, 56, 27, 0.6), rgba(183, 146, 82, 0.3))",
             zIndex: 5,
           }}
         />
@@ -229,7 +229,7 @@ export default function NewsRoom() {
                           fontSize: "1.4rem",
                           textAlign: "center",
                           fontWeight: "700",
-                          color: "#1b4332",
+                          color: "#43361b",
                           margin: "2rem 0 0.5rem 0",
                           fontFamily: "Inter, sans-serif",
                         }}
@@ -243,7 +243,7 @@ export default function NewsRoom() {
                         textAlign: "center",
                         fontSize: "2rem",
                         fontWeight: "900",
-                        color: "#52b788",
+                        color: "#b78552",
                         margin: "1.5rem 0 1.5rem 0",
                         fontFamily: "Inter, sans-serif",
                       }}
@@ -284,7 +284,7 @@ export default function NewsRoom() {
                   transform: "translateY(-50%)",
                   background: "rgba(255, 255, 255, 0.95)",
                   backdropFilter: "blur(10px)",
-                  border: "1px solid rgba(82, 183, 136, 0.2)",
+                  border: "1px solid rgba(183, 151, 82, 0.2)",
                   borderRadius: "50%",
                   width: "50px",
                   height: "50px",
@@ -293,13 +293,13 @@ export default function NewsRoom() {
                   justifyContent: "center",
                   cursor: "pointer",
                   fontSize: "1.5rem",
-                  color: "#1b4332",
+                  color: "#43361b",
                   transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                   zIndex: 10,
                   boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "#52b788";
+                  e.currentTarget.style.background = "#b79052";
                   e.currentTarget.style.color = "#ffffff";
                   e.currentTarget.style.transform =
                     "translateY(-50%) scale(1.1)";
@@ -307,7 +307,7 @@ export default function NewsRoom() {
                 onMouseLeave={(e) => {
                   e.currentTarget.style.background =
                     "rgba(255, 255, 255, 0.95)";
-                  e.currentTarget.style.color = "#1b4332";
+                  e.currentTarget.style.color = "#43361b";
                   e.currentTarget.style.transform = "translateY(-50%) scale(1)";
                 }}
               >
@@ -322,7 +322,7 @@ export default function NewsRoom() {
                   transform: "translateY(-50%)",
                   background: "rgba(255, 255, 255, 0.95)",
                   backdropFilter: "blur(10px)",
-                  border: "1px solid rgba(82, 183, 136, 0.2)",
+                  border: "1px solid rgba(183, 151, 82, 0.2)",
                   borderRadius: "50%",
                   width: "50px",
                   height: "50px",
@@ -331,13 +331,13 @@ export default function NewsRoom() {
                   justifyContent: "center",
                   cursor: "pointer",
                   fontSize: "1.5rem",
-                  color: "#1b4332",
+                  color: "#43361b",
                   transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                   zIndex: 10,
                   boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "#52b788";
+                  e.currentTarget.style.background = "#b79052";
                   e.currentTarget.style.color = "#ffffff";
                   e.currentTarget.style.transform =
                     "translateY(-50%) scale(1.1)";
@@ -345,7 +345,7 @@ export default function NewsRoom() {
                 onMouseLeave={(e) => {
                   e.currentTarget.style.background =
                     "rgba(255, 255, 255, 0.95)";
-                  e.currentTarget.style.color = "#1b4332";
+                  e.currentTarget.style.color = "#43361b";
                   e.currentTarget.style.transform = "translateY(-50%) scale(1)";
                 }}
               >
@@ -371,8 +371,8 @@ export default function NewsRoom() {
               whileHover={{ scale: 1.02 }}
               style={{
                 background: "transparent",
-                border: "2px solid #000000",
-                color: "#000000",
+                border: "2px solid #432d05",
+                color: "linear-gradient(135deg, #473422cb, #251d15)",
                 padding: "1rem 2rem",
                 fontSize: "1rem",
                 fontWeight: "600",
@@ -385,12 +385,13 @@ export default function NewsRoom() {
                 marginBottom: "2rem",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = "#000000";
+                e.currentTarget.style.background =
+                  "linear-gradient(135deg, #473422cb, #251d15)";
                 e.currentTarget.style.color = "#ffffff";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.background = "transparent";
-                e.currentTarget.style.color = "#000000";
+                e.currentTarget.style.color = " #251d15";
               }}
             >
               Back to Home

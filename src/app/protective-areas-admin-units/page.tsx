@@ -83,7 +83,7 @@ export default function WhereWeWork() {
             right: 0,
             bottom: 0,
             background:
-              "linear-gradient(45deg, rgba(27, 67, 50, 0.6), rgba(82, 183, 136, 0.3))",
+              "linear-gradient(45deg, rgba(67, 54, 27, 0.6), rgba(183, 156, 82, 0.3))",
             zIndex: 5,
           }}
         />
@@ -140,7 +140,7 @@ export default function WhereWeWork() {
               fontSize: "clamp(1.8rem, 4vw, 2.5rem)",
               fontWeight: "700",
               margin: "0 0 1rem 0",
-              color: "#3f3e3eff",
+              color: "rgb(60, 44, 23)",
               fontFamily: "Poppins, sans-serif",
               textAlign: "center",
             }}
@@ -189,10 +189,10 @@ export default function WhereWeWork() {
               }}
               style={{
                 padding: "2rem",
-                background: "rgba(27, 67, 50, 0.02)",
+                background: "rgba(67, 52, 27, 0.02)",
                 backdropFilter: "blur(10px)",
                 borderRadius: "20px",
-                border: "1px solid rgba(27, 67, 50, 0.1)",
+                border: "1px solid rgba(67, 53, 27, 0.1)",
                 position: "relative",
               }}
             >
@@ -208,18 +208,18 @@ export default function WhereWeWork() {
                       style={{
                         background:
                           area.type === "protected"
-                            ? "linear-gradient(135deg, rgba(82, 183, 136, 0.95), rgba(64, 145, 108, 0.9))"
+                            ? "linear-gradient(135deg, rgba(183, 156, 82, 0.95), rgba(145, 103, 64, 0.9))"
                             : "rgba(255, 255, 255, 0.95)",
                         color:
-                          area.type === "protected" ? "#ffffff" : "#1b4332",
+                          area.type === "protected" ? "#ffffff" : "#43361b",
                         borderRadius: "16px",
 
                         textAlign: "center",
-                        boxShadow: "0 8px 32px rgba(27, 67, 50, 0.08)",
+                        boxShadow: "0 8px 32px rgba(67, 56, 27, 0.08)",
                         border:
                           area.type === "protected"
-                            ? "1px solid rgba(255, 255, 255, 0.2)"
-                            : "1px solid rgba(27, 67, 50, 0.1)",
+                            ? "1px solid rgba(48, 48, 48, 0.3)"
+                            : "1px solid rgba(67, 48, 27, 0.32)",
                         transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                         cursor: "pointer",
                         height: "420px",
@@ -308,7 +308,7 @@ export default function WhereWeWork() {
                     transform: "translateY(-50%)",
                     background: "rgba(255, 255, 255, 0.95)",
                     backdropFilter: "blur(10px)",
-                    border: "1px solid rgba(82, 183, 136, 0.2)",
+                    border: "1px solid rgba(183, 151, 82, 0.2)",
                     borderRadius: "50%",
                     width: "50px",
                     height: "50px",
@@ -317,13 +317,13 @@ export default function WhereWeWork() {
                     justifyContent: "center",
                     cursor: "pointer",
                     fontSize: "1.5rem",
-                    color: "#1b4332",
+                    color: "#43361b",
                     transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                     zIndex: 10,
                     boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "#52b788";
+                    e.currentTarget.style.background = "#b79052";
                     e.currentTarget.style.color = "#ffffff";
                     e.currentTarget.style.transform =
                       "translateY(-50%) scale(1.1)";
@@ -331,7 +331,7 @@ export default function WhereWeWork() {
                   onMouseLeave={(e) => {
                     e.currentTarget.style.background =
                       "rgba(255, 255, 255, 0.95)";
-                    e.currentTarget.style.color = "#1b4332";
+                    e.currentTarget.style.color = "#43361b";
                     e.currentTarget.style.transform =
                       "translateY(-50%) scale(1)";
                   }}
@@ -347,7 +347,7 @@ export default function WhereWeWork() {
                     transform: "translateY(-50%)",
                     background: "rgba(255, 255, 255, 0.95)",
                     backdropFilter: "blur(10px)",
-                    border: "1px solid rgba(82, 183, 136, 0.2)",
+                    border: "1px solid rgba(183, 151, 82, 0.2)",
                     borderRadius: "50%",
                     width: "50px",
                     height: "50px",
@@ -356,13 +356,13 @@ export default function WhereWeWork() {
                     justifyContent: "center",
                     cursor: "pointer",
                     fontSize: "1.5rem",
-                    color: "#1b4332",
+                    color: "#43361b",
                     transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                     zIndex: 10,
                     boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "#52b788";
+                    e.currentTarget.style.background = "#b79052";
                     e.currentTarget.style.color = "#ffffff";
                     e.currentTarget.style.transform =
                       "translateY(-50%) scale(1.1)";
@@ -370,7 +370,7 @@ export default function WhereWeWork() {
                   onMouseLeave={(e) => {
                     e.currentTarget.style.background =
                       "rgba(255, 255, 255, 0.95)";
-                    e.currentTarget.style.color = "#1b4332";
+                    e.currentTarget.style.color = "#43361b";
                     e.currentTarget.style.transform =
                       "translateY(-50%) scale(1)";
                   }}

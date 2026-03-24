@@ -613,7 +613,7 @@ export default function NewsRoom() {
                 marginTop: "40px",
               }}
             >
-              08
+              06
             </div>
 
             {/* Main Heading */}

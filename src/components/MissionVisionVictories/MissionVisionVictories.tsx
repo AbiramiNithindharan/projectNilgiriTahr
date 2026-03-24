@@ -34,7 +34,7 @@ export default function MissionVisionVictories() {
     {
       id: "our-vision",
       title: "Our Vision",
-      icon: "/gallery/nt-portrait/nilgiritahr-19.jpg",
+      icon: "/icon/vision.JPG",
       content:
         "We envision a living sanctuary of collaboration, where people and nature come together in harmony. A place where conservationists, communities, and young minds unite to protect the Nilgiri Tahr — the mountain monarch of the Western Ghats — and the delicate tapestry of life it represents. Through shared wisdom and collective action, we aspire to see these misty highlands flourish, with thriving herds roaming free as symbols of resilience, hope, and balance. Our vision is a future, where protecting the Nilgiri Tahr becomes a legacy of care passed down through generations.",
     },
@@ -173,6 +173,8 @@ export default function MissionVisionVictories() {
                       style={{
                         borderRadius: "50%",
                         transform: "scale(1.25)",
+                        objectFit: "cover",
+                        objectPosition: "center",
                       }}
                     />
                     <div className="absolute inset-0 z-10" />

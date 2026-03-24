@@ -14,8 +14,6 @@ import {
   SubCategory,
 } from "@/data/galleryData";
 
-import { galleryBanners } from "@/data/galleryBanner";
-
 const getCategoryById = (id: string): GalleryCategory =>
   galleryCategories.find((c) => c.id === id) ?? galleryCategories[0];
 
@@ -111,7 +109,7 @@ export default function PhotoGallery() {
         }}
       >
         <motion.img
-          src={galleryBanners[activeCategory.id]}
+          src={activeCategory.banner}
           alt={`${activeCategory.label} banner`}
           className={styles.bannerImage}
           initial={{ scale: 1.1, y: -30, opacity: 0 }}
@@ -174,7 +172,7 @@ export default function PhotoGallery() {
             style={{
               fontFamily: "Poppins, sans-serif",
               fontSize: "1.2rem",
-              color: "#1b4332",
+              color: "#43361b",
               margin: 0,
             }}
           >

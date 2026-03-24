@@ -78,7 +78,7 @@ export default function WhoWeAreBanner({
             right: 0,
             bottom: 0,
             background:
-              "linear-gradient(45deg, rgba(27, 67, 50, 0.6), rgba(82, 183, 136, 0.3))",
+              "linear-gradient(45deg, rgba(67, 56, 27, 0.77), rgba(183, 149, 82, 0.49))",
             zIndex: 5,
           }}
         />
@@ -124,7 +124,7 @@ export default function WhoWeAreBanner({
         transition={{ duration: 0.8, delay: 1.0 }}
         style={{
           padding: "clamp(3rem, 6vw, 5rem) clamp(1rem, 5vw, 3rem)",
-          background: "linear-gradient(135deg, #f8fffe 0%, #e8f5e8 100%)",
+          background: "linear-gradient(135deg, #fffcf8 0%, #f5ede8 100%)",
           textAlign: "center",
         }}
       >
@@ -141,7 +141,7 @@ export default function WhoWeAreBanner({
             style={{
               fontSize: "clamp(1.1rem, 2.5vw, 1.3rem)",
               lineHeight: "1.8",
-              color: "#2d5016",
+              color: "#502c16",
               fontFamily: "Poppins, sans-serif",
               fontWeight: "400",
               marginBottom: "2rem",
@@ -160,7 +160,7 @@ export default function WhoWeAreBanner({
             style={{
               fontSize: "clamp(1rem, 2.2vw, 1.2rem)",
               lineHeight: "1.7",
-              color: "#1b4332",
+              color: "#502c16",
               fontFamily: "Poppins, sans-serif",
               fontWeight: "400",
             }}

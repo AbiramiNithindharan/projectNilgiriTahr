@@ -189,10 +189,10 @@ export default function WhatWeDoCards() {
             }}
             style={{
               padding: "2rem",
-              background: "rgba(27, 67, 50, 0.03)",
+              background: "rgba(67, 46, 27, 0.03)",
               backdropFilter: "blur(10px)",
               borderRadius: "20px",
-              border: "1px solid rgba(27, 67, 50, 0.1)",
+              border: "1px solid rgba(67, 45, 27, 0.1)",
               position: "relative",
             }}
           >
@@ -208,18 +208,18 @@ export default function WhatWeDoCards() {
                     backdropFilter: "blur(15px)",
                     borderRadius: "16px",
                     overflow: "hidden",
-                    boxShadow: "0 8px 32px rgba(27, 67, 50, 0.08)",
+                    boxShadow: "0 8px 32px rgba(67, 50, 27, 0.08)",
                     border: "1px solid rgba(255, 255, 255, 0.3)",
                     transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                     cursor: "pointer",
-                    height: "420px", // Fixed height for all cards
+                    height: "420px",
                     display: "flex",
                     flexDirection: "column",
                   }}
                   whileHover={{
                     y: -8,
                     scale: 1.02,
-                    boxShadow: "0 16px 48px rgba(27, 67, 50, 0.12)",
+                    boxShadow: "0 16px 48px rgba(67, 52, 27, 0.12)",
                     transition: { duration: 0.2 },
                   }}
                 >
@@ -236,12 +236,12 @@ export default function WhatWeDoCards() {
                       style={{
                         width: "100%",
                         height: "100%",
-                        background: "linear-gradient(135deg, #e8f5f0, #a8dab5)",
+                        background: "linear-gradient(135deg, #f5eae8, #dabfa8)",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                         fontSize: "4rem",
-                        color: "#1b4332",
+                        color: "#502c16",
                         fontWeight: "bold",
                         position: "relative",
                       }}
@@ -289,7 +289,7 @@ export default function WhatWeDoCards() {
                           fontSize: "1.3rem",
                           fontWeight: "700",
                           margin: "0 0 1rem 0",
-                          color: "#1b4332",
+                          color: "#502c16",
                           fontFamily: "Poppins, sans-serif",
                           lineHeight: "1.3",
                           minHeight: "2.6rem",
@@ -304,7 +304,7 @@ export default function WhatWeDoCards() {
                       <p
                         style={{
                           fontSize: "0.9rem",
-                          color: "#2d5016",
+                          color: "#504616",
                           lineHeight: "1.5",
                           margin: "0",
                           fontFamily: "Poppins, sans-serif",
@@ -336,7 +336,7 @@ export default function WhatWeDoCards() {
                   transform: "translateY(-50%)",
                   background: "rgba(255, 255, 255, 0.95)",
                   backdropFilter: "blur(10px)",
-                  border: "1px solid rgba(82, 183, 136, 0.2)",
+                  border: "1px solid rgba(183, 151, 82, 0.2)",
                   borderRadius: "50%",
                   width: "50px",
                   height: "50px",
@@ -345,13 +345,13 @@ export default function WhatWeDoCards() {
                   justifyContent: "center",
                   cursor: "pointer",
                   fontSize: "1.5rem",
-                  color: "#1b4332",
+                  color: "#43361b",
                   transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                   zIndex: 10,
                   boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "#52b788";
+                  e.currentTarget.style.background = "#b79052";
                   e.currentTarget.style.color = "#ffffff";
                   e.currentTarget.style.transform =
                     "translateY(-50%) scale(1.1)";
@@ -359,7 +359,7 @@ export default function WhatWeDoCards() {
                 onMouseLeave={(e) => {
                   e.currentTarget.style.background =
                     "rgba(255, 255, 255, 0.95)";
-                  e.currentTarget.style.color = "#1b4332";
+                  e.currentTarget.style.color = "#43361b";
                   e.currentTarget.style.transform = "translateY(-50%) scale(1)";
                 }}
               >
@@ -374,7 +374,7 @@ export default function WhatWeDoCards() {
                   transform: "translateY(-50%)",
                   background: "rgba(255, 255, 255, 0.95)",
                   backdropFilter: "blur(10px)",
-                  border: "1px solid rgba(82, 183, 136, 0.2)",
+                  border: "1px solid rgba(183, 151, 82, 0.2)",
                   borderRadius: "50%",
                   width: "50px",
                   height: "50px",
@@ -383,13 +383,13 @@ export default function WhatWeDoCards() {
                   justifyContent: "center",
                   cursor: "pointer",
                   fontSize: "1.5rem",
-                  color: "#1b4332",
+                  color: "#43361b",
                   transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                   zIndex: 10,
                   boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "#52b788";
+                  e.currentTarget.style.background = "#b79052";
                   e.currentTarget.style.color = "#ffffff";
                   e.currentTarget.style.transform =
                     "translateY(-50%) scale(1.1)";
@@ -397,7 +397,7 @@ export default function WhatWeDoCards() {
                 onMouseLeave={(e) => {
                   e.currentTarget.style.background =
                     "rgba(255, 255, 255, 0.95)";
-                  e.currentTarget.style.color = "#1b4332";
+                  e.currentTarget.style.color = "#43361b";
                   e.currentTarget.style.transform = "translateY(-50%) scale(1)";
                 }}
               >

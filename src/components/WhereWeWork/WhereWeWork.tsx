@@ -122,7 +122,7 @@ export default function WhereWeWork() {
                 letterSpacing: "0.1em",
               }}
             >
-              07
+              05
             </div>
             <h2
               style={{

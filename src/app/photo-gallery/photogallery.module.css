@@ -2,15 +2,14 @@
 .galleryContainer {
     display: flex;
     flex-direction: row;
-    /* Left sidebar, right images */
     align-items: flex-start;
     justify-content: space-between;
     min-height: 100vh;
-    background: linear-gradient(135deg, #f8fffe 0%, #e8f5e8 100%);
+    background: linear-gradient(135deg, #fffcf8 0%, #f5f0e8 100%);
     font-family: Arial, sans-serif;
     padding: 50px 2rem 80px;
     gap: 2rem;
-    /* space between sidebar and image area */
+
 }
 
 .galleryInner {
@@ -21,7 +20,7 @@
     box-sizing: border-box;
 }
 
-/* Sidebar (Left on Desktop, Top on Mobile) */
+
 .sidebar {
     width: 280px;
     padding: 1.5rem;
@@ -70,7 +69,7 @@
 }
 
 .activeMain {
-    background: #1b4332;
+    background: #432c1b;
     color: white;
 }
 
@@ -98,26 +97,24 @@
 }
 
 .subCategory:hover {
-    background: #e9f5ee;
+    background: #f5f1e9;
 }
 
 .activeSub {
-    background: #d8f3dc;
+    background: #f3e4d8;
     font-weight: 600;
 }
 
 .category:hover {
-    background: linear-gradient(135deg, #95f1e0 0%, #ddf3dd 100%);
+    background: linear-gradient(135deg, #f1bd95 0%, #f3e7dd 100%);
 }
 
 .activeCategory {
-    background: linear-gradient(135deg, #82f2dd 0%, #68ed68 100%);
+    background: linear-gradient(135deg, #f2b882 0%, #edc568 100%);
 }
 
-/* Image Area */
 .imageArea {
     flex: 1;
-    /* take remaining width */
     padding: 40px;
     overflow-y: auto;
     background: white;
@@ -128,7 +125,7 @@
 .categoryTitle {
     font-size: 28px;
     margin-bottom: 40px;
-    color: #2d5016;
+    color: #503b16;
     text-transform: capitalize;
 }
 
@@ -241,20 +238,20 @@
     cursor: pointer;
     border-radius: 8px;
     font-weight: 700;
-    background: linear-gradient(135deg, #cdeee6 0%, #bfe6bf 100%);
-    color: #1b4332;
+    background: linear-gradient(135deg, #eee1cd 0%, #e6dabf 100%);
+    color: #432c1b;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .mainCategory:hover {
-    background: linear-gradient(135deg, #a8e6cf 0%, #8fe388 100%);
+    background: linear-gradient(135deg, #e6c9a8 0%, #e3b888 100%);
 }
 
 .activeMain {
-    background: linear-gradient(135deg, #5dd9c1 0%, #52c569 100%);
-    color: #0b2e1a;
+    background: linear-gradient(135deg, #d9a35d 0%, #c58a52 100%);
+    color: #2e1b0b;
 }
 
 /* DROPDOWN */
@@ -273,18 +270,18 @@
     border-radius: 6px;
     cursor: pointer;
     font-size: 0.9rem;
-    background: #f1fbf8;
-    color: #2d6a4f;
+    background: #fbf9f1;
+    color: #2e1b0b;
     font-weight: 500;
 }
 
 .subCategory:hover {
-    background: #d8f3dc;
+    background: #f3ebd8;
 }
 
 .activeSub {
-    background: #95d5b2;
-    color: #081c15;
+    background: #d5bf95;
+    color: #2e1b0b;
     font-weight: 700;
 }
 

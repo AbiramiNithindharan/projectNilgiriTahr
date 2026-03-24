@@ -3,7 +3,7 @@
 .newsContainer {
     margin-top: 120px;
     padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 5vw, 3rem);
-    background: linear-gradient(135deg, #f8fffe 0%, #e8f5e8 100%);
+    background: linear-gradient(135deg, #fffbf8 0%, #f5f0e8 100%);
     font-family: "Inter", sans-serif;
     color: #222;
     line-height: 1.8;
@@ -57,7 +57,7 @@
     font-size: clamp(2.2rem, 4vw, 3rem);
     font-weight: 800;
     text-align: center;
-    color: #1b4332;
+    color: #43361b;
     margin-bottom: 0.5rem;
 }
 
@@ -69,9 +69,9 @@
 }
 
 .newsExcerpt {
-    background: #eaf5ed;
+    background: #f5f1ea;
     padding: 2rem;
-    border-left: 6px solid #1b4332;
+    border-left: 6px solid #43361b;
     border-radius: 8px;
     margin: 0 auto 3rem auto;
     max-width: 850px;
@@ -80,19 +80,20 @@
 
 .newsExcerpt p {
     font-size: 1.4rem;
-    color: #1b4332;
+    color: #43361b;
     font-weight: 600;
     margin: 0;
 }
 
 .newsBody {
-    background: #ffffff;
+    background: #f8f2eb;
     padding: 3rem;
     border-radius: 12px;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
-    color: #222;
+    color: #43361b;
     font-size: clamp(1rem, 5vw, 1.2rem);
     text-align: center;
+    font-weight: 600;
 }
 
 /* Divider */
@@ -103,28 +104,30 @@
     width: 100%;
 }
 
+
+
 .newsBody h2 {
     font-size: 1.6rem;
-    color: #0a3d62;
+    color: #43361b;
     margin-top: 2rem;
     margin-bottom: 1rem;
 }
 
 .newsBody h3 {
     font-size: 1.3rem;
-    color: #145a32;
+    color: #43361b;
     margin-top: 1.5rem;
     margin-bottom: 0.8rem;
 }
 
 .newsBody a {
-    color: #1b4332;
+    color: #43361b;
     text-decoration: underline;
     font-weight: 600;
 }
 
 .newsBody a:hover {
-    color: #145a32;
+    color: #43361b;
 }
 
 .newsBody p {
@@ -152,13 +155,13 @@
 }
 
 .newsBody a {
-    color: #0a3d62;
+    color: #43361b;
     text-decoration: underline;
     font-weight: 600;
 }
 
 .newsBody a:hover {
-    color: #145a32;
+    color: #43361b;
 }
 
 .news-notfound {
@@ -170,7 +173,7 @@
     color: #888;
 }
 
-/* 🎨 Gallery Section */
+
 .gallerySection {
     margin-top: 5rem;
     display: flex;
@@ -188,7 +191,7 @@
 
 .galleryItem {
     display: flex;
-    align-items: center;
+    align-items: stretch;
     gap: 2rem;
     flex-wrap: wrap;
 }
@@ -196,18 +199,23 @@
 
 
 .galleryImageWrapper {
+    position: relative;
     flex: 1 1 45%;
+    min-height: 350px;
+    max-height: 450px;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+}
+
+.galleryImageWrapper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.3));
 }
 
 .galleryImage {
-    width: 100%;
-    height: auto;
-    display: block;
     object-fit: cover;
-    transition: transform 0.4s ease;
 }
 
 .galleryImage:hover {
@@ -216,23 +224,33 @@
 
 .galleryText {
     flex: 1 1 50%;
-    background: #f8fdf8;
+    display: flex;
+    color: #43361b;
+    text-align: justify;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 350px;
+    max-height: 450px;
+    text-indent: 50px;
+    background: #f8f0e6;
     padding: 2rem;
-    border-radius: 12px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    font-size: clamp(1.2rem, 5vw, 0.8rem);
+    font-weight: 600;
 }
 
 .galleryCaption {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #1b4332;
+    color: #43361b;
     margin-bottom: 0.8rem;
 }
 
 .galleryBody {
-    font-size: 1.05rem;
-    color: #333;
+
+
     line-height: 1.7;
+    overflow-y: auto;
 }
 
 .backButtonWrapper {
@@ -267,12 +285,14 @@
         text-align: center;
     }
 
+    .galleryImageWrapper,
     .galleryText {
-        flex: 1 1 100%;
+        max-height: none;
+        min-height: auto;
     }
 
     .galleryImageWrapper {
-        flex: 1 1 100%;
+        height: 250px;
     }
 
     .galleryCaption {

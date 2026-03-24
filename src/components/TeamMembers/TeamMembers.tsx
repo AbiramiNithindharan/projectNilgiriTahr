@@ -245,7 +245,7 @@ export default function TeamMembers() {
     if (!isClient) return [];
 
     const leafTypes = ["🍃", "🌿", "🍂", "🌱", "🌾"];
-    const colors = ["#52b788", "#40916c", "#2d5016", "#1b4332"];
+    const colors = ["#b7aa52", "#918940", "#503c16", "#43351b"];
 
     // Use fixed seed for consistent positioning
     const positions = generateRandomPositions(50);
@@ -292,7 +292,7 @@ export default function TeamMembers() {
       viewport={{ once: true, amount: 0.1 }}
       style={{
         padding: "clamp(2rem, 4vw, 6rem) clamp(1rem, 4vw, 3rem)",
-        background: "linear-gradient(135deg, #f8fffe 0%, #e8f5e8 100%)",
+        background: "linear-gradient(135deg, #fffcf8 0%, #f5ede8 100%)",
         position: "relative",
         overflow: "hidden",
       }}
@@ -324,12 +324,12 @@ export default function TeamMembers() {
               style={{
                 fontSize: "clamp(1.5rem, 4vw, 2.5rem)",
                 fontWeight: "700",
-                color: "#1b4332",
+                color: "#573f29",
                 marginBottom: "clamp(1.5rem, 3vw, 3rem)",
                 fontFamily: "Poppins, sans-serif",
                 textAlign: "center",
                 background:
-                  "linear-gradient(135deg, #1b4332, #2d5016, #52b788)",
+                  "linear-gradient(135deg, #432e1b, #503c16, #b7a052)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -353,7 +353,7 @@ export default function TeamMembers() {
                         transform: "translateY(-50%)",
                         background: "rgba(255, 255, 255, 0.95)",
                         backdropFilter: "blur(10px)",
-                        border: "1px solid rgba(82, 183, 136, 0.2)",
+                        border: "1px solid rgba(183, 151, 82, 0.2)",
                         borderRadius: "50%",
                         width: "50px",
                         height: "50px",
@@ -362,13 +362,13 @@ export default function TeamMembers() {
                         justifyContent: "center",
                         cursor: "pointer",
                         fontSize: "1.5rem",
-                        color: "#1b4332",
+                        color: "#43361b",
                         transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                         zIndex: 10,
                         boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.background = "#52b788";
+                        e.currentTarget.style.background = "#b79052";
                         e.currentTarget.style.color = "#ffffff";
                         e.currentTarget.style.transform =
                           "translateY(-50%) scale(1.1)";
@@ -376,7 +376,7 @@ export default function TeamMembers() {
                       onMouseLeave={(e) => {
                         e.currentTarget.style.background =
                           "rgba(255, 255, 255, 0.95)";
-                        e.currentTarget.style.color = "#1b4332";
+                        e.currentTarget.style.color = "#b79052";
                         e.currentTarget.style.transform =
                           "translateY(-50%) scale(1)";
                       }}
@@ -392,7 +392,7 @@ export default function TeamMembers() {
                         transform: "translateY(-50%)",
                         background: "rgba(255, 255, 255, 0.95)",
                         backdropFilter: "blur(10px)",
-                        border: "1px solid rgba(82, 183, 136, 0.2)",
+                        border: "1px solid rgba(183, 151, 82, 0.2)",
                         borderRadius: "50%",
                         width: "50px",
                         height: "50px",
@@ -401,13 +401,13 @@ export default function TeamMembers() {
                         justifyContent: "center",
                         cursor: "pointer",
                         fontSize: "1.5rem",
-                        color: "#1b4332",
+                        color: "#43361b",
                         transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                         zIndex: 10,
                         boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.background = "#52b788";
+                        e.currentTarget.style.background = "#b79052";
                         e.currentTarget.style.color = "#ffffff";
                         e.currentTarget.style.transform =
                           "translateY(-50%) scale(1.1)";
@@ -415,7 +415,7 @@ export default function TeamMembers() {
                       onMouseLeave={(e) => {
                         e.currentTarget.style.background =
                           "rgba(255, 255, 255, 0.95)";
-                        e.currentTarget.style.color = "#1b4332";
+                        e.currentTarget.style.color = "#43361b";
                         e.currentTarget.style.transform =
                           "translateY(-50%) scale(1)";
                       }}
@@ -501,7 +501,7 @@ export default function TeamMembers() {
                               borderRadius: "50%",
                               overflow: "hidden",
                               margin: "0 auto 1rem auto",
-                              border: "3px solid #52b788",
+                              border: "3px solid #b79052",
                               position: "relative",
                             }}
                           >
@@ -541,7 +541,7 @@ export default function TeamMembers() {
                               {member.about.length > 150 && (
                                 <span
                                   style={{
-                                    color: "#52b788",
+                                    color: "#b79052",
                                     fontWeight: "600",
                                     cursor: "pointer",
                                   }}
@@ -574,7 +574,7 @@ export default function TeamMembers() {
                         transform: "translateY(-50%)",
                         background: "rgba(255, 255, 255, 0.95)",
                         backdropFilter: "blur(10px)",
-                        border: "1px solid rgba(82, 183, 136, 0.2)",
+                        border: "1px solid rgba(183, 151, 82, 0.2)",
                         borderRadius: "50%",
                         width: "50px",
                         height: "50px",
@@ -583,13 +583,13 @@ export default function TeamMembers() {
                         justifyContent: "center",
                         cursor: "pointer",
                         fontSize: "1.5rem",
-                        color: "#1b4332",
+                        color: "#43361b",
                         transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                         zIndex: 10,
                         boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.background = "#52b788";
+                        e.currentTarget.style.background = "#b79052";
                         e.currentTarget.style.color = "#ffffff";
                         e.currentTarget.style.transform =
                           "translateY(-50%) scale(1.1)";
@@ -597,7 +597,7 @@ export default function TeamMembers() {
                       onMouseLeave={(e) => {
                         e.currentTarget.style.background =
                           "rgba(255, 255, 255, 0.95)";
-                        e.currentTarget.style.color = "#1b4332";
+                        e.currentTarget.style.color = "#43361b";
                         e.currentTarget.style.transform =
                           "translateY(-50%) scale(1)";
                       }}
@@ -613,7 +613,7 @@ export default function TeamMembers() {
                         transform: "translateY(-50%)",
                         background: "rgba(255, 255, 255, 0.95)",
                         backdropFilter: "blur(10px)",
-                        border: "1px solid rgba(82, 183, 136, 0.2)",
+                        border: "1px solid rgba(183, 151, 82, 0.2)",
                         borderRadius: "50%",
                         width: "50px",
                         height: "50px",
@@ -622,13 +622,13 @@ export default function TeamMembers() {
                         justifyContent: "center",
                         cursor: "pointer",
                         fontSize: "1.5rem",
-                        color: "#1b4332",
+                        color: "#43361b",
                         transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                         zIndex: 10,
                         boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.background = "#52b788";
+                        e.currentTarget.style.background = "#b79052";
                         e.currentTarget.style.color = "#ffffff";
                         e.currentTarget.style.transform =
                           "translateY(-50%) scale(1.1)";
@@ -636,7 +636,7 @@ export default function TeamMembers() {
                       onMouseLeave={(e) => {
                         e.currentTarget.style.background =
                           "rgba(255, 255, 255, 0.95)";
-                        e.currentTarget.style.color = "#1b4332";
+                        e.currentTarget.style.color = "#43361b";
                         e.currentTarget.style.transform =
                           "translateY(-50%) scale(1)";
                       }}
@@ -754,7 +754,7 @@ export default function TeamMembers() {
                                 <span
                                   onClick={() => toggleCard(cardId)}
                                   style={{
-                                    color: "#52b788",
+                                    color: "#b79052",
                                     fontWeight: "600",
                                     cursor: "pointer",
                                   }}

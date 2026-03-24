@@ -88,7 +88,7 @@ export default function WhatWeDo() {
               letterSpacing: "0.1em",
             }}
           >
-            05
+            04
           </div>
 
           {/* Main Heading */}
