@@ -8,7 +8,7 @@ import styles from "./contact.module.css";
 
 export default function Contact() {
   const [toast, setToast] = useState<{ message: string; type: string } | null>(
-    null
+    null,
   );
 
   function showToast(message: string, type: "success" | "error") {
@@ -50,12 +50,15 @@ export default function Contact() {
           name: form.get("name"),
           email: form.get("email"),
           message: form.get("message"),
+          company: form.get("company"),
         }),
         headers: { "Content-Type": "application/json" },
       });
-
-      if (!res.ok) throw new Error("Failed to send message");
-
+      const data = await res.json();
+      if (!res.ok) {
+        showToast(data.errors?.join(", ") || "Something went wrong", "error");
+        return;
+      }
       e.target.reset();
       showToast("Message sent successfully!", "success");
     } catch (err) {
@@ -75,17 +78,21 @@ export default function Contact() {
           name: form.get("vname"),
           email: form.get("vemail"),
           phone: form.get("vphone"),
+          company: form.get("company"),
           interest: form.get("vinterest"),
         }),
         headers: { "Content-Type": "application/json" },
       });
-
-      if (!res.ok) throw new Error("Failed to submit volunteer form");
+      const data = await res.json();
+      if (!res.ok) {
+        showToast(data.errors?.join(", ") || "Unable to register", "error");
+        return;
+      }
 
       e.target.reset();
       showToast("Volunteer registration successful!", "success");
     } catch (err) {
-      showToast("Unable to register! Try again later.", "error");
+      showToast("Network error. Try again later.", "error");
     }
   }
 
@@ -107,13 +114,15 @@ export default function Contact() {
         style={{
           position: "relative",
           overflow: "hidden",
-          height: "40vh", // Increased from 40vh back to 60vh for desktop
-          marginTop: "100px", // Account for header
+          height: "60vh",
+          marginTop: "100px",
+          objectFit: "cover",
+          objectPosition: "top",
         }}
       >
         <motion.img
-          src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
-          alt="Forest landscape"
+          src="/gallery/nt-portrait/nilgiritahr-33.jpeg"
+          alt="nilgiritahr"
           className={styles.bannerImage}
           initial={{ scale: 1.1, y: -30, opacity: 0 }}
           animate={{ scale: 1, y: 0, opacity: 1 }}
@@ -141,12 +150,11 @@ export default function Contact() {
             right: 0,
             bottom: 0,
             background:
-              "linear-gradient(45deg, rgba(27, 67, 50, 0.6), rgba(82, 183, 136, 0.3))",
+              "linear-gradient(45deg, rgba(67, 48, 27, 0.6), rgba(183, 131, 82, 0.3))",
             zIndex: 5,
           }}
         />
 
-        {/* Title in center of banner */}
         <div
           style={{
             position: "absolute",
@@ -170,7 +178,7 @@ export default function Contact() {
 
               fontFamily: "Poppins, sans-serif",
               textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
-              whiteSpace: "nowrap", // Keep text in one line
+              whiteSpace: "nowrap",
               overflow: "hidden",
               textOverflow: "ellipsis",
             }}
@@ -224,6 +232,11 @@ export default function Contact() {
                     <label htmlFor="email">Email</label>
                     <input type="email" id="email" name="email" required />
                   </div>
+                  <input
+                    type="text"
+                    name="company"
+                    style={{ display: "none" }}
+                  />
                   <div className={styles.formGroup}>
                     <label htmlFor="message">Message</label>
                     <textarea
@@ -256,6 +269,11 @@ export default function Contact() {
                     <label htmlFor="vemail">Email</label>
                     <input type="email" id="vemail" name="vemail" required />
                   </div>
+                  <input
+                    type="text"
+                    name="company"
+                    style={{ display: "none" }}
+                  />
                   <div className={styles.formGroup}>
                     <label htmlFor="vphone">Phone Number</label>
                     <input type="tel" id="vphone" name="vphone" required />
