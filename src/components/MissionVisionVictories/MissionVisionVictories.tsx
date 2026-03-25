@@ -154,31 +154,28 @@ export default function MissionVisionVictories() {
                     height: "72px",
                     borderRadius: "50%",
                     overflow: "hidden",
-                    background: "rgba(82, 183, 136, 0.12)",
+                    background: "#fffff",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     boxShadow: "0 6px 16px rgba(27, 67, 50, 0.18)",
                   }}
                 >
-                  <div className="relative w-full">
-                    <Image
-                      src={section.icon}
-                      alt={section.title}
-                      width={48}
-                      height={48}
-                      priority={index === 0}
-                      draggable={false}
-                      onContextMenu={(e) => e.preventDefault()}
-                      style={{
-                        borderRadius: "50%",
-                        transform: "scale(1.25)",
-                        objectFit: "cover",
-                        objectPosition: "center",
-                      }}
-                    />
-                    <div className="absolute inset-0 z-10" />
-                  </div>
+                  <Image
+                    src={section.icon}
+                    alt={section.title}
+                    width={72}
+                    height={72}
+                    priority={index === 0}
+                    draggable={false}
+                    onContextMenu={(e) => e.preventDefault()}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      borderRadius: "50%",
+                    }}
+                  />
                 </div>
               </div>
               <h3

@@ -100,7 +100,7 @@ export default function PhotoGallery() {
                 letterSpacing: "0.1em",
               }}
             >
-              10
+              07
             </div>
 
             {/* Main Heading */}

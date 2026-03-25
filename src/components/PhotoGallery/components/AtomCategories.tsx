@@ -139,14 +139,13 @@ export function AtomCategories({ onSelect }: Props) {
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{
                   opacity: 1,
-                  scale: [1, 1.05, 1],
+                  scale: 1,
                   x,
                   y,
                 }}
-                whileHover={{ scale: 1.1 }}
+                whileHover={{ scale: 1.05 }}
                 exit={{ opacity: 0, scale: 0 }}
                 transition={{
-                  scale: { repeat: Infinity, duration: 4 },
                   type: "spring",
                   stiffness: 120,
                   damping: 14,

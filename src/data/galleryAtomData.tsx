@@ -77,7 +77,7 @@ export const GALLERY_ATOM_CATEGORIES: AtomMainCategory[] = [
         id: "Location",
         label: "Location",
         route: "/photo-gallery?category=EcoSystem&sub=Location",
-        image: "/gallery/location/Mukurthi.jpg",
+        image: "/gallery/location/Nilgiri_Tahr.jpg",
       },
     ],
   },
@@ -152,9 +152,9 @@ export const GALLERY_ATOM_CATEGORIES: AtomMainCategory[] = [
     image: "/gallery/celebration/Photography/nilgiritahr-1.jpg",
     subCategories: [
       {
-        id: "Initiative",
-        label: "Initiative",
-        route: "/photo-gallery?category=Celebration&sub=Initiative",
+        id: "TahrDay",
+        label: "Tahr Day",
+        route: "/photo-gallery?category=Celebration&sub=TahrDay",
         image: "/gallery/Mission/initiative.jpeg",
       },
       {

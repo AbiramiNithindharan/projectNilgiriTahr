@@ -124,13 +124,7 @@ export const galleryCategories: GalleryCategory[] = [
       {
         id: "Location",
         label: "Location",
-        images: [
-          "/gallery/location/Mukurthi.jpg",
-          "/gallery/location/Anamalai.jpg",
-          "/gallery/location/Srivilliputhur-Megamalai.jpg",
-          "/gallery/location/Kalakkad-Mundanthurai.jpg",
-          "/gallery/location/Pilot-Study.jpg",
-        ],
+        images: ["/gallery/location/Nilgiri_Tahr.jpg"],
       },
     ],
   },
@@ -238,11 +232,12 @@ export const galleryCategories: GalleryCategory[] = [
     banner: "/gallery/celebration/EnvironmentDay/WED1.jpg",
     subCategories: [
       {
-        id: "Initiative",
-        label: "Initiative",
+        id: "TahrDay",
+        label: "Tahr Day",
         images: [
           "/gallery/Mission/stamp.png",
           "/gallery/Mission/initiative.jpeg",
+          "/gallery/Mission/TahrDay-workshop-1.png",
         ],
       },
       {
@@ -303,6 +298,7 @@ export const galleryCategories: GalleryCategory[] = [
         id: "Awareness",
         label: "Awareness",
         images: [
+          "/gallery/Portfolio/Awareness/Nilgiri Tahr day 2024.jpeg",
           "/gallery/Portfolio/Awareness/C.M.S_HSS_SRIVILLIPUTHUR.jpg",
           "/gallery/Portfolio/Awareness/KODANTHUR.jpg",
           "/gallery/Portfolio/Awareness/PAPANASAM_SCHOOL.jpg",
