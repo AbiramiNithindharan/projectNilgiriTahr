@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { motion, useAnimation } from "framer-motion";
 import styles from "./banner-content-2.module.css";
