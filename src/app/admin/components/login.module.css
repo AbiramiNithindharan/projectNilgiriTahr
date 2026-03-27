@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: radial-gradient(circle at top right, #0d324d, #7f5a83);
+    background: radial-gradient(circle at top right, #4d3e0d, #83735a);
     background-attachment: fixed;
     font-family: "Inter", sans-serif;
 }
@@ -17,7 +17,7 @@
     border-radius: 16px;
     padding: 2.5rem 2rem;
     background: rgba(255, 255, 255, 0.92);
-    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    box-shadow: 0 8px 32px rgba(135, 93, 31, 0.37);
 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -63,7 +63,7 @@
 }
 
 .inputText:focus {
-    box-shadow: 0 0 0 3px rgba(127, 90, 131, 0.3);
+    box-shadow: 0 0 0 3px rgba(131, 115, 90, 0.3);
 }
 
 .button {
@@ -74,7 +74,7 @@
     font-size: 1rem;
     font-weight: 600;
     color: white;
-    background: linear-gradient(90deg, #0d324d, #7f5a83);
+    background: linear-gradient(90deg, #4d390d, #83725a);
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }

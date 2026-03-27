@@ -8,7 +8,7 @@ import Footer from "@/components/Footer/Footer";
 import { CartProvider } from "@/context/CartContext";
 import DashboardHeader from "@/components/DashboardHeader/page";
 const Navbar = dynamic(
-  () => import("@/app/e-com/store/components/Navbar/Navbar")
+  () => import("@/app/e-com/store/components/Navbar/Navbar"),
 );
 
 export default function ClientLayout({
@@ -20,7 +20,7 @@ export default function ClientLayout({
   const isHome = pathname === "/";
   const isECom = pathname.startsWith("/e-com");
   const isDashboardHeader = pathname.startsWith("/donation-admin");
-
+  const isSanityDashboard = pathname.startsWith("/sanity/structure");
   const [showHeader] = useState(true);
 
   const handleMenuClick = () => console.log("Menu clicked!");
@@ -35,11 +35,15 @@ export default function ClientLayout({
             zIndex: "20",
           }}
         >
-          <Header
-            onMenuClick={handleMenuClick}
-            onContactClick={handleContactClick}
-            isVisible={isHome ? false : showHeader}
-          />
+          {isSanityDashboard ? (
+            ""
+          ) : (
+            <Header
+              onMenuClick={handleMenuClick}
+              onContactClick={handleContactClick}
+              isVisible={isHome ? false : showHeader}
+            />
+          )}
 
           {isECom && <Navbar />}
           {isDashboardHeader && <DashboardHeader />}

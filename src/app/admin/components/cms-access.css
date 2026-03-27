@@ -66,8 +66,8 @@
 }
 
 .cms-input:focus {
-    border-color: #0070f3;
-    box-shadow: 0 0 0 3px rgba(0, 112, 243, 0.15);
+    border-color: #6e4c11;
+    box-shadow: 0 0 0 3px rgba(96, 72, 5, 0.15);
 }
 
 .button {
@@ -78,14 +78,14 @@
     font-size: 1rem;
     font-weight: 600;
     color: white;
-    background: linear-gradient(90deg, #0d324d, #7f5a83);
+    background: linear-gradient(90deg, #4d300d, #83755a);
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(127, 90, 131, 0.3);
+    box-shadow: 0 8px 16px rgba(131, 118, 90, 0.3);
 }
 
 
@@ -98,7 +98,7 @@
 
 /* Error */
 .cms-loading {
-    color: #07ac28;
+    color: #ac7507;
     font-size: 0.9rem;
     margin-top: 1rem;
 }
