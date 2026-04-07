@@ -1,17 +1,15 @@
-import { NextResponse } from "next/server";
-import { verifyToken } from "@/lib/auth";
+import { NextResponse, NextRequest } from "next/server";
+import { verifyToken } from "@/lib/dashboard/auth/jwt";
 import { supabaseAdmin } from "@/lib/supabaseServer";
-import { cookies } from "next/headers";
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
   try {
-    const cookieStore = await cookies();
-    const token = cookieStore.get("admin_token")?.value;
+    const token = request.cookies.get("admin_token")?.value;
+    const payload = token ? await verifyToken(token) : null;
 
-    if (!token || !verifyToken(token)) {
+    if (!payload || payload.role !== "admin") {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
-
     const { data, error } = await supabaseAdmin
       .from("products")
       .select("title, email, amount, created_at, status")
@@ -27,7 +25,7 @@ export async function GET(request: Request) {
     console.error("Unexpected error:", err);
     return NextResponse.json(
       { error: "Internal Server Error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

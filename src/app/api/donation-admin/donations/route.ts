@@ -1,17 +1,24 @@
 import { NextResponse } from "next/server";
-import { verifyToken } from "@/lib/auth";
+import { NextRequest } from "next/server";
+import { requireAdmin } from "@/lib/dashboard/auth/requireAdmin";
 import { supabaseAdmin } from "@/lib/supabaseServer";
-import { cookies } from "next/headers";
+import { apiRateLimiter } from "@/lib/redis/rate-limit";
+import { getIP } from "@/lib/redis/get-ip";
 
-export async function GET(request: Request) {
+export async function GET(req: NextRequest) {
   try {
-    const cookieStore = await cookies();
-    const token = cookieStore.get("admin_token")?.value;
+    const ip = getIP(req);
 
-    if (!token || !verifyToken(token)) {
+    const { success } = await apiRateLimiter.limit(ip);
+
+    if (!success) {
+      return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+    }
+    const auth = await requireAdmin(req);
+
+    if (!auth.authorized) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
-
     const { data, error } = await supabaseAdmin
       .from("donations")
       .select("payment_id, name, email, amount, created_at, status")
@@ -27,7 +34,7 @@ export async function GET(request: Request) {
     console.error("Unexpected error:", err);
     return NextResponse.json(
       { error: "Internal Server Error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

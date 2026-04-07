@@ -19,8 +19,8 @@
     font-weight: 500;
     margin-bottom: 20px;
     width: 30%;
-    color: #0a0a0a;
-    border-bottom: 3px solid rgb(13, 184, 121);
+    color: #583b15;
+    border-bottom: 3px solid rgb(105, 77, 22);
     padding-bottom: 5px;
 }
 
@@ -84,8 +84,8 @@
 }
 
 .dragActive {
-    border-color: rgb(13, 184, 121) !important;
-    background: #f0f7ff !important;
+    border-color: rgb(103, 76, 9) !important;
+    background: #fff7f0 !important;
     transform: scale(1.02);
 }
 
@@ -151,7 +151,7 @@
 
 .submitBtn {
     margin-top: 20px;
-    background: #1cb97f;
+    background: #553310;
     color: #e9f4ee;
     padding: 14px;
     font-size: 16px;
@@ -162,13 +162,13 @@
 }
 
 .submitBtn:hover {
-    background: #14875d;
+    background: #875314;
     color: #e9fcf2;
 
 }
 
 .submitBtn:disabled {
-    background: #8fb3d1;
+    background: #d1b08f;
     cursor: not-allowed;
 }
 
@@ -200,7 +200,7 @@
     font-size: 1.4rem;
     font-weight: 500;
     margin-bottom: 1rem;
-    border-bottom: 3px solid rgb(13, 184, 121);
+    border-bottom: 3px solid rgb(91, 69, 32);
     width: 40%;
     padding-bottom: 5px;
 }
@@ -250,7 +250,7 @@
 
 .previewPrice {
     font-size: 1.1rem;
-    color: rgb(13, 184, 121);
+    color: rgb(98, 80, 9);
     font-weight: 600;
 }
 

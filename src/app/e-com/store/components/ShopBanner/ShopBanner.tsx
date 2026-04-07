@@ -14,7 +14,7 @@ export default function ShopBanner() {
     <section className={styles.bannerSection}>
       {/* Background Image */}
       <motion.img
-        src="/banners/t-shirt-2.jpg"
+        src="/gallery/nt-portrait/nilgiritahr-42.jpg"
         alt="Shop Banner"
         initial={{ scale: 1.1, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}

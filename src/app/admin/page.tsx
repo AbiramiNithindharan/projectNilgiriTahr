@@ -1,20 +1,31 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";
-
+import { useSearchParams } from "next/navigation";
 import DashboardLogin from "./components/DashboardLogin";
 import styles from "./admin.module.css";
+import toast, { Toaster } from "react-hot-toast";
 const CMSAccessForm = dynamic(() => import("./components/CmsAccessForm"), {
   ssr: false,
 });
 export default function CMSPortal() {
-  const [activeTab, setActiveTab] = useState<"cms" | "donation">("cms");
-
+  const searchParams = useSearchParams();
+  const tabParam = searchParams.get("tab");
+  const errorParam = searchParams.get("error");
+  const [activeTab, setActiveTab] = useState<"cms" | "donation">(
+    tabParam === "donation" ? "donation" : "cms",
+  );
+  useEffect(() => {
+    if (errorParam === "unauthorized") {
+      toast.error("Unauthorized. Please Login.");
+    }
+  }, [searchParams]);
   return (
     <div className={styles.portalContainer}>
       <div className={styles.bgOverlay}></div>
+      <Toaster position="top-center" />
       <motion.div
         className={styles.portalCard}
         initial={{ opacity: 0, y: 40 }}

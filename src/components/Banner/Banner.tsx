@@ -299,7 +299,7 @@ export default function Banner({
                           letterSpacing: "-0.04em",
                         }}
                       >
-                        Conserving The
+                        Conserving the
                       </h1>
                     </motion.div>
 
@@ -337,7 +337,7 @@ export default function Banner({
                           letterSpacing: "-0.04em",
                         }}
                       >
-                        Monarchs Of The
+                        Monarchs of the
                       </h1>
                     </motion.div>
 

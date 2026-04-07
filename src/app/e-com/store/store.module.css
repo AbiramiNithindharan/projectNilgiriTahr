@@ -3,7 +3,7 @@
   width: 100%;
   position: relative;
   z-index: 5;
-  background: linear-gradient(120deg, #f0fdf4 0%, #d4f3dd 50%, #c2f7d1 100%);
+  background: linear-gradient(120deg, #fdf8f0 0%, #f3e8d4 50%, #f7ddc2 100%);
   padding: 5rem 2rem;
   display: flex;
   flex-direction: column;
@@ -24,7 +24,7 @@
 .heading {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #2d5016;
+  color: #503916;
   /* elegant green tone */
   margin-bottom: 0.4rem;
   text-transform: uppercase;
@@ -34,7 +34,7 @@
 .divider {
   width: 180px;
   height: 4px;
-  background-color: #52b788;
+  background-color: #b78552;
   border: none;
   border-radius: 2px;
 }
@@ -84,7 +84,7 @@
 }
 
 .emptyText {
-  color: #475569;
+  color: #695d47;
   font-size: 1.1rem;
 }
 

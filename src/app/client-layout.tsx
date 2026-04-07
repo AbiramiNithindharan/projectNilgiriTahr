@@ -45,7 +45,7 @@ export default function ClientLayout({
             />
           )}
 
-          {isECom && <Navbar />}
+          {/*  {isECom && <Navbar />} */}
           {isDashboardHeader && <DashboardHeader />}
         </div>
 

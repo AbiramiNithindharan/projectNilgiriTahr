@@ -62,10 +62,12 @@ export default function DashboardHeader() {
   }, []);
 
   const handleLogout = async () => {
-    await fetch("/api/donation-admin/logout");
-    window.location.href = "/admin";
-  };
+    await fetch("/api/donation-admin/logout", {
+      method: "POST",
+    });
 
+    window.location.href = "/admin"; // force reload
+  };
   // Animate navbar only after header height is known
   useEffect(() => {
     if (headerHeight === null) return;

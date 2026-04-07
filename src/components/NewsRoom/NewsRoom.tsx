@@ -699,7 +699,6 @@ export default function NewsRoom() {
                 letterSpacing: "-0.05em",
                 textTransform: "uppercase",
                 color: "#a18d67dc",
-
                 transform: "rotate(-90deg)",
                 whiteSpace: "nowrap",
               }}

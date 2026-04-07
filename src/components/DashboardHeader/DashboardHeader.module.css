@@ -2,7 +2,7 @@
 
 .navbar {
     position: fixed;
-    background-color: rgb(242, 246, 249);
+    background-color: rgb(249, 246, 242);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.258);
     left: 0;
     right: 0;
@@ -29,20 +29,20 @@
     outline: none;
     border: none;
     cursor: pointer;
-    background-color: rgb(242, 246, 249);
+    background-color: rgb(249, 246, 242);
 }
 
 .logoIcon {
     width: 28px;
     height: 28px;
-    color: #2d5016;
+    color: #504116;
 }
 
 .logoText {
     font-size: 1.25rem;
     font-weight: 700;
     font-family: "Poppins", sans-serif;
-    color: #2d5016;
+    color: #503e16;
     letter-spacing: 1px;
 }
 
@@ -53,7 +53,7 @@
     justify-content: center;
     gap: 2rem;
     font-weight: 500;
-    color: #2d5016;
+    color: #503e16;
 }
 
 .menu a {
@@ -63,7 +63,7 @@
 }
 
 .menu a:hover {
-    color: #2d5016;
+    color: #503916;
 }
 
 
@@ -77,7 +77,7 @@
 .icon {
     width: 20px;
     height: 20px;
-    color: #2d5016;
+    color: #503e16;
     cursor: pointer;
     transition: color 0.2s ease;
 }
@@ -102,12 +102,12 @@
 
 
 .logout {
-    background: #1cb97f;
-    color: #e9f4ee;
+    background: #503e16;
+    color: #f7f9f8;
 
 }
 
 .logout:hover {
-    background: #14875d;
-    color: #e9f4ee;
+    background: #503e16;
+    color: #f7f8f7;
 }

@@ -17,6 +17,28 @@ interface WorkCard {
   sectionId: string;
   image: string;
 }
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut" as const,
+    },
+  },
+};
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.8,
+      staggerChildren: 0.2,
+    },
+  },
+};
 
 export default function WhatWeDo() {
   return (
@@ -56,8 +78,7 @@ export default function WhatWeDo() {
 
       <div
         style={{
-          position: "relative",
-          zIndex: 10,
+          padding: "0 2rem 10px",
           maxWidth: "1600px",
           margin: "0 auto",
           width: "100%",
@@ -65,6 +86,7 @@ export default function WhatWeDo() {
           gridTemplateColumns: "1fr 1fr",
           gap: "clamp(3rem, 8vw, 8rem)",
           alignItems: "center",
+          marginBottom: "8rem",
         }}
       >
         {/* Left Side - Content */}
@@ -158,10 +180,7 @@ export default function WhatWeDo() {
 
         {/* Right Side - Large "CONSERVATION" text */}
         <motion.div
-          initial={{ x: 50, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-          viewport={{ once: true }}
+          variants={itemVariants}
           style={{
             display: "flex",
             alignItems: "center",
@@ -172,14 +191,16 @@ export default function WhatWeDo() {
         >
           <div
             style={{
-              fontSize: "clamp(3rem, 12vw, 8rem)",
+              fontSize: "clamp(3rem, 10vw, 7rem)",
               fontWeight: "700",
               fontFamily: "Inter, sans-serif",
               letterSpacing: "-0.05em",
               textTransform: "uppercase",
               opacity: 0.15,
+              transformOrigin: "center",
               transform: "rotate(-90deg)",
               whiteSpace: "nowrap",
+              position: "absolute",
             }}
           >
             CONSERVATION

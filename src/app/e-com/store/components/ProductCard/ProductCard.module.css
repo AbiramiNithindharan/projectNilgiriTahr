@@ -19,7 +19,7 @@
     inset: 0;
     border-radius: 16px;
     padding: 2px;
-    background: linear-gradient(135deg, #6ee79e, #4ef63b, #3c6a02);
+    background: linear-gradient(135deg, #e7c16e, #f6b53b, #6a4602);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -40,7 +40,7 @@
     width: 100%;
     aspect-ratio: 1 / 1;
     overflow: hidden;
-    background: linear-gradient(145deg, #f4f9f1, #e2f0e2);
+    background: linear-gradient(145deg, #f9f6f1, #f0ebe2);
     position: relative;
 }
 
@@ -65,7 +65,7 @@
 .title {
     font-size: 1.1rem;
     font-weight: 600;
-    color: #32511d;
+    color: #51311d;
     margin-bottom: 0.5rem;
     line-height: 1.4;
     transition: color 0.3s ease;
@@ -74,12 +74,12 @@
 .price {
     font-size: 1.05rem;
     font-weight: 700;
-    color: #0ebd4e;
+    color: #bd6b0e;
     letter-spacing: 0.4px;
 }
 
 .card:hover .title {
-    color: #2d5016;
+    color: #503c16;
 }
 
 @media (max-width: 768px) {

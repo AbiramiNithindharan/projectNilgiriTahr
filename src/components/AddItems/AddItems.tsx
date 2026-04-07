@@ -2,9 +2,15 @@
 
 import { useState, useEffect, useRef } from "react";
 import styles from "./AddItems.module.css";
-import { supabaseClient } from "@/lib/supabaseClient";
 import { motion, AnimatePresence } from "framer-motion";
 import toast from "react-hot-toast";
+
+function getCSRFToken() {
+  return document.cookie
+    .split("; ")
+    .find((row) => row.startsWith("csrf_token="))
+    ?.split("=")[1];
+}
 
 export default function AddItems() {
   const [title, setTitle] = useState("");
@@ -83,29 +89,6 @@ export default function AddItems() {
     return null;
   };
 
-  /* ------------------------- IMAGE UPLOAD ------------------------- */
-
-  const uploadImage = async () => {
-    if (!image) return null;
-
-    const filePath = `${Date.now()}-${image.name}`;
-
-    const { data, error } = await supabaseClient.storage
-      .from("products")
-      .upload(filePath, image, {
-        contentType: image.type,
-        upsert: false,
-      });
-
-    console.log("UPLOAD ERROR:", error);
-    console.log("UPLOAD DATA:", data);
-
-    if (error) return null;
-
-    return supabaseClient.storage.from("products").getPublicUrl(filePath).data
-      .publicUrl;
-  };
-
   /* ------------------------- SUBMIT ------------------------- */
 
   const handleSubmit = async () => {
@@ -115,66 +98,55 @@ export default function AddItems() {
       return;
     }
 
-    setErrorMsg("");
     setLoading(true);
 
-    const imageUrl = await uploadImage();
-    if (!imageUrl) {
-      toast.error("Image upload failed ❌");
-      setLoading(false);
-      return;
-    }
-
-    const { data: product, error: productError } = await supabaseClient
-      .from("products")
-      .insert([
-        {
-          title,
-          price: Number(price),
-          description,
-          product_code: productCode,
-          image_url: imageUrl,
+    try {
+      const formData = new FormData();
+      formData.append("title", title.trim());
+      formData.append("price", price);
+      formData.append("description", description.trim());
+      formData.append("productCode", productCode);
+      formData.append("image", image!);
+      formData.append("sizes", JSON.stringify(sizes));
+      const res = await fetch("/api/donation-admin/products", {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          "x-csrf-token": getCSRFToken() || "",
         },
-      ])
-      .select()
-      .single();
+        body: formData,
+      });
 
-    if (productError) {
-      toast.error("Product creation failed ❌");
-      setLoading(false);
-      return;
-    }
+      const data = await res.json();
 
-    // Insert variants
-    for (const s of sizes) {
-      await supabaseClient.from("product_stock").insert([
-        {
-          product_id: product.id,
-          size: s.size,
-          stock: Number(s.stock) || 0,
-        },
+      if (!res.ok) {
+        toast.error(data.error || "Failed to add product");
+        setLoading(false);
+        return;
+      }
+
+      toast.success("Product added successfully 🎉");
+
+      // reset
+      setTitle("");
+      setPrice("");
+      setDescription("");
+      setImage(null);
+      setPreview(null);
+      setSizes([
+        { size: "S", stock: "" },
+        { size: "M", stock: "" },
+        { size: "L", stock: "" },
+        { size: "XL", stock: "" },
       ]);
+
+      setProductCode(generateProductCode());
+    } catch {
+      toast.error("Server error");
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
-    toast.success("Product added successfully 🎉", {
-      icon: "🟢",
-    });
-
-    // Reset Form
-    setTitle("");
-    setPrice("");
-    setDescription("");
-    setImage(null);
-    setPreview(null);
-    setSizes([
-      { size: "S", stock: "" },
-      { size: "M", stock: "" },
-      { size: "L", stock: "" },
-      { size: "XL", stock: "" },
-    ]);
-
-    setProductCode(generateProductCode());
   };
 
   return (

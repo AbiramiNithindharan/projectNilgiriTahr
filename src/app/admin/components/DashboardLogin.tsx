@@ -1,33 +1,58 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import styles from "./login.module.css";
 import { motion } from "framer-motion";
 
 export default function DashboardLogin() {
+  const searchParams = useSearchParams();
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    const err = searchParams.get("error");
+
+    if (err === "unauthorized") {
+      setError("Please login to access the dashboard.");
+    }
+  }, [searchParams]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!username.trim() || !password.trim()) {
+      setError("Username and password are required");
+      return;
+    }
     setError("");
     setLoading(true);
 
     try {
       const res = await fetch("/api/donation-admin/login", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: username.trim(),
+          password: password.trim(),
+        }),
       });
 
-      const data = await res.json();
+      let data: any = {};
+      try {
+        data = await res.json();
+      } catch {
+        data = {};
+      }
 
       if (res.ok) {
         window.location.href = "/donation-admin";
       } else {
-        setError(data.error || "Invalid credentials");
+        setError("Invalid Username or Password");
       }
     } catch (err) {
       setError("Server error. Please try again.");
@@ -52,7 +77,10 @@ export default function DashboardLogin() {
             placeholder="eg: JohnDoe"
             value={username}
             className={styles.inputText}
-            onChange={(e) => setUserName(e.target.value)}
+            onChange={(e) => {
+              setUserName(e.target.value);
+              if (error) setError("");
+            }}
             required
           />
 
@@ -62,7 +90,10 @@ export default function DashboardLogin() {
             placeholder="••••••••••"
             value={password}
             className={styles.inputText}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              if (error) setError("");
+            }}
             required
           />
 

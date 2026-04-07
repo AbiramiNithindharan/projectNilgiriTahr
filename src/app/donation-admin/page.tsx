@@ -38,7 +38,7 @@ export default function DonationAdminDashboard() {
       </motion.section>
 
       {/* STORE SECTION */}
-      <motion.section
+      {/* <motion.section
         className={styles.section}
         initial="hidden"
         animate="visible"
@@ -62,7 +62,7 @@ export default function DonationAdminDashboard() {
             <h3 className={styles.cardValue}>687</h3>
           </div>
         </div>
-      </motion.section>
+      </motion.section> */}
     </main>
   );
 }
