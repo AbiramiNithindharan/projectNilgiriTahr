@@ -6,8 +6,8 @@ import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
 import styles from "./admin.module.css";
 import toast, { Toaster } from "react-hot-toast";
-import DashboardLogin from "./DashboardLogin";
-const CMSAccessForm = dynamic(() => import("./CmsAccessForm"), {
+import DashboardLogin from "./components/DashboardLogin";
+const CMSAccessForm = dynamic(() => import("./components/CmsAccessForm"), {
   ssr: false,
 });
 export default function AdminClient() {
