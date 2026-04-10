@@ -63,7 +63,7 @@ export async function middleware(req: NextRequest) {
   }
 
   //Studio protection — remove if unused
-  if (pathname.startsWith("/studio")) {
+  /* if (pathname.startsWith("/studio")) {
     const token = req.cookies.get("admin_token")?.value;
 
     if (!token) {
@@ -73,7 +73,7 @@ export async function middleware(req: NextRequest) {
       return applySecurityHeaders(res);
     }
   }
-
+ */
   const res = NextResponse.next();
   return applySecurityHeaders(res);
 }

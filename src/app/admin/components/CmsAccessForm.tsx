@@ -11,9 +11,7 @@ export default function CMSAccessForm() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // ✅ Disable Back & Forward Navigation
   useEffect(() => {
-    // Push new history state
     window.history.pushState(null, "", window.location.href);
 
     const handlePopState = () => {

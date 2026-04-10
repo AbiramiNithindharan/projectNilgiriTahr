@@ -5,6 +5,24 @@ import { supabaseClient } from "@/lib/supabaseClient";
 import { logAdminAction } from "@/lib/dashboard/security/audit-log";
 import { getIP } from "@/lib/redis/get-ip";
 
+export async function GET(req: NextRequest) {
+  const admin = await requireAdmin(req);
+
+  if (!admin.authorized) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const { data, error: fetchError } = await supabaseClient
+    .from("products")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  if (fetchError) {
+    return NextResponse.json({ error: "Fetch failed" }, { status: 500 });
+  }
+
+  return NextResponse.json({ products: data });
+}
 export async function POST(req: NextRequest) {
   try {
     const ip = getIP(req);
@@ -13,6 +31,7 @@ export async function POST(req: NextRequest) {
     if (!admin.authorized) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
+
     const username = admin.payload.username;
     // Verify CSRF
     if (!verifyCSRF(req)) {
@@ -56,7 +75,7 @@ export async function POST(req: NextRequest) {
       .getPublicUrl(filePath).data.publicUrl;
 
     // Insert product
-    const { data: product, error } = await supabaseClient
+    const { data: product, error: insertError } = await supabaseClient
       .from("products")
       .insert([
         {
@@ -70,7 +89,7 @@ export async function POST(req: NextRequest) {
       .select()
       .single();
 
-    if (error) {
+    if (insertError) {
       return NextResponse.json(
         { error: "Product creation failed" },
         { status: 500 },

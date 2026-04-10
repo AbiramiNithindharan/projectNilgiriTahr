@@ -22,7 +22,9 @@ export default function ClientLayout({
   const isDashboardHeader = pathname.startsWith("/donation-admin");
   const isSanityDashboard = pathname.startsWith("/sanity/structure");
   const [showHeader] = useState(true);
-
+  const isNoHeaderRoute =
+    pathname.startsWith("/donation-admin") ||
+    pathname.startsWith("/sanity/structure");
   const handleMenuClick = () => console.log("Menu clicked!");
   const handleContactClick = () => console.log("Contact Us clicked!");
 
@@ -35,9 +37,7 @@ export default function ClientLayout({
             zIndex: "20",
           }}
         >
-          {isSanityDashboard ? (
-            ""
-          ) : (
+          {!isNoHeaderRoute && (
             <Header
               onMenuClick={handleMenuClick}
               onContactClick={handleContactClick}
@@ -46,7 +46,7 @@ export default function ClientLayout({
           )}
 
           {/*  {isECom && <Navbar />} */}
-          {isDashboardHeader && <DashboardHeader />}
+          {pathname.startsWith("/donation-admin") && <DashboardHeader />}
         </div>
 
         {children}

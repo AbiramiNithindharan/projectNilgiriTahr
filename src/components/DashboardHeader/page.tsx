@@ -18,61 +18,16 @@ export default function DashboardHeader() {
   const openSidebar = () => setIsSidebarOpen(true);
   const closeSidebar = () => setIsSidebarOpen(false);
 
-  useEffect(() => {
-    const navEl = navRef.current;
-    if (!navEl) return;
-
-    const getHeader = () => document.querySelector<HTMLElement>(headerSelector);
-
-    const updateHeaderHeight = () => {
-      const header = getHeader();
-      const height = header
-        ? Math.ceil(header.getBoundingClientRect().height)
-        : 100;
-      setHeaderHeight(height);
-      navEl.style.setProperty("--header-height", `${height}px`);
-    };
-
-    // initial measurement
-    setTimeout(updateHeaderHeight, 0);
-
-    // ResizeObserver to detect header size changes (best for animated/shrinking header)
-    let ro: ResizeObserver | null = null;
-    const headerEl = getHeader();
-    if (headerEl && typeof ResizeObserver !== "undefined") {
-      ro = new ResizeObserver(() => {
-        updateHeaderHeight();
-      });
-      ro.observe(headerEl);
-    }
-
-    // update on window resize as fallback
-    const onResize = () => updateHeaderHeight();
-    window.addEventListener("resize", onResize, { passive: true });
-
-    // optionally update on scroll because your header changes on scroll (keeps things in sync)
-    const onScroll = () => updateHeaderHeight();
-    window.addEventListener("scroll", onScroll, { passive: true });
-
-    return () => {
-      if (ro && headerEl) ro.unobserve(headerEl);
-      window.removeEventListener("resize", onResize);
-      window.removeEventListener("scroll", onScroll);
-    };
-  }, []);
-
   const handleLogout = async () => {
     await fetch("/api/donation-admin/logout", {
       method: "POST",
     });
 
-    window.location.href = "/admin"; // force reload
+    window.location.href = "/admin?tab=donation";
   };
   // Animate navbar only after header height is known
   useEffect(() => {
-    if (headerHeight === null) return;
     controls.start({
-      top: headerHeight,
       transition: { type: "spring", stiffness: 120, damping: 18 },
     });
   }, [headerHeight, controls]);
@@ -91,7 +46,9 @@ export default function DashboardHeader() {
           <button onClick={openSidebar} className={styles.logo}>
             <Menu className={styles.logoIcon} />
 
-            <span className={styles.logoText}>Dashboard</span>
+            <span className={styles.logoText}>
+              Project Nilgiri Tahr Admin Dashboard
+            </span>
           </button>
 
           {/* Icons */}

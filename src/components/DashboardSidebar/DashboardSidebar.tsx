@@ -73,7 +73,7 @@ export default function DashboardSidebar({ open, onClose }: any) {
                 Donations{" "}
               </Link>{" "}
               <Link
-                href="/donation-admin/donations"
+                href="/donation-admin/e-com"
                 onClick={onClose}
                 className={styles.item}
               >

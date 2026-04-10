@@ -137,7 +137,14 @@ export const galleryCategories: GalleryCategory[] = [
       {
         id: "Location",
         label: "Location",
-        images: ["/gallery/location/Nilgiri_Tahr.jpg"],
+        images: [
+          "/gallery/location/Nilgiri_Tahr.jpg",
+          "/gallery/location/Anamalai.jpg",
+          "/gallery/location/Kalakkad mundanthurai.jpg",
+          "/gallery/location/Mukurthi-National-Park.jpg",
+          "/gallery/location/Srivilliputhur-Megamalai.jpg",
+          "/gallery/location/Blocks-for-Pilot-Study-Nilgiri-Tahr.jpg",
+        ],
       },
     ],
   },

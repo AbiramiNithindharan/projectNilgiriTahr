@@ -83,12 +83,19 @@ export default function TeamMembers() {
       id: "research-team",
       title: "Research Team",
       members: [
-        {
+        /*  {
           name: "Dr.M.Ashok Kumar",
           image: "/members/dr-m-ashok-kumar.png",
           alt: "Dr.M.Ashok Kumar",
           about:
             "Senior Scientist and Research Coordinator is an ecologist with over 20 years of experience in ecology, wildlife conservation, wildlife management, and academia, he earned his doctoral degree in wildlife biology from AVC College in 2012. He has worked with conservation NGOs, including WWF-India and BNHS, as well as academic institutions such as Kerala Veterinary and Animal Sciences University, JNCASR-Deemed University, and AVC College. His expertise includes conducting wildlife surveys, radio-collaring large mammals, data analysis, and reporting. He has published more than 15 research articles, three book chapters, popular articles, and scientific reports.",
+        }, */
+        {
+          name: "Dr.T.T.Shameer",
+          image: "#",
+          alt: "Dr.T.T.Shameer",
+          about:
+            "Dr. T.T. Shameer holds a Ph.D. in Wildlife Biology. He specialises in Landscape Ecology, Population & Community Ecology, Ecological Modelling, and Climate Change. He has worked with organisations such as the WII, UNDP, AIWC and various State Forest Departments, researching carnivores from Tigers to Fishing Cats. He is a prolific researcher with a notable publication record. He has authored 20-plus scientific articles published in various international peer-reviewed journals. Also, he is a reviewer for high-impact journals such as Scientific Reports, Global Ecology and Conservation, and Journal for Nature Conservation, and he further contributes to the scientific community through peer review and evaluation of research work. He served as a Scientist at AIWC for 3.58 years, from 2022 to 2026, working on various projects focused on Human-Wildlife Conflict, wetland identification, Wildlife Policy, Species Recovery, Migratory Species Ecology, Capacity Building, Nilgiri Tahr, Indian fox, jackal, and pangolins. Currently at Project Nilgiri, he serves as Senior Scientist and Research Coordinator. Research Gate https://www.researchgate.net/profile/Thekke-Shameer.",
         },
         {
           name: "Dr.B.Subbaiyan",
