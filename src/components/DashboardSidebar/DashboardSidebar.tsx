@@ -80,6 +80,22 @@ export default function DashboardSidebar({ open, onClose }: any) {
                 {" "}
                 Products{" "}
               </Link>{" "}
+              <Link
+                href="/donation-admin/contacts"
+                onClick={onClose}
+                className={styles.item}
+              >
+                {" "}
+                Contact Messages{" "}
+              </Link>{" "}
+              <Link
+                href="/donation-admin/volunteers"
+                onClick={onClose}
+                className={styles.item}
+              >
+                {" "}
+                Volunteer Registration{" "}
+              </Link>{" "}
               <div className={styles.sectionTitle}>Store</div>{" "}
               <Link
                 href="/donation-admin/e-com/AddProducts"
@@ -87,7 +103,7 @@ export default function DashboardSidebar({ open, onClose }: any) {
                 className={styles.item}
               >
                 {" "}
-                ➤ Add T-Shirt{" "}
+                ➤ Add Products{" "}
               </Link>{" "}
               <Link
                 href="/donation-admin/e-com/SalesTable"
