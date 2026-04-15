@@ -2,6 +2,39 @@ import { validateVolunteer } from "@/lib/validation/volunteer";
 import { verifyCSRF } from "@/lib/dashboard/auth/verify-csrf";
 import { volunteerRateLimiter } from "@/lib/redis/rate-limit";
 import { NextRequest } from "next/server";
+import { supabaseClient } from "@/lib/supabaseClient";
+/* =========================
+   ✅ GET → Fetch Volunteers
+========================= */
+export async function GET(req: NextRequest) {
+  try {
+    const { searchParams } = new URL(req.url);
+
+    const page = Number(searchParams.get("page")) || 1;
+    const limit = Number(searchParams.get("limit")) || 10;
+
+    const from = (page - 1) * limit;
+    const to = from + limit - 1;
+    const { data, error, count } = await supabaseClient
+      .from("volunteer_registrations")
+      .select("*")
+      .order("created_at", { ascending: false })
+      .range(from, to);
+
+    if (error) {
+      console.error("Supabase GET Error:", error);
+      return Response.json({ error: error.message }, { status: 500 });
+    }
+
+    return Response.json({ data, total: count, page, limit });
+  } catch (err) {
+    console.error("GET Contacts Error:", err);
+    return Response.json(
+      { error: "Server error fetching contacts" },
+      { status: 500 },
+    );
+  }
+}
 
 export async function POST(req: NextRequest) {
   try {
@@ -80,5 +113,42 @@ export async function POST(req: NextRequest) {
     return new Response(JSON.stringify({ error: "Server error" }), {
       status: 500,
     });
+  }
+}
+
+export async function DELETE(req: Request) {
+  try {
+    const { id } = await req.json();
+
+    const { error } = await supabaseClient
+      .from("contact_messages")
+      .delete()
+      .eq("id", id);
+
+    if (error) {
+      return Response.json({ error: error.message }, { status: 500 });
+    }
+
+    return Response.json({ success: true });
+  } catch {
+    return Response.json({ error: "Delete failed" }, { status: 500 });
+  }
+}
+export async function PATCH(req: Request) {
+  try {
+    const { id } = await req.json();
+
+    const { error } = await supabaseClient
+      .from("volunteer_registrations")
+      .update({ is_replied: true })
+      .eq("id", id);
+
+    if (error) {
+      return Response.json({ error: error.message }, { status: 500 });
+    }
+
+    return Response.json({ success: true });
+  } catch {
+    return Response.json({ error: "Update failed" }, { status: 500 });
   }
 }
