@@ -17,7 +17,7 @@ export async function GET(req: NextRequest) {
     const to = from + limit - 1;
     const { data, error, count } = await supabaseClient
       .from("volunteer_registrations")
-      .select("*")
+      .select("*", { count: "exact" })
       .order("created_at", { ascending: false })
       .range(from, to);
 
@@ -121,7 +121,7 @@ export async function DELETE(req: Request) {
     const { id } = await req.json();
 
     const { error } = await supabaseClient
-      .from("contact_messages")
+      .from("volunteer_registrations")
       .delete()
       .eq("id", id);
 

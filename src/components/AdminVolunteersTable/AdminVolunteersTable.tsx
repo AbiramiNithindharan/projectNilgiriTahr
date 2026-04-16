@@ -13,7 +13,7 @@ export default function AdminVolunteersTable() {
 
   useEffect(() => {
     fetchVolunteers();
-  }, []);
+  }, [page]);
 
   const fetchVolunteers = async () => {
     try {

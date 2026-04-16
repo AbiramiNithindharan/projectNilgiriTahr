@@ -95,7 +95,7 @@ export const galleryCategories: GalleryCategory[] = [
         id: "FloraAndFauna",
         label: "Flora and Fauna",
         images: [
-          "/gallery/Flora.JPG",
+          "/gallery/Flora.jpg",
           "/gallery/associate-fauna/associate-fauna-1.JPG",
           "/gallery/associate-fauna/associate-fauna-2.JPG",
           "/gallery/associate-fauna/associate-fauna-3.JPG",
@@ -103,7 +103,7 @@ export const galleryCategories: GalleryCategory[] = [
           "/gallery/associate-fauna/associate-fauna-5.JPG",
           "/gallery/associate-fauna/associate-fauna-6.JPG",
           "/gallery/associate-fauna/associate-fauna-7.JPG",
-          "/gallery/associate-fauna/associate-fauna-8.JPG",
+          "/gallery/associate-fauna/associate-fauna-8.jpg",
         ],
       },
       {
@@ -360,7 +360,7 @@ export const galleryCategories: GalleryCategory[] = [
         images: [
           "/gallery/celebration/BookFair/Book-fair-1.jpg",
           "/gallery/celebration/BookFair/Book-fair-2.png",
-          "/gallery/celebration/BookFair/Book-fair-3.jpg",
+          "/gallery/celebration/BookFair/Book-Fair-3.jpg",
           "/gallery/celebration/BookFair/Book-fair-4.jpg",
         ],
       },
