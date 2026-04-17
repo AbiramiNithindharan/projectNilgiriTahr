@@ -92,7 +92,7 @@ export default function TeamMembers() {
         }, */
         {
           name: "Dr.T.T.Shameer",
-          image: "/members/Shameer.jpeg",
+          image: "/members/Shameer.png",
           alt: "Dr.T.T.Shameer",
           about:
             "Dr. T.T. Shameer holds a Ph.D. in Wildlife Biology. He specialises in Landscape Ecology, Population & Community Ecology, Ecological Modelling, and Climate Change. He has worked with organisations such as the WII, UNDP, AIWC and various State Forest Departments, researching carnivores from Tigers to Fishing Cats. He is a prolific researcher with a notable publication record. He has authored 20-plus scientific articles published in various international peer-reviewed journals. Also, he is a reviewer for high-impact journals such as Scientific Reports, Global Ecology and Conservation, and Journal for Nature Conservation, and he further contributes to the scientific community through peer review and evaluation of research work. He served as a Scientist at AIWC for 3.58 years, from 2022 to 2026, working on various projects focused on Human-Wildlife Conflict, wetland identification, Wildlife Policy, Species Recovery, Migratory Species Ecology, Capacity Building, Nilgiri Tahr, Indian fox, jackal, and pangolins. Currently at Project Nilgiri, he serves as Senior Scientist and Research Coordinator. Research Gate https://www.researchgate.net/profile/Thekke-Shameer.",
