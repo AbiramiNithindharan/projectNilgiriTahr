@@ -24,7 +24,7 @@ export default function ClientLayout({
   const [showHeader] = useState(true);
   const isNoHeaderRoute =
     pathname.startsWith("/donation-admin") ||
-    pathname.startsWith("/sanity/structure");
+    pathname.startsWith("/studio/structure");
   const handleMenuClick = () => console.log("Menu clicked!");
   const handleContactClick = () => console.log("Contact Us clicked!");
 

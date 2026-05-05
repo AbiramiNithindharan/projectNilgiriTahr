@@ -76,8 +76,9 @@ const BannerClient = () => {
                 fontSize: "clamp(2rem, 6vw, 4rem)",
                 fontWeight: "800",
                 margin: "0",
+                color: "#5f3e0e",
                 fontFamily: "Poppins, sans-serif",
-                textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
+                textShadow: "1px 1px 2.5px rgba(114, 99, 68, 0.7)",
               }}
             >
               Nilgiri Tahr

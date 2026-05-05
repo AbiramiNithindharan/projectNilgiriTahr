@@ -56,7 +56,7 @@ export default function Contact() {
       });
       const data = await res.json();
       if (!res.ok) {
-        showToast(data.errors?.join(", ") || "Something went wrong", "error");
+        showToast(data.errors?.join(", ") || "Something went wrong!!", "error");
         return;
       }
       e.target.reset();

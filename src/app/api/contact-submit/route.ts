@@ -61,12 +61,12 @@ export async function POST(req: NextRequest) {
       "unknown";
 
     /* -------------------- CSRF Protection -------------------- */
-    if (!verifyCSRF(req)) {
+    /*  if (!verifyCSRF(req)) {
       return new Response(JSON.stringify({ error: "Invalid CSRF token" }), {
         status: 403,
       });
     }
-
+ */
     /* -------------------- Rate Limiting (Redis) -------------------- */
     const { success } = await contactRateLimiter.limit(ip);
 
@@ -102,16 +102,28 @@ export async function POST(req: NextRequest) {
         signal: controller.signal,
       },
     );
-
+    console.log("FUNCTION URL:", process.env.SUPABASE_FUNCTION_URL);
+    console.log("ANON KEY:", process.env.SUPABASE_ANON_KEY);
     clearTimeout(timeout);
+    if (!result.ok) {
+      const errorText = await result.text();
+      console.error("Supabase Function Error:", errorText);
+
+      return new Response(
+        JSON.stringify({ error: "Email function failed", details: errorText }),
+        { status: 500 },
+      );
+    }
 
     const text = await result.text();
 
     return new Response(text, { status: result.status });
-  } catch (err) {
-    console.error("Contact API Error:", err);
+  } catch (err: any) {
+    console.error("FULL ERROR:", err);
+    console.error("MESSAGE:", err?.message);
+    console.error("STACK:", err?.stack);
 
-    return new Response(JSON.stringify({ error: "Server error" }), {
+    return new Response(JSON.stringify({ error: err.message }), {
       status: 500,
     });
   }

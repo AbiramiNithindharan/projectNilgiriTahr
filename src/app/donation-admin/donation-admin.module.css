@@ -30,13 +30,23 @@
 
 
 .card {
+    padding: 16px;
+    border-radius: 12px;
     background: #ffffff;
-    border-radius: 16px;
-    padding: 1.6rem;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
+.cardValue {
+    font-size: 24px;
+    font-weight: 600;
+    color: #111;
+}
+
+.cardLabel {
+    font-size: 14px;
+    color: #666;
+}
 
 .card:hover {
     transform: translateY(-4px);

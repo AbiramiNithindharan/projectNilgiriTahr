@@ -1,87 +1,188 @@
-.pageWrapper {
-    min-height: 100vh;
-    background: linear-gradient(to bottom, #f0fdf4, #ffffff, #ecfdf5);
-    padding: 4rem 1.5rem;
-    margin-top: 80px;
-}
-
 .container {
-    max-width: 1000px;
-    margin: 0 auto;
+    min-height: 100vh;
+    background: #f8fffe;
 }
 
+/* Title Section */
 .titleSection {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 1.5rem;
 }
 
 .heading {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: #1f2937;
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #2a1f0f;
+    letter-spacing: 0.5px;
     margin-bottom: 0.5rem;
 }
 
 .subtitle {
-    font-size: 1.125rem;
-    color: #4b5563;
+    font-size: 1rem;
+    color: #475569;
 }
 
+/* Hero Image */
 .heroImage {
     position: relative;
     width: 100%;
-    height: 420px;
-    border-radius: 1rem;
+    height: 380px;
+    border-radius: 0.5rem;
     overflow: hidden;
-    margin-bottom: 3rem;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    border: 1px solid #d1d5db;
 }
 
 .image {
     object-fit: cover;
-    transition: transform 0.7s ease;
+    transition: transform 0.4s ease;
 }
 
 .image:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
+/* Content Card */
 .card {
     background: #ffffff;
-    border-radius: 1rem;
-    padding: 2.5rem;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-    color: #374151;
-    line-height: 1.75;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    border: 1px solid #e5e7eb;
+    color: #334155;
+    line-height: 1.8;
 }
 
+/* Paragraphs */
 .card p {
-    margin-bottom: 1.5rem;
-    font-size: 1.125rem;
+    margin-bottom: 1.25rem;
+    font-size: 1.05rem;
 }
 
+/* Subheading */
 .subheading {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin: 2rem 0 1rem;
-    color: #111827;
-    margin-bottom: 2rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 1.8rem 0 0.8rem;
+    color: #0f172a;
+    border-left: 4px solid #166534;
+    padding-left: 0.6rem;
 }
 
+/* Lists */
 .list {
-    padding-left: 1.5rem;
-    margin-bottom: 2rem;
-    margin-top: 10px;
+    padding-left: 1.2rem;
+    margin-bottom: 1.5rem;
 }
 
 .list li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
 }
 
+/* Text styles */
 .bold {
     font-weight: 600;
 }
 
 .italic {
     font-style: italic;
+}
+
+/* Strong + Emphasis */
+.card strong {
+    color: #0f172a;
+    font-weight: 600;
+}
+
+.card em {
+    font-style: italic;
+    color: #1d4ed8;
+}
+
+/* Optional: Section Divider */
+.sectionDivider {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 2rem 0;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+
+}
+
+.listItem {
+    width: 100%;
+}
+
+.card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.3rem 1.4rem;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #ffffff, #f9f4ef);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+    transition: all 0.25s ease;
+    border: 1px solid rgba(80, 44, 22, 0.08);
+    margin-bottom: 10px;
+}
+
+.card:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 10px 22px rgba(80, 44, 22, 0.12);
+}
+
+.icon {
+    min-width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #8b5e3c, #c8a27a);
+    color: white;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    margin-top: 3px;
+}
+
+.card h4 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #3e2a1f;
+    font-family: "Poppins", sans-serif;
+    text-align: left;
+}
+
+.card p {
+    margin: 0.25rem 0 0;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: #6b4a36;
+    font-family: "Poppins", sans-serif;
+    text-align: left;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .heading {
+        font-size: 1.75rem;
+    }
+
+    .heroImage {
+        height: 260px;
+    }
+
+    .card {
+        padding: 1.5rem;
+    }
 }

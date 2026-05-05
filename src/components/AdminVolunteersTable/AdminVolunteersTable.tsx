@@ -77,7 +77,7 @@ export default function AdminVolunteersTable() {
                       {item.is_replied ? "Replied" : "Pending"}
                     </span>
                   </td>
-                  {/* Actions Cloumn */}
+                  {/* Actions Column */}
                   <td className={styles.actions}>
                     <button
                       className={styles.viewBtn}
@@ -97,7 +97,7 @@ export default function AdminVolunteersTable() {
                       className={styles.markBtn}
                       disabled={item.is_replied}
                       onClick={async () => {
-                        await fetch("/api/contact-submit", {
+                        await fetch("/api/volunteer-submit", {
                           method: "PATCH",
                           body: JSON.stringify({ id: item.id }),
                         });
@@ -116,7 +116,7 @@ export default function AdminVolunteersTable() {
                     <button
                       className={styles.deleteBtn}
                       onClick={async () => {
-                        await fetch("/api/contact-submit", {
+                        await fetch("/api/volunteer-submit", {
                           method: "DELETE",
                           body: JSON.stringify({ id: item.id }),
                         });
@@ -144,7 +144,7 @@ export default function AdminVolunteersTable() {
               <p>
                 <strong>Email:</strong> {selectedMessage.email}
               </p>
-              <p className={styles.fullMessage}>{selectedMessage.message}</p>
+              <p className={styles.fullMessage}>{selectedMessage.interest}</p>
 
               <button onClick={() => setSelectedMessage(null)}>Close</button>
             </div>

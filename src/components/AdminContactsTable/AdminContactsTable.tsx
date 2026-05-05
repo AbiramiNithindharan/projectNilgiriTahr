@@ -76,7 +76,7 @@ export default function AdminContactsTable() {
                       {item.is_replied ? "Replied" : "Pending"}
                     </span>
                   </td>
-                  {/* Actions Cloumn */}
+                  {/* Actions Column */}
                   <td className={styles.actions}>
                     <button
                       className={styles.viewBtn}

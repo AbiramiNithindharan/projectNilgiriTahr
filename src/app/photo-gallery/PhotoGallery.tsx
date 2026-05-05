@@ -131,7 +131,7 @@ export default function PhotoGallery() {
         <div
           style={{
             position: "absolute",
-            top: "30%",
+            top: "40%",
             left: "50%",
             transform: "translate(-50%, -50%)",
             textAlign: "center",
@@ -140,7 +140,6 @@ export default function PhotoGallery() {
           }}
         >
           <motion.h1
-            key={activeCategory.label}
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -152,8 +151,23 @@ export default function PhotoGallery() {
               textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
             }}
           >
-            {activeCategory.label}
+            Photo Gallery
           </motion.h1>
+          <motion.h3
+            key={activeCategory.label}
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            style={{
+              fontSize: "clamp(1.5rem, 6vw, 2rem)",
+              fontWeight: "800",
+              margin: "0",
+              fontFamily: "Poppins, sans-serif",
+              textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
+            }}
+          >
+            {activeCategory.label}
+          </motion.h3>
         </div>
       </motion.div>
 

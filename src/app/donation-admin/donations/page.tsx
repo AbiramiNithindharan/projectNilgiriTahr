@@ -25,7 +25,7 @@ export default function DonationsDashboard() {
   useEffect(() => {
     const fetchDonations = async () => {
       try {
-        const res = await fetch("/api/donations", {
+        const res = await fetch("/api/donation-admin/donations", {
           method: "GET",
           headers: { "Cache-Control": "no-store" },
           credentials: "include",
@@ -68,7 +68,7 @@ export default function DonationsDashboard() {
     if (q)
       filtered = filtered.filter(
         (d) =>
-          d.name.toLowerCase().includes(q) || d.email.toLowerCase().includes(q)
+          d.name.toLowerCase().includes(q) || d.email.toLowerCase().includes(q),
       );
 
     if (minAmount)
@@ -78,11 +78,11 @@ export default function DonationsDashboard() {
 
     if (fromDate)
       filtered = filtered.filter(
-        (d) => new Date(d.created_at) >= new Date(fromDate)
+        (d) => new Date(d.created_at) >= new Date(fromDate),
       );
     if (toDate)
       filtered = filtered.filter(
-        (d) => new Date(d.created_at) <= new Date(toDate)
+        (d) => new Date(d.created_at) <= new Date(toDate),
       );
 
     setFilteredDonations(filtered);
@@ -118,7 +118,7 @@ export default function DonationsDashboard() {
   const uniqueDonors = new Set(
     filteredDonations
       .map((d) => d.email?.trim().toLowerCase() || d.name?.trim().toLowerCase())
-      .filter(Boolean)
+      .filter(Boolean),
   ).size;
 
   return (

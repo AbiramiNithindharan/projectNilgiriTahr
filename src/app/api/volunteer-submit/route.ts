@@ -28,9 +28,9 @@ export async function GET(req: NextRequest) {
 
     return Response.json({ data, total: count, page, limit });
   } catch (err) {
-    console.error("GET Contacts Error:", err);
+    console.error("GET Volunteers Error:", err);
     return Response.json(
-      { error: "Server error fetching contacts" },
+      { error: "Server error fetching volunteers" },
       { status: 500 },
     );
   }
@@ -60,12 +60,12 @@ export async function POST(req: NextRequest) {
       "unknown";
 
     /* -------------------- CSRF Protection -------------------- */
-    if (!verifyCSRF(req)) {
+    /*  if (!verifyCSRF(req)) {
       return new Response(JSON.stringify({ error: "Invalid CSRF token" }), {
         status: 403,
       });
     }
-
+ */
     /* -------------------- Rate Limiting (Redis) -------------------- */
     const { success } = await volunteerRateLimiter.limit(ip);
 
