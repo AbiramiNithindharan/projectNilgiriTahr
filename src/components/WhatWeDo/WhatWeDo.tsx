@@ -97,6 +97,7 @@ export default function WhatWeDo() {
           viewport={{ once: true }}
           style={{
             padding: "2rem 0",
+            zIndex: 10,
           }}
         >
           {/* Section Number */}
