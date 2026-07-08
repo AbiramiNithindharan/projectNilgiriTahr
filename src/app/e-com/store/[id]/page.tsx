@@ -23,7 +23,7 @@ export default function ProductDetail({
           `
   *,
   product_stock ( size, stock )
-`
+`,
         )
         .eq("id", id)
         .single();
@@ -60,10 +60,12 @@ export default function ProductDetail({
 
 /* ---------------- Client Component ---------------- */
 function ClientProductView({ product }: { product: any }) {
-  const [size, setSize] = useState<string>("");
+  const isTShirt = product.category === "tshirt";
+  const [size, setSize] = useState<string>(isTShirt ? "" : "DEFAULT");
   const [quantity, setQuantity] = useState<number>(1);
   const [isZoomOpen, setIsZoomOpen] = useState(false);
   const [zoom, setZoom] = useState(1);
+
   const openZoom = () => {
     setZoom(1);
     setIsZoomOpen(true);
@@ -83,9 +85,15 @@ function ClientProductView({ product }: { product: any }) {
   };
 
   const sizeStock: Record<string, number> = {};
+
   product.product_stock?.forEach((v: any) => {
     sizeStock[v.size] = v.stock;
   });
+
+  const defaultStock = sizeStock["DEFAULT"] || 0;
+  const availableStock = isTShirt
+    ? sizeStock[size] || 0
+    : product.product_stock?.[0]?.stock || 0;
 
   const handleSizeSelect = (selectedSize: string) => {
     if (sizeStock[selectedSize] > 0) {
@@ -97,12 +105,16 @@ function ClientProductView({ product }: { product: any }) {
   const decreaseQty = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
 
   const handleAddToCart = async () => {
-    if (!size) return;
+    if (isTShirt && !size) return;
 
-    const productData = { ...product, size, quantity };
+    const productData = {
+      ...product,
+      size,
+      quantity,
+    };
 
     setTimeout(() => {
-      setSize("");
+      setSize(isTShirt ? "" : "DEFAULT");
       setQuantity(1);
     }, 300);
   };
@@ -144,49 +156,56 @@ function ClientProductView({ product }: { product: any }) {
           <p className={styles.price}>₹{product.price}</p>
 
           {/* Size Selection */}
-          <div className={styles.sizeSection}>
-            <h3>Select Size:</h3>
-            <div className={styles.sizeOptions}>
-              {["S", "M", "L", "XL"].map((s) => {
-                const outOfStock = sizeStock[s] === 0;
+          {isTShirt && (
+            <div className={styles.sizeSection}>
+              <h3>Select Size:</h3>
 
-                return (
-                  <motion.button
-                    key={s}
-                    className={`${styles.sizeButton} 
-                    ${size === s ? styles.active : ""} 
-                    ${outOfStock ? styles.disabledSize : ""}
-                  `}
-                    onClick={() => handleSizeSelect(s)}
-                    whileTap={!outOfStock ? { scale: 0.9 } : {}}
-                    disabled={outOfStock}
-                  >
-                    {s}
-                    {outOfStock && <span className={styles.cross}>×</span>}
-                  </motion.button>
-                );
-              })}
+              <div className={styles.sizeOptions}>
+                {["S", "M", "L", "XL"].map((s) => {
+                  const outOfStock = sizeStock[s] === 0;
+
+                  return (
+                    <motion.button
+                      key={s}
+                      className={`${styles.sizeButton}
+              ${size === s ? styles.active : ""}
+              ${outOfStock ? styles.disabledSize : ""}
+            `}
+                      onClick={() => handleSizeSelect(s)}
+                      whileTap={!outOfStock ? { scale: 0.9 } : {}}
+                      disabled={outOfStock}
+                    >
+                      {s}
+                      {outOfStock && <span className={styles.cross}>×</span>}
+                    </motion.button>
+                  );
+                })}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Quantity Control */}
           <div className={styles.quantitySection}>
             <h3>Quantity:</h3>
             <div className={styles.quantityControls}>
-              <button disabled={!size || quantity <= 1} onClick={decreaseQty}>
+              <button disabled={quantity <= 1} onClick={decreaseQty}>
                 −
               </button>
               <span>{quantity}</span>
               <button
-                disabled={!size || quantity >= sizeStock[size]}
+                disabled={
+                  quantity >= (isTShirt ? sizeStock[size] : defaultStock)
+                }
                 onClick={increaseQty}
               >
                 +
               </button>
             </div>
-            {size && quantity >= sizeStock[size] && (
+            {quantity >= (isTShirt ? sizeStock[size] : defaultStock) && (
               <p className={styles.stockWarning}>
-                Only {sizeStock[size]} left in stock for size {size}.
+                {isTShirt
+                  ? `Only ${sizeStock[size]} left in stock for size ${size}.`
+                  : `Only ${defaultStock} left in stock.`}
               </p>
             )}
           </div>
@@ -200,11 +219,15 @@ function ClientProductView({ product }: { product: any }) {
           >
             <div onClick={handleAddToCart}>
               <AddToCartButton
-                product={{ ...product, size: size, quantity }}
-                disabled={size === ""}
+                product={{
+                  ...product,
+                  size: isTShirt ? size : "DEFAULT",
+                  quantity,
+                }}
+                disabled={isTShirt && size === ""}
               />
             </div>
-            {!size && (
+            {isTShirt && !size && (
               <p className={styles.sizeWarning}>Please select a size first.</p>
             )}
           </motion.div>

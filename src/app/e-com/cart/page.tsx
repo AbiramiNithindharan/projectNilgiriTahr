@@ -9,7 +9,7 @@ export default function CartPage() {
   // Calculate totals
   const subtotal = cartItems.reduce(
     (sum, item) => sum + item.price * (item.quantity || 1),
-    0
+    0,
   );
   const delivery = subtotal > 0 ? 50 : 0;
   const total = subtotal + delivery;
@@ -17,7 +17,7 @@ export default function CartPage() {
   // 🔹 Confirm remove single item
   const handleRemoveItem = (id: string, size: string) => {
     const confirmDelete = window.confirm(
-      "Are you sure you want to remove this item from your cart?"
+      "Are you sure you want to remove this item from your cart?",
     );
     if (confirmDelete) removeFromCart(id, size);
   };
@@ -25,7 +25,7 @@ export default function CartPage() {
   // 🔹 Confirm clear entire cart
   const handleClearCart = () => {
     const confirmClear = window.confirm(
-      "Are you sure you want to clear your entire cart?"
+      "Are you sure you want to clear your entire cart?",
     );
     if (confirmClear) clearCart();
   };
@@ -41,7 +41,7 @@ export default function CartPage() {
           {/* ✅ LEFT - Product List */}
           <div className={styles.cartItems}>
             {cartItems.map((item, index) => (
-              <div key={`${item.id}-${index}`} className={styles.item}>
+              <div key={`${item.id}-${item.size}`} className={styles.item}>
                 <Link
                   className={styles.clickable}
                   href={`/e-com/store/${item.id}`}
@@ -55,7 +55,7 @@ export default function CartPage() {
                   >
                     <h3>{item.name}</h3>
                   </Link>
-                  <p>Size: {item.size}</p>
+                  {item.size && <p>Size: {item.size}</p>}
                   <p>Qty: {item.quantity || 1}</p>
                   <p>Total: ₹{item.price}</p>
                 </div>

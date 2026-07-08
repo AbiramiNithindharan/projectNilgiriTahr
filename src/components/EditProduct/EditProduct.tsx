@@ -22,6 +22,7 @@ export default function EditProduct({ productId }: { productId: string }) {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("tshirt");
   const [imageUrl, setImageUrl] = useState("");
   const [newImage, setNewImage] = useState<File | null>(null);
 
@@ -42,6 +43,7 @@ export default function EditProduct({ productId }: { productId: string }) {
       setTitle(data.product.title);
       setPrice(data.product.price);
       setDescription(data.product.description || "");
+      setCategory(data.product.category || "tshirt");
       setImageUrl(data.product.image_url);
       setLoading(false);
     };
@@ -57,6 +59,7 @@ export default function EditProduct({ productId }: { productId: string }) {
       formData.append("title", title);
       formData.append("price", price);
       formData.append("description", description);
+      formData.append("category", category);
 
       if (newImage) {
         formData.append("image", newImage);
@@ -126,7 +129,18 @@ export default function EditProduct({ productId }: { productId: string }) {
             value={price}
             onChange={(e) => setPrice(e.target.value)}
           />
+          <label>Category</label>
 
+          <select
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <option value="tshirt">T-Shirt</option>
+            <option value="cap">Cap</option>
+            <option value="waterbottle">Water Bottle</option>
+            <option value="stick">Walking Stick</option>
+            <option value="keychain">Key Chain</option>
+          </select>
           <label>Replace Image</label>
           <input
             type="file"

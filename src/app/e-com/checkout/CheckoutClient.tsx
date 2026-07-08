@@ -70,14 +70,17 @@ export default function CheckoutPage() {
           <h2 className={styles.sectionTitle}>Order Summary</h2>
 
           <div className={styles.itemsList}>
-            {cartItems.map((item, index) => (
-              <div key={index} className={styles.item}>
+            {cartItems.map((item) => (
+              <div key={`${item.id}-${item.size}`} className={styles.item}>
                 <img src={item.image_url} alt={item.name} />
                 <div>
                   <h4>{item.name}</h4>
-                  <p>Size: {item.size}</p>
-                  <p>Qty: {item.quantity}</p>
-                  <p>Price: ₹{item.price}</p>
+                  {item.size && <p>Size: {item.size}</p>}
+                  <p>Qty: {item.quantity || 1}</p>
+                  <p>
+                    Price: ₹{item.price} × {item.quantity}
+                  </p>
+                  <p>Total: ₹{item.price * item.quantity}</p>
                 </div>
               </div>
             ))}

@@ -36,7 +36,7 @@ export default function AddToCartButton({
       name: product.title,
       image_url: product.image_url,
       price: product.price,
-      size: product.size ?? null,
+      size: product.size === "DEFAULT" ? "" : product.size,
       quantity: product.quantity ?? 1,
     });
 

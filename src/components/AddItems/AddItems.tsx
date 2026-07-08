@@ -17,6 +17,7 @@ export default function AddItems() {
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [productCode, setProductCode] = useState("");
+  const [category, setCategory] = useState("tshirt");
   const [image, setImage] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
 
@@ -26,6 +27,8 @@ export default function AddItems() {
     { size: "L", stock: "" },
     { size: "XL", stock: "" },
   ]);
+
+  const [stock, setStock] = useState("");
 
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
@@ -107,19 +110,29 @@ export default function AddItems() {
       formData.append("description", description.trim());
       formData.append("productCode", productCode);
       formData.append("image", image!);
-      formData.append("sizes", JSON.stringify(sizes));
+      const stockData =
+        category === "tshirt"
+          ? sizes
+          : [
+              {
+                size: "DEFAULT",
+                stock,
+              },
+            ];
+
+      formData.append("sizes", JSON.stringify(stockData));
+      formData.append("category", category);
       const res = await fetch("/api/donation-admin/products", {
         method: "POST",
         credentials: "include",
         headers: {
-          "Content-Type": "application/json",
           "x-csrf-token": getCSRFToken() || "",
         },
         body: formData,
       });
 
       const data = await res.json();
-
+      console.log(data);
       if (!res.ok) {
         toast.error(data.error || "Failed to add product");
         setLoading(false);
@@ -140,9 +153,12 @@ export default function AddItems() {
         { size: "L", stock: "" },
         { size: "XL", stock: "" },
       ]);
+      setStock("");
+      setCategory("tshirt");
 
       setProductCode(generateProductCode());
-    } catch {
+    } catch (err) {
+      console.error(err);
       toast.error("Server error");
     } finally {
       setLoading(false);
@@ -223,6 +239,26 @@ export default function AddItems() {
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.23 }}
+          >
+            <label className={styles.label}>Product Category</label>
+
+            <select
+              className={styles.input}
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              <option value="tshirt">T-Shirt</option>
+              <option value="cap">Cap</option>
+              <option value="waterbottle">Water Bottle</option>
+              <option value="stick">Walking Stick</option>
+              <option value="keychain">Key Chain</option>
+            </select>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.25 }}
           >
             <label className={styles.label}>Product Image</label>
@@ -281,32 +317,45 @@ export default function AddItems() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
-            <h3 className={styles.subHeading}>Size & Stock</h3>
-            <div className={styles.sizeGrid}>
-              {sizes.map((s, i) => (
-                <motion.div
-                  key={i}
-                  className={styles.sizeRow}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.05 * i }}
-                >
-                  <span className={styles.sizeLabel}>{s.size}</span>
-                  <input
-                    type="number"
-                    className={styles.input}
-                    min="0"
-                    placeholder="Stock"
-                    value={s.stock}
-                    onChange={(e) => {
-                      const updated = [...sizes];
-                      updated[i].stock = e.target.value;
-                      setSizes(updated);
-                    }}
-                  />
-                </motion.div>
-              ))}
-            </div>
+            {category === "tshirt" ? (
+              <>
+                <h3 className={styles.subHeading}>Size & Stock</h3>
+
+                <div className={styles.sizeGrid}>
+                  {sizes.map((s, i) => (
+                    <motion.div key={i} className={styles.sizeRow}>
+                      <span className={styles.sizeLabel}>{s.size}</span>
+
+                      <input
+                        type="number"
+                        className={styles.input}
+                        min="0"
+                        value={s.stock}
+                        placeholder="Stock"
+                        onChange={(e) => {
+                          const updated = [...sizes];
+                          updated[i].stock = e.target.value;
+                          setSizes(updated);
+                        }}
+                      />
+                    </motion.div>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <>
+                <h3 className={styles.subHeading}>Stock</h3>
+
+                <input
+                  type="number"
+                  className={styles.input}
+                  min="0"
+                  value={stock}
+                  placeholder="Available Stock"
+                  onChange={(e) => setStock(e.target.value)}
+                />
+              </>
+            )}
           </motion.div>
 
           <motion.button
@@ -369,17 +418,17 @@ export default function AddItems() {
             </p>
 
             <div className={styles.sizePreviewBox}>
-              {sizes.map((s, idx) => (
-                <motion.span
-                  key={idx}
-                  className={styles.sizeBadge}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: idx * 0.05 }}
-                >
-                  {s.size}: {s.stock || 0}
+              {category === "tshirt" ? (
+                sizes.map((s, idx) => (
+                  <motion.span key={idx} className={styles.sizeBadge}>
+                    {s.size}: {s.stock || 0}
+                  </motion.span>
+                ))
+              ) : (
+                <motion.span className={styles.sizeBadge}>
+                  Stock: {stock || 0}
                 </motion.span>
-              ))}
+              )}
             </div>
           </div>
         </motion.div>

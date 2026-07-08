@@ -47,6 +47,7 @@ export async function POST(req: NextRequest) {
     const price = formData.get("price") as string;
     const description = formData.get("description") as string;
     const productCode = formData.get("productCode") as string;
+    const category = formData.get("category") as string;
     const image = formData.get("image") as File;
     const sizes = JSON.parse(formData.get("sizes") as string);
 
@@ -73,7 +74,11 @@ export async function POST(req: NextRequest) {
     const imageUrl = supabaseClient.storage
       .from("products")
       .getPublicUrl(filePath).data.publicUrl;
-
+    console.log({
+      title,
+      category,
+      sizes,
+    });
     // Insert product
     const { data: product, error: insertError } = await supabaseClient
       .from("products")
@@ -83,6 +88,7 @@ export async function POST(req: NextRequest) {
           price: Number(price),
           description,
           product_code: productCode,
+          category,
           image_url: imageUrl,
         },
       ])
@@ -114,6 +120,14 @@ export async function POST(req: NextRequest) {
     });
     return NextResponse.json({ success: true });
   } catch (err) {
-    return NextResponse.json({ error: "Server error" }, { status: 500 });
+    console.error("POST PRODUCT ERROR:", err);
+
+    return NextResponse.json(
+      {
+        error: "Server error",
+        details: err instanceof Error ? err.message : err,
+      },
+      { status: 500 },
+    );
   }
 }

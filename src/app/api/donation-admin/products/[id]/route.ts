@@ -40,16 +40,55 @@ export async function PUT(
     return NextResponse.json({ error: "Invalid CSRF" }, { status: 403 });
   }
 
-  const body = await req.json();
+  const formData = await req.formData();
 
-  const { title, price } = body;
+  const title = formData.get("title") as string;
+  const price = formData.get("price") as string;
+  const description = formData.get("description") as string;
+  const category = formData.get("category") as string;
+  const image = formData.get("image") as File | null;
+  let imageUrl: string | undefined;
+
+  if (image && image.size > 0) {
+    const filePath = `${Date.now()}-${image.name}`;
+
+    const { error: uploadError } = await supabaseClient.storage
+      .from("products")
+      .upload(filePath, image, {
+        contentType: image.type,
+      });
+
+    if (uploadError) {
+      return NextResponse.json(
+        { error: "Image upload failed" },
+        { status: 500 },
+      );
+    }
+
+    imageUrl = supabaseClient.storage.from("products").getPublicUrl(filePath)
+      .data.publicUrl;
+  }
+
+  const updateData: {
+    title: string;
+    description: string;
+    price: number;
+    category: string;
+    image_url?: string;
+  } = {
+    title,
+    description,
+    price: Number(price),
+    category,
+  };
+
+  if (imageUrl) {
+    updateData.image_url = imageUrl;
+  }
 
   const { error } = await supabaseClient
     .from("products")
-    .update({
-      title,
-      price: Number(price),
-    })
+    .update(updateData)
     .eq("id", id);
 
   if (error) {
