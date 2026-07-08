@@ -66,7 +66,6 @@ export const galleryCategories: GalleryCategory[] = [
           "/gallery/radio-collared/radiocollar-2.JPG",
           "/gallery/radio-collared/radiocollar-3.JPG",
           "/gallery/radio-collared/radiocollar-4.jpg",
-          "/gallery/radio-collared/radiocollar-5.jpg",
           "/gallery/radio-collared/radiocollar-6.jpg",
           "/gallery/radio-collared/radiocollar-7.jpg",
         ],
