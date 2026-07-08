@@ -320,7 +320,6 @@ export const galleryCategories: GalleryCategory[] = [
         label: "Tahr Day",
         images: [
           "/gallery/Mission/stamp.png",
-          "/gallery/Mission/initiative.jpeg",
           "/gallery/Mission/TahrDay-workshop-1.png",
           "/gallery/celebration/TahrDay/IMG_3339.JPG",
           "/gallery/celebration/TahrDay/IMG_3502.jpg",

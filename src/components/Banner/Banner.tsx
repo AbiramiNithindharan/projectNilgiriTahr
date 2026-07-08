@@ -8,8 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
 import Image from "next/image";
 import "swiper/css";
-import "swiper/css/effect-fade";
-import "swiper/css/autoplay";
+
 import styles from "./Banner.module.css";
 import Link from "next/link";
 
@@ -55,11 +54,11 @@ export default function Banner({
       alt: "Nilgiri Tahr conservation work",
       link: "/banner-content-1",
     },
-    {
+    /* {
       src: "/banners/Banner_2.jpg",
       alt: "Western Ghats landscape",
       link: "/banner-content-2",
-    },
+    }, */
   ];
 
   useEffect(() => {

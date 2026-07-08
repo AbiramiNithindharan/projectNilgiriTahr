@@ -20,7 +20,7 @@ export default function DashboardLogin() {
     }
   }, [searchParams]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.SubmitEvent) => {
     e.preventDefault();
 
     if (!username.trim() || !password.trim()) {
@@ -52,7 +52,8 @@ export default function DashboardLogin() {
       if (res.ok) {
         window.location.href = "/donation-admin";
       } else {
-        setError("Invalid Username or Password");
+        setError(data.error || "Login failed");
+        console.error(data);
       }
     } catch (err) {
       setError("Server error. Please try again.");

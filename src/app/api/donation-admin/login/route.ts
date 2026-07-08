@@ -39,15 +39,15 @@ export async function POST(req: NextRequest) {
 
     const token = await signToken({ id: "1", username: DONATE_ADMIN_USER });
     const csrfToken = randomBytes(32).toString("hex");
-    const res = NextResponse.json({ success: true });
 
+    const res = NextResponse.json({ success: true });
     //auth cookie
     res.cookies.set("admin_token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
       path: "/",
-      maxAge: 60 * 60 * 2, // 2 hours
+      maxAge: 60 * 60 * 2,
     });
 
     //CSRF cookie

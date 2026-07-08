@@ -155,7 +155,7 @@ export const GALLERY_ATOM_CATEGORIES: AtomMainCategory[] = [
         id: "TahrDay",
         label: "Tahr Day",
         route: "/photo-gallery?category=Celebration&sub=TahrDay",
-        image: "/gallery/Mission/initiative.jpeg",
+        image: "/gallery/celebration/TahrDay/IMG_3339.JPG",
       },
       {
         id: "ElephantDay",
