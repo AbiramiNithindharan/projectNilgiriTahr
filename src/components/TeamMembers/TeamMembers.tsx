@@ -43,12 +43,19 @@ export default function TeamMembers() {
       title: "Board Members",
       members: [
         {
+          name: "Tmt. Kakarla Usha, IAS",
+          image: "/members/kakarla-usha.png",
+          alt: "Tmt. Kakarla Usha, IAS",
+          about:
+            "Additional Chief Secretary to the Government of Tamil Nadu, Department of Environment, Climate Change & Forests Department.",
+        },
+        /*  {
           name: "Tmt. Supriya Sahu, IAS",
           image: "/members/supriya-sahu.jpg",
           alt: "Tmt. Supriya Sahu, IAS",
           about:
             "Additional Chief Secretary to the Government of Tamil Nadu, Department of Environment, Climate Change & Forests, Tmt. Supriya Sahu is a 1991-batch IAS officer with a distinguished career in public administration and environmental leadership. She provides strategic direction for policies and programs that address critical issues including wildlife conservation, forest management, climate resilience, and pollution control. Under her visionary leadership, Tamil Nadu has launched several landmark initiatives such as the Tamil Nadu Climate Change Mission, Green Tamil Nadu Mission, and Project Nilgiri Tahr, which focuses on the scientific protection of the state animal and restoration of fragile high-altitude grasslands. She has been instrumental in integrating climate action with conservation planning, fostering a sustainable and resilient future for both people and ecosystems.",
-        },
+        }, */
         {
           name: "Thiru Srinivas R. Reddy, IFS",
           image: "/members/srinivas-reddy-1.png",
