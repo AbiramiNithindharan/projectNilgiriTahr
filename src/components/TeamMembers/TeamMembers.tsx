@@ -60,7 +60,8 @@ export default function TeamMembers() {
           name: "Thiru. A. Udhayan, IFS",
           image: "/members/Udhayan.jpeg",
           alt: "Thiru. A. Udhayan, IFS",
-          about: "Principal Chief Conservator of Forests(Head of Forest Force)",
+          about:
+            "Principal Chief Conservator of Forests (PCCF) and Head of Forest Force(HoFF), Tamil Nadu, Thiru. A. Udhayan, IFS assumed charge as PCCF & HoFF in August 2026.",
         },
         {
           name: "Thiru Rakesh Kumar Dogra, IFS",
