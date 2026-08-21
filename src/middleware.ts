@@ -49,32 +49,55 @@ function applySecurityHeaders(res: NextResponse) {
   return res;
 }
 
+/**
+ * Admin surfaces must never be reused from cache. `no-store` also makes the page
+ * ineligible for Chrome's back/forward cache — without it, pressing Back after a
+ * logout restores the previous page *with its JavaScript heap intact*, so the
+ * dashboard repaints showing the rows it fetched while the session was still live,
+ * and no request is made for the middleware below to reject.
+ */
+function applyNoStore(res: NextResponse) {
+  res.headers.set("Cache-Control", "no-store, must-revalidate");
+  res.headers.set("Pragma", "no-cache");
+  return res;
+}
+
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   // Protect Admin Routes
   if (pathname.startsWith("/donation-admin")) {
     const token = req.cookies.get("admin_token")?.value;
-
-    if (!token) {
-      const res = NextResponse.redirect(
-        new URL("/admin?tab=donation&error=unauthorized", req.url),
-      );
-      return applySecurityHeaders(res);
-    }
-
-    const payload = await verifyToken(token);
+    const payload = token ? await verifyToken(token, "dashboard") : null;
 
     if (!payload) {
       const res = NextResponse.redirect(
         new URL("/admin?tab=donation&error=unauthorized", req.url),
       );
-      return applySecurityHeaders(res);
+      return applyNoStore(applySecurityHeaders(res));
     }
+
+    return applyNoStore(applySecurityHeaders(NextResponse.next()));
   }
 
-  // /studio is gated by Sanity's own login — see CLAUDE.md "Auth model".
-  // It stays in the matcher below so security headers still apply.
+  // Protect the CMS. Sanity’s own login still gates the *content*, but without this
+  // anyone could open the Studio shell by typing the URL, straight past the
+  // password screen on /admin. An earlier version of this guard was removed
+  // because it read "admin_token" — the *dashboard* cookie, which content editors
+  // never have — and so locked them out. The CMS cookie is "adminAuth".
+  if (pathname.startsWith("/studio")) {
+    const token = req.cookies.get("adminAuth")?.value;
+    const payload = token ? await verifyToken(token, "cms") : null;
+
+    if (!payload) {
+      const res = NextResponse.redirect(
+        new URL("/admin?tab=cms&error=unauthorized", req.url),
+      );
+      return applyNoStore(applySecurityHeaders(res));
+    }
+
+    return applyNoStore(applySecurityHeaders(NextResponse.next()));
+  }
 
   const res = NextResponse.next();
   return applySecurityHeaders(res);

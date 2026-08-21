@@ -12,7 +12,7 @@ export async function requireAdmin(req: NextRequest): Promise<AdminAuthResult> {
     return { authorized: false, error: "No token" };
   }
 
-  const payload = await verifyToken(token);
+  const payload = await verifyToken(token, "dashboard");
 
   if (!payload) {
     return { authorized: false, error: "Invalid token" };

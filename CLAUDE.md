@@ -105,13 +105,23 @@ There are **two independent** access mechanisms:
    redirects unauthenticated `/donation-admin/*` requests to `/admin?tab=donation`.
    Mutating admin routes call `requireAdmin()` **and** `verifyCSRF()`; the client reads
    the `csrf_token` cookie and sends it as the `x-csrf-token` header.
-2. **CMS access** — `POST /api/verify-password` checks a single `ADMIN_PASSWORD` and sets
-   an `adminAuth` cookie, then the client redirects to `/studio`. **Nothing enforces this
-   cookie, by decision** — Sanity's own login is the intended and only gate on `/studio`.
-   A guard was drafted in `middleware.ts` but checked the wrong cookie (`admin_token`,
-   which comes from the *dashboard* login, not the CMS one) and would have locked out
-   content editors; it has been removed. `/studio` stays in the middleware matcher so
-   security headers still apply.
+2. **CMS access** — `POST /api/verify-password` checks a single `ADMIN_PASSWORD` and signs
+   an 8h JWT (scope `"cms"`) into an httpOnly `adminAuth` cookie, then the client
+   redirects to `/studio`. `src/middleware.ts` **verifies this cookie on `/studio/*`**
+   and redirects to `/admin?tab=cms` when it is missing, expired or wrongly scoped.
+   Sanity's own login remains the gate on the *content*; this is the gate on the Studio
+   shell. Sign out via the "Sign out" button in the Studio navbar → `/cms-logout`, which
+   ends the Sanity session **and** clears `adminAuth`.
+
+   This reverses an earlier decision to leave the cookie unenforced. That decision came
+   from a broken first attempt: the guard read `admin_token` — the *dashboard* cookie,
+   which content editors never have — so it locked them out. It reads `adminAuth` now.
+   Note both scopes are signed with the same `JWT_SECRET`, so `verifyToken()` takes a
+   required scope argument and a token minted for one surface is rejected by the other.
+
+Both admin surfaces are served `Cache-Control: no-store`, which also makes them
+ineligible for Chrome's back/forward cache — without that, Back after a logout restored
+the dashboard with its JavaScript heap intact, repainting live data on a dead session.
 
 `/admin` is the single current entry point (tabbed: "News Admin" / "Dashboard Login").
 **`/cms-access-portal` is dead code** — a legacy duplicate of the CMS tab. Leave it alone
@@ -131,7 +141,8 @@ unless asked to remove it.
 | `POST /api/donation-admin/login`, `/logout` | Session |
 | `GET/POST /api/donation-admin/products`, `GET/PUT/DELETE .../products/[id]` | Product CRUD + image upload to the `products` bucket |
 | `POST /api/revalidate` | Sanity webhook target — revalidates `/` and category/post paths |
-| `POST /api/verify-password` | CMS password gate |
+| `POST /api/verify-password` | CMS password gate — mints the scoped `adminAuth` token |
+| `POST /api/cms-logout` | Clears `adminAuth`; the `/cms-logout` page also ends the Sanity session |
 | `GET /api/download` | Proxies a remote file URL as a PDF download |
 
 Public form endpoints use Upstash rate limiters and a `company` honeypot field.

@@ -43,7 +43,11 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const token = await signToken({ id: "1", username: DONATE_ADMIN_USER });
+    const token = await signToken({
+      id: "1",
+      username: DONATE_ADMIN_USER,
+      scope: "dashboard",
+    });
     const csrfToken = randomBytes(32).toString("hex");
 
     const res = NextResponse.json({ success: true });
@@ -59,7 +63,9 @@ export async function POST(req: NextRequest) {
     //CSRF cookie
     res.cookies.set("csrf_token", csrfToken, {
       httpOnly: false,
-      secure: true,
+      // Must match admin_token: an unconditional `true` here makes the browser
+      // drop this cookie over plain http, so admin PATCH/DELETE fails in dev.
+      secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
       path: "/",
     });
