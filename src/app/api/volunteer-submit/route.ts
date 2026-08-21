@@ -1,7 +1,7 @@
 import { validateVolunteer } from "@/lib/validation/volunteer";
 import { verifyCSRF } from "@/lib/dashboard/auth/verify-csrf";
 import { requireAdmin } from "@/lib/dashboard/auth/requireAdmin";
-import { volunteerRateLimiter } from "@/lib/redis/rate-limit";
+import { volunteerRateLimiter, safeLimit } from "@/lib/redis/rate-limit";
 import { NextRequest } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseServer";
 /* =========================
@@ -67,7 +67,7 @@ export async function POST(req: NextRequest) {
       "unknown";
 
     /* -------------------- Rate Limiting (Redis) -------------------- */
-    const { success } = await volunteerRateLimiter.limit(ip);
+    const { success } = await safeLimit(volunteerRateLimiter, ip);
 
     if (!success) {
       return new Response(

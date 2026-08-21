@@ -1,6 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
 import { signToken } from "@/lib/dashboard/auth/jwt";
-import { loginRateLimiter } from "@/lib/redis/rate-limit";
+import { loginRateLimiter, safeLimit } from "@/lib/redis/rate-limit";
 import { getIP } from "@/lib/redis/get-ip";
 import { randomBytes } from "node:crypto";
 import { logAdminAction } from "@/lib/dashboard/security/audit-log";
@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
 
     const userAgent = req.headers.get("user-agent") || "unknown";
 
-    const { success } = await loginRateLimiter.limit(ip);
+    const { success } = await safeLimit(loginRateLimiter, ip);
 
     if (!success) {
       return NextResponse.json(

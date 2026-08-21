@@ -2,14 +2,14 @@ import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
 import { requireAdmin } from "@/lib/dashboard/auth/requireAdmin";
 import { supabaseAdmin } from "@/lib/supabaseServer";
-import { apiRateLimiter } from "@/lib/redis/rate-limit";
+import { apiRateLimiter, safeLimit } from "@/lib/redis/rate-limit";
 import { getIP } from "@/lib/redis/get-ip";
 
 export async function GET(req: NextRequest) {
   try {
     const ip = getIP(req);
 
-    const { success } = await apiRateLimiter.limit(ip);
+    const { success } = await safeLimit(apiRateLimiter, ip);
 
     if (!success) {
       return NextResponse.json({ error: "Too many requests" }, { status: 429 });

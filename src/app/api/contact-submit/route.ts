@@ -1,7 +1,7 @@
 import { validateContact } from "@/lib/validation/contact";
 import { verifyCSRF } from "@/lib/dashboard/auth/verify-csrf";
 import { requireAdmin } from "@/lib/dashboard/auth/requireAdmin";
-import { contactRateLimiter } from "@/lib/redis/rate-limit";
+import { contactRateLimiter, safeLimit } from "@/lib/redis/rate-limit";
 import { NextRequest } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseServer";
 
@@ -68,7 +68,7 @@ export async function POST(req: NextRequest) {
       "unknown";
 
     /* -------------------- Rate Limiting (Redis) -------------------- */
-    const { success } = await contactRateLimiter.limit(ip);
+    const { success } = await safeLimit(contactRateLimiter, ip);
 
     if (!success) {
       return new Response(
