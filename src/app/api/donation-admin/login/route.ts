@@ -34,6 +34,12 @@ export async function POST(req: NextRequest) {
     }
 
     if (username !== DONATE_ADMIN_USER || password !== DONATE_ADMIN_PASS) {
+      await logAdminAction({
+        action: "ADMIN_LOGIN_FAILED",
+        admin: username,
+        ip,
+        userAgent,
+      });
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
@@ -60,12 +66,6 @@ export async function POST(req: NextRequest) {
     await logAdminAction({
       action: "ADMIN_LOGIN_SUCCESS",
       admin: DONATE_ADMIN_USER,
-      ip,
-      userAgent,
-    });
-    await logAdminAction({
-      action: "ADMIN_LOGIN_FAILED",
-      admin: username,
       ip,
       userAgent,
     });

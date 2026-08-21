@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import styles from "./donation-admin.module.css";
-import { supabaseClient } from "@/lib/supabaseClient";
 
 export default function DonationAdminDashboard() {
   const [stats, setStats] = useState({
@@ -17,86 +16,30 @@ export default function DonationAdminDashboard() {
   const [latestMessages, setLatestMessages] = useState<any[]>([]);
 
   useEffect(() => {
-    fetchDonationStats();
-    fetchContactStats();
+    fetchDashboardStats();
   }, []);
 
-  const fetchDonationStats = async () => {
-    // Date range for last month
-    const now = new Date();
-    const firstDayThisMonth = new Date(now.getFullYear(), now.getMonth(), 1);
-    const firstDayLastMonth = new Date(
-      now.getFullYear(),
-      now.getMonth() - 1,
-      1,
-    );
-    //Fetch ONLY required fields + ONLY success
-    const { data, error } = await supabaseClient
-      .from("donations")
-      .select("amount, email, created_at")
-      .eq("status", "paid");
+  // ✅ Stats are aggregated server-side (admin-only route) — the browser never
+  // queries Supabase directly for donor or contact data.
+  const fetchDashboardStats = async () => {
+    try {
+      const res = await fetch("/api/donation-admin/stats", {
+        credentials: "include",
+      });
 
-    if (error) {
-      console.error("Error fteching donations:", error);
-      return;
+      if (!res.ok) {
+        console.error("Error fetching dashboard stats:", res.status);
+        return;
+      }
+
+      const result = await res.json();
+
+      setStats(result.stats);
+      setContactStats(result.contactStats);
+      setLatestMessages(result.latestMessages || []);
+    } catch (err) {
+      console.error("Error fetching dashboard stats:", err);
     }
-    if (!data) return;
-
-    // TOTAL AMOUNT
-    const totalAmount = data.reduce((sum, d) => sum + d.amount, 0);
-
-    // LAST MONTH FILTER
-    const lastMonthAmount = data
-      .filter((d) => {
-        const date = new Date(d.created_at);
-        return date >= firstDayLastMonth && date < firstDayThisMonth;
-      })
-      .reduce((sum, d) => sum + d.amount, 0);
-
-    // UNIQUE DONORS
-    const totalDonors = new Set(data.map((d) => d.email)).size;
-
-    setStats({
-      totalAmount,
-      lastMonthAmount,
-      totalDonors,
-    });
-  };
-
-  const fetchContactStats = async () => {
-    const now = new Date();
-    const last7Days = new Date();
-    last7Days.setDate(now.getDate() - 7);
-
-    // ✅ Counts
-    const { count: recentCount } = await supabaseClient
-      .from("contact_messages")
-      .select("*", { count: "exact", head: true })
-      .gte("created_at", last7Days.toISOString());
-
-    const { count: notRepliedCount } = await supabaseClient
-      .from("contact_messages")
-      .select("*", { count: "exact" })
-      .eq("is_replied", false);
-
-    // ✅ Latest messages
-    const { data: messages, error } = await supabaseClient
-      .from("contact_messages")
-      .select("id, name, message, created_at, is_replied")
-      .order("created_at", { ascending: false })
-      .limit(5);
-
-    if (error) {
-      console.error(error);
-      return;
-    }
-
-    setContactStats({
-      recentMessages: recentCount || 0,
-      notReplied: notRepliedCount || 0,
-    });
-
-    setLatestMessages(messages || []);
   };
 
   // 🇮🇳 Currency formatter (BEST PRACTICE)

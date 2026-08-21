@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import styles from "./AdminVolunteersTable.module.css";
 import { User, Phone, Mail, Heart } from "lucide-react";
+import { getCSRFToken } from "@/lib/dashboard/auth/csrf-client";
 
 export default function AdminVolunteersTable() {
   const [data, setData] = useState<any[]>([]);
@@ -99,6 +100,9 @@ export default function AdminVolunteersTable() {
                       onClick={async () => {
                         await fetch("/api/volunteer-submit", {
                           method: "PATCH",
+                          headers: {
+                            "x-csrf-token": getCSRFToken() || "",
+                          },
                           body: JSON.stringify({ id: item.id }),
                         });
 
@@ -118,6 +122,9 @@ export default function AdminVolunteersTable() {
                       onClick={async () => {
                         await fetch("/api/volunteer-submit", {
                           method: "DELETE",
+                          headers: {
+                            "x-csrf-token": getCSRFToken() || "",
+                          },
                           body: JSON.stringify({ id: item.id }),
                         });
 

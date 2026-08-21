@@ -16,7 +16,7 @@ serve(async (req: Request): Promise<Response> => {
     // Send email through send-email function
     await supabase.functions.invoke("send-email", {
       body: {
-        to: "nithindharan.r@gmail.com",
+        to: Deno.env.get("ADMIN_NOTIFY_EMAIL")!,
         subject: "New Contact Form Message",
         html: `
           <h3>New Contact Message</h3>

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import styles from "./AdminContactsTable.module.css";
 import { Mail, User, Calendar } from "lucide-react";
+import { getCSRFToken } from "@/lib/dashboard/auth/csrf-client";
 
 export default function AdminContactsTable() {
   const [page, setPage] = useState(1);
@@ -98,6 +99,9 @@ export default function AdminContactsTable() {
                       onClick={async () => {
                         await fetch("/api/contact-submit", {
                           method: "PATCH",
+                          headers: {
+                            "x-csrf-token": getCSRFToken() || "",
+                          },
                           body: JSON.stringify({ id: item.id }),
                         });
 
@@ -117,6 +121,9 @@ export default function AdminContactsTable() {
                       onClick={async () => {
                         await fetch("/api/contact-submit", {
                           method: "DELETE",
+                          headers: {
+                            "x-csrf-token": getCSRFToken() || "",
+                          },
                           body: JSON.stringify({ id: item.id }),
                         });
 

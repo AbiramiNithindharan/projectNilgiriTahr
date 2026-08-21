@@ -5,13 +5,7 @@ import { useRouter } from "next/navigation";
 import styles from "./EditProduct.module.css";
 import toast from "react-hot-toast";
 import { ArrowLeft, Save } from "lucide-react";
-
-function getCSRFToken() {
-  return document.cookie
-    .split("; ")
-    .find((row) => row.startsWith("csrf_token="))
-    ?.split("=")[1];
-}
+import { getCSRFToken } from "@/lib/dashboard/auth/csrf-client";
 
 export default function EditProduct({ productId }: { productId: string }) {
   const router = useRouter();

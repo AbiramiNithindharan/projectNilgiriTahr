@@ -1,13 +1,20 @@
 import { validateVolunteer } from "@/lib/validation/volunteer";
 import { verifyCSRF } from "@/lib/dashboard/auth/verify-csrf";
+import { requireAdmin } from "@/lib/dashboard/auth/requireAdmin";
 import { volunteerRateLimiter } from "@/lib/redis/rate-limit";
 import { NextRequest } from "next/server";
-import { supabaseClient } from "@/lib/supabaseClient";
+import { supabaseAdmin } from "@/lib/supabaseServer";
 /* =========================
-   ✅ GET → Fetch Volunteers
+   ✅ GET → Fetch Volunteers (admin only)
 ========================= */
 export async function GET(req: NextRequest) {
   try {
+    /* -------------------- Admin Only -------------------- */
+    const admin = await requireAdmin(req);
+    if (!admin.authorized) {
+      return Response.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const { searchParams } = new URL(req.url);
 
     const page = Number(searchParams.get("page")) || 1;
@@ -15,7 +22,7 @@ export async function GET(req: NextRequest) {
 
     const from = (page - 1) * limit;
     const to = from + limit - 1;
-    const { data, error, count } = await supabaseClient
+    const { data, error, count } = await supabaseAdmin
       .from("volunteer_registrations")
       .select("*", { count: "exact" })
       .order("created_at", { ascending: false })
@@ -59,13 +66,6 @@ export async function POST(req: NextRequest) {
       req.headers.get("x-real-ip") ||
       "unknown";
 
-    /* -------------------- CSRF Protection -------------------- */
-    /*  if (!verifyCSRF(req)) {
-      return new Response(JSON.stringify({ error: "Invalid CSRF token" }), {
-        status: 403,
-      });
-    }
- */
     /* -------------------- Rate Limiting (Redis) -------------------- */
     const { success } = await volunteerRateLimiter.limit(ip);
 
@@ -75,15 +75,6 @@ export async function POST(req: NextRequest) {
         { status: 429 },
       );
     }
-
-    /* -------------------- Enrich Data -------------------- */
-    const userAgent = req.headers.get("user-agent") || "unknown";
-
-    const enrichedBody = {
-      ...body,
-      ip_address: ip,
-      user_agent: userAgent,
-    };
 
     /* -------------------- Timeout Protection -------------------- */
     const controller = new AbortController();
@@ -97,7 +88,7 @@ export async function POST(req: NextRequest) {
           Authorization: `Bearer ${process.env.SUPABASE_ANON_KEY}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(enrichedBody),
+        body: JSON.stringify(body),
         signal: controller.signal,
       },
     );
@@ -116,11 +107,22 @@ export async function POST(req: NextRequest) {
   }
 }
 
-export async function DELETE(req: Request) {
+export async function DELETE(req: NextRequest) {
   try {
+    /* -------------------- Admin Only -------------------- */
+    const admin = await requireAdmin(req);
+    if (!admin.authorized) {
+      return Response.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    /* -------------------- CSRF Protection -------------------- */
+    if (!verifyCSRF(req)) {
+      return Response.json({ error: "Invalid CSRF token" }, { status: 403 });
+    }
+
     const { id } = await req.json();
 
-    const { error } = await supabaseClient
+    const { error } = await supabaseAdmin
       .from("volunteer_registrations")
       .delete()
       .eq("id", id);
@@ -134,11 +136,22 @@ export async function DELETE(req: Request) {
     return Response.json({ error: "Delete failed" }, { status: 500 });
   }
 }
-export async function PATCH(req: Request) {
+export async function PATCH(req: NextRequest) {
   try {
+    /* -------------------- Admin Only -------------------- */
+    const admin = await requireAdmin(req);
+    if (!admin.authorized) {
+      return Response.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    /* -------------------- CSRF Protection -------------------- */
+    if (!verifyCSRF(req)) {
+      return Response.json({ error: "Invalid CSRF token" }, { status: 403 });
+    }
+
     const { id } = await req.json();
 
-    const { error } = await supabaseClient
+    const { error } = await supabaseAdmin
       .from("volunteer_registrations")
       .update({ is_replied: true })
       .eq("id", id);

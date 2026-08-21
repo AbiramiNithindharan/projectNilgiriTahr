@@ -33,7 +33,7 @@ serve(async (req: Request): Promise<Response> => {
     // Admin notification
     await supabase.functions.invoke("send-email", {
       body: {
-        to: "nithindharan.r@gmail.com",
+        to: Deno.env.get("ADMIN_NOTIFY_EMAIL")!,
         subject: "New Volunteer Registration",
         html: `
           <h3>New Volunteer</h3>

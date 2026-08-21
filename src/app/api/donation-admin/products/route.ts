@@ -1,7 +1,7 @@
 import { NextResponse, NextRequest } from "next/server";
 import { verifyCSRF } from "@/lib/dashboard/auth/verify-csrf";
 import { requireAdmin } from "@/lib/dashboard/auth/requireAdmin";
-import { supabaseClient } from "@/lib/supabaseClient";
+import { supabaseAdmin } from "@/lib/supabaseServer";
 import { logAdminAction } from "@/lib/dashboard/security/audit-log";
 import { getIP } from "@/lib/redis/get-ip";
 
@@ -12,7 +12,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const { data, error: fetchError } = await supabaseClient
+  const { data, error: fetchError } = await supabaseAdmin
     .from("products")
     .select("*")
     .order("created_at", { ascending: false });
@@ -58,7 +58,7 @@ export async function POST(req: NextRequest) {
     // ✅ Upload image
     const filePath = `${Date.now()}-${image.name}`;
 
-    const { error: uploadError } = await supabaseClient.storage
+    const { error: uploadError } = await supabaseAdmin.storage
       .from("products")
       .upload(filePath, image, {
         contentType: image.type,
@@ -71,7 +71,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const imageUrl = supabaseClient.storage
+    const imageUrl = supabaseAdmin.storage
       .from("products")
       .getPublicUrl(filePath).data.publicUrl;
     console.log({
@@ -80,7 +80,7 @@ export async function POST(req: NextRequest) {
       sizes,
     });
     // Insert product
-    const { data: product, error: insertError } = await supabaseClient
+    const { data: product, error: insertError } = await supabaseAdmin
       .from("products")
       .insert([
         {
@@ -104,7 +104,7 @@ export async function POST(req: NextRequest) {
 
     // Insert stock
     for (const s of sizes) {
-      await supabaseClient.from("product_stock").insert([
+      await supabaseAdmin.from("product_stock").insert([
         {
           product_id: product.id,
           size: s.size,

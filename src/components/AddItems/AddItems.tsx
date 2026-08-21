@@ -4,13 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import styles from "./AddItems.module.css";
 import { motion, AnimatePresence } from "framer-motion";
 import toast from "react-hot-toast";
-
-function getCSRFToken() {
-  return document.cookie
-    .split("; ")
-    .find((row) => row.startsWith("csrf_token="))
-    ?.split("=")[1];
-}
+import { getCSRFToken } from "@/lib/dashboard/auth/csrf-client";
 
 export default function AddItems() {
   const [title, setTitle] = useState("");

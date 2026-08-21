@@ -8,7 +8,7 @@ serve(async (req: Request): Promise<Response> => {
   const resend = new Resend(Deno.env.get("RESEND_API_KEY")!);
 
   await resend.emails.send({
-    from: "Nilgiri Tahr Project <no-reply@sateline.co.in>",
+    from: Deno.env.get("RESEND_FROM_EMAIL")!,
     to,
     subject,
     html,

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireAdmin } from "@/lib/dashboard/auth/requireAdmin";
 import { verifyCSRF } from "@/lib/dashboard/auth/verify-csrf";
-import { supabaseClient } from "@/lib/supabaseClient";
+import { supabaseAdmin } from "@/lib/supabaseServer";
 
 export async function GET(
   req: NextRequest,
@@ -13,7 +13,7 @@ export async function GET(
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const { data, error } = await supabaseClient
+  const { data, error } = await supabaseAdmin
     .from("products")
     .select("*")
     .eq("id", id)
@@ -52,7 +52,7 @@ export async function PUT(
   if (image && image.size > 0) {
     const filePath = `${Date.now()}-${image.name}`;
 
-    const { error: uploadError } = await supabaseClient.storage
+    const { error: uploadError } = await supabaseAdmin.storage
       .from("products")
       .upload(filePath, image, {
         contentType: image.type,
@@ -65,7 +65,7 @@ export async function PUT(
       );
     }
 
-    imageUrl = supabaseClient.storage.from("products").getPublicUrl(filePath)
+    imageUrl = supabaseAdmin.storage.from("products").getPublicUrl(filePath)
       .data.publicUrl;
   }
 
@@ -86,7 +86,7 @@ export async function PUT(
     updateData.image_url = imageUrl;
   }
 
-  const { error } = await supabaseClient
+  const { error } = await supabaseAdmin
     .from("products")
     .update(updateData)
     .eq("id", id);
@@ -112,7 +112,7 @@ export async function DELETE(
     return NextResponse.json({ error: "Invalid CSRF" }, { status: 403 });
   }
 
-  const { error } = await supabaseClient.from("products").delete().eq("id", id);
+  const { error } = await supabaseAdmin.from("products").delete().eq("id", id);
 
   if (error) {
     return NextResponse.json({ error: "Delete failed" }, { status: 500 });

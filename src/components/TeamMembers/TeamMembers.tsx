@@ -57,11 +57,10 @@ export default function TeamMembers() {
             "Additional Chief Secretary to the Government of Tamil Nadu, Department of Environment, Climate Change & Forests, Tmt. Supriya Sahu is a 1991-batch IAS officer with a distinguished career in public administration and environmental leadership. She provides strategic direction for policies and programs that address critical issues including wildlife conservation, forest management, climate resilience, and pollution control. Under her visionary leadership, Tamil Nadu has launched several landmark initiatives such as the Tamil Nadu Climate Change Mission, Green Tamil Nadu Mission, and Project Nilgiri Tahr, which focuses on the scientific protection of the state animal and restoration of fragile high-altitude grasslands. She has been instrumental in integrating climate action with conservation planning, fostering a sustainable and resilient future for both people and ecosystems.",
         }, */
         {
-          name: "Thiru Srinivas R. Reddy, IFS",
-          image: "/members/srinivas-reddy-1.png",
-          alt: "Thiru Srinivas R. Reddy, IFS",
-          about:
-            "Principal Chief Conservator of Forests (PCCF) and Head of Forest Force, Tamil Nadu, Thiru Srinivas R. Reddy assumed charge as PCCF & HoFF in October 2024. With a long-standing career in forest and wildlife management, he has also served as Chief Wildlife Warden since 2022. Over the years, he has held several key positions including Field Director of Mudumalai Tiger Reserve, Conservator of Forests (Genetics), and Managing Director of Tamil Nadu Tea Plantation Corporation. His expertise spans forest management, biodiversity conservation, wildlife protection enforcement, and strengthening frontline forest staff through training and capacity building. As a leader, he plays a vital role in guiding statewide conservation projects like Project Nilgiri Tahr, ensuring effective coordination between divisions and field teams for the protection of this endangered species.",
+          name: "Thiru. A. Udhayan, IFS",
+          image: "/members/Udhayan.jpeg",
+          alt: "Thiru. A. Udhayan, IFS",
+          about: "Principal Chief Conservator of Forests(Head of Forest Force)",
         },
         {
           name: "Thiru Rakesh Kumar Dogra, IFS",

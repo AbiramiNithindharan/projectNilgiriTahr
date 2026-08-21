@@ -5,12 +5,7 @@ import toast from "react-hot-toast";
 import { Pencil, Trash2, Plus } from "lucide-react";
 import styles from "./AdminProductsTable.module.css";
 import { useRouter } from "next/navigation";
-function getCSRFToken() {
-  return document.cookie
-    .split("; ")
-    .find((row) => row.startsWith("csrf_token="))
-    ?.split("=")[1];
-}
+import { getCSRFToken } from "@/lib/dashboard/auth/csrf-client";
 
 export default function AdminProductsTable() {
   const [products, setProducts] = useState<any[]>([]);

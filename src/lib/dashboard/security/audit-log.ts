@@ -1,4 +1,4 @@
-import { supabaseClient } from "@/lib/supabaseClient";
+import { supabaseAdmin } from "@/lib/supabaseServer";
 
 export async function logAdminAction({
   action,
@@ -12,7 +12,7 @@ export async function logAdminAction({
   userAgent: string;
 }) {
   try {
-    await supabaseClient.from("admin_logs").insert([
+    await supabaseAdmin.from("admin_logs").insert([
       {
         action,
         admin_username: admin,

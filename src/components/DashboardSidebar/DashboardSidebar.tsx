@@ -105,14 +105,6 @@ export default function DashboardSidebar({ open, onClose }: any) {
                 {" "}
                 ➤ Add Products{" "}
               </Link>{" "}
-              <Link
-                href="/donation-admin/e-com/SalesTable"
-                onClick={onClose}
-                className={styles.item}
-              >
-                {" "}
-                ➤ View Table{" "}
-              </Link>{" "}
             </div>{" "}
           </motion.div>{" "}
         </>
