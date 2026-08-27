@@ -40,34 +40,34 @@ export function AtomCategories({ onSelect }: Props) {
     switch (screenSize) {
       case "tablet":
         return {
-          nucleusSize: opened ? 150 : 180,
-          orbitRadius: 220,
+          nucleusSize: opened ? 190 : 230,
+          orbitRadius: 245,
           electronSize: 75,
           subRadius: 110,
           subElectron: 95,
-          leftOffset: 60,
+          leftOffset: 72,
           SubElectronPositionX: 10,
           SubElectronPositionY: 0,
         };
       case "mobile":
         return {
-          nucleusSize: opened ? 70 : 100,
-          orbitRadius: 100,
+          nucleusSize: opened ? 90 : 130,
+          orbitRadius: 115,
           electronSize: 40,
           subRadius: 55,
           subElectron: 40,
-          leftOffset: 40,
+          leftOffset: 46,
           SubElectronPositionX: 0,
           SubElectronPositionY: 0,
         };
       default:
         return {
-          nucleusSize: opened ? 180 : 220,
-          orbitRadius: 280,
+          nucleusSize: opened ? 230 : 280,
+          orbitRadius: 310,
           electronSize: 90,
           subRadius: 130,
           subElectron: 110,
-          leftOffset: 100,
+          leftOffset: 115,
           SubElectronPositionX: 5,
           SubElectronPositionY: 5,
         };
