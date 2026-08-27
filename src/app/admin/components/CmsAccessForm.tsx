@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import LoadingDots from "@/components/LoadingDots/LoadingDots";
 import "./cms-access.css";
 
 export default function CMSAccessForm() {
@@ -97,6 +98,7 @@ export default function CMSAccessForm() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className="cms-input"
+            disabled={loading}
           />
           <motion.button
             whileHover={{ scale: 1.05 }}
@@ -105,7 +107,7 @@ export default function CMSAccessForm() {
             className="button"
             disabled={loading}
           >
-            {loading ? "Verifying..." : "Login"}
+            {loading ? <LoadingDots tone="light" label="Verifying" /> : "Login"}
           </motion.button>
         </motion.form>
 
@@ -117,16 +119,6 @@ export default function CMSAccessForm() {
             transition={{ duration: 0.4 }}
           >
             {error}
-          </motion.p>
-        )}
-        {loading && (
-          <motion.p
-            className="cms-loading"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4 }}
-          >
-            Loading...
           </motion.p>
         )}
       </motion.div>

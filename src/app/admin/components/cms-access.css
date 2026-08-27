@@ -81,11 +81,26 @@
     background: linear-gradient(90deg, #4d300d, #83755a);
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    min-height: 3.15rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.button:hover {
+.button:hover:not(:disabled) {
     transform: translateY(-2px);
     box-shadow: 0 8px 16px rgba(131, 118, 90, 0.3);
+}
+
+.button:disabled {
+    opacity: 0.75;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.cms-input:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
 
@@ -96,12 +111,6 @@
     margin-top: 1rem;
 }
 
-/* Error */
-.cms-loading {
-    color: #ac7507;
-    font-size: 0.9rem;
-    margin-top: 1rem;
-}
 
 /* Responsive */
 @media (max-width: 768px) {

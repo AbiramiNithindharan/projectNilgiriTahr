@@ -149,3 +149,10 @@
         min-height: 260px;
     }
 }
+/* ===== Suspense fallback ===== */
+.portalFallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 340px;
+}

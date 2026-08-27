@@ -1,27 +1,35 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { useState } from "react";
 import styles from "./login.module.css";
 import { motion } from "framer-motion";
+import LoadingDots from "@/components/LoadingDots/LoadingDots";
 
-export default function DashboardLogin() {
-  const searchParams = useSearchParams();
+type DashboardLoginProps = {
+  /** Unauthorized message owned by AdminClient, so it survives a tab switch */
+  redirectError?: string;
+  onDismissRedirectError?: () => void;
+};
+
+export default function DashboardLogin({
+  redirectError = "",
+  onDismissRedirectError,
+}: DashboardLoginProps) {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const err = searchParams.get("error");
+  const shownError = error || redirectError;
 
-    if (err === "unauthorized") {
-      setError("Please login to access the dashboard.");
-    }
-  }, [searchParams]);
+  const clearErrors = () => {
+    if (error) setError("");
+    if (redirectError) onDismissRedirectError?.();
+  };
 
   const handleSubmit = async (e: React.SubmitEvent) => {
     e.preventDefault();
+    clearErrors();
 
     if (!username.trim() || !password.trim()) {
       setError("Username and password are required");
@@ -78,11 +86,12 @@ export default function DashboardLogin() {
             placeholder="eg: JohnDoe"
             value={username}
             className={styles.inputText}
+            disabled={loading}
             onChange={(e) => {
               setUserName(e.target.value);
-              if (error) setError("");
+              clearErrors();
             }}
-            required
+            aria-required="true"
           />
 
           <label className={styles.label}>Password</label>
@@ -91,17 +100,18 @@ export default function DashboardLogin() {
             placeholder="••••••••••"
             value={password}
             className={styles.inputText}
+            disabled={loading}
             onChange={(e) => {
               setPassword(e.target.value);
-              if (error) setError("");
+              clearErrors();
             }}
-            required
+            aria-required="true"
           />
 
-          {error && <p className={styles.error}>{error}</p>}
+          {shownError && <p className={styles.error}>{shownError}</p>}
 
           <button type="submit" className={styles.button} disabled={loading}>
-            {loading ? "Logging in..." : "Login"}
+            {loading ? <LoadingDots tone="light" label="Logging in" /> : "Login"}
           </button>
         </form>
       </motion.div>
