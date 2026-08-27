@@ -22,6 +22,8 @@ interface HeaderProps {
   leftLogoAlt?: string;
   rightLogoSrc?: string;
   rightLogoAlt?: string;
+  cmLogoSrc?: string;
+  cmLogoAlt?: string;
   rightDonateLogoSrc?: string;
   rightDonateLogoAlt?: string;
   shopLogoSrc?: string;
@@ -34,10 +36,12 @@ interface HeaderProps {
 export default function Header({
   title = "Welcome to Our Platform",
   subtitle = "Discover amazing possibilities",
-  leftLogoSrc = "/logo/header-left-logo.png",
-  leftLogoAlt = "Left Logo",
-  rightLogoSrc = "/logo/header-right-logo.png",
-  rightLogoAlt = "Right Logo",
+  leftLogoSrc = "/logo/header-right-logo.png",
+  leftLogoAlt = "Right Logo",
+  rightLogoSrc = "/logo/header-left-logo.png",
+  rightLogoAlt = "Left Logo",
+  cmLogoSrc = "/logo/cm-vijay.jpg",
+  cmLogoAlt = "CM Logo",
   rightDonateLogoSrc = "/logo/donation-logo.png",
   rightDonateLogoAlt = "donate Logo",
   shopLogoSrc = "/logo/shop-logo.png",
@@ -49,6 +53,7 @@ export default function Header({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDesktop, setIsDesktop] = useState(true);
+  const [isMedium, setIsMedium] = useState(true);
   const lastScrollY = useRef(0);
   const router = useRouter();
 
@@ -64,7 +69,10 @@ export default function Header({
   }, []);
 
   useEffect(() => {
-    const checkWidth = () => setIsDesktop(window.innerWidth >= 1024);
+    const checkWidth = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+      setIsMedium(window.innerWidth >= 768);
+    };
     checkWidth();
     window.addEventListener("resize", checkWidth);
     return () => window.removeEventListener("resize", checkWidth);
@@ -237,54 +245,50 @@ export default function Header({
                   isVisible={true}
                 />
               )}
+              {isDesktop && (
+                <Logo
+                  src={cmLogoSrc}
+                  alt={cmLogoAlt}
+                  size="large"
+                  rounded
+                  delay={0}
+                  isVisible={true}
+                />
+              )}
               <MenuButton onClick={handleMenuToggle} variant="default" />
-              <div className={styles.headerIcons}>
-                <Link href={"/donate"}>
-                  <Logo
-                    src={rightDonateLogoSrc}
-                    alt={rightDonateLogoAlt}
-                    size="medium"
-                    delay={0}
-                    isVisible={true}
-                  />
-                </Link>
-                <Link href={"/e-com/store"}>
-                  <Logo
-                    src={shopLogoSrc}
-                    alt={shopLogoAlt}
-                    size="medium"
-                    delay={0}
-                    isVisible={true}
-                  />
-                </Link>
-              </div>
             </motion.div>
           )}
 
           {isScrolled && (
-            <>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "clamp(0.5rem, 1.5vw, 0.8rem)",
+                marginLeft: "auto",
+              }}
+            >
+              {isMedium && (
+                <Logo
+                  src={rightLogoSrc}
+                  alt={rightLogoAlt}
+                  size="small"
+                  delay={0}
+                  isVisible={true}
+                />
+              )}
+              {isMedium && (
+                <Logo
+                  src={cmLogoSrc}
+                  alt={cmLogoAlt}
+                  size="small"
+                  rounded
+                  delay={0}
+                  isVisible={true}
+                />
+              )}
               <MenuButton onClick={handleMenuToggle} variant="compact" />
-              <div className={styles.headerIcons}>
-                <Link href={"/donate"}>
-                  <Logo
-                    src={rightDonateLogoSrc}
-                    alt={rightDonateLogoAlt}
-                    size="small"
-                    delay={0.1}
-                    isVisible={true}
-                  />
-                </Link>
-                <Link href={"/e-com/store"}>
-                  <Logo
-                    src={shopLogoSrc}
-                    alt={shopLogoAlt}
-                    size="small"
-                    delay={0}
-                    isVisible={true}
-                  />
-                </Link>
-              </div>
-            </>
+            </div>
           )}
         </div>
       </motion.header>

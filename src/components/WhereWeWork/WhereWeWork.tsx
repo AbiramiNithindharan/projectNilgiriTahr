@@ -26,8 +26,8 @@ export default function WhereWeWork() {
         "Critical grazing areas for Nilgiri Tahr herds in the upper elevations of the Western Ghats.",
     },
     {
-      id: "montane-forest",
-      title: "Montane Forest",
+      id: "montane-grassland",
+      title: "Montane Grasslands",
       description:
         "Tropical montane cloud forests that provide shelter and browse for Nilgiri Tahr during adverse weather conditions.",
       icon: "/gallery/where-we-work/MontaneForests.jpeg",

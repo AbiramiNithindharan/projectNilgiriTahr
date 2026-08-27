@@ -7,6 +7,7 @@ interface LogoProps {
   size: "verysmall" | "small" | "medium" | "large";
   delay?: number;
   isVisible?: boolean;
+  rounded?: boolean;
 }
 
 export default function Logo({
@@ -15,6 +16,7 @@ export default function Logo({
   size,
   delay = 0,
   isVisible = true,
+  rounded = false,
 }: LogoProps) {
   // Define sizes in one place for readability
   const sizeMap: Record<LogoProps["size"], string> = {
@@ -39,6 +41,8 @@ export default function Logo({
         width: dimensions,
         height: dimensions,
         position: "relative",
+        borderRadius: rounded ? "50%" : undefined,
+        overflow: rounded ? "hidden" : undefined,
         transition: "all 0.3s ease",
         cursor: "pointer",
       }}
@@ -56,7 +60,8 @@ export default function Logo({
         alt={alt}
         fill
         style={{
-          objectFit: "contain",
+          objectFit: rounded ? "cover" : "contain",
+          objectPosition: rounded ? "top" : undefined,
         }}
       />
     </motion.div>

@@ -257,108 +257,16 @@ export default function Banner({
 
               {/* Banner Text Overlay - show only on first image */}
               {activeIndex === index && index === 0 && (
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    textAlign: "center",
-                    color: "#fff",
-                    zIndex: "10",
-                  }}
-                >
-                  {/* Large Typography - Centered */}
-                  <div
-                    style={{
-                      textAlign: "center",
-                      color: "#ffffff",
-                      maxWidth: "100%",
-                      width: "100%",
-                      textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      marginBottom: "clamp(20px, 6vw, 150px)",
-                    }}
+                <div className={styles.heroWrap}>
+                  <motion.div
+                    initial={{ y: 80, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
                   >
-                    <motion.div
-                      initial={{ y: 80, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ duration: 0.8, delay: 0.3 }}
-                    >
-                      <h1
-                        style={{
-                          fontSize: "clamp(1rem, 6vw, 5rem)",
-                          fontWeight: "300",
-                          lineHeight: "0.9",
-                          marginBottom: "10px",
-                          fontFamily: "Inter, sans-serif",
-                          letterSpacing: "-0.04em",
-                        }}
-                      >
-                        Conserving the
-                      </h1>
-                    </motion.div>
-
-                    <motion.div
-                      initial={{ y: 80, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ duration: 0.8, delay: 0.5 }}
-                    >
-                      <h1
-                        style={{
-                          fontSize: "clamp(1rem, 6vw, 5rem)",
-                          fontWeight: "300",
-                          lineHeight: "0.9",
-                          margin: "-0.05em 0 10px 0",
-                          fontFamily: "Inter, sans-serif",
-                          letterSpacing: "-0.04em",
-                        }}
-                      >
-                        Mountain
-                      </h1>
-                    </motion.div>
-
-                    <motion.div
-                      initial={{ y: 80, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ duration: 0.8, delay: 0.7 }}
-                    >
-                      <h1
-                        style={{
-                          fontSize: "clamp(1rem, 6vw, 5rem)",
-                          fontWeight: "300",
-                          lineHeight: "0.9",
-                          margin: "-0.05em 0 10px 0",
-                          fontFamily: "Inter, sans-serif",
-                          letterSpacing: "-0.04em",
-                        }}
-                      >
-                        Monarchs of the
-                      </h1>
-                    </motion.div>
-
-                    <motion.div
-                      initial={{ y: 80, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ duration: 0.8, delay: 0.9 }}
-                    >
-                      <h1
-                        style={{
-                          fontSize: "clamp(1rem, 6vw, 5rem)",
-                          fontWeight: "300",
-                          lineHeight: "0.9",
-                          margin: "-0.05em 0 10px 0",
-                          fontFamily: "Inter, sans-serif",
-                          letterSpacing: "-0.04em",
-                        }}
-                      >
-                        Western Ghats
-                      </h1>
-                    </motion.div>
-                  </div>
+                    <h1 className={styles.heroTitle}>
+                      Conserving the Mountain Monarchs of the Western Ghats
+                    </h1>
+                  </motion.div>
                 </div>
               )}
 

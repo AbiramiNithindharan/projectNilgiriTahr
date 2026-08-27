@@ -51,13 +51,50 @@
 
 
 
+/* --- Hero headline (single line, top-centered) --- */
+.heroWrap {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.heroTitle {
+  margin: 0;
+  font-family: Inter, sans-serif;
+  font-weight: 300;
+  font-size: clamp(1.1rem, 3vw, 2.9rem);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+}
+
+/* Below this breakpoint the line wraps instead of shrinking further */
+@media (max-width: 768px) {
+  .heroWrap {
+    top: 6%;
+  }
+
+  .heroTitle {
+    white-space: normal;
+    font-size: clamp(1.1rem, 5.2vw, 2rem);
+    line-height: 1.15;
+  }
+}
+
 .knowMoreBtn {
   background: #0000006e;
   border: 2px solid #ffffff;
   color: #ffffff;
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  font-weight: 600;
+  padding: 0.6rem 1.5rem;
+  font-size: 0.8rem;
+  font-weight: 500;
   font-family: Inter, sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.1em;
