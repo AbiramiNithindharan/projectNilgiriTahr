@@ -8,7 +8,6 @@ import { Home } from "lucide-react";
 import { AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
-// Import new components
 import Logo from "./components/Logo";
 import ProjectTitle from "./components/ProjectTitle";
 import CenterText from "./components/CenterText";
@@ -191,27 +190,49 @@ export default function Header({
             <Home size={24} strokeWidth={2} />
           </motion.button>
 
-          {isDesktop ? (
-            <Link href={"/"}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: isScrolled
+                ? "clamp(0.5rem, 1.5vw, 0.8rem)"
+                : "clamp(0.8rem, 2vw, 1.5rem)",
+              flexShrink: 0,
+            }}
+          >
+            {isDesktop ? (
+              <Link href={"/"}>
+                <Logo
+                  src={leftLogoSrc}
+                  alt={leftLogoAlt}
+                  size={isScrolled ? "medium" : "large"}
+                  delay={0.1}
+                  isVisible={isVisible}
+                />
+              </Link>
+            ) : (
+              <Link href={"/"}>
+                <Logo
+                  src={leftLogoSrc}
+                  alt={leftLogoAlt}
+                  size={isScrolled ? "small" : "medium"}
+                  delay={0.1}
+                  isVisible={isVisible}
+                />
+              </Link>
+            )}
+
+            {(isScrolled ? isMedium : isDesktop) && (
               <Logo
-                src={leftLogoSrc}
-                alt={leftLogoAlt}
-                size={isScrolled ? "medium" : "large"}
+                src={cmLogoSrc}
+                alt={cmLogoAlt}
+                size={isScrolled ? "small" : "large"}
+                rounded
                 delay={0.1}
                 isVisible={isVisible}
               />
-            </Link>
-          ) : (
-            <Link href={"/"}>
-              <Logo
-                src={leftLogoSrc}
-                alt={leftLogoAlt}
-                size={isScrolled ? "small" : "medium"}
-                delay={0.1}
-                isVisible={isVisible}
-              />
-            </Link>
-          )}
+            )}
+          </div>
 
           {isScrolled && (
             <ProjectTitle
@@ -245,16 +266,6 @@ export default function Header({
                   isVisible={true}
                 />
               )}
-              {isDesktop && (
-                <Logo
-                  src={cmLogoSrc}
-                  alt={cmLogoAlt}
-                  size="large"
-                  rounded
-                  delay={0}
-                  isVisible={true}
-                />
-              )}
               <MenuButton onClick={handleMenuToggle} variant="default" />
             </motion.div>
           )}
@@ -273,16 +284,6 @@ export default function Header({
                   src={rightLogoSrc}
                   alt={rightLogoAlt}
                   size="small"
-                  delay={0}
-                  isVisible={true}
-                />
-              )}
-              {isMedium && (
-                <Logo
-                  src={cmLogoSrc}
-                  alt={cmLogoAlt}
-                  size="small"
-                  rounded
                   delay={0}
                   isVisible={true}
                 />
