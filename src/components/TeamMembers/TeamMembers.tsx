@@ -39,6 +39,18 @@ export default function TeamMembers() {
 
   const teamSections = [
     {
+      id: "forest-minister",
+      title: "Forest Minister",
+      members: [
+        {
+          name: "Thiru. R. V. Ranjith Kumar",
+          image: "/members/r-v-ranjith-kumar.jpg",
+          alt: "Thiru. R. V. Ranjith Kumar",
+          about: "Honourable Minister of Forests, Government of Tamil Nadu.",
+        },
+      ],
+    },
+    {
       id: "board-members",
       title: "Board Members",
       members: [
@@ -448,6 +460,7 @@ export default function TeamMembers() {
                     pauseOnMouseEnter: true,
                   }}
                   loop={section.members.length > 3}
+                  centerInsufficientSlides={true}
                   grabCursor={true}
                   touchRatio={1.2}
                   breakpoints={{
@@ -481,6 +494,7 @@ export default function TeamMembers() {
                   {section.members.map((member, index) => {
                     const cardId = `${section.id}-${index}`;
                     const isExpanded = expandedCards[cardId];
+                    const isMinister = section.id === "forest-minister";
 
                     return (
                       <SwiperSlide key={index}>
@@ -501,17 +515,19 @@ export default function TeamMembers() {
                             padding: "1.5rem",
                             boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
                             textAlign: "center",
-                            height: "350px",
+                            height: "390px",
                             display: "flex",
                             flexDirection: "column",
-                            justifyContent: "space-between",
+                            justifyContent: isMinister
+                              ? "center"
+                              : "space-between",
                             transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                           }}
                         >
                           <div
                             style={{
-                              width: "100px",
-                              height: "100px",
+                              width: "140px",
+                              height: "140px",
                               borderRadius: "50%",
                               overflow: "hidden",
                               margin: "0 auto 1rem auto",
@@ -525,13 +541,16 @@ export default function TeamMembers() {
                               fill
                               draggable={false}
                               onContextMenu={(e) => e.preventDefault()}
-                              style={{ objectFit: "cover" }}
+                              style={{
+                                objectFit: "cover",
+                                objectPosition: "center top",
+                              }}
                             />
                           </div>
                           <h3
                             style={{
                               fontWeight: "600",
-                              marginBottom: "0.5rem",
+                              marginBottom: isMinister ? "0.25rem" : "0.5rem",
                             }}
                           >
                             {member.name}
@@ -540,7 +559,7 @@ export default function TeamMembers() {
                             onClick={() => toggleCard(cardId)}
                             style={{
                               fontSize: "0.9rem",
-                              textAlign: "left",
+                              textAlign: isMinister ? "center" : "left",
                               cursor: "pointer",
                               overflowY: isExpanded ? "auto" : "hidden",
                               maxHeight: isExpanded ? "140px" : "auto",
