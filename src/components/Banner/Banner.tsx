@@ -48,11 +48,15 @@ export default function Banner({
   const [headerOverlaying, setHeaderOverlaying] = useState(false); // fixed/sticky/absolute
 
   // Banner images array
-  const bannerImages = [
+  const bannerImages: { src: string; alt: string; link?: string }[] = [
     {
       src: "/banners/DJI_0036.jpg",
       alt: "Nilgiri Tahr conservation work",
       link: "/banner-content-1",
+    },
+    {
+      src: "/banners/world-environment-day-2026.jpg",
+      alt: "Officials releasing the Nilgiri Tahr book on World Environment Day 2026, Guindy Children's Park, Chennai",
     },
     /* {
       src: "/banners/Banner_2.jpg",
@@ -271,7 +275,7 @@ export default function Banner({
               )}
 
               {/* Overlay content (always above image) */}
-              {activeIndex === index && (
+              {activeIndex === index && image.link && (
                 <div
                   style={{
                     position: "absolute",
