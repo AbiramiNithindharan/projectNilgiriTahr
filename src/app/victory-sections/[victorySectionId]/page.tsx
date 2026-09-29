@@ -60,7 +60,6 @@ export default async function VictorySectionsPage({
               alt="Nilgiri Tahr"
               fill
               draggable={false}
-              onContextMenu={(e) => e.preventDefault()}
               className={styles.image}
               priority
             />
